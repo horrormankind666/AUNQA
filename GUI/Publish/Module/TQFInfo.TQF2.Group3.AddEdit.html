@@ -1,0 +1,1470 @@
+﻿<div class="addedit dialogin">
+    <div class="panel noborder silver-bg">
+        <div class="panel-heading block tqf-group">
+            <div class="panel-table">
+                <div class="panel-row">
+                    <div class="panel-col text-left">
+                        <div class="panel-title">
+                            <div class="navigation">
+                                <ul>
+                                    <li class="text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10" ng-bind-html="$appServ.getLabel(['TQF2', 'group3'])"></span></li>
+                                    <li class="separate"></li>
+                                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group3', 'mean'])}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>                
+                    <div class="panel-col col-toolbar text-right" ng-if="!$TQFServ.TQF2.accordionGroup.isOpen">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body white-bg tqf-title">
+            <uib-accordion close-others="false">
+                <ng-include class="accordion-heading" ng-repeat="order in $utilServ.getArrayNumber(tqf2g3.maxSection)" src="'TQFInfo.TQF2.Group3.AddEdit.Section.Heading.Template.html'" ng-if="true"></ng-include>
+            </uib-accordion>
+            <div class="panel noborder">
+                <div class="panel-body block light-bg">
+                    <div class="form">
+                        <div class="form-row">
+                            <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                            <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                                <div class="btn-command nopadding-top">
+                                    <span>
+                                        <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g3.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g3.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
+                                        <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g3.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g3.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="TQFInfo.TQF2.Group3.AddEdit.Section.Heading.Template.html">
+    <div class="light-bg" uib-accordion-group is-open="tqf2g3.accordionGroup['section' + order].isOpen">
+        <uib-accordion-heading>
+            <div class="navigation" id="{{'section' + order}}">
+                <ul>
+                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10"><i class="fa" ng-class="$utilServ.getClassIconAccordionHeading(tqf2g3.accordionGroup['section' + order].isOpen)"></i></span></li>
+                    <li class="text-right {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10">{{order}}.</span></li>
+                    <li class="separate"></li>
+                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group3', 'section', order])}}</span></li>
+                </ul>
+            </div>
+        </uib-accordion-heading>
+        <ng-include src="'TQFInfo.TQF2.Group3.AddEdit.Section' + order + '.Content.Template.html'"></ng-include>
+    </div>
+</script>
+<script type="text/ng-template" id="TQFInfo.TQF2.Group3.AddEdit.Section1.Content.Template.html">
+    <div class="section1 paddingBottom10">
+        <div class="form">
+            <div class="form-row">
+                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'eduSystem'])}}</div>
+                <div class="form-col input-col">
+                    <div ng-repeat="eduSystem in $appServ.table.dataSource.eduSystem | orderBy: 'id'">
+                        <div class="{{eduSystem.input + '-row'}}">
+                            <ul>
+                                <li class="{{eduSystem.input + '-col'}} input-col nopadding-bottom">
+                                    <div class="icheck-default">
+                                        <input class="{{'input' + eduSystem.input}}" type="{{eduSystem.input}}" id="{{'check' + eduSystem.id}}" name="edusystem" value="{{eduSystem}}"
+                                                ng-disabled="tqf2.addedit.disabled"
+                                                ng-init="tqf2g3.addedit.section1.isCheckedEduSystem[eduSystem.id] = false"
+                                                ng-model="tqf2g3.addedit.section1.formField.eduSystemSelected[eduSystem.id]"
+                                                ng-click="$TQFServ.inputTypeRemark.setSelected(eduSystem, 'eduSystem', tqf2g3.addedit.section1.formField, tqf2g3.addedit.section1.isCheckedEduSystem)" />
+                                        <label for="{{'check' + eduSystem.id}}"></label>
+                                    </div>
+                                </li>
+                                <li class="{{eduSystem.input + '-col'}} label-col nopadding-bottom">
+                                    <div class="label-tab">
+                                        <span class="{{$appServ.labelStyle}} regular black f10">{{eduSystem.title[$utilServ.lang]}}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <input enter smart-textbox class="form-control inputbox font-en regular black f10 marginTop3" type="text" value="" ng-if="eduSystem.isRemark === 'Y'" ng-disabled="tqf2.addedit.disabled || !tqf2g3.addedit.section1.isCheckedEduSystem[eduSystem.id]" ng-model="tqf2g3.addedit.section1.formField.eduSystemRemark[eduSystem.id]" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-separate">
+            <div class="form">
+                <div class="form-row">
+                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'summer'])}}</div>
+                    <div class="form-col input-col">
+                        <div ng-repeat="without in $dictServ.dict.without">
+                            <div class="radio-row">
+                                <ul>
+                                    <li class="radio-col input-col nopadding-bottom">
+                                        <div class="icheck-default">
+                                            <input class="inputradio" type="radio" id="{{'check' + without.id}}" name="with" value="{{without.id}}"
+                                                    ng-disabled="tqf2.addedit.disabled"
+                                                    ng-model="tqf2g3.addedit.section1.formField.summerSelected" />
+                                            <label for="{{'check' + without.id}}"></label>
+                                        </div>
+                                    </li>
+                                    <li class="radio-col label-col nopadding-bottom">
+                                        <div class="label-tab">
+                                            <span class="{{$appServ.labelStyle}} regular black f10">{{without.name[$utilServ.lang]}}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-separate">
+            <div class="form vertical">
+                <div class="form-row">
+                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'compareCredit'])}}</div>
+                    <div class="form-col input-col">
+                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                            <textarea smart-textbox class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section1.formField.compareCredit"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <div class="form-row">
+                <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                    <div class="btn-command">
+                        <span>
+                            <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-secondary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g3.addedit.section1.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g3.addedit.section1.resetValue(); $utilServ.gotoElement({ anchorName: '#section1', top: 84 })" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="TQFInfo.TQF2.Group3.AddEdit.Section2.Content.Template.html">
+    <div class="section2 paddingBottom10">
+        <div class="form vertical">
+            <div class="form-row" ng-repeat="devMng in $appServ.table.dataSource.devMng | orderBy: 'id'">
+                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{devMng.title[$utilServ.lang]}}</div>
+                <div class="form-col input-col">
+                    <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                        <textarea smart-textbox class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section2.formField.devMng[devMng.id]"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-separate marginTop15">
+            <div class="form-planquantity" ng-init="ownerPlanQuantity = tqf2g3.addedit.section2.owner; tqf2g3.planQuantity.new(ownerPlanQuantity); planQuantityObj = tqf2g3.planQuantity.owner[ownerPlanQuantity]">
+                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'planQuantity'])}}</div>
+                <table class="table table-in-form">
+                    <caption>
+                        <div class="dialogin">
+                            <div class="panel noborder">
+                                <div class="panel-body nopadding">
+                                    <div class="form nowrap">
+                                        <div class="form-row">
+                                            <div class="form-col label-col text-right {{$appServ.labelStyle}} regular black f10 nopadding-right">{{$appServ.getLabel(['planQuantity', 'table', 'startYear'])}}</div>
+                                            <div class="form-col input-col">
+                                                <input enter smart-textbox ui-number-mask="0" ui-hide-group-sep stop-cut-copy-paste class="form-control inputbox font-en regular black f10 text-center" type="text" value="" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="planQuantityObj.addedit.formField.startYear" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </caption>
+                    <thead class="table-data">
+                        <tr>
+                            <th class="col-academicyear">
+                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['academicYear'])}}</span>
+                            </th>
+                            <th class="col-year text-center" ng-repeat="col in $utilServ.getArrayNumber(planQuantityObj.table.maxCol)">
+                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{planQuantityObj.addedit.formField.startYear ? ((planQuantityObj.addedit.formField.startYear - 0) + (col - 1)) : ''}}</span>
+                            </th>
+                            <th class="colwrap colwrap1 col-academicyear">
+                                <span class="{{$appServ.labelStyle}} regular black f10 block"></span>
+                            </th>
+                            <th class="colwrap colwrap1 col-year">
+                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['academicYear'])}}</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-data" ng-repeat="numEp in planQuantityObj.table.data">
+                        <tr>
+                            <td class="col-academicyear text-left palegoldenrod-bg">
+                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="numEp.name[$utilServ.lang]">{{numEp.name[$utilServ.lang]}}</span>
+                            </td>
+                            <td class="col-year" ng-repeat="col in $utilServ.getArrayNumber(planQuantityObj.table.maxCol)">
+                                <div class="inputbox-in-col" ng-if="planQuantityObj.addedit.formField.startYear" uib-tooltip-html="numEp.name[$utilServ.lang] + '<br />' + $appServ.getLabel(['academicYear']) + ' ' + (planQuantityObj.addedit.formField.startYear ? ((planQuantityObj.addedit.formField.startYear - 0) + (col - 1)) : '')">
+                                    <input enter smart-textbox ui-number-mask="0" stop-cut-copy-paste class="form-control inputbox font-en regular black f11 text-center" type="text" value="" maxlength="5" ng-disabled="tqf2.addedit.disabled || numEp.id == 'numEpTotal'" ng-model="numEp.year[(planQuantityObj.addedit.formField.startYear - 0) + (col - 1)]" />
+                                </div>
+                            </td>
+                            <td class="colwrap colwrap1 col-academicyear text-left palegoldenrod-bg">
+                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="numEp.name[$utilServ.lang]">{{numEp.name[$utilServ.lang]}}</span>
+                            </td>
+                            <td class="colwrap colwrap1 col-year">
+                                <div class="form nowrap" ng-repeat="col in $utilServ.getArrayNumber(planQuantityObj.table.maxCol)">
+                                    <div class="form-row" ng-if="planQuantityObj.addedit.formField.startYear">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f11 nopadding-right">{{planQuantityObj.addedit.formField.startYear ? ((planQuantityObj.addedit.formField.startYear - 0) + (col - 1)) : ''}}</div>
+                                        <div class="form-col input-col nopadding-bottom">
+                                            <div class="inputbox-in-col" uib-tooltip-html="numEp.name[$utilServ.lang] + '<br />' + $appServ.getLabel(['academicYear']) + ' ' + (planQuantityObj.addedit.formField.startYear ? ((planQuantityObj.addedit.formField.startYear - 0) + (col - 1)) : '')">
+                                                <input enter smart-textbox ui-number-mask="0" class="form-control inputbox font-en regular black f11 text-center" type="text" value="" maxlength="5" ng-disabled="tqf2.addedit.disabled || numEp.id == 'numEpTotal'" ng-model="numEp.year[(planQuantityObj.addedit.formField.startYear - 0) + (col - 1)]" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-separate marginTop15">
+            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                {{$appServ.getLabel(['program', 'table', 'budgetPlan'])}}
+                <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment'])}}</div>
+            </div>
+            <div class="form-bracket">
+                <div class="panel-table">
+                    <div class="panel-row">
+                        <div class="panel-col"></div>
+                        <div class="panel-col">
+                            <div class="form-costvalue">
+                                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment', 'costValue'])}}</div>
+                                <div class="form">
+                                    <div class="form-row">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment', 'costValue', 'incomeStudent'])}}</div>
+                                        <div class="form-col input-col">
+                                            <input enter smart-textbox ui-number-mask="2" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section2.formField.costValue.incomeStudent" />
+                                            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'baht'])}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment', 'costValue', 'costStudent'])}}</div>
+                                        <div class="form-col input-col">
+                                            <input enter smart-textbox ui-number-mask="2" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section2.formField.costValue.costStudent" />
+                                            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'baht'])}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment', 'costValue', 'costEffective'])}}</div>
+                                        <div class="form-col input-col">
+                                            <input enter smart-textbox ui-number-mask="0" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="5" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section2.formField.costValue.costEffective" />
+                                            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'students'])}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment', 'costValue', 'studentsEnrolled'])}}</div>
+                                        <div class="form-col input-col">
+                                            <input enter smart-textbox ui-number-mask="0" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="5" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section2.formField.costValue.studentsEnrolled" />
+                                            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'students'])}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form vertical">
+                                    <div class="form-row">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment', 'costValue', 'notCostEffective'])}}</div>
+                                        <div class="form-col input-col">
+                                            <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                                <textarea smart-textbox class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section2.formField.costValue.notCostEffective"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-row">
+                        <div class="panel-col"></div>
+                        <div class="panel-col">
+                            <div class="form-costbudget">
+                                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment', 'costBudget'])}}</div>
+                                <div class="{{$index > 0 ? 'form-separate noborder-top' : ''}}" ng-repeat="costBudgetType in $dictServ.dict.costBudget">
+                                    <div ng-init="ownerCostBudget = (tqf2g3.addedit.section2.owner + costBudgetType.id); tqf2g3.costBudget.new(ownerCostBudget); costBudgetObj = tqf2g3.costBudget.owner[ownerCostBudget]">
+                                        <div class="{{$appServ.labelStyle}} regular black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'budgetPlan', 'investment', 'costBudget', costBudgetType.id])}}</div>
+                                        <div class="toolbar text-left">
+                                            <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); costBudgetObj.addedit.showForm = !costBudgetObj.addedit.showForm; (costBudgetObj.addedit.showForm ? costBudgetObj.addedit.init(ownerCostBudget) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                                        </div>
+                                        <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="costBudgetObj.addedit.showForm">
+                                            <div class="panel noborder">
+                                                <div class="panel-body block lightgreen-bg">
+                                                    <div class="paddingBottom10" ng-if="costBudgetObj.addedit.formValidate.showSaveError && !costBudgetObj.addedit.formValidate.isValid.unique">
+                                                        <div class="alert alert-danger">
+                                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{costBudgetType.table.name[$utilServ.lang]}}</div>
+                                                        <div class="form">
+                                                            <div class="form-row">
+                                                                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                                                                <div class="form-col input-col">
+                                                                    <input enter smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-disabled="tqf2.addedit.disabled" ng-model="costBudgetObj.addedit.formField.name.TH" />
+                                                                    <div class="alert alert-danger" ng-if="costBudgetObj.addedit.formValidate.showSaveError && !costBudgetObj.addedit.formValidate.isValid.name.TH">
+                                                                        <span class="{{$appServ.labelStyle}} regular f11">{{costBudgetType.save.error.name.TH[$utilServ.lang]}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                                                                <div class="form-col input-col">
+                                                                    <input enter smart-textbox textbox-type-letter="englishchar" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-disabled="tqf2.addedit.disabled" ng-model="costBudgetObj.addedit.formField.name.EN" />
+                                                                    <div class="alert alert-danger" ng-if="costBudgetObj.addedit.formValidate.showSaveError && !costBudgetObj.addedit.formValidate.isValid.name.EN">
+                                                                        <span class="{{$appServ.labelStyle}} regular f11">{{costBudgetType.save.error.name.EN[$utilServ.lang]}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-separate">
+                                                            <div class="form">
+                                                                <div class="form-row">
+                                                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['amount'])}}</div>
+                                                                    <div class="form-col input-col">
+                                                                        <input enter smart-textbox ui-number-mask="2" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="13" ng-disabled="tqf2.addedit.disabled" ng-model="costBudgetObj.addedit.formField.amount" />
+                                                                        <div class="alert alert-danger" ng-if="costBudgetObj.addedit.formValidate.showSaveError && !costBudgetObj.addedit.formValidate.isValid.amount">
+                                                                            <span class="{{$appServ.labelStyle}} regular f11">{{costBudgetType.save.error.amount[$utilServ.lang]}}</span>
+                                                                        </div>
+                                                                        <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'baht']) + ' / ' + $appServ.getLabel(['academicYear'])}}</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                                                                    <div class="form-col input-col text-left nopadding-top nopadding-bottom">
+                                                                        <div class="btn-command">
+                                                                            <span>
+                                                                                <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !costBudgetObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); costBudgetObj.addedit.saveChange.action(ownerCostBudget)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
+                                                                                <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !costBudgetObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); costBudgetObj.addedit.resetValue(ownerCostBudget)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="paddingTop10">
+                                            <table class="table table-in-form table-striped">
+                                                <thead class="table-data">
+                                                    <tr>
+                                                        <th class="col-index">
+                                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                                        </th>
+                                                        <th class="col-name">
+                                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{costBudgetType.table.name[$utilServ.lang]}}</span>
+                                                        </th>
+                                                        <th class="col-amount">
+                                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['amount']) + ' ( ' + ($appServ.getLabel(['unit', 'baht']) | lowercase) + ' / ' + ($appServ.getLabel(['academicYear']) | lowercase) + ' )'}}</span>
+                                                        </th>
+                                                        <th class="col-command">
+                                                        </th>
+                                                        <th class="colwrap colwrap1 hidden" colspan="4">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="table-data" ng-repeat="costBudget in costBudgetObj.table.data">
+                                                    <tr>
+                                                        <td class="col-index text-left">
+                                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+                                                        </td>
+                                                        <td class="col-name text-left">
+                                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="costBudgetType.table.name[$utilServ.lang]">{{costBudget.name[$utilServ.lang]}}</span>
+                                                        </td>
+                                                        <td class="col-amount text-left">
+                                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['amount']) + ' ( ' + ($appServ.getLabel(['unit', 'baht']) | lowercase) + ' / ' + ($appServ.getLabel(['academicYear']) | lowercase) + ' )'">{{costBudget.amount | number: 2}}</span>
+                                                        </td>
+                                                        <td class="col-command">
+                                                            <div class="block">
+                                                                <div class="toolbar">
+                                                                    <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(costBudgetObj.table.data, costBudget)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="colwrap colwrap1 noborder" colspan="4">
+                                                            <div class="view block">
+                                                                <div class="iform">
+                                                                    <div class="iform-row">
+                                                                        <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                                                                        </div>
+                                                                        <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                        </div>
+                                                                        <div class="iform-col input-col text-left nopadding-top">
+                                                                            <span class="{{$appServ.labelStyle}} regular black f11">{{$index + 1}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="iform-row">
+                                                                        <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">{{costBudgetType.table.name[$utilServ.lang]}}</span>
+                                                                        </div>
+                                                                        <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                        </div>
+                                                                        <div class="iform-col input-col text-left nopadding-top">
+                                                                            <span class="{{$appServ.labelStyle}} regular black f11">{{costBudget.name[$utilServ.lang]}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="iform-row">
+                                                                        <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['amount'])}}</span>
+                                                                        </div>
+                                                                        <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                        </div>
+                                                                        <div class="iform-col input-col text-left nopadding-top">
+                                                                            <span class="{{$appServ.labelStyle}} regular black f11">{{(costBudget.amount | number: 2) + (costBudget.amount ? (' ' + ($appServ.getLabel(['unit', 'baht']) | lowercase) + ' / ' + ($appServ.getLabel(['academicYear']) | lowercase)) : '')}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-right paddingTop3">
+                                                                    <div class="toolbar">
+                                                                        <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(costBudgetObj.table.data, costBudget)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-separate noborder-top">
+                                    <div class="form vertical">
+                                        <div class="form-row">
+                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['other'])}}</div>
+                                            <div class="form-col input-col">
+                                                <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                                    <textarea smart-textbox class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section2.formField.costBudget.other"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-separate marginTop15">
+            <div class="form">
+                <div class="form-row">
+                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'eduStudyType'])}}</div>
+                    <div class="form-col input-col">
+                        <div ng-repeat="eduStudyType in $appServ.table.dataSource.eduStudyType | orderBy: 'id'">
+                            <div class="{{eduStudyType.input + '-row'}}">
+                                <ul>
+                                    <li class="{{eduStudyType.input + '-col'}} input-col nopadding-bottom">
+                                        <div class="icheck-default">
+                                            <input class="{{'input' + eduStudyType.input}}" type="{{eduStudyType.input}}" id="{{'check' + eduStudyType.id}}" name="language" value="{{eduStudyType}}"
+                                                    ng-disabled="tqf2.addedit.disabled"
+                                                    ng-init="tqf2g3.addedit.section2.isCheckedEduStudyType[eduStudyType.id] = false"
+                                                    ng-model="tqf2g3.addedit.section2.formField.eduStudyTypeSelected[eduStudyType.id]"
+                                                    ng-click="$TQFServ.inputTypeRemark.setSelected(eduStudyType, 'eduStudyType', tqf2g3.addedit.section2.formField, tqf2g3.addedit.section2.isCheckedEduStudyType)" />
+                                            <label for="{{'check' + eduStudyType.id}}"></label>
+                                        </div>
+                                    </li>
+                                    <li class="{{eduStudyType.input + '-col'}} label-col nopadding-bottom">
+                                        <div class="label-tab">
+                                            <span class="{{$appServ.labelStyle}} regular black f10">{{eduStudyType.title[$utilServ.lang]}}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <input enter smart-textbox class="form-control inputbox font-en regular black f10 marginTop3" type="text" value="" ng-if="eduStudyType.isRemark === 'Y'" ng-disabled="tqf2.addedit.disabled || !tqf2g3.addedit.section2.isCheckedEduStudyType[eduStudyType.id]" ng-model="tqf2g3.addedit.section2.formField.eduStudyTypeRemark[eduStudyType.id]" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-separate">
+            <div class="form vertical">
+                <div class="form-row">
+                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'creditTransfer'])}}</div>
+                    <div class="form-col input-col">
+                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                            <textarea smart-textbox class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section2.formField.creditTransfer"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <div class="form-row">
+                <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                    <div class="btn-command">
+                        <span>
+                            <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-secondary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g3.addedit.section2.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g3.addedit.section2.resetValue(); $utilServ.gotoElement({ anchorName: '#section2', top: 84 })" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="TQFInfo.TQF2.Group3.AddEdit.Section3.Content.Template.html">
+    <div class="section3 paddingBottom10">
+        <div>
+            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'curriculum'])}}</div>
+            <div class="form">
+                <div class="form-row">
+                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'curriculum', 'totalCredits'])}}</div>
+                    <div class="form-col input-col">
+                        <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.total" />
+                        <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-separate">
+            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'curriculum', 'curriculumStructure'])}}</div>
+            <div class="form-bracket">
+                <div class="panel-table">
+                    <div class="panel-row">
+                        <div class="panel-col"></div>
+                        <div class="panel-col">
+                            <div class="form-curriculumstructure">
+                                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'credits'])}}</div>
+                                <div class="form">
+                                    <div class="form-row">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCategory', 'generalCourses'])}}</div>
+                                        <div class="form-col input-col">
+                                            <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.generalCourses" />
+                                            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCategory', 'specificCourses'])}}</div>
+                                        <div class="form-col input-col">
+                                            <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.specificCourses" />
+                                            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCategory', 'electiveCourses'])}}</div>
+                                        <div class="form-col input-col">
+                                            <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.electiveCourses" />
+                                            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-row">
+                        <div class="panel-col"></div>
+                        <div class="panel-col">
+                            <div class="form-subjectgroup" ng-init="ownerSubjectGroup = tqf2g3.addedit.section3.owner; tqf2g3.subjectGroup.new(ownerSubjectGroup); subjectGroupObj = tqf2g3.subjectGroup.owner[ownerSubjectGroup]">
+                                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['courseCategory'])}}</div>
+                                <div class="{{$appServ.labelStyle}} regular black f10 text-left form-separate-title">{{$appServ.getLabel(['courseCategory', 'subjectGroup'])}}</div>
+                                <div class="toolbar text-left">
+                                    <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); subjectGroupObj.addedit.showForm = !subjectGroupObj.addedit.showForm; (subjectGroupObj.addedit.showForm ? subjectGroupObj.addedit.init(ownerSubjectGroup) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                                </div>
+                                <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="subjectGroupObj.addedit.showForm">
+                                    <div class="panel noborder">
+                                        <div class="panel-body block lightgreen-bg">
+                                            <div class="paddingBottom10" ng-if="subjectGroupObj.addedit.formValidate.showSaveError && !subjectGroupObj.addedit.formValidate.isValid.unique">
+                                                <div class="alert alert-danger">
+                                                    <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form">
+                                                <div class="form-row">
+                                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'table', 'course'])}}</div>
+                                                    <div class="form-col input-col">
+                                                        <ui-select class="no-searchbox" search-enabled="false" ng-model="subjectGroupObj.addedit.formField.courseSelected.selected" theme="select2" ng-disabled="tqf2.addedit.disabled">
+                                                            <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'course'])}}">
+                                                                <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{$dictServ.dict.courseCategory[$select.selected.id][$utilServ.lang] | capitalize}}</span>
+                                                                <span clearselect class="clearselect lang font-en regular gray f10" ng-click="subjectGroupObj.addedit.formField.courseSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+                                                            </ui-select-match>
+                                                            <ui-select-choices repeat="course in $dictServ.dict.courseCategory.course">
+                                                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['courseCategory', course.id]) | capitalize}}</span>
+                                                            </ui-select-choices>
+                                                        </ui-select>
+                                                        <div class="alert alert-danger" ng-if="subjectGroupObj.addedit.formValidate.showSaveError && !subjectGroupObj.addedit.formValidate.isValid.course">
+                                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'save', 'error', 'course'])}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-separate">
+                                                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'table', 'name'])}}</div>
+                                                <div class="form">
+                                                    <div class="form-row">
+                                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                                                        <div class="form-col input-col">
+                                                            <input enter smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-disabled="tqf2.addedit.disabled" ng-model="subjectGroupObj.addedit.formField.name.TH" />
+                                                            <div class="alert alert-danger" ng-if="subjectGroupObj.addedit.formValidate.showSaveError && !subjectGroupObj.addedit.formValidate.isValid.name.TH">
+                                                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'save', 'error', 'name' ,'TH'])}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                                                        <div class="form-col input-col">
+                                                            <input enter smart-textbox textbox-type-letter="englishchar" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-disabled="tqf2.addedit.disabled" ng-model="subjectGroupObj.addedit.formField.name.EN" />
+                                                            <div class="alert alert-danger" ng-if="subjectGroupObj.addedit.formValidate.showSaveError && !subjectGroupObj.addedit.formValidate.isValid.name.EN">
+                                                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'save', 'error', 'name', 'EN'])}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-separate">
+                                                <div class="form">
+                                                    <div class="form-row">
+                                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCredit'])}}</div>
+                                                        <div class="form-col input-col">
+                                                            <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="subjectGroupObj.addedit.formField.courseCredit" />
+                                                            <div class="alert alert-danger" ng-if="subjectGroupObj.addedit.formValidate.showSaveError && !subjectGroupObj.addedit.formValidate.isValid.courseCredit">
+                                                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'save', 'error', 'courseCredit'])}}</span>
+                                                            </div>
+                                                            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                                                        <div class="form-col input-col text-left nopadding-top nopadding-bottom">
+                                                            <div class="btn-command">
+                                                                <span>
+                                                                    <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !subjectGroupObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); subjectGroupObj.addedit.saveChange.action(ownerSubjectGroup)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
+                                                                    <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !subjectGroupObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); subjectGroupObj.addedit.resetValue(ownerSubjectGroup)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="paddingTop10">
+                                    <uib-tabset class="tabset-default" active="subjectGroupObj.tabSelect.activeTabIndex">
+                                        <uib-tab index="$index" heading="{{$appServ.getLabel(['courseCategory', course.id])}}" ng-repeat="course in $dictServ.dict.courseCategory.course">
+                                            <div class="paddingTop5">
+                                                <table class="table table-in-form table-striped">
+                                                    <thead class="table-data">
+                                                        <tr>
+                                                            <th class="col-index">
+                                                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                                            </th>
+                                                            <th class="col-name">
+                                                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'table', 'name'])}}</span>
+                                                            </th>
+                                                            <th class="col-coursecredit">
+                                                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['courseCredit'])}}</span>
+                                                            </th>
+                                                            <th class="col-command">
+                                                            </th>
+                                                            <th class="colwrap colwrap1 hidden" colspan="4">
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="table-data" ng-repeat="subjectGroup in (subjectGroupObj.table.data | filter: { course: course.id})">
+                                                        <tr>
+                                                            <td class="col-index text-left">
+                                                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+                                                            </td>
+                                                            <td class="col-name text-left">
+                                                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['courseCategory', 'subjectGroup', 'table', 'name']) + ' ( ' + $appServ.getLabel(['courseCategory', course.id]) + ' )'">{{subjectGroup.name[$utilServ.lang] | capitalize}}</span>
+                                                            </td>
+                                                            <td class="col-coursecredit text-left">
+                                                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['courseCredit'])">{{subjectGroup.courseCredit | number: 1}}</span>
+                                                            </td>
+                                                            <td class="col-command">
+                                                                <div class="block">
+                                                                    <div class="toolbar">
+                                                                        <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(subjectGroupObj.table.data, subjectGroup)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="colwrap colwrap1 noborder" colspan="4">
+                                                                <div class="view block">
+                                                                    <div class="iform">
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{$index + 1}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'table', 'name'])}}</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{subjectGroup.name[$utilServ.lang] | capitalize}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['courseCredit'])}}</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{subjectGroup.courseCredit | number: 1}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="text-right paddingTop3">
+                                                                        <div class="toolbar">
+                                                                            <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(subjectGroupObj.table.data, subjectGroup)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </uib-tab>
+                                    </uib-tabset>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-separate marginTop15">
+            <div class="form-definecoursecodes">
+                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'curriculum', 'definedCourseCodes'])}}</div>
+                <div class="form-bracket">
+                    <div class="panel-table">
+                        <div class="panel-row">
+                            <div class="panel-col"></div>
+                            <div class="panel-col">
+                                <div class="form-fourmainalphabets">
+                                    <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['defineCourseCodes', 'fourMainAlphabets'])}}</div>
+                                    <div class="{{$index > 0 ? 'form-separate noborder-top' : ''}}" ng-repeat="alphabetGroup in $dictServ.dict.defineCourseCodes.fourMainAlphabets.alphabetGroup">
+                                        <div ng-init="ownerDefineCourseCodes = (tqf2g3.addedit.section3.owner + alphabetGroup.id); tqf2g3.defineCourseCodes.new(ownerDefineCourseCodes); fourMainAlphabetsObj = tqf2g3.defineCourseCodes.owner[ownerDefineCourseCodes]">
+                                            <div class="{{$appServ.labelStyle}} regular black f10 text-left form-separate-title">{{alphabetGroup.name[$utilServ.lang]}}</div>
+                                            <div class="toolbar text-left">
+                                                <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); fourMainAlphabetsObj.addedit.showForm = !fourMainAlphabetsObj.addedit.showForm; (fourMainAlphabetsObj.addedit.showForm ? fourMainAlphabetsObj.addedit.init(ownerDefineCourseCodes) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                                            </div>
+                                            <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="fourMainAlphabetsObj.addedit.showForm">
+                                                <div class="panel noborder">
+                                                    <div class="panel-body block lightgreen-bg">
+                                                        <div class="paddingBottom10" ng-if="fourMainAlphabetsObj.addedit.formValidate.showSaveError && !fourMainAlphabetsObj.addedit.formValidate.isValid.unique">
+                                                            <div class="alert alert-danger">
+                                                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['abbreviation'])}}</div>
+                                                            <div class="form">
+                                                                <div class="form-row">
+                                                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                                                                    <div class="form-col input-col">
+                                                                        <input enter smart-textbox textbox-type-letter="thai" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="2" value="" ng-disabled="tqf2.addedit.disabled" ng-model="fourMainAlphabetsObj.addedit.formField.abbreviation.TH" />
+                                                                        <div class="alert alert-danger" ng-if="fourMainAlphabetsObj.addedit.formValidate.showSaveError && !fourMainAlphabetsObj.addedit.formValidate.isValid.abbreviation.TH">
+                                                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['defineCourseCodes', 'save', 'error', 'abbreviation', 'TH'])}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                                                                    <div class="form-col input-col">
+                                                                        <input enter smart-textbox textbox-type-letter="english" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="2" value="" ng-disabled="tqf2.addedit.disabled" ng-model="fourMainAlphabetsObj.addedit.formField.abbreviation.EN" />
+                                                                        <div class="alert alert-danger" ng-if="fourMainAlphabetsObj.addedit.formValidate.showSaveError && !fourMainAlphabetsObj.addedit.formValidate.isValid.abbreviation.EN">
+                                                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['defineCourseCodes', 'save', 'error', 'abbreviation', 'EN'])}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-separate">
+                                                                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['meaning'])}}</div>
+                                                                <div class="form">
+                                                                    <div class="form-row">
+                                                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                                                                        <div class="form-col input-col">
+                                                                            <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                                                                <textarea smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="fourMainAlphabetsObj.addedit.formField.meaning.TH"></textarea>
+                                                                            </div>
+                                                                            <div class="alert alert-danger" ng-if="fourMainAlphabetsObj.addedit.formValidate.showSaveError && !fourMainAlphabetsObj.addedit.formValidate.isValid.meaning.TH">
+                                                                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['defineCourseCodes', 'save', 'error', 'meaning', 'TH'])}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                                                                        <div class="form-col input-col">
+                                                                            <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                                                                <textarea smart-textbox textbox-type-letter="englishchar" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="fourMainAlphabetsObj.addedit.formField.meaning.EN"></textarea>
+                                                                            </div>
+                                                                            <div class="alert alert-danger" ng-if="fourMainAlphabetsObj.addedit.formValidate.showSaveError && !fourMainAlphabetsObj.addedit.formValidate.isValid.meaning.EN">
+                                                                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['defineCourseCodes', 'save', 'error', 'meaning', 'EN'])}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                                                                        <div class="form-col input-col text-left nopadding-top nopadding-bottom">
+                                                                            <div class="btn-command">
+                                                                                <span>
+                                                                                    <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !fourMainAlphabetsObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); fourMainAlphabetsObj.addedit.saveChange.action(ownerDefineCourseCodes)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
+                                                                                    <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !fourMainAlphabetsObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); fourMainAlphabetsObj.addedit.resetValue(ownerDefineCourseCodes)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="paddingTop10">
+                                                <table class="table table-in-form table-striped">
+                                                    <thead class="table-data">
+                                                        <tr>
+                                                            <th class="col-index">
+                                                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                                            </th>
+                                                            <th class="col-abbreviation">
+                                                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['abbreviation']) + ' ( TH )'}}</span>
+                                                            </th>
+                                                            <th class="col-abbreviation">
+                                                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['abbreviation']) + ' ( EN )'}}</span>
+                                                            </th>
+                                                            <th class="col-meaning">
+                                                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['meaning'])}}</span>
+                                                            </th>
+                                                            <th class="col-command">
+                                                            </th>
+                                                            <th class="colwrap colwrap1 hidden" colspan="5">
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="table-data" ng-repeat="fourMainAlphabets in fourMainAlphabetsObj.table.data">
+                                                        <tr>
+                                                            <td class="col-index text-left">
+                                                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+                                                            </td>
+                                                            <td class="col-abbreviation text-left">
+                                                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['abbreviation']) + ' ( TH )'">{{fourMainAlphabets.abbreviation.TH}}</span>
+                                                            </td>
+                                                            <td class="col-abbreviation text-left">
+                                                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['abbreviation']) + ' ( EN )'">{{fourMainAlphabets.abbreviation.EN}}</span>
+                                                            </td>
+                                                            <td class="col-meaning text-left">
+                                                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['meaning'])" ng-bind-html="fourMainAlphabets.meaning[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+                                                            </td>
+                                                            <td class="col-command">
+                                                                <div class="block">
+                                                                    <div class="toolbar">
+                                                                        <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(fourMainAlphabetsObj.table.data, fourMainAlphabets)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="colwrap colwrap1 noborder" colspan="5">
+                                                                <div class="view block">
+                                                                    <div class="iform">
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{$index + 1}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['abbreviation']) + ' ( TH )'}}</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{fourMainAlphabets.abbreviation.TH}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['abbreviation']) + ' ( EN )'}}</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{fourMainAlphabets.abbreviation.EN}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['meaning'])}}</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11" ng-bind-html="fourMainAlphabets.meaning[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="text-right paddingTop3">
+                                                                        <div class="toolbar">
+                                                                            <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(fourMainAlphabetsObj.table.data, fourMainAlphabets)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-row">
+                            <div class="panel-col"></div>
+                            <div class="panel-col">
+                                <div class="form-threedigitsfollowcourseinitials">
+                                    <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['defineCourseCodes', 'threeDigitsFollowCourseInitials'])}}</div>
+                                    <div ng-repeat="digitGroup in $dictServ.dict.defineCourseCodes.threeDigitsFollowCourseInitials.digitGroup">
+                                        <div class="{{$appServ.labelStyle}} regular black f10 text-left form-separate-title">{{digitGroup.name[$utilServ.lang]}}</div>
+                                    </div>
+                                    <div ng-init="ownerDefineCourseCodes = (tqf2g3.addedit.section3.owner + tqf2g3.defineCourseCodes.threeDigitsFollowCourseInitials.owner); tqf2g3.defineCourseCodes.new(ownerDefineCourseCodes); threeDigitsFollowCourseInitialsObj = tqf2g3.defineCourseCodes.owner[ownerDefineCourseCodes]">
+                                        <div class="toolbar text-left">
+                                            <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); threeDigitsFollowCourseInitialsObj.addedit.showForm = !threeDigitsFollowCourseInitialsObj.addedit.showForm; (threeDigitsFollowCourseInitialsObj.addedit.showForm ? threeDigitsFollowCourseInitialsObj.addedit.init(ownerDefineCourseCodes) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                                        </div>
+                                        <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="threeDigitsFollowCourseInitialsObj.addedit.showForm">
+                                            <div class="panel noborder">
+                                                <div class="panel-body block lightgreen-bg">
+                                                    <div class="paddingBottom10" ng-if="threeDigitsFollowCourseInitialsObj.addedit.formValidate.showSaveError && !threeDigitsFollowCourseInitialsObj.addedit.formValidate.isValid.unique">
+                                                        <div class="alert alert-danger">
+                                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['abbreviation'])}}</div>
+                                                        <div class="form">
+                                                            <div class="form-row">
+                                                                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                                                                <div class="form-col input-col">
+                                                                    <input enter smart-textbox textbox-type-letter="numericthai" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="2" value="" ng-disabled="tqf2.addedit.disabled" ng-model="threeDigitsFollowCourseInitialsObj.addedit.formField.abbreviation.TH" />
+                                                                    <div class="alert alert-danger" ng-if="threeDigitsFollowCourseInitialsObj.addedit.formValidate.showSaveError && !threeDigitsFollowCourseInitialsObj.addedit.formValidate.isValid.abbreviation.TH">
+                                                                        <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['defineCourseCodes', 'save', 'error', 'abbreviation', 'TH'])}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                                                                <div class="form-col input-col">
+                                                                    <input enter smart-textbox textbox-type-letter="numeric" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" maxlength="2" value="" ng-disabled="tqf2.addedit.disabled" ng-model="threeDigitsFollowCourseInitialsObj.addedit.formField.abbreviation.EN" />
+                                                                    <div class="alert alert-danger" ng-if="threeDigitsFollowCourseInitialsObj.addedit.formValidate.showSaveError && !threeDigitsFollowCourseInitialsObj.addedit.formValidate.isValid.abbreviation.EN">
+                                                                        <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['defineCourseCodes', 'save', 'error', 'abbreviation', 'EN'])}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-separate">
+                                                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['meaning'])}}</div>
+                                                            <div class="form">
+                                                                <div class="form-row">
+                                                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                                                                    <div class="form-col input-col">
+                                                                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                                                            <textarea smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="threeDigitsFollowCourseInitialsObj.addedit.formField.meaning.TH"></textarea>
+                                                                        </div>
+                                                                        <div class="alert alert-danger" ng-if="threeDigitsFollowCourseInitialsObj.addedit.formValidate.showSaveError && !threeDigitsFollowCourseInitialsObj.addedit.formValidate.isValid.meaning.TH">
+                                                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['defineCourseCodes', 'save', 'error', 'meaning', 'TH'])}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                                                                    <div class="form-col input-col">
+                                                                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                                                            <textarea smart-textbox textbox-type-letter="englishchar" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="threeDigitsFollowCourseInitialsObj.addedit.formField.meaning.EN"></textarea>
+                                                                        </div>
+                                                                        <div class="alert alert-danger" ng-if="threeDigitsFollowCourseInitialsObj.addedit.formValidate.showSaveError && !threeDigitsFollowCourseInitialsObj.addedit.formValidate.isValid.meaning.EN">
+                                                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['defineCourseCodes', 'save', 'error', 'meaning', 'EN'])}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                                                                    <div class="form-col input-col text-left nopadding-top nopadding-bottom">
+                                                                        <div class="btn-command">
+                                                                            <span>
+                                                                                <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !threeDigitsFollowCourseInitialsObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); threeDigitsFollowCourseInitialsObj.addedit.saveChange.action(ownerDefineCourseCodes)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
+                                                                                <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !threeDigitsFollowCourseInitialsObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); threeDigitsFollowCourseInitialsObj.addedit.resetValue(ownerDefineCourseCodes)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="paddingTop10">
+                                            <table class="table table-in-form table-striped">
+                                                <thead class="table-data">
+                                                    <tr>
+                                                        <th class="col-index">
+                                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                                        </th>
+                                                        <th class="col-abbreviation">
+                                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['abbreviation']) + ' ( TH )'}}</span>
+                                                        </th>
+                                                        <th class="col-abbreviation">
+                                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['abbreviation']) + ' ( EN )'}}</span>
+                                                        </th>
+                                                        <th class="col-meaning">
+                                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['meaning'])}}</span>
+                                                        </th>
+                                                        <th class="col-command">
+                                                        </th>
+                                                        <th class="colwrap colwrap1 hidden" colspan="5">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="table-data" ng-repeat="threeDigitsFollowCourseInitials in threeDigitsFollowCourseInitialsObj.table.data">
+                                                    <tr>
+                                                        <td class="col-index text-left">
+                                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+                                                        </td>
+                                                        <td class="col-abbreviation text-left">
+                                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['abbreviation']) + ' ( TH )'">{{threeDigitsFollowCourseInitials.abbreviation.TH}}</span>
+                                                        </td>
+                                                        <td class="col-abbreviation text-left">
+                                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['abbreviation']) + ' ( EN )'">{{threeDigitsFollowCourseInitials.abbreviation.EN}}</span>
+                                                        </td>
+                                                        <td class="col-meaning text-left">
+                                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['meaning'])" ng-bind-html="threeDigitsFollowCourseInitials.meaning[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+                                                        </td>
+                                                        <td class="col-command">
+                                                            <div class="block">
+                                                                <div class="toolbar">
+                                                                    <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(threeDigitsFollowCourseInitialsObj.table.data, threeDigitsFollowCourseInitials)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="colwrap colwrap1 noborder" colspan="5">
+                                                            <div class="view block">
+                                                                <div class="iform">
+                                                                    <div class="iform-row">
+                                                                        <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                                                                        </div>
+                                                                        <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                        </div>
+                                                                        <div class="iform-col input-col text-left nopadding-top">
+                                                                            <span class="{{$appServ.labelStyle}} regular black f11">{{$index + 1}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="iform-row">
+                                                                        <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['abbreviation']) + ' ( TH )'}}</span>
+                                                                        </div>
+                                                                        <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                        </div>
+                                                                        <div class="iform-col input-col text-left nopadding-top">
+                                                                            <span class="{{$appServ.labelStyle}} regular black f11">{{threeDigitsFollowCourseInitials.abbreviation.TH}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="iform-row">
+                                                                        <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['abbreviation']) + ' ( EN )'}}</span>
+                                                                        </div>
+                                                                        <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                        </div>
+                                                                        <div class="iform-col input-col text-left nopadding-top">
+                                                                            <span class="{{$appServ.labelStyle}} regular black f11">{{threeDigitsFollowCourseInitials.abbreviation.EN}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="iform-row">
+                                                                        <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['meaning'])}}</span>
+                                                                        </div>
+                                                                        <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                            <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                        </div>
+                                                                        <div class="iform-col input-col text-left nopadding-top">
+                                                                            <span class="{{$appServ.labelStyle}} regular black f11" ng-bind-html="threeDigitsFollowCourseInitials.meaning[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-right paddingTop3">
+                                                                    <div class="toolbar">
+                                                                        <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(threeDigitsFollowCourseInitialsObj.table.data, threeDigitsFollowCourseInitials)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-separate marginTop15">
+            <div class="form-studyplan">
+                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'curriculum', 'studyPlan'])}}</div>
+                <uib-tabset class="tabset-default">
+                    <uib-tab index="$index" heading="{{$appServ.getLabel(['year']) + ' ' + classYear}}" ng-repeat="classYear in $utilServ.getArrayNumber($appServ.maxClassYear)">
+                        <uib-accordion class="accordion-in-form" close-others="true">
+                            <div class="lightgreen-bg" uib-accordion-group ng-repeat="semester in $utilServ.getArrayNumber($appServ.maxSemester)">
+                                <uib-accordion-heading>
+                                    <div class="navigation">
+                                        <ul>
+                                            <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f14"><i class="fa fa-circle top-1"></i></span></li>
+                                            <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['semester']) + ' ' + semester}}</span></li>
+                                        </ul>
+                                    </div>
+                                </uib-accordion-heading>
+                                <div class="form-subject paddingBottom10" ng-init="ownerSubject = (tqf2g3.addedit.section3.owner + classYear + semester); $subjectServ.form.new(ownerSubject); subjectServObj = $subjectServ.form.owner[ownerSubject]">
+                                    <div class="{{$appServ.labelStyle}} regular black f10 text-left form-separate-title">{{$appServ.getLabel(['course'])}}</div>
+                                    <div class="toolbar text-left">
+                                        <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $subjectServ.form.getDialogForm.owner = ownerSubject; $subjectServ.form.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                                    </div>
+                                    <div class="paddingTop10">
+                                        <table class="table table-in-form table-striped" ng-init="total = 0">
+                                            <thead class="table-data">
+                                                <tr>
+                                                    <th class="col-index">
+                                                        <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                                    </th>
+                                                    <th class="col-code">
+                                                        <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['course', 'table', 'code'])}}</span>
+                                                    </th>
+                                                    <th class="col-name">
+                                                        <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['course', 'table', 'name'])}}</span>
+                                                    </th>
+                                                    <th class="col-coursecredit">
+                                                        <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['courseCredit'])}}</span>
+                                                    </th>
+                                                    <th class="col-command">
+                                                    </th>
+                                                    <th class="colwrap colwrap1 hidden" colspan="5">
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-data" ng-init="$parent.total = ($parent.total + subject.credit)" ng-repeat="subject in subjectServObj.table.data">
+                                                <tr>
+                                                    <td class="col-index text-left">
+                                                        <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+                                                    </td>
+                                                    <td class="col-code text-left">
+                                                        <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['course', 'table', 'code'])">{{subject.code[$utilServ.lang]}}</span>
+                                                    </td>
+                                                    <td class="col-name text-left">
+                                                        <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['course', 'table', 'name'])">{{subject.name[$utilServ.lang]}}</span>
+                                                    </td>
+                                                    <td class="col-coursecredit text-left">
+                                                        <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['courseCredit'])">{{subject.credit + ' ( ' + subject.lectureCredit + '-' + subject.labCredit + '-' + subject.seminarCredit + ' )'}}</span>
+                                                    </td>
+                                                    <td class="col-command">
+                                                        <div class="block">
+                                                            <div class="toolbar">
+                                                                <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $parent.total = ($parent.total - subject.credit); $utilServ.removeItemFromArray(subjectServObj.table.data, subject)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="colwrap colwrap1 noborder" colspan="5">
+                                                        <div class="view block">
+                                                            <div class="iform">
+                                                                <div class="iform-row">
+                                                                    <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                                                                    </div>
+                                                                    <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                    </div>
+                                                                    <div class="iform-col input-col text-left nopadding-top">
+                                                                        <span class="{{$appServ.labelStyle}} regular black f11">{{$index + 1}}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="iform-row">
+                                                                    <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['course', 'table', 'code'])}}</span>
+                                                                    </div>
+                                                                    <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                    </div>
+                                                                    <div class="iform-col input-col text-left nopadding-top">
+                                                                        <span class="{{$appServ.labelStyle}} regular black f11">{{subject.code[$utilServ.lang]}}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="iform-row">
+                                                                    <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['course', 'table', 'name'])}}</span>
+                                                                    </div>
+                                                                    <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                    </div>
+                                                                    <div class="iform-col input-col text-left nopadding-top">
+                                                                        <span class="{{$appServ.labelStyle}} regular black f11">{{subject.name[$utilServ.lang]}}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="iform-row">
+                                                                    <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['courseCredit'])}}</span>
+                                                                    </div>
+                                                                    <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                    </div>
+                                                                    <div class="iform-col input-col text-left nopadding-top">
+                                                                        <span class="{{$appServ.labelStyle}} regular black f11">{{subject.credit + ' ( ' + subject.lectureCredit + '-' + subject.labCredit + '-' + subject.seminarCredit + ' )'}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right paddingTop3">
+                                                                <div class="toolbar">
+                                                                    <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $parent.total = ($parent.total - subject.credit); $utilServ.removeItemFromArray(subjectServObj.table.data, subject)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot class="white-bg" ng-show="subjectServObj.table.data.length > 0">
+                                                <tr>
+                                                    <td class="border1 border-solid border-darkgray noborder-top text-center" colspan="5">
+                                                        <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['total']) + ' ' + total + ' ' + $appServ.getLabel(['unit', 'credits'])}}</span>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </uib-accordion>
+                    </uib-tab>
+                </uib-tabset>   
+            </div>
+        </div>
+        <div class="form-separate marginTop15">
+            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'instructor'])}}</div>
+            <div class="form-bracket">
+                <div class="panel-table">
+                    <div class="panel-row" ng-repeat="instructorGroup in $dictServ.dict.instructor.group | filter: { type: 'program'}">
+                        <div class="panel-col"></div>
+                        <div class="panel-col">
+                            <div class="form-instructor" ng-init="ownerInstructor = (tqf2g3.addedit.section3.owner + instructorGroup.id); $instructorServ.form.new(ownerInstructor); instructorServObj = $instructorServ.form.owner[ownerInstructor]">
+                                <div class="{{$appServ.labelStyle}} regular black f10 text-left form-separate-title">{{instructorGroup.name[$utilServ.lang]}}</div>
+                                <div class="toolbar text-left" ng-if="instructorGroup.isAdd">
+                                    <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $instructorServ.form.getDialogForm.owner = ownerInstructor; $instructorServ.form.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                                </div>
+                                <div ng-class="{ 'paddingTop10': instructorGroup.isAdd }">
+                                    <table class="table table-in-form table-striped">
+                                        <thead class="table-data">
+                                            <tr>
+                                                <th class="col-index">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                                </th>
+                                                <th class="col-position">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['instructor', 'table', 'position'])}}</span>
+                                                </th>
+                                                <th class="col-name">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['instructor', 'table', 'fullName'])}}</span>
+                                                </th>
+                                                <th class="col-degree">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['instructor', 'table', 'degree'])}}</span>
+                                                </th>
+                                                <th class="col-major">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['instructor', 'table', 'major'])}}</span>
+                                                </th>
+                                                <th class="col-graduationyear">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['instructor', 'table', 'graduationYear'])}}</span>
+                                                </th>
+                                                <th class="col-institute">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['institute', 'table', 'name'])}}</span>
+                                                </th>
+                                                <th class="col-country">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['institute', 'table', 'country'])}}</span>
+                                                </th>
+                                                <th class="col-command" ng-if="instructorGroup.isAdd">
+                                                </th>
+                                                <th class="colwrap colwrap1 hidden" colspan="{{instructorGroup.isAdd ? '9' : '8'}}">
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-data" ng-repeat="instructor in instructorServObj.table.data">
+                                            <tr>
+                                                <td class="col-index text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+                                                </td>
+                                                <td class="col-position text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'position'])">{{instructor.position}}</span>
+                                                </td>
+                                                <td class="col-name text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'fullName'])">{{instructor.fullName[$utilServ.lang]}}</span>
+                                                </td>
+                                                <td class="col-degree text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'degree'])"></span>
+                                                </td>
+                                                <td class="col-major text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'major'])"></span>
+                                                </td>
+                                                <td class="col-graduationyear text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'graduationYear'])"></span>
+                                                </td>
+                                                <td class="col-institute text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['institute', 'table', 'name'])"></span>
+                                                </td>
+                                                <td class="col-country text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['institute', 'table', 'country'])"></span>
+                                                </td>
+                                                <td class="col-command" ng-if="instructorGroup.isAdd">
+                                                    <div class="block">
+                                                        <div class="toolbar">
+                                                            <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(instructorServObj.table.data, instructor)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="colwrap colwrap1 noborder" colspan="{{instructorGroup.isAdd ? '9' : '8'}}">
+                                                    <div class="view block">
+                                                        <div class="iform">
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{$index + 1}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'position'])}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{instructor.position}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'fullName'])}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{instructor.fullName[$utilServ.lang]}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'degree'])}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular black f11"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'major'])}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular black f11"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'graduationYear'])}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular black f11"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['institute', 'table', 'name'])}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular black f11"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['institute', 'table', 'country'])}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular black f11"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-right paddingTop3">
+                                                            <div class="toolbar">
+                                                                <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(instructorServObj.table.data, instructor)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <div class="form-row">
+                <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                    <div class="btn-command">
+                        <span>
+                            <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-secondary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g3.addedit.section3.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g3.addedit.section3.resetValue(); $utilServ.gotoElement({ anchorName: '#section3', top: 84 })" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

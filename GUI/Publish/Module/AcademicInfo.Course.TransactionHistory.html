@@ -1,0 +1,336 @@
+﻿<div class="{{$pageRouteServ.pageObject.academicInfo.class + ' ' + $pageRouteServ.pageObject.course.class + ' ' + $pageRouteServ.pageObject.course.transactionHistory.class}}">
+    <div class="dialogin" ng-if="costsh.showForm">
+        <div class="panel noborder">
+            <div class="panel-body">
+                <div class="text-center" loading-container="$courseServ.tableList.courseTransactionHistory.settings().$loading">
+                    <table class="table table-striped table-hover" ng-table="$courseServ.tableList.courseTransactionHistory">
+                        <caption>
+                            <div class="block">
+                                <div class="panel-table">
+                                    <div class="panel-row">
+                                        <div class="panel-col col-toolbar">
+                                            <div class="toolbar">
+                                                <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); costsh.table.filter.showForm = !costsh.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
+                                                <a enter class="btn black f5" href="javascript:void(0)" ng-click="
+                                                    $utilServ.doBlur($event);
+                                                    acacos.table.reload.isPreloading = false;
+                                                    acacos.table.reload.isResetDataSource = true;
+                                                    acacos.table.reload.tableType = 'temp';
+                                                    acacos.table.reload.order = [{
+                                                        table: 'courseTransactionHistory',
+                                                        isFirstPage: true
+                                                    }, {
+                                                        table: 'coursePendingVerify',
+                                                        isFirstPage: true
+                                                    }, {
+                                                        table: 'courseSendingVerify',
+                                                        isFirstPage: true
+                                                    }];
+                                                    acacos.table.reload.action()" uib-tooltip-html="$appServ.getLabel(['reload'])">
+                                                    <i class="fa fa fa-refresh white f9"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="panel-col col-recordcount text-right paddingTop4" ng-if="!acacos.table.hide" ng-show="!$courseServ.tableList.courseTransactionHistory.settings().$loading">
+                                            <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount($courseServ.tableList.courseTransactionHistory.totalSearch, $courseServ.tableList.courseTransactionHistory.total(), $dictServ.dict)}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter dialogin" ng-if="costsh.table.filter.showForm">
+                                <div class="panel noborder">
+                                    <div class="panel-heading block">
+                                        <div class="panel-title text-left">
+                                            <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body block">
+                                        <div class="panel-table">
+                                            <div class="panel-row">
+                                                <div class="panel-col">
+                                                    <div class="form vertical">
+                                                        <div class="form-row">
+                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
+                                                            <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="$courseServ.tableList.courseTransactionHistory.totalSearch === 0" ng-model="costsh.table.filter.formField.keyword" /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-col nopadding-right">
+                                                    <div class="form vertical">
+                                                        <div class="form-row">
+                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['course', 'table', 'verifyStatus'])}}</div>
+                                                            <div class="form-col input-col text-left">
+                                                                <ui-select class="no-searchbox" search-enabled="false" ng-disabled="$courseServ.tableList.courseTransactionHistory.totalSearch === 0" ng-model="costsh.table.filter.formField.verifyStatusSelected.selected" theme="select2">
+                                                                    <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'status'])}}">
+                                                                        <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.name[$utilServ.lang] ? ($select.selected.name[$utilServ.lang] | capitalize) : '')}}</span>
+                                                                        <span clearselect class="clearselect lang font-en regular gray f10" ng-click="costsh.table.filter.formField.verifyStatusSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+                                                                    </ui-select-match>
+                                                                    <ui-select-choices repeat="verifyStatus in $dictServ.dict.verifyStatus">
+                                                                        <span class="{{$appServ.labelStyle}} regular f11">{{(verifyStatus.name[$utilServ.lang] | capitalize)}}</span>
+                                                                    </ui-select-choices>
+                                                                </ui-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </caption>
+                        <thead class="table-data">
+                            <tr>
+                                <th class="noborder-top noborder-bottom noborder-left col-index">
+                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                </th>
+                                <th class="noborder-top noborder-bottom noborder-left col-code">
+                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['course', 'table', 'code'])}}</span>
+                                </th>
+                                <th class="noborder-top noborder-bottom noborder-left col-name">
+                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['course', 'table', 'name'])}}</span>
+                                </th>
+                                <th class="noborder-top noborder-bottom noborder-left col-coursecredit">
+                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['courseCredit'])}}</span>
+                                </th>
+                                <th class="noborder-top noborder-bottom noborder-left col-verifystatus">
+                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['course', 'table', 'verifyStatus'])}}</span>
+                                </th>
+                                <th class="noborder-top noborder-right noborder-bottom col-who">
+                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['who'])}}</span>
+                                </th>
+                                <th class="colwrap colwrap1 hidden" colspan="6">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-data" ng-repeat="dr in $data | orderBy: '-createdDate'">
+                            <tr class="{{costsh.table.formField.toggle[dr.id] ? 'active' : ''}}" ng-if="!acacos.table.hide">
+                                <td class="noborder-top noborder-bottom noborder-left col-index">
+                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex($courseServ.tableList.courseTransactionHistory, $index)}}</span>
+                                </td>
+                                <td class="noborder-top noborder-bottom noborder-left col-code">
+                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['course', 'table', 'code'])">{{dr.code[$utilServ.lang]}}</span>
+                                </td>
+                                <td class="noborder-top noborder-bottom noborder-left col-name text-left">
+                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['course', 'table', 'name'])">{{dr.name[$utilServ.lang]}}</span>
+                                </td>
+                                <td class="noborder-top noborder-bottom noborder-left col-coursecredit">
+                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['courseCredit'])">{{dr.credit + ' ( ' + dr.lectureCredit + '-' + dr.labCredit + '-' + dr.seminarCredit + ' )'}}</span>
+                                </td>
+                                <td class="noborder-top noborder-bottom noborder-left col-verifystatus">
+                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['course', 'table', 'verifyStatus'])">
+                                        <a class="link" href="javascript:void(0)" ng-click="costsh.table.formField.toggle[dr.id] = !costsh.table.formField.toggle[dr.id]" ng-show="dr.status === 'N'" ng-model="costsh.table.formField.toggle[dr.id]">{{$appServ.getLabel(['meaningVerifyStatus', dr.status])}}</a>
+                                        {{dr.status !== 'N' ? $appServ.getLabel(['meaningVerifyStatus', dr.status]) : ''}}
+                                    </span>
+                                </td>
+                                <td class="noborder-top noborder-right noborder-bottom col-who text-left">
+                                    <div class="view block" uib-tooltip-html="$appServ.getLabel(['who'])">
+                                        <div class="iform">
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['create'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <div class="{{$appServ.labelStyle}} regular black f11">{{dr.createdBy}}</div>
+                                                    <div class="{{$appServ.labelStyle}} regular black f11" ng-show="dr.createdDate">{{dr.createdDate | date: 'dd-MM-yyyy HH:mm:ss'}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['sendVerify'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <div class="{{$appServ.labelStyle}} regular black f11">{{dr.sendVerifyBy}}</div>
+                                                    <div class="{{$appServ.labelStyle}} regular black f11" ng-show="dr.sendVerifyDate">{{dr.sendVerifyDate | date: 'dd-MM-yyyy HH:mm:ss'}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['verify'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <div class="{{$appServ.labelStyle}} regular black f11">{{dr.verifyBy}}</div>
+                                                    <div class="{{$appServ.labelStyle}} regular black f11" ng-show="dr.verifyDate">{{dr.verifyDate | date: 'dd-MM-yyyy HH:mm:ss'}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="colwrap colwrap1 noborder" colspan="6">
+                                    <div class="view block">
+                                        <div class="iform">
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex($courseServ.tableList.courseTransactionHistory, $index)}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['course', 'table', 'code'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.code[$utilServ.lang]}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['course', 'table', 'name'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.name[$utilServ.lang]}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['courseCredit'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.credit + ' ( ' + dr.lectureCredit + '-' + dr.labCredit + '-' + dr.seminarCredit + ' )'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['course', 'table', 'verifyStatus'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">
+                                                        <a class="link" href="javascript:void(0)" ng-click="costsh.table.formField.toggle[dr.id] = !costsh.table.formField.toggle[dr.id]" ng-show="dr.status === 'N'" ng-model="costsh.table.formField.toggle[dr.id]">{{$appServ.getLabel(['meaningVerifyStatus', dr.status])}}</a>
+                                                        {{dr.status !== 'N' ? $appServ.getLabel(['meaningVerifyStatus', dr.status]) : ''}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['createdBy'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.createdBy}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['createdDate'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.createdDate | date: 'dd-MM-yyyy HH:mm:ss'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['sendVerifyBy'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.sendVerifyBy}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['sendVerifyDate'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.sendVerifyDate | date: 'dd-MM-yyyy HH:mm:ss'}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['verifyBy'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.verifyBy}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iform-row">
+                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['verifyDate'])}}</span>
+                                                </div>
+                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                </div>
+                                                <div class="iform-col input-col text-left nopadding-top">
+                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.verifyDate | date: 'dd-MM-yyyy HH:mm:ss'}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="orange-bg" ng-show="dr.status === 'N' && costsh.table.formField.toggle[dr.id]">
+                                <td colspan="6">
+                                    <div class="view block border5 border-solid border-darkgray noborder-top noborder-right noborder-left">
+                                        <div class="iform">
+                                            <div class="iform-row">
+                                                <div class="iform-col input-col text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10" ng-bind-html="dr.verifyRemarkBindhtml"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="colwrap colwrap1" colspan="6">
+                                    <div class="view block">
+                                        <div class="iform">
+                                            <div class="iform-row">
+                                                <div class="iform-col input-col text-left">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10" ng-bind-html="dr.verifyRemarkBindhtml"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot ng-show="$courseServ.tableList.courseTransactionHistory.totalSearch !== undefined && !$courseServ.tableList.courseTransactionHistory.settings().$loading">
+                            <tr ng-if="!acacos.table.hide">
+                                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="6">
+                                    <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount($courseServ.tableList.courseTransactionHistory.totalSearch, $courseServ.tableList.courseTransactionHistory.total(), $dictServ.dict)}}</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

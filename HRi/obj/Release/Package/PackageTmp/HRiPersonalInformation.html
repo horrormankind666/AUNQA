@@ -1,0 +1,401 @@
+﻿<div class="{{$appServ.HRi.class + ' ' + $appServ.HRi.personalInformation.class}}"
+     ng-controller="hriPersonalInformationCtrl as hripsi"
+     ng-init="hripsi.init()">
+    <div class="dialogin" ng-if="hripsi.showForm">
+        <div class="panel noborder">
+            <div class="panel-body nopadding">
+                <div class="{{$appServ.HRi.personalData.class}}">
+                    <uib-accordion close-others="true">
+                        <div uib-accordion-group class="panel-info " ng-init="group[1].isOpen = false" is-open="group[1].isOpen">
+                            <uib-accordion-heading>
+                                <div class="navigation">
+                                    <ul>
+                                        <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10"><i class="fa" ng-class="$utilServ.getClassIconAccordionHeading(group[1].isOpen)"></i></span></li>
+                                        <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['HRi', 'personalData'])}}</span></li>
+                                    </ul>
+                                </div>
+                            </uib-accordion-heading>
+                            <div class="view">
+                                <div class="iform">
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead nopadding-top">
+                                            <span class="{{$appServ.labelStyle}} bold blue f9">{{$appServ.getLabel(['namePrefix'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead nopadding-top"></div>
+                                        <div class="iform-col input-col text-left nopadding-top"></div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'namePrefix', 'academicPosition'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.namePrefix.academicPosition}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'namePrefix', 'military'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.namePrefix.military}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'namePrefix', 'profession'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.namePrefix.profession}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'namePrefix', 'titleConferredByTheKing'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.namePrefix.titleConferredByTheKing}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'namePrefix', 'ordinary'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.namePrefix.ordinary}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="view paddingTop20 paddingBottom10">
+                                <div class="iform">
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'gender'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.gender}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'fullName'])}} ( TH )</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{($appServ.HRi.dataRow.firstName.TH ? $appServ.HRi.dataRow.firstName.TH : '') + ($appServ.HRi.dataRow.middleName.TH ? (($appServ.HRi.dataRow.firstName.TH ? ' ' : '') + $appServ.HRi.dataRow.middleName.TH) : '') + (($appServ.HRi.dataRow.lastName.TH ? ' ' : '') + $appServ.HRi.dataRow.lastName.TH)}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'fullName'])}} ( EN )</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{($appServ.HRi.dataRow.firstName.EN ? $appServ.HRi.dataRow.firstName.EN : '') + ($appServ.HRi.dataRow.middleName.EN ? (($appServ.HRi.dataRow.firstName.EN ? ' ' : '') + $appServ.HRi.dataRow.middleName.EN) : '') + (($appServ.HRi.dataRow.lastName.EN ? ' ' : '') + $appServ.HRi.dataRow.lastName.EN)}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'dateOfBirth'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.dateOfBirth}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'countryOfBirth'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.countryOfBirth}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'placeOfBirth'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.placeOfBirth}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'nationality'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.nationality}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'nationalitySecond'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.nationalitySecond}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'nationalityThird'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.nationalityThird}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'religious'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.religious}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'maritalStatus'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.HRi.dataRow.maritalStatus}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-info " ng-init="group[2].isOpen = false" is-open="group[2].isOpen">
+                            <uib-accordion-heading>
+                                <div class="navigation">
+                                    <ul>
+                                        <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10"><i class="fa" ng-class="$utilServ.getClassIconAccordionHeading(group[2].isOpen)"></i></span></li>
+                                        <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['HRi', 'table', 'positions'])}}</span></li>
+                                    </ul>
+                                </div>
+                            </uib-accordion-heading>
+                            <div class="view paddingBottom10">
+                                <div class="iform" ng-repeat="positions in $appServ.HRi.dataRow.positions" ng-class="$index > 0 ? 'form-separate' : ''">
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'positions', 'name'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{positions.name}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'positions', 'fullName'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{positions.fullName}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'positions', 'type'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{positions.type}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'positions', 'startDate'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{positions.startDate}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right subtitle colhead">
+                                            <span class="{{$appServ.labelStyle}} bold blue f9">{{$appServ.getLabel(['HRi', 'table', 'positions', 'organization'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center subtitle colhead"></div>
+                                        <div class="iform-col input-col text-left subtitle"></div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'positions', 'organization', 'name'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{positions.organization.name}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'positions', 'organization', 'fullName'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{positions.organization.fullName}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right subtitle colhead">
+                                            <span class="{{$appServ.labelStyle}} bold blue f9">{{$appServ.getLabel(['HRi', 'table', 'positions', 'organization', 'faculty'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center subtitle colhead"></div>
+                                        <div class="iform-col input-col text-left subtitle"></div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'positions', 'organization', 'faculty', 'name'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{positions.organization.faculty.name}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['HRi', 'table', 'positions', 'organization', 'faculty', 'fullName'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{positions.organization.faculty.fullName}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div uib-accordion-group class="panel-info " ng-init="group[3].isOpen = false" is-open="group[3].isOpen">
+                            <uib-accordion-heading>
+                                <div class="navigation">
+                                    <ul>
+                                        <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10"><i class="fa" ng-class="$utilServ.getClassIconAccordionHeading(group[3].isOpen)"></i></span></li>
+                                        <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['instructor', 'table', 'coursePosition'])}}</span></li>
+                                    </ul>
+                                </div>
+                            </uib-accordion-heading>
+                            <div class="view paddingBottom10">
+                                <div class="{{$appServ.labelStyle}} regular red f10 text-center" ng-if="$appServ.HRi.dataRow.programs.length === 0">{{$appServ.getLabel(['HRi', 'personalData', 'coursePositionNotFound'])}}</div>
+                                <div class="iform" ng-repeat="program in $appServ.HRi.dataRow.programs" ng-class="$index > 0 ? 'form-separate' : ''">
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['faculty', 'table', 'name'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{program.faculty.name[$utilServ.lang]}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['program', 'table', 'code'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{program.programFullCode}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['program', 'table', 'name'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{program.name[$utilServ.lang]}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['program', 'table', 'courseYear'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{program.courseYear}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="iform-row">
+                                        <div class="iform-col label-col text-right colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['instructor', 'table', 'coursePosition'])}}</span>
+                                        </div>
+                                        <div class="iform-col label-col text-center colhead">
+                                            <span class="{{$appServ.labelStyle}} bold black f10">:</span>
+                                        </div>
+                                        <div class="iform-col input-col text-left">
+                                            <div class="{{$appServ.labelStyle}} regular black f10">{{program.coursePosition.name[$utilServ.lang]}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </uib-accordion>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

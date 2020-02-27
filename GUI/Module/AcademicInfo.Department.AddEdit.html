@@ -1,0 +1,130 @@
+﻿<div class="addedit dialogin">
+    <div class="panel noborder gold-bg">
+        <div class="panel-heading block">
+            <div class="panel-title text-left">
+                <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acadep.addedit.isAdd">{{$appServ.getLabel(['add'])}}</span>
+                <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acadep.addedit.isEdit">{{$appServ.getLabel(['edit'])}}</span>
+            </div>
+        </div>
+        <div class="panel-body block white-bg">
+            <div class="form">
+                <div class="form-row">
+                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['code'])}}</div>
+                    <div class="form-col input-col">
+                        <input enter smart-textbox textbox-type-letter="english" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" maxlength="10" ng-disabled="acadep.addedit.isEdit" ng-model="acadep.addedit.formField.code" />
+                        <div class="alert alert-danger" ng-if="acadep.addedit.formValidate.showSaveError && !acadep.addedit.formValidate.isValid.code">
+                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['department', 'save', 'error', 'code'])}}</span>
+                        </div>
+                        <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['englishOnly'])}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-separate">
+                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['fullName'])}}</div>
+                <div class="form">
+                    <div class="form-row">
+                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['thai'])}}</div>
+                        <div class="form-col input-col">
+                            <input enter smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acadep.addedit.formField.name.TH" />
+                            <div class="alert alert-danger" ng-if="acadep.addedit.formValidate.showSaveError && !acadep.addedit.formValidate.isValid.name.TH">
+                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['department', 'save', 'error', 'name', 'TH'])}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['english'])}}</div>
+                        <div class="form-col input-col">
+                            <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acadep.addedit.formField.name.EN" />
+                            <div class="alert alert-danger" ng-if="acadep.addedit.formValidate.showSaveError && !acadep.addedit.formValidate.isValid.name.EN">
+                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['department', 'save', 'error', 'name', 'EN'])}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-separate">
+                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['initials'])}}</div>
+                <div class="form">
+                    <div class="form-row">
+                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                        <div class="form-col input-col">
+                            <input enter smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acadep.addedit.formField.abbrev.TH" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                        <div class="form-col input-col">
+                            <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acadep.addedit.formField.abbrev.EN" />
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div class="form-separate">
+                <div class="form">
+                    <div class="form-row">
+                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['department', 'table', 'date'])}}</div>
+                        <div class="form-col input-col input-daterange">
+                            <div datetimerangepicker class="panel-table" ng-init="datetimepickerOptions = $appServ.datetimepickerOptions" ng-model="datepickerStartEnd">
+                                <div class="panel-row">
+                                    <div class="panel-col">
+                                        <div class="input-group date datefrom" id="datepickerstartend-datefrom">
+                                            <input enter smart-textbox stop-cut-copy-paste class="inputcalendar form-control inputbox font-en regular black f10" type="text" value="" ng-model="datepickerStartEnd.dateFrom" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                        <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['dateFormat'])}}</div>
+                                    </div>
+                                    <div class="panel-col text-center todate"><div class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['to'])}}</div></div>
+                                    <div class="panel-col">
+                                        <div class="input-group date dateto" id="datepickerstartend-dateto">
+                                            <input enter smart-textbox stop-cut-copy-paste class="inputcalendar form-control inputbox font-en regular black f10" type="text" value="" ng-model="datepickerStartEnd.dateTo" />
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                        <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['dateFormat'])}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-separate">
+                <div class="form">
+                    <div class="form-row">
+                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['department', 'table', 'departmentType'])}}</div>
+                        <div class="form-col input-col">
+                            <ui-select ng-model="acadep.addedit.formField.departmentTypeSelected.selected" theme="select2">
+                                <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'departmentType'])}}">
+                                    <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.name[$utilServ.lang] ? ($select.selected.name[$utilServ.lang] | capitalize) : '')}}</span>
+                                    <span clearselect class="clearselect lang font-en regular gray f10" ng-click="acadep.addedit.formField.departmentTypeSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+                                </ui-select-match>
+                                <ui-select-choices repeat="departmentType in ($appServ.table.dataSource.departmentType | filter: { selectFilter: $select.search } | limitTo: $utilServ.uiSelectLimit.show)">
+                                    <span class="{{$appServ.labelStyle}} regular f11">{{(departmentType.name[$utilServ.lang] | capitalize)}}</span>
+                                    <div ng-if="$utilServ.getSelectShowLoadMoreTemplate($index, $select.items, $select.search, $appServ.table.dataSource.departmentType)">
+                                        <a class="{{$appServ.labelStyle}} regular white f12 btn loadmore" href="javascript:void(0)" ng-click="$utilServ.getSelectFetchData($select, $event)">{{$appServ.getLabel(['msgPreloading', 'loadMore'])}}</a>
+                                    </div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </div>                        
+            </div>
+        </div>
+        <div class="panel noborder">
+            <div class="panel-body block light-bg">
+                <div class="form">
+                    <div class="form-row">
+                        <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                        <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                            <div class="btn-command nopadding-top">
+                                <span>
+                                    <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !acadep.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acadep.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
+                                    <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !acadep.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acadep.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

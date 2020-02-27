@@ -1,0 +1,215 @@
+﻿<div class="addedit dialogin">
+    <div class="panel noborder silver-bg">
+        <div class="panel-heading block tqf-group">
+            <div class="panel-table">
+                <div class="panel-row">
+                    <div class="panel-col text-left">
+                        <div class="panel-title">
+                            <div class="navigation">
+                                <ul>
+                                    <li class="text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10" ng-bind-html="$appServ.getLabel(['TQF2', 'group7'])"></span></li>
+                                    <li class="separate"></li>
+                                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group7', 'mean'])}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>                
+                    <div class="panel-col col-toolbar text-right" ng-if="!$TQFServ.TQF2.accordionGroup.isOpen">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body white-bg">
+            <div class="paddingTop10 paddingRight10 paddingBottom10 paddingLeft10">
+                <div class="form vertical">
+                    <div class="form-row" ng-repeat="qualityAssurance in $appServ.table.dataSource.qualityAssurance | orderBy: 'id'">
+                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{qualityAssurance.title[$utilServ.lang]}}</div>
+                        <div class="form-col input-col">
+                            <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                <textarea smart-textbox class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g7.addedit.formField.qualityAssurance[qualityAssurance.id]"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-separate marginTop15">
+                    <div class="form-kpi" ng-init="ownerKPI = tqf2g7.owner; tqf2g7.kpi.new(ownerKPI); kpiObj = tqf2g7.kpi.owner[ownerKPI]; $kpiServ.form.new(ownerKPI); kpiServObj = $kpiServ.form.owner[ownerKPI]">
+                        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'kpi'])}}</div>
+                        <div class="toolbar text-left">
+                            <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); kpiObj.addedit.showForm = !kpiObj.addedit.showForm; (kpiObj.addedit.showForm ? kpiObj.addedit.init(ownerKPI) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                        </div>
+                        <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="kpiObj.addedit.showForm">
+                            <div class="panel noborder">
+                                <div class="panel-body block lightgreen-bg">
+                                    <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['kpi', 'table', 'name'])}}</div>
+                                    <div class="paddingBottom10" ng-if="kpiObj.addedit.formValidate.showSaveError && !kpiObj.addedit.formValidate.isValid.unique">
+                                        <div class="alert alert-danger">
+                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form">
+                                        <div class="form-row">
+                                            <div class="form-col label-col"></div>
+                                            <div class="form-col input-col">
+                                                <div class="toolbar">
+                                                    <a enter class="btn btn-text default-bg nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $kpiServ.form.getDialogForm.owner = ownerKPI; $kpiServ.form.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['placeholder', 'indicator'])"><i class="fa fa-list white f8"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['placeholder', 'indicator'])}}</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                                            <div class="form-col input-col">
+                                                <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                                    <textarea smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="kpiServObj.addedit.formField.name.TH"></textarea>
+                                                </div>
+                                                <div class="alert alert-danger" ng-if="kpiObj.addedit.formValidate.showSaveError && !kpiObj.addedit.formValidate.isValid.name.TH">
+                                                    <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['kpi', 'save', 'error', 'name', 'TH'])}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                                            <div class="form-col input-col">
+                                                <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                                                    <textarea smart-textbox textbox-type-letter="englishchar" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="kpiServObj.addedit.formField.name.EN"></textarea>
+                                                </div>
+                                                <div class="alert alert-danger" ng-if="kpiObj.addedit.formValidate.showSaveError && !kpiObj.addedit.formValidate.isValid.name.EN">
+                                                    <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['kpi', 'save', 'error', 'name', 'EN'])}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                                            <div class="form-col input-col text-left nopadding-top nopadding-bottom">
+                                                <div class="btn-command">
+                                                    <span>
+                                                        <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !kpiObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); kpiObj.addedit.saveChange.action(ownerKPI)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
+                                                        <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !kpiObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); kpiObj.addedit.resetValue(ownerKPI)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paddingTop10">
+                            <table class="table table-in-form">
+                                <caption>
+                                    <div class="dialogin">
+                                        <div class="panel noborder">
+                                            <div class="panel-body nopadding">
+                                                <div class="form nowrap">
+                                                    <div class="form-row">
+                                                        <div class="form-col label-col text-right {{$appServ.labelStyle}} regular black f10" style="padding-right: 5px !important">{{$appServ.getLabel(['kpi', 'table', 'startYear'])}}</div>
+                                                        <div class="form-col input-col">
+                                                            <input enter smart-textbox ui-number-mask="0" ui-hide-group-sep stop-cut-copy-paste class="form-control inputbox font-en regular black f10 text-center" type="text" value="" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="kpiObj.addedit.formField.startYear" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </caption>
+                                <thead class="table-data">
+                                    <tr>
+                                        <th class="col-index" rowspan="2">
+                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                        </th>
+                                        <th class="col-indicator" rowspan="2">
+                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['program', 'table', 'kpi'])}}</span>
+                                        </th>
+                                        <th class="col-academicyear text-center" colspan="{{kpiObj.table.maxCol}}">
+                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['academicYear'])}}</span>
+                                        </th>
+                                        <th class="col-command" rowspan="2">
+                                        </th>
+                                        <th class="colwrap colwrap1 col-index">
+                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                        </th>
+                                        <th class="colwrap colwrap1 col-indicator">
+                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['kpi', 'initials'])}}</span>
+                                        </th>
+                                        <th class="colwrap colwrap1 col-academicyear">
+                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['academicYear'])}}</span>
+                                        </th>
+                                        <th class="colwrap colwrap1 col-command">
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-year text-center" ng-repeat="col in $utilServ.getArrayNumber(kpiObj.table.maxCol)">
+                                            <span class="{{$appServ.labelStyle}} regular black f10 block">{{kpiObj.addedit.formField.startYear ? ((kpiObj.addedit.formField.startYear - 0) + (col - 1)) : ''}}</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-data" ng-repeat="kpi in kpiObj.table.data">
+                                    <tr>
+                                        <td class="col-index text-left">
+                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+                                        </td>
+                                        <td class="col-indicator text-left">
+                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'kpi'])" ng-bind-html="kpi.title[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+                                        </td>
+                                        <td class="col-year" ng-repeat="col in $utilServ.getArrayNumber(kpiObj.table.maxCol)">
+                                            <div class="inputbox-in-col" ng-if="kpiObj.addedit.formField.startYear" uib-tooltip-html="kpi.title[$utilServ.lang] + '<br />' + $appServ.getLabel(['academicYear']) + ' ' + (kpiObj.addedit.formField.startYear ? ((kpiObj.addedit.formField.startYear - 0) + (col - 1)) : '')">
+                                                <input enter smart-textbox ui-number-mask="0" stop-cut-copy-paste class="form-control inputbox font-en regular black f11 text-center" type="text" value="" maxlength="5" ng-disabled="tqf2.addedit.disabled" ng-model="kpi.year[(kpiObj.addedit.formField.startYear - 0) + (col - 1)]" />
+                                            </div>
+                                        </td>
+                                        <td class="col-command">
+                                            <div class="block">
+                                                <div class="toolbar">
+                                                    <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(kpiObj.table.data, kpi)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="colwrap colwrap1 col-index text-left">
+                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+                                        </td>
+                                        <td class="colwrap colwrap1 col-indicator text-left">
+                                            <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'kpi'])">{{kpi.title[$utilServ.lang]}}</span>
+                                        </td>
+                                        <td class="colwrap colwrap1 col-year text-left">
+                                            <div class="form nowrap" ng-repeat="col in $utilServ.getArrayNumber(kpiObj.table.maxCol)">
+                                                <div class="form-row" ng-if="kpiObj.addedit.formField.startYear">
+                                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f11 nopadding-right">{{kpiObj.addedit.formField.startYear ? ((kpiObj.addedit.formField.startYear - 0) + (col - 1)) : ''}}</div>
+                                                    <div class="form-col input-col nopadding-bottom">
+                                                        <div class="inputbox-in-col" uib-tooltip-html="kpi.title[$utilServ.lang] + '<br />' + $appServ.getLabel(['academicYear']) + ' ' + (kpiObj.addedit.formField.startYear ? ((kpiObj.addedit.formField.startYear - 0) + (col - 1)) : '')">
+                                                            <input enter smart-textbox ui-number-mask="0" class="form-control inputbox font-en regular black f11 text-center" type="text" value="" maxlength="5" ng-disabled="tqf2.addedit.disabled" ng-model="kpi.year[(kpiObj.addedit.formField.startYear - 0) + (col - 1)]" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="colwrap colwrap1 col-command">
+                                            <div class="block">
+                                                <div class="toolbar">
+                                                    <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(kpiObj.table.data, kpi)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel noborder">
+                <div class="panel-body block light-bg">
+                    <div class="form">
+                        <div class="form-row">
+                            <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                            <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                                <div class="btn-command nopadding-top">
+                                    <span>
+                                        <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g7.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g7.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
+                                        <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g7.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g7.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

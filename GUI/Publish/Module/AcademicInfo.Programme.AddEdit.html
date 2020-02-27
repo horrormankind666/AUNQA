@@ -1,0 +1,46 @@
+﻿<div class="addedit dialogin">
+    <div class="panel noborder gold-bg">
+        <div class="panel-heading block">
+            <div class="panel-table">
+                <div class="panel-row">
+                    <div class="panel-col text-left">
+                        <div class="panel-title">
+                            <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acaprg.addedit.isAdd">{{$appServ.getLabel(['add'])}}</span>
+                            <!--
+                            <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acaprg.addedit.isEdit">{{$appServ.getLabel(['edit'])}}</span>
+                            <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acaprg.addedit.isUpdate">{{$appServ.getLabel(['update'])}}</span>
+                            -->
+                        </div>
+                    </div>
+                    <!--
+                    <div class="panel-col col-toolbar text-right" ng-if="acaprg.addedit.isEdit || acaprg.addedit.isUpdate">
+                        <div class="toolbar">
+                            <a enter class="btn" href="javascript:void(0)" ng-if="!$TQFServ.TQF2.accordionGroup.isOpen" ng-click="$TQFServ.TQF2.accordionGroup.isOpen = true"><i class="fa fa-list black f11"></i></a>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div ng-if="acaprg.addedit.isAdd">
+                <div class="{{$pageRouteServ.pageObject.TQFInfo.class + ' ' + $pageRouteServ.pageObject.TQF2.class + ' ' + $pageRouteServ.pageObject.TQF2.group1.class}}"
+                     ng-controller="TQFInfo.TQF2.group1Ctrl as tqf2g1"
+                     ng-init="tqf2g1.addedit.showForm = true; tqf2g1.addedit.template.action = 'add'; tqf2g1.addedit.template.init()">
+                    <div ng-if="tqf2g1.addedit.showForm" ng-include="tqf2g1.addedit.template.content" onload="tqf2g1.addedit.add.init()">
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div ng-if="acaprg.addedit.isEdit || acaprg.addedit.isUpdate">
+                <div class="{{$pageRouteServ.pageObject.TQFInfo.class + ' ' + $pageRouteServ.pageObject.TQF2.class}}"
+                     ng-controller="TQFInfo.TQF2Ctrl as tqf2"
+                     ng-init="$TQFServ.TQF2.accordionGroup.isOpen = true; tqf2.addedit.showForm = true; tqf2.addedit.template.init()">
+                    <div ng-if="tqf2.addedit.showForm" ng-include="tqf2.addedit.template.content" onload="tqf2.addedit.init()">
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+</div>

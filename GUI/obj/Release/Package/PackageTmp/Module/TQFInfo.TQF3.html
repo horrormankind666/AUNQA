@@ -1,0 +1,49 @@
+﻿<div class="{{$pageRouteServ.pageObject.TQFInfo.class + ' ' + $pageRouteServ.pageObject.TQF3.class}}"
+     ng-controller="TQFInfo.TQF3Ctrl as tqf3"
+     ng-if="$appServ.isUser"
+     ng-init="tqf3.init()">
+    <div class="panel noborder">
+        <div class="panel-heading page-heading">
+            <div class="panel-table">
+                <div class="panel-row">
+                    <div class="panel-col col-navigation">
+                        <div class="panel-title">
+                            <div class="navigation">
+                                <ul>
+                                    <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['TQFInfo'])}}</span></li>
+                                    <li class="colhide separate"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
+                                    <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['TQF3'])}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="subtitle" ng-if="$programServ.isProgram && tqf2.addedit.showForm && (tqf2.addedit.isEdit || tqf2.addedit.isUpdate)">
+                            <div class="panel-title">
+                                <div class="navigation">
+                                    <ul>
+                                        <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$programServ.dataRow.programFullCode + ' ' + ($programServ.dataRow.name[$utilServ.lang] | capitalize)}}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-title">
+                                <div class="navigation">
+                                    <ul>
+                                        <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['program', 'table', 'courseYear']) + ' ' + $programServ.dataRow.courseYear}}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                    <div class="panel-col col-toolbar text-right">
+                        <div class="toolbar">
+                            <a enter class="btn" href="javascript:void(0)" ng-if="!$programServ.isProgram && tqf2.showForm && !tqf2.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf2.search.showForm = !tqf2.search.showForm" uib-tooltip-html="$appServ.getLabel(['search'])"><i class="fa {{tqf2.search.showForm ? 'fa-search-minus' : 'fa-search-plus'}} white f9 top5"></i></a>
+                            <a enter class="btn" href="javascript:void(0)" ng-if="$programServ.isProgram && !$programServ.isEdit && !$programServ.isUpdate && tqf2.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf2.table.hide = true; tqf2.table.isReload = true; tqf2.addedit.showForm = !tqf2.addedit.showForm; tqf2.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+                            <a enter class="btn" href="#/AcademicInfo/Program/{{$programServ.dataRow.facultyId}}" ng-if="$programServ.isProgram && ($programServ.isEdit || $programServ.isUpdate) && tqf2.addedit.showForm" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

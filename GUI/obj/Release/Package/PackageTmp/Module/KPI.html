@@ -1,0 +1,58 @@
+﻿<div class="{{$pageRouteServ.pageObject.kpi.class}}"
+     ng-controller="kpiCtrl as kpictl"
+     ng-init="kpictl.init()">
+    <div class="dialogin" ng-if="kpictl.showForm">
+        <div class="panel noborder">
+            <div class="panel-body nopadding">
+                <div class="text-center" loading-container="kpictl.tableList.settings().$loading">
+                    <table class="table table-striped table-hover" ng-table="kpictl.tableList">
+                        <caption>
+                            <div class="block">
+                                <div class="panel-table">
+                                    <div class="panel-row">
+                                        <div class="panel-col col-toolbar">
+                                            <div class="toolbar">
+                                                <a enter class="btn btn-text default-bg nomargin-left" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); kpictl.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['confirm'])"><i class="fa fa-check-square-o white f9 nopadding-top"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['confirm'])}}</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="panel-col col-recordcount text-right nopadding-top" ng-if="!kpictl.table.hide" ng-show="!kpictl.tableList.settings().$loading">
+                                            <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount(kpictl.tableList.totalSearch, kpictl.tableList.total(), $dictServ.dict)}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </caption>
+                        <tbody ng-repeat="dr in $data">
+                            <tr ng-if="!kpictl.table.hide">
+                                <td class="noborder">
+                                    <div class="radio-row block">
+                                        <ul>
+                                            <li class="radio-col input-col nopadding-bottom">
+                                                <div class="icheck-default">
+                                                    <input class="inputradio" type="radio" id="{{'check' + dr.id}}" name="indicator" value="{{dr}}" ng-model="kpictl.table.formField.checkboxes.items[dr.id]" />
+                                                    <label for="{{'check' + dr.id}}"></label>
+                                                </div>
+                                            </li>
+                                            <li class="radio-col label-col nopadding-bottom">
+                                                <div class="label-tab">
+                                                    <span class="{{$appServ.labelStyle}} regular black f10">{{dr.title[$utilServ.lang]}}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot ng-show="kpictl.tableList.totalSearch !== undefined && !kpictl.tableList.settings().$loading">
+                            <tr ng-if="!kpictl.table.hide">
+                                <td class="noborder">
+                                    <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount(kpictl.tableList.totalSearch, kpictl.tableList.total(), $dictServ.dict)}}</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

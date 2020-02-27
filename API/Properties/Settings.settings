@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="API.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="API_FinService_Finservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://smartedu.mahidol.ac.th/FinService/FinService.asmx</Value>
+    </Setting>
+    <Setting Name="API_UtilService_iUtil" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://smartedu.mahidol.ac.th/InfoService/UtilService.asmx</Value>
+    </Setting>
+    <Setting Name="API_MUAccountService_MUService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://uas.mahidol.ac.th/aws/MUService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

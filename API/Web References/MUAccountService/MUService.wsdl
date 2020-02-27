@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="authen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="authenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="authenResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getErrorMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="signCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getErrorMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getErrorMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNameTH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNameTHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNameTHResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNameEN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNameENResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNameENResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMailAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMailAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMailAddressResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDepartmentCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDepartmentCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDepartmentCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacultyCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacultyCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFacultyCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacultyName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFacultyNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFacultyNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMajor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMajorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMajorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProgramCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProgramCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProgramCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProgramName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProgramNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProgramNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUsernameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFullUID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFullUIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFullUIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProfileFromUID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFullUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProfileFromUIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProfileFromUIDResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProfileResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserPermissionResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getUserStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserExpireDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserExpireDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserExpireDateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="authenSoapIn">
+    <wsdl:part name="parameters" element="tns:authen" />
+  </wsdl:message>
+  <wsdl:message name="authenSoapOut">
+    <wsdl:part name="parameters" element="tns:authenResponse" />
+  </wsdl:message>
+  <wsdl:message name="getErrorMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:getErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="getErrorMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:getErrorMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserType" />
+  </wsdl:message>
+  <wsdl:message name="getUserTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNameTHSoapIn">
+    <wsdl:part name="parameters" element="tns:getNameTH" />
+  </wsdl:message>
+  <wsdl:message name="getNameTHSoapOut">
+    <wsdl:part name="parameters" element="tns:getNameTHResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNameENSoapIn">
+    <wsdl:part name="parameters" element="tns:getNameEN" />
+  </wsdl:message>
+  <wsdl:message name="getNameENSoapOut">
+    <wsdl:part name="parameters" element="tns:getNameENResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMailAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:getMailAddress" />
+  </wsdl:message>
+  <wsdl:message name="getMailAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:getMailAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDepartmentCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:getDepartmentCode" />
+  </wsdl:message>
+  <wsdl:message name="getDepartmentCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:getDepartmentCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFacultyCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:getFacultyCode" />
+  </wsdl:message>
+  <wsdl:message name="getFacultyCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:getFacultyCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFacultyNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getFacultyName" />
+  </wsdl:message>
+  <wsdl:message name="getFacultyNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getFacultyNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMajorSoapIn">
+    <wsdl:part name="parameters" element="tns:getMajor" />
+  </wsdl:message>
+  <wsdl:message name="getMajorSoapOut">
+    <wsdl:part name="parameters" element="tns:getMajorResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProgramCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:getProgramCode" />
+  </wsdl:message>
+  <wsdl:message name="getProgramCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:getProgramCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProgramNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getProgramName" />
+  </wsdl:message>
+  <wsdl:message name="getProgramNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getProgramNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:getUsername" />
+  </wsdl:message>
+  <wsdl:message name="getUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:getUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFullUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getFullUID" />
+  </wsdl:message>
+  <wsdl:message name="getFullUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getFullUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getUID" />
+  </wsdl:message>
+  <wsdl:message name="getUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProfileFromUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getProfileFromUID" />
+  </wsdl:message>
+  <wsdl:message name="getProfileFromUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getProfileFromUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:getProfile" />
+  </wsdl:message>
+  <wsdl:message name="getProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:getProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserPermission" />
+  </wsdl:message>
+  <wsdl:message name="getUserPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserStatus" />
+  </wsdl:message>
+  <wsdl:message name="getUserStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserExpireDateSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserExpireDate" />
+  </wsdl:message>
+  <wsdl:message name="getUserExpireDateSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserExpireDateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MUServiceSoap">
+    <wsdl:operation name="authen">
+      <wsdl:input message="tns:authenSoapIn" />
+      <wsdl:output message="tns:authenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getErrorMessage">
+      <wsdl:input message="tns:getErrorMessageSoapIn" />
+      <wsdl:output message="tns:getErrorMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserType">
+      <wsdl:input message="tns:getUserTypeSoapIn" />
+      <wsdl:output message="tns:getUserTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNameTH">
+      <wsdl:input message="tns:getNameTHSoapIn" />
+      <wsdl:output message="tns:getNameTHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNameEN">
+      <wsdl:input message="tns:getNameENSoapIn" />
+      <wsdl:output message="tns:getNameENSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMailAddress">
+      <wsdl:input message="tns:getMailAddressSoapIn" />
+      <wsdl:output message="tns:getMailAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDepartmentCode">
+      <wsdl:input message="tns:getDepartmentCodeSoapIn" />
+      <wsdl:output message="tns:getDepartmentCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacultyCode">
+      <wsdl:input message="tns:getFacultyCodeSoapIn" />
+      <wsdl:output message="tns:getFacultyCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFacultyName">
+      <wsdl:input message="tns:getFacultyNameSoapIn" />
+      <wsdl:output message="tns:getFacultyNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMajor">
+      <wsdl:input message="tns:getMajorSoapIn" />
+      <wsdl:output message="tns:getMajorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProgramCode">
+      <wsdl:input message="tns:getProgramCodeSoapIn" />
+      <wsdl:output message="tns:getProgramCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProgramName">
+      <wsdl:input message="tns:getProgramNameSoapIn" />
+      <wsdl:output message="tns:getProgramNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsername">
+      <wsdl:input message="tns:getUsernameSoapIn" />
+      <wsdl:output message="tns:getUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFullUID">
+      <wsdl:input message="tns:getFullUIDSoapIn" />
+      <wsdl:output message="tns:getFullUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUID">
+      <wsdl:input message="tns:getUIDSoapIn" />
+      <wsdl:output message="tns:getUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProfileFromUID">
+      <wsdl:input message="tns:getProfileFromUIDSoapIn" />
+      <wsdl:output message="tns:getProfileFromUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProfile">
+      <wsdl:input message="tns:getProfileSoapIn" />
+      <wsdl:output message="tns:getProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserPermission">
+      <wsdl:input message="tns:getUserPermissionSoapIn" />
+      <wsdl:output message="tns:getUserPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserStatus">
+      <wsdl:input message="tns:getUserStatusSoapIn" />
+      <wsdl:output message="tns:getUserStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserExpireDate">
+      <wsdl:input message="tns:getUserExpireDateSoapIn" />
+      <wsdl:output message="tns:getUserExpireDateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MUServiceSoap" type="tns:MUServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authen">
+      <soap:operation soapAction="http://tempuri.org/authen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getErrorMessage">
+      <soap:operation soapAction="http://tempuri.org/getErrorMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserType">
+      <soap:operation soapAction="http://tempuri.org/getUserType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNameTH">
+      <soap:operation soapAction="http://tempuri.org/getNameTH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNameEN">
+      <soap:operation soapAction="http://tempuri.org/getNameEN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMailAddress">
+      <soap:operation soapAction="http://tempuri.org/getMailAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartmentCode">
+      <soap:operation soapAction="http://tempuri.org/getDepartmentCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacultyCode">
+      <soap:operation soapAction="http://tempuri.org/getFacultyCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacultyName">
+      <soap:operation soapAction="http://tempuri.org/getFacultyName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMajor">
+      <soap:operation soapAction="http://tempuri.org/getMajor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgramCode">
+      <soap:operation soapAction="http://tempuri.org/getProgramCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgramName">
+      <soap:operation soapAction="http://tempuri.org/getProgramName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsername">
+      <soap:operation soapAction="http://tempuri.org/getUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFullUID">
+      <soap:operation soapAction="http://tempuri.org/getFullUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUID">
+      <soap:operation soapAction="http://tempuri.org/getUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfileFromUID">
+      <soap:operation soapAction="http://tempuri.org/getProfileFromUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfile">
+      <soap:operation soapAction="http://tempuri.org/getProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserPermission">
+      <soap:operation soapAction="http://tempuri.org/getUserPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserStatus">
+      <soap:operation soapAction="http://tempuri.org/getUserStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserExpireDate">
+      <soap:operation soapAction="http://tempuri.org/getUserExpireDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MUServiceSoap12" type="tns:MUServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authen">
+      <soap12:operation soapAction="http://tempuri.org/authen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getErrorMessage">
+      <soap12:operation soapAction="http://tempuri.org/getErrorMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserType">
+      <soap12:operation soapAction="http://tempuri.org/getUserType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNameTH">
+      <soap12:operation soapAction="http://tempuri.org/getNameTH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNameEN">
+      <soap12:operation soapAction="http://tempuri.org/getNameEN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMailAddress">
+      <soap12:operation soapAction="http://tempuri.org/getMailAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartmentCode">
+      <soap12:operation soapAction="http://tempuri.org/getDepartmentCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacultyCode">
+      <soap12:operation soapAction="http://tempuri.org/getFacultyCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFacultyName">
+      <soap12:operation soapAction="http://tempuri.org/getFacultyName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMajor">
+      <soap12:operation soapAction="http://tempuri.org/getMajor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgramCode">
+      <soap12:operation soapAction="http://tempuri.org/getProgramCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProgramName">
+      <soap12:operation soapAction="http://tempuri.org/getProgramName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsername">
+      <soap12:operation soapAction="http://tempuri.org/getUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFullUID">
+      <soap12:operation soapAction="http://tempuri.org/getFullUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUID">
+      <soap12:operation soapAction="http://tempuri.org/getUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfileFromUID">
+      <soap12:operation soapAction="http://tempuri.org/getProfileFromUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProfile">
+      <soap12:operation soapAction="http://tempuri.org/getProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserPermission">
+      <soap12:operation soapAction="http://tempuri.org/getUserPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserStatus">
+      <soap12:operation soapAction="http://tempuri.org/getUserStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserExpireDate">
+      <soap12:operation soapAction="http://tempuri.org/getUserExpireDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MUService">
+    <wsdl:port name="MUServiceSoap" binding="tns:MUServiceSoap">
+      <soap:address location="https://uas.mahidol.ac.th/aws/MUService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MUServiceSoap12" binding="tns:MUServiceSoap12">
+      <soap12:address location="https://uas.mahidol.ac.th/aws/MUService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

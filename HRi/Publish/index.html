@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="appMod">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <link href="/Infinity/AUNQA/GUI/Image/MUIcon.png" rel="shortcut icon" type="image/png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.4/css/bootstrap-dialog.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/all.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/icheck-bootstrap@3.0.1/icheck-bootstrap.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-sanitize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-base64/2.0.5/angular-base64.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.4/js/bootstrap-dialog.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.js"></script>
+    <script src="https://smartedu.mahidol.ac.th/InfoService/JScript/04062018/Autosize.js"></script>
+    <script src="https://smartedu.mahidol.ac.th/InfoService/JScript/04062018/iUtil.js"></script>
+</head>
+<body app-main>
+    <div class="template-content hidden"></div>
+    <main app-content class="hidden">
+        <header class="sticky">
+            <div class="container">
+                <div class="navbar-top">
+                    <div class="panel-table">
+                        <div class="panel-row">
+                            <div class="panel-col text-right col-userinfo">
+                                <div class="flag">
+                                    <a class="lang lang-en" href="javascript:void(0)" ng-click="$appServ.setLanguageDefault({lang: 'TH'})" style="display: none"><span class="f12 font-th regular flag-icon flag-icon-th"></span></a>
+                                    <a class="lang lang-th" href="javascript:void(0)" ng-click="$appServ.setLanguageDefault({lang: 'EN'})" style="display: none"><span class="f12 font-th regular flag-icon flag-icon-gb"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-header">
+                    <div class="panel-table">
+                        <div class="panel-row">
+                            <div class="panel-col col-systemowner">
+                                <div class="panel-table">
+                                    <div class="panel-row">
+                                        <div class="panel-col systemowner">
+                                            <div class="hidden lang lang-th"></div>
+                                            <div class="hidden lang lang-en"></div>
+                                        </div>
+                                        <div class="panel-col systemisname">
+                                            <div class="hidden lang lang-th"></div>
+                                            <div class="hidden lang lang-en"></div>
+                                        </div>
+                                        <div class="panel-col systemname">
+                                            <div class="hidden lang lang-th"></div>
+                                            <div class="hidden lang lang-en"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-col text-right col-userinfo">
+                                <div class="flag">
+                                    <a class="lang lang-en" href="javascript:void(0)" ng-click="$appServ.setLanguageDefault({lang: 'TH'})" style="display: none"><span class="f12 font-th regular flag-icon flag-icon-th"></span></a>
+                                    <a class="lang lang-th" href="javascript:void(0)" ng-click="$appServ.setLanguageDefault({lang: 'EN'})" style="display: none"><span class="f12 font-th regular flag-icon flag-icon-gb"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <div class="view {{$appServ.HRi.class}}" style="display: none">
+                    <div class="search-info">
+                        <div ng-controller="hriSearchCtrl as hrisrh" ng-init="hrisrh.init()">
+                            <div class="panel noborder panel-transparent paddingTop10" ng-if="hrisrh.showForm">
+                                <div class="panel-body search">
+                                    <div class="form">
+                                        <div class="form-row">
+                                            <div class="form-col input-col nopadding-left">
+                                                <div class="input-group">
+                                                    <input smart-textbox class="form-control inputbox font-en regular black f9" type="text" value="" on-enter="hrisrh.action()" ng-model="hrisrh.formField.keyword" />
+                                                    <span class="input-group-addon has-icon font-th muted noborder">
+                                                        <i class="f8 fa fa-question-circle-o" ng-click="searchExample = !searchExample"></i>
+                                                        <i class="f8 fa fa-search" ng-click="hrisrh.action()"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="description {{$appServ.labelStyle}} regular gray f11" ng-init="searchExample = true" ng-show="searchExample">
+                                                    <div class="paddingBottom5">{{$appServ.getLabel(['HRi', 'searchExample'])}}</div>
+                                                    <div ng-repeat="example in $dictServ.dict.HRi.searchExample.format">
+                                                        <div class="iform">
+                                                            <div class="iform-row">
+                                                                <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} light gray f12">{{example[$utilServ.lang]}}</span>
+                                                                </div>
+                                                                <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                    <span class="{{$appServ.labelStyle}} light gray f12">:</span>
+                                                                </div>
+                                                                <div class="iform-col input-col text-left nopadding-top">
+                                                                    <span class="{{$appServ.labelStyle}} regular i-success f12">{{example.sample}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="panel noborder">
+                                        <div class="panel-body">
+                                            <div loading-container="hrisrh.tableList.settings().$loading">
+                                                <table class="table table-striped table-hover" ng-table="hrisrh.tableList">
+                                                    <caption>
+                                                        <div class="block">
+                                                            <div class="panel-table">
+                                                                <div class="panel-row">
+                                                                    <div class="panel-col col-toolbar">
+                                                                        <div class="toolbar">
+                                                                            <a pop-over class="btn black f5 nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': hrisrh.table.hide }" ng-click="$utilServ.doBlur($event); hrisrh.table.filter.showForm = !hrisrh.table.filter.showForm" data-original-title="{{$appServ.getLabel(['filter'])}}"><i class="fa fa-filter white f9"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="panel-col col-recordcount text-right" ng-if="!hrisrh.table.hide" ng-show="!hrisrh.tableList.settings().$loading">
+                                                                        <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount(hrisrh.tableList.totalSearch, hrisrh.tableList.total(), $dictServ.dict)}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="filter dialogin" ng-if="!hrisrh.table.hide && hrisrh.table.filter.showForm">
+                                                            <div class="panel noborder">
+                                                                <div class="panel-heading block">
+                                                                    <div class="panel-title text-left">
+                                                                        <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel-body block">
+                                                                    <div class="panel-table">
+                                                                        <div class="panel-row">
+                                                                            <div class="panel-col nopadding-right">
+                                                                                <div class="form vertical">
+                                                                                    <div class="form-row">
+                                                                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
+                                                                                        <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="hrisrh.tableList.totalSearch === 0" ng-model="hrisrh.table.filter.formField.keyword" /></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </caption>
+                                                    <thead class="table-data">
+                                                        <tr>
+                                                            <th class="noborder-top noborder-bottom noborder-left col-index">
+                                                                <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
+                                                            </th>
+                                                            <th class="noborder-top noborder-bottom noborder-left col-name">
+                                                                <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['HRi', 'table', 'fullName'])}} ( TH )</span>
+                                                            </th>
+                                                            <th class="noborder-top noborder-bottom noborder-left col-name">
+                                                                <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['HRi', 'table', 'fullName'])}} ( EN )</span>
+                                                            </th>
+                                                            <th class="noborder-top noborder-bottom noborder-left col-department">
+                                                                <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['HRi', 'table', 'department'])}} ( TH )</span>
+                                                            </th>
+                                                            <th class="noborder-top noborder-bottom noborder-left col-department">
+                                                                <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['HRi', 'table', 'department'])}} ( EN )</span>
+                                                            </th>
+                                                            <th class="noborder-top noborder-right noborder-bottom col-command">
+                                                            </th>
+                                                            <th class="colwrap colwrap1 noborder text-left" colspan="6">
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="table-data" ng-repeat="dr in $data | orderBy: 'selectFilter'">
+                                                        <tr ng-if="!hrisrh.table.hide">
+                                                            <td class="noborder-top noborder-bottom noborder-left col-index">
+                                                                <span pop-over class="{{$appServ.labelStyle}} regular black f11 block" data-original-title="{{$appServ.getLabel(['order'])}}">{{$utilServ.getOrderIndex(hrisrh.tableList, $index)}}</span>
+                                                            </td>
+                                                            <td class="noborder-top noborder-bottom noborder-left col-name text-left">
+                                                                <span pop-over class="{{$appServ.labelStyle}} regular black f11 block" data-original-title="{{$appServ.getLabel(['HRi', 'table', 'fullName'])}} ( TH )">{{(dr.firstName.TH ? dr.firstName.TH : '') + (dr.lastName.TH ? ((dr.firstName.TH ? ' ' : '') + dr.lastName.TH) : '')}}</span>
+                                                            </td>
+                                                            <td class="noborder-top noborder-bottom noborder-left col-name text-left">
+                                                                <span pop-over class="{{$appServ.labelStyle}} regular black f11 block" data-original-title="{{$appServ.getLabel(['HRi', 'table', 'fullName'])}} ( EN )">{{(dr.firstName.EN ? dr.firstName.EN : '') + (dr.lastName.EN ? ((dr.firstName.EN ? ' ' : '') + dr.lastName.EN) : '')}}</span>
+                                                            </td>
+                                                            <td class="noborder-top noborder-bottom noborder-left col-department text-left">
+                                                                <span pop-over class="{{$appServ.labelStyle}} regular black f11 block" data-original-title="{{$appServ.getLabel(['HRi', 'table', 'department'])}} ( TH )">{{dr.department.TH}}</span>
+                                                            </td>
+                                                            <td class="noborder-top noborder-bottom noborder-left col-department text-left">
+                                                                <span pop-over class="{{$appServ.labelStyle}} regular black f11 block" data-original-title="{{$appServ.getLabel(['HRi', 'table', 'department'])}} ( EN )">{{dr.department.EN}}</span>
+                                                            </td>
+                                                            <td class="noborder-top noborder-right noborder-bottom col-command">
+                                                                <div class="block">
+                                                                    <div class="toolbar">
+                                                                        <a pop-over class="btn nomargin-left info-bg" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); $appServ.HRi.dataRow = dr; hrisrh.personalInformation.getDialogForm.action()" data-original-title="{{$appServ.getLabel(['HRi', 'personalInformation'])}}"><i class="fa fa-user white f9"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="colwrap colwrap1 noborder" colspan="6">
+                                                                <div class="view block">
+                                                                    <div class="iform">
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex(hrisrh.tableList, $index)}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['HRi', 'table', 'fullName'])}} ( TH )</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{(dr.firstName.TH ? dr.firstName.TH : '') + (dr.lastName.TH ? ((dr.firstName.TH ? ' ' : '') + dr.lastName.TH) : '')}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['HRi', 'table', 'fullName'])}} ( EN )</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{(dr.firstName.EN ? dr.firstName.EN : '') + (dr.lastName.EN ? ((dr.firstName.EN ? ' ' : '') + dr.lastName.EN) : '')}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['HRi', 'table', 'department'])}} ( TH )</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{dr.department.TH}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="iform-row">
+                                                                            <div class="iform-col label-col text-left nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['HRi', 'table', 'department'])}} ( EN )</span>
+                                                                            </div>
+                                                                            <div class="iform-col label-col text-center nopadding-top colhead">
+                                                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                                                                            </div>
+                                                                            <div class="iform-col input-col text-left nopadding-top">
+                                                                                <span class="{{$appServ.labelStyle}} regular black f11">{{dr.department.EN}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="text-right paddingTop3">
+                                                                        <div class="toolbar">
+                                                                            <a pop-over class="btn nomargin-left info-bg" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); $appServ.HRi.dataRow = dr; hrisrh.personalInformation.getDialogForm.action()" data-original-title="{{$appServ.getLabel(['HRi', 'personalInformation'])}}"><i class="fa fa-user white f9"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot ng-show="hrisrh.tableList.totalSearch != undefined && !hrisrh.tableList.settings().$loading">
+                                                        <tr ng-if="!hrisrh.table.hide">
+                                                            <td class="noborder-top noborder-right noborder-bottom noborder-left text-center" colspan="6">
+                                                                <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount(hrisrh.tableList.totalSearch, hrisrh.tableList.total(), $dictServ.dict)}}</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container text-center">
+                <span class="{{$appServ.labelStyle}} regular gray f11" ng-bind-html="$appServ.getLabel(['footer', 'HRi'])"></span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
+<script type="text/javascript">
+    "use strict";
+
+    var dt = new Date();
+    var ver = (dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds());
+
+    document.write("<script type='text/javascript' src='index.js?ver=" + ver + "'><\/script>");
+</script>
