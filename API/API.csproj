@@ -88,7 +88,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="index.aspx" />
     <None Include="Web References\FinService\FinService.disco" />
     <None Include="Web References\FinService\FinService.wsdl" />
     <Content Include="Web References\FinService\Reference.map">
@@ -135,12 +134,6 @@
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Appendix.cs" />
     <Compile Include="Models\ApprovedStatus.cs" />

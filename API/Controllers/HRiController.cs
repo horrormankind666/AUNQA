@@ -64,8 +64,8 @@ namespace API.Controllers
         private static string GetTokenAccess()
         {
             string tokenAccess = String.Empty;
-            //string server = "local";
-            string server = "prd";
+            string server = "local";
+            //string server = "prd";
 
             if (server.Equals("prd"))
             {
@@ -225,18 +225,19 @@ namespace API.Controllers
         public HttpResponseMessage GetData()
         {
             string tokenAccess = GetTokenAccess();
+
             string content = Request.Content.ReadAsStringAsync().Result;
             QueryData queryData = JsonConvert.DeserializeObject<QueryData>(content);
 
-            dynamic profile = GetInformation.Profile(tokenAccess, queryData.personalId);
+            dynamic profile = GetInformation.Profile(tokenAccess, queryData.personalId);						
             dynamic education = GetInformation.Education(tokenAccess, queryData.personalId);
 
             JObject jsonObj = new JObject(profile);
-            dynamic infoObj;
-
+            dynamic infoObj = null;
+						
             if ((dynamic)jsonObj.SelectToken("content") != null)
             {                
-                DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaTQFGetListProgrammeWithHRi", new SqlParameter("@HRiId", queryData.personalId));
+                DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaTQFGetListProgrammeWithHRi", new SqlParameter("@HRiId", queryData.personalId));								
                 DataTable dt = ds.Tables[0];
                 JArray programArray = new JArray();
 
@@ -254,20 +255,26 @@ namespace API.Controllers
                 }
 
                 JObject jsonEduObj = new JObject(education);
-                infoObj = jsonObj["content"]["personal"];
+								infoObj = jsonObj["content"]["personal"];
+
+								if (infoObj == null)
+								{
+										jsonObj["content"]["personal"] = new JObject();
+										infoObj = jsonObj["content"]["personal"];
+								}
 
                 infoObj.Add("programs", (ds.Tables[0].Rows.Count > 0 ? programArray : null));
                 infoObj.Add("educations", ((dynamic)jsonEduObj.SelectToken("content") != null ? (dynamic)jsonEduObj.SelectToken("content.educations") : null));
-            }
-
-            iUtil.APIResponse obj = null;
+						}
+						
+						iUtil.APIResponse obj = null;
 
             obj = new iUtil.APIResponse
             {
                 data = jsonObj
-            };
+						};
 
             return Request.CreateResponse(HttpStatusCode.OK, obj);
-        }
+				}
     }
 }

@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๑๗/๐๔/๒๕๖๑>
-Modify date : <๐๘/๑๐/๒๕๖๒>
+Modify date : <๒๑/๑๐/๒๕๖๒>
 Description : <รวมรวบฟังก์ชั่นใช้งานสำหรับข้อมูลหลักสูตร>
 =============================================
 */
@@ -173,6 +173,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
 
                         if (param.action === "get")
                         {
+                            appServ.createdBy = (item.createdBy ? item.createdBy : "");
+
                             var json1 = {
                                 tableType: param.tableType,
                                 mode: (item.mode ? item.mode : ""),
@@ -189,7 +191,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                                     EN: (item.nameEn ? item.nameEn.toUpperCase() : "")
                                 },
                                 courseYear: (item.courseYear ? item.courseYear : ""),
-                                createdBy: (item.createdBy ? item.createdBy : ""),
+                                createdBy: appServ.createdBy,
                                 status: status,
                                 verifyStatus: (item.verifyStatus ? item.verifyStatus : ""),
                                 sendVerifyStatus: (item.sendVerifyStatus ? item.sendVerifyStatus : "")
@@ -197,7 +199,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                             var json2 = {};
 
                             if (!param.group || param.group === 1)
-                            {
+														{
                                 angular.extend(json2, {
                                     abbrev: {
                                         TH: (item.abbrevTh ? item.abbrevTh : ""),
@@ -540,7 +542,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
             },
             instructorResponsible: function (json, firstNode) {
                 var dt = [];
-                var data = this.setValue(json, firstNode);
+								var data = this.setValue(json, firstNode);
 
                 if (json)
                 {
@@ -605,61 +607,61 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                             });
                         });
                     }
-                    else
+										else
                         dt.push({
-                            id: parseInt(data.id),
-                            personId: data.personId,
-                            titlePrefix: data.titlePrefix,
+                            id: (data.id ? parseInt(data.id) : ""),
+                            personId: (data.personId ? data.personId : ""),
+                            titlePrefix: (data.titlePrefix ? data.titlePrefix : ""),
                             firstName: {
-                                TH: data.firstNameTH,
-                                EN: data.firstNameEN
+                                TH: (data.firstNameTH ? data.firstNameTH : ""),
+                                EN: (data.firstNameEN ? data.firstNameEN : "")
                             },
                             middleName: {
-                                TH: data.middleNameTH,
-                                EN: data.middleNameEN
+                                TH: (data.middleNameTH ? data.middleNameTH : ""),
+                                EN: (data.middleNameEN ? data.middleNameEN : "")
                             },
                             lastName: {
-                                TH: data.lastNameTH,
-                                EN: data.lastNameEN
+                                TH: (data.lastNameTH ? data.lastNameTH : ""),
+                                EN: (data.lastNameEN ? data.lastNameEN : "")
                             },
                             fullName: {
-                                TH: data.fullNameTH,
-                                EN: data.fullNameEN
+                                TH: (data.fullNameTH ? data.fullNameTH : ""),
+                                EN: (data.fullNameEN ? data.fullNameEN : "")
                             },
-                            position: data.position,
+                            position: (data.position ? data.position : ""),
                             coursePosition: {
-                                id: data.coursePositionId,
+                                id: (data.coursePositionId ? data.coursePositionId : ""),
                                 name: {
-                                    TH: data.coursePositionNameTH,
-                                    EN: data.coursePositionNameEN
+                                    TH: (data.coursePositionNameTH ? data.coursePositionNameTH : ""),
+                                    EN: (data.coursePositionNameEN ? data.coursePositionNameEN : "")
                                 },
-                                group: data.coursePositionGroup
+                                group: (data.coursePositionGroup ? data.coursePositionGroup : "")
                             },
                             faculty: {
-                                id: data.facultyId,
+                                id: (data.facultyId ? data.facultyId : ""),
                                 name: {
-                                    TH: data.facultyNameTH,
-                                    EN: data.facultyNameEN
+                                    TH: (data.facultyNameTH ? data.facultyNameTH : ""),
+                                    EN: (data.facultyNameEN ? data.facultyNameEN : "")
                                 }
                             },
                             department: {
-                                id: item.departmentId,
+															id: (data.departmentId ? data.departmentId : ""),
                                 name: {
-                                    TH: data.departmentNameTH,
-                                    EN: data.departmentNameEN
+                                    TH: (data.departmentNameTH ? data.departmentNameTH : ""),
+                                    EN: (data.departmentNameEN ? data.departmentNameEN : "")
                                 }
                             },
                             instructorType: {
-                                type: item.instructorType,
+                                type: (data.instructorType ? data.instructorType : ""),
                                 name: {
-                                    TH: data.instructorTypeNameTH,
-                                    EN: data.instructorTypeNameEN
+                                    TH: (data.instructorTypeNameTH ? data.instructorTypeNameTH : ""),
+                                    EN: (data.instructorTypeNameEN ? data.instructorTypeNameEN : "")
                                 }
                             },
-                            addrContact: data.addrContact,
-                            addrOffice: data.addrOffice,
-                            telephone: data.telephone,
-                            email: data.email,
+                            addrContact: (data.addrContact ? data.addrContact : ""),
+                            addrOffice: (data.addrOffice ? data.addrOffice : ""),
+                            telephone: (data.telephone ? data.telephone : ""),
+                            email: (data.email ? data.email : ""),
                             HRiId: (data.hriID ? data.hriID : "")
                         });
                 }
