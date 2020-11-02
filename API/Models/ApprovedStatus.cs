@@ -7,32 +7,28 @@ Description : <โมเดลข้อมูลการอนุมัติ�
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace API.Models
 {
-    public class ApprovedStatus
+  public class ApprovedStatus
+  {
+    public static DataSet GetListData(string groupStatus, string curYear)
     {
-        public static DataSet GetListData(string groupStatus, string curYear)
-        {
-            DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetListApprovedStatus",
-                new SqlParameter("@groupStatus",    groupStatus),
-                new SqlParameter("@curYear",        curYear));
+      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetListApprovedStatus",
+        new SqlParameter("@groupStatus",  groupStatus),
+        new SqlParameter("@curYear",      curYear));
 
-            return ds;
-        }
-
-        public static DataSet GetData(string approvedStatusId)
-        {
-            DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetApprovedStatus",
-                new SqlParameter("@id", approvedStatusId));
-
-            return ds;
-        }
+      return ds;
     }
+
+    public static DataSet GetData(string approvedStatusId)
+    {
+      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetApprovedStatus",
+        new SqlParameter("@id", approvedStatusId));
+
+      return ds;
+    }
+  }
 }

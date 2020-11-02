@@ -2288,14 +2288,15 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                     var xmlApprovedDate = "";
 
                     angular.forEach(this.approvedOrdinal, function (item) {
-                        if (self.addedit.section6.formField.approvedOrdinal.time[item] &&
-                            self.addedit.section6.formField.approvedOrdinal.year[item])
+                        //if (self.addedit.section6.formField.approvedOrdinal.time[item] &&
+                        //    self.addedit.section6.formField.approvedOrdinal.year[item])
+                        if (self.addedit.section6.formField.approvedOrdinal.time[item])
                         {
                             xmlApprovedOrdinal += (
                                 "<row>" +
                                 "<approvedStatusId>" + item + "</approvedStatusId>" +
                                 "<time>" + self.addedit.section6.formField.approvedOrdinal.time[item] + "</time>" +
-                                "<year>" + self.addedit.section6.formField.approvedOrdinal.year[item] + "</year>" +
+                                "<year>" + (self.addedit.section6.formField.approvedOrdinal.year[item] ? self.addedit.section6.formField.approvedOrdinal.year[item] : '') + "</year>" +
                                 "</row>"
                             );
                         }
@@ -4495,7 +4496,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                             );
 
                             if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
-                            if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+                            //if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
                             if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
                             obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -4678,7 +4679,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                             );
 
                             if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
-                            if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+                            //if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
                             if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
                             obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -4848,7 +4849,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                             );
 
                             if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
-                            if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+                            //if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
                             if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
                             obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -5070,11 +5071,11 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                             );
 
                             if (!obj.addedit.formField.plan.TH) { obj.addedit.formValidate.isValid.plan.TH = false; i++; }
-                            if (!obj.addedit.formField.plan.EN) { obj.addedit.formValidate.isValid.plan.EN = false; i++; }
+                            //if (!obj.addedit.formField.plan.EN) { obj.addedit.formValidate.isValid.plan.EN = false; i++; }
                             if (!obj.addedit.formField.strategies.TH) { obj.addedit.formValidate.isValid.strategies.TH = false; i++; }
-                            if (!obj.addedit.formField.strategies.EN) { obj.addedit.formValidate.isValid.strategies.EN = false; i++; }
+                            //if (!obj.addedit.formField.strategies.EN) { obj.addedit.formValidate.isValid.strategies.EN = false; i++; }
                             if (!obj.addedit.formField.evidences.TH) { obj.addedit.formValidate.isValid.evidences.TH = false; i++; }
-                            if (!obj.addedit.formField.evidences.EN) { obj.addedit.formValidate.isValid.evidences.EN = false; i++; }
+                            //if (!obj.addedit.formField.evidences.EN) { obj.addedit.formValidate.isValid.evidences.EN = false; i++; }
                             if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
                             obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);

@@ -1,57 +1,57 @@
 ﻿<div class="{{$pageRouteServ.pageObject.TQFInfo.class + ' ' + $pageRouteServ.pageObject.TQF3.class}}"
-    ng-controller="TQFInfo.TQF3Ctrl as tqf3"
-    ng-if="$appServ.isUser"
-    ng-init="tqf3.init()">
-    <div class="panel noborder">
-        <div class="panel-heading page-heading">
-            <div class="panel-table">
-                <div class="panel-row">
-                    <div class="panel-col col-navigation">
-                        <div class="panel-title">
-                            <div class="navigation">
-                                <ul>
-                                    <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['TQFInfo'])}}</span></li>
-                                    <li class="colhide separate"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
-                                    <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['TQF3'])}}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="subtitle" ng-if="$courseServ.isCourse && tqf3.addedit.showForm && (tqf3.addedit.isEdit || tqf3.addedit.isUpdate)">
-                            <div class="panel-title">
-                                <div class="navigation">
-                                    <ul>
-                                        <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$courseServ.dataRow.code.aka[$utilServ.lang] + ' ' + ($courseServ.dataRow.name.aka[$utilServ.lang] | capitalize)}}</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-col col-toolbar text-right">
-                        <div class="toolbar">
-                            <a enter class="btn" href="javascript:void(0)" ng-if="!$courseServ.isCourse && tqf3.showForm && !tqf3.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf3.search.showForm = !tqf3.search.showForm" uib-tooltip-html="$appServ.getLabel(['search'])"><i class="fa {{tqf3.search.showForm ? 'fa-search-minus' : 'fa-search-plus'}} white f9 top5"></i></a>
-                            <a enter class="btn" href="javascript:void(0)" ng-if="$courseServ.isCourse && !$courseServ.isEdit && !$courseServ.isUpdate && tqf3.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf3.table.hide = true; tqf3.table.isReload = true; tqf3.addedit.showForm = !tqf3.addedit.showForm; tqf3.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
-                            <a enter class="btn" href="#/AcademicInfo/Course/{{$courseServ.dataRow.facultyId}}" ng-if="$courseServ.isCourse && ($courseServ.isEdit || $courseServ.isUpdate) && tqf3.addedit.showForm" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
-                        </div>
-                    </div>
-                </div>
+  ng-controller="TQFInfo.TQF3Ctrl as tqf3"
+  ng-if="$appServ.isUser"
+  ng-init="tqf3.init()">
+  <div class="panel noborder">
+    <div class="panel-heading page-heading">
+      <div class="panel-table">
+        <div class="panel-row">
+          <div class="panel-col col-navigation">
+            <div class="panel-title">
+              <div class="navigation">
+                <ul>
+                  <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['TQFInfo'])}}</span></li>
+                  <li class="colhide separate"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
+                  <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['TQF3'])}}</span></li>
+                </ul>
+              </div>
             </div>
+            <div class="subtitle" ng-if="$courseServ.isCourse && tqf3.addedit.showForm && (tqf3.addedit.isEdit || tqf3.addedit.isUpdate)">
+              <div class="panel-title">
+                <div class="navigation">
+                    <ul>
+                        <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$courseServ.dataRow.code.aka[$utilServ.lang] + ' ' + ($courseServ.dataRow.name.aka[$utilServ.lang] | capitalize)}}</span></li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-col col-toolbar text-right">
+            <div class="toolbar">
+              <a enter class="btn" href="javascript:void(0)" ng-if="!$courseServ.isCourse && tqf3.showForm && !tqf3.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf3.search.showForm = !tqf3.search.showForm" uib-tooltip-html="$appServ.getLabel(['search'])"><i class="fa {{tqf3.search.showForm ? 'fa-search-minus' : 'fa-search-plus'}} white f9 top5"></i></a>
+              <a enter class="btn" href="javascript:void(0)" ng-if="$courseServ.isCourse && !$courseServ.isEdit && !$courseServ.isUpdate && tqf3.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf3.table.hide = true; tqf3.table.isReload = true; tqf3.addedit.showForm = !tqf3.addedit.showForm; tqf3.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+              <a enter class="btn" href="#/AcademicInfo/Course/{{$courseServ.dataRow.facultyId}}" ng-if="$courseServ.isCourse && ($courseServ.isEdit || $courseServ.isUpdate) && tqf3.addedit.showForm" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+            </div>
+          </div>
         </div>
-        <!--
-        <div class="panel-body page-body" ng-show="tqf3.showForm && !tqf3.addedit.showForm">
-            <uib-tabset active="tqf3.tabSelect.activeTabIndex">
-                <uib-tab index="0" heading="{{$appServ.getLabel(['TQF3', 'verify', 'verified'])}}" ng-click="tqf3.tabSelect.selected('courseVerified')">
-                    <div ng-include="tqf3.course.verified.template.content" ng-controller="TQFInfo.TQF3.course.verifiedCtrl as tqf3pv" onload="tqf3pv.init()"></div>
-                </uib-tab>
-                <uib-tab index="1" heading="{{$appServ.getLabel(['TQF3', 'verify', 'pendingVerify'])}}" ng-click="tqf3.tabSelect.selected('coursePendingVerify')">
-                    <div ng-include="tqf3.course.pendingVerify.template.content" ng-controller="TQFInfo.TQF3.course.pendingVerifyCtrl as tqf3pp" onload="tqf3pp.init()"></div>
-                </uib-tab>
-                <uib-tab index="2" heading="{{$appServ.getLabel(['TQF3', 'verify', 'sendingVerify'])}}" ng-click="tqf3.tabSelect.selected('courseSendingVerify')">
-                    <div ng-include="tqf3.course.sendingVerify.template.content" ng-controller="TQFInfo.TQF3.course.sendingVerifyCtrl as tqf3ps" onload="tqf3ps.init()"></div>
-                </uib-tab>
-            </uib-tabset>
-        </div>
-        -->
-        <div class="panel-body" ng-if="tqf3.addedit.showForm && tqf3.addedit.template.content" ng-include="tqf3.addedit.template.content" onload="tqf3.addedit[tqf3.addedit.template.action].init()">
-        </div>
+      </div>
     </div>
+    <!--
+    <div class="panel-body page-body" ng-show="tqf3.showForm && !tqf3.addedit.showForm">
+      <uib-tabset active="tqf3.tabSelect.activeTabIndex">
+        <uib-tab index="0" heading="{{$appServ.getLabel(['TQF3', 'verify', 'verified'])}}" ng-click="tqf3.tabSelect.selected('courseVerified')">
+          <div ng-include="tqf3.course.verified.template.content" ng-controller="TQFInfo.TQF3.course.verifiedCtrl as tqf3pv" onload="tqf3pv.init()"></div>
+        </uib-tab>
+        <uib-tab index="1" heading="{{$appServ.getLabel(['TQF3', 'verify', 'pendingVerify'])}}" ng-click="tqf3.tabSelect.selected('coursePendingVerify')">
+          <div ng-include="tqf3.course.pendingVerify.template.content" ng-controller="TQFInfo.TQF3.course.pendingVerifyCtrl as tqf3pp" onload="tqf3pp.init()"></div>
+        </uib-tab>
+        <uib-tab index="2" heading="{{$appServ.getLabel(['TQF3', 'verify', 'sendingVerify'])}}" ng-click="tqf3.tabSelect.selected('courseSendingVerify')">
+          <div ng-include="tqf3.course.sendingVerify.template.content" ng-controller="TQFInfo.TQF3.course.sendingVerifyCtrl as tqf3ps" onload="tqf3ps.init()"></div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+    -->
+    <div class="panel-body" ng-if="tqf3.addedit.showForm && tqf3.addedit.template.content" ng-include="tqf3.addedit.template.content" onload="tqf3.addedit[tqf3.addedit.template.action].init()">
+    </div>
+  </div>
 </div>

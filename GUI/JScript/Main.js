@@ -8,49 +8,50 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
 */
 
 (function () {
-    "use strict";
+	"use strict";
 
-    angular.module("mainMod", [       
-        "utilMod",
-        "appMod",
-        "pageRouteMod"
-    ])
+	angular.module("mainMod", [
+		"utilMod",
+		"appMod",
+		"dictMod",
+    "pageRouteMod"
+	])
 
-    .controller("mainCtrl", function ($scope, $timeout, $q, utilServ, appServ, pageRouteServ) {
-        var self = this;
+  .controller("mainCtrl", function ($scope, $timeout, $q, utilServ, appServ, dictServ, pageRouteServ) {
+    var self = this;
 
-        pageRouteServ.setMenuActive({});
+    pageRouteServ.setMenuActive({});
 
-        self.mobileSelect = "";
+    self.mobileSelect = "";
 
-        self.init = function () {
-            if (appServ.isUser)
-            {
-                self.setValue().then(function () {                    
-                    self.resetValue();
-                    self.showForm = true;                    
+		self.init = function () {
+      if (appServ.isUser)
+      {
+        self.setValue().then(function () {                    
+          self.resetValue();
+          self.showForm = true;                    
 
-                    appServ.closeDialogPreloading();
-                });
-            }
-            else
-                self.showForm = false;
-        };
+					appServ.closeDialogPreloading();
+				});
+      }
+      else
+				self.showForm = false;
+    };
 
-        self.setValue = function () {
-            var deferred = $q.defer();
+    self.setValue = function () {
+			var deferred = $q.defer();
 
-            self.showForm = false;
+			self.showForm = false;
 
-            $timeout(function () {                
-                deferred.resolve();
-            }, 0);
+			$timeout(function () {                
+				deferred.resolve();
+			}, 0);
 
-            return deferred.promise;
-        };
+			return deferred.promise;
+    };
 
-        self.resetValue = function () {            
-            utilServ.gotoTopPage();            
-        };
-    });
+    self.resetValue = function () {            
+			utilServ.gotoTopPage();
+    };
+  });
 })();

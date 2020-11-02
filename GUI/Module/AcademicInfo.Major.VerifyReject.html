@@ -1,147 +1,147 @@
 ﻿<div class="{{$pageRouteServ.pageObject.academicInfo.class + ' ' + $pageRouteServ.pageObject.major.class + ' ' + $pageRouteServ.pageObject.major.verifyReject.class}}"
-     ng-controller="academicInfo.major.verifyRejectCtrl as majvrf"
-     ng-init="majvrf.init()">
-    <div class="dialogin" ng-if="majvrf.showForm">
-        <div class="panel noborder">
-            <div class="panel-body nopadding">
-                <div class="text-center" loading-container="$majorServ.tableList.majorVerifyReject.settings().$loading">
-                    <table class="table table-striped table-hover" ng-table="$majorServ.tableList.majorVerifyReject">
-                        <caption>
-                            <div class="block">
-                                <div class="panel-table">
-                                    <div class="panel-row">
-                                        <div class="panel-col col-toolbar">
-                                            <div class="toolbar">
-                                                <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); majvrf.table.filter.showForm = !majvrf.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
-                                                <a enter class="btn btn-text default-bg" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); majvrf.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])"><i class="fa fa-save white f9 nopadding-top"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['save'])}}</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="panel-col col-recordcount text-right nopadding-top" ng-if="!majvrf.table.hide" ng-show="!$majorServ.tableList.majorVerifyReject.settings().$loading">
-                                            <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount($majorServ.tableList.majorVerifyReject.totalSearch, $majorServ.tableList.majorVerifyReject.total(), $dictServ.dict)}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter dialogin" ng-if="majvrf.table.filter.showForm">
-                                <div class="panel noborder">
-                                    <div class="panel-heading block">
-                                        <div class="panel-title text-left">
-                                            <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body block">
-                                        <div class="panel-table">
-                                            <div class="panel-row">
-                                                <div class="panel-col nopadding-right">
-                                                    <div class="form vertical">
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
-                                                            <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="$majorServ.tableList.majorVerifyReject.totalSearch === 0" ng-model="majvrf.table.filter.formField.keyword" /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="addedit dialogin" ng-show="$majorServ.dataSelect.action === 'reject'">
-                                <div class="panel noborder">
-                                    <div class="panel-body block">
-                                        <div class="form vertical">
-                                            <div class="form-row">
-                                                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['pleaseSpecify']) + $appServ.getLabel(['reason'])}}</div>
-                                                <div class="form-col input-col text-left">
-                                                    <div class="textareabox">
-                                                        <textarea textbox class="form-control font-en regular black f10" ng-change="majvrf.formValidate.resetValue()" ng-model="majvrf.formField.verifyRemark"></textarea>
-                                                    </div>
-                                                    <div class="alert alert-danger" ng-show="majvrf.formValidate.showSaveError && !majvrf.formValidate.isValid.verifyRemark">
-                                                        <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'verifyRemark'])}}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </caption>
-                        <thead class="table-data">
-                            <tr>
-                                <th class="noborder-top noborder-bottom noborder-left col-index">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-code">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['major', 'table', 'code'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-right noborder-bottom col-name">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['major', 'table', 'name'])}}</span>
-                                </th>
-                                <th class="colwrap colwrap1 hidden" colspan="3">
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-data" ng-repeat="dr in $data | orderBy: 'id'">
-                            <tr ng-if="!majvrf.table.hide">
-                                <td class="noborder-top noborder-bottom noborder-left col-index">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex($majorServ.tableList.majorVerifyReject, $index)}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-code">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'code'])">{{dr.code}}</span>
-                                </td>
-                                <td class="noborder-top noborder-right noborder-bottom col-name text-left">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'name'])">{{dr.name[$utilServ.lang]}}</span>
-                                </td>
-                                <td class="colwrap colwrap1 noborder" colspan="3">
-                                    <div class="view block">
-                                        <div class="iform">
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex($majorServ.tableList.majorVerifyReject, $index)}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['major', 'table', 'code'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.code}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['major', 'table', 'name'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.name[$utilServ.lang]}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot ng-show="$majorServ.tableList.majorVerifyReject.totalSearch !== undefined && !$majorServ.tableList.majorVerifyReject.settings().$loading">
-                            <tr ng-if="!majvrf.table.hide">
-                                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="3">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount($majorServ.tableList.majorVerifyReject.totalSearch, $majorServ.tableList.majorVerifyReject.total(), $dictServ.dict)}}</span>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+  ng-controller="academicInfo.major.verifyRejectCtrl as majvrf"
+  ng-init="majvrf.init()">
+  <div class="dialogin" ng-if="majvrf.showForm">
+    <div class="panel noborder">
+      <div class="panel-body nopadding">
+        <div class="text-center" loading-container="$majorServ.tableList.majorVerifyReject.settings().$loading">
+          <table class="table table-striped table-hover" ng-table="$majorServ.tableList.majorVerifyReject">
+            <caption>
+              <div class="block">
+                <div class="panel-table">
+                  <div class="panel-row">
+                    <div class="panel-col col-toolbar">
+                      <div class="toolbar">
+                        <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); majvrf.table.filter.showForm = !majvrf.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
+                        <a enter class="btn btn-text default-bg" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); majvrf.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])"><i class="fa fa-save white f9 nopadding-top"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['save'])}}</span></a>
+                      </div>
+                    </div>
+                    <div class="panel-col col-recordcount text-right nopadding-top" ng-if="!majvrf.table.hide" ng-show="!$majorServ.tableList.majorVerifyReject.settings().$loading">
+                      <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount($majorServ.tableList.majorVerifyReject.totalSearch, $majorServ.tableList.majorVerifyReject.total(), $dictServ.dict)}}</span>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
+              <div class="filter dialogin" ng-if="majvrf.table.filter.showForm">
+                <div class="panel noborder">
+                  <div class="panel-heading block">
+                    <div class="panel-title text-left">
+                      <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
+                    </div>
+                  </div>
+                  <div class="panel-body block">
+                    <div class="panel-table">
+                      <div class="panel-row">
+                        <div class="panel-col nopadding-right">
+                          <div class="form vertical">
+                            <div class="form-row">
+                              <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
+                              <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="$majorServ.tableList.majorVerifyReject.totalSearch === 0" ng-model="majvrf.table.filter.formField.keyword" /></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="addedit dialogin" ng-show="$majorServ.dataSelect.action === 'reject'">
+                <div class="panel noborder">
+                  <div class="panel-body block">
+                    <div class="form vertical">
+                      <div class="form-row">
+                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['pleaseSpecify']) + $appServ.getLabel(['reason'])}}</div>
+                        <div class="form-col input-col text-left">
+                          <div class="textareabox">
+                            <textarea textbox class="form-control font-en regular black f10" ng-change="majvrf.formValidate.resetValue()" ng-model="majvrf.formField.verifyRemark"></textarea>
+                          </div>
+                          <div class="alert alert-danger" ng-show="majvrf.formValidate.showSaveError && !majvrf.formValidate.isValid.verifyRemark">
+                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'verifyRemark'])}}</span>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </caption>
+            <thead class="table-data">
+              <tr>
+                <th class="noborder-top noborder-bottom noborder-left col-index">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-code">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['major', 'table', 'code'])}}</span>
+                </th>
+                <th class="noborder-top noborder-right noborder-bottom col-name">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['major', 'table', 'name'])}}</span>
+                </th>
+                <th class="colwrap colwrap1 hidden" colspan="3">
+                </th>
+              </tr>
+            </thead>
+            <tbody class="table-data" ng-repeat="dr in $data | orderBy: 'id'">
+              <tr ng-if="!majvrf.table.hide">
+                <td class="noborder-top noborder-bottom noborder-left col-index">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex($majorServ.tableList.majorVerifyReject, $index)}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-code">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'code'])">{{dr.code}}</span>
+                </td>
+                <td class="noborder-top noborder-right noborder-bottom col-name text-left">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'name'])">{{dr.name[$utilServ.lang]}}</span>
+                </td>
+                <td class="colwrap colwrap1 noborder" colspan="3">
+                  <div class="view block">
+                    <div class="iform">
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex($majorServ.tableList.majorVerifyReject, $index)}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['major', 'table', 'code'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.code}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['major', 'table', 'name'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.name[$utilServ.lang]}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot ng-show="$majorServ.tableList.majorVerifyReject.totalSearch !== undefined && !$majorServ.tableList.majorVerifyReject.settings().$loading">
+              <tr ng-if="!majvrf.table.hide">
+                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="3">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount($majorServ.tableList.majorVerifyReject.totalSearch, $majorServ.tableList.majorVerifyReject.total(), $dictServ.dict)}}</span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </div>

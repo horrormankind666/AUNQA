@@ -1,66 +1,66 @@
 ﻿<div class="{{$pageRouteServ.pageObject.academicInfo.class + ' ' + $pageRouteServ.pageObject.course.class}}"
-    ng-controller="academicInfo.courseCtrl as acacos"
-    ng-if="$appServ.isUser"
-    ng-init="acacos.init()">
-    <div class="panel noborder">
-        <div class="panel-heading page-heading">
-            <div class="panel-table">
-                <div class="panel-row">
-                    <div class="panel-col col-navigation">
-                        <div class="panel-title">
-                            <div class="navigation">
-                                <ul>
-                                    <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['course'])}}</span></li>
-                                    <li class="colhide separate" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
-                                    <li class="colshow text-left" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f9">{{$facultyServ.facultyInfo.code + ' - ' + ($facultyServ.facultyInfo.name[$utilServ.lang] | capitalize)}}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--
-                        <div class="subtitle" ng-if="$facultyServ.isFaculty && acacos.addedit.showForm && (acacos.addedit.isEdit || acacos.addedit.isUpdate)">
-                            <div class="panel-title">
-                                <div class="navigation">
-                                    <ul>
-                                        <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$courseServ.dataRow.programFullCode + ' ' + ($courseServ.dataRow.name[$utilServ.lang] | capitalize)}}</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="panel-title">
-                                <div class="navigation">
-                                    <ul>
-                                        <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['program', 'table', 'courseYear']) + ' ' + $programServ.dataRow.courseYear}}</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        -->
-                    </div>
-                    <div class="panel-col col-toolbar text-right" ng-show="$facultyServ.isFaculty">
-                        <div class="toolbar">
-                            <a enter class="btn" href="javascript:void(0)" ng-if="!acacos.addedit.showForm" ng-click="$utilServ.doBlur($event); acacos.addedit.showForm = !acacos.addedit.showForm; $courseServ.isCourse = true; acacos.addedit.template.action = 'add'; acacos.addedit.template.init(); $courseServ.dataRow = {}" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
-                            <a enter class="btn" href="javascript:void(0)" ng-if="acacos.addedit.showForm" ng-click="$utilServ.doBlur($event); acacos.table.hide = true; acacos.table.isReload = true; acacos.addedit.showForm = !acacos.addedit.showForm; $courseServ.isCourse = false; acacos.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
-                        </div>
-                    </div>
-                </div>
+  ng-controller="academicInfo.courseCtrl as acacos"
+  ng-if="$appServ.isUser"
+  ng-init="acacos.init()">
+  <div class="panel noborder">
+    <div class="panel-heading page-heading">
+      <div class="panel-table">
+        <div class="panel-row">
+          <div class="panel-col col-navigation">
+            <div class="panel-title">
+              <div class="navigation">
+                <ul>
+                  <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['course'])}}</span></li>
+                  <li class="colhide separate" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
+                  <li class="colshow text-left" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f9">{{$facultyServ.facultyInfo.code + ' - ' + ($facultyServ.facultyInfo.name[$utilServ.lang] | capitalize)}}</span></li>
+                </ul>
+              </div>
             </div>
+            <!--
+            <div class="subtitle" ng-if="$facultyServ.isFaculty && acacos.addedit.showForm && (acacos.addedit.isEdit || acacos.addedit.isUpdate)">
+              <div class="panel-title">
+                <div class="navigation">
+                  <ul>
+                    <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$courseServ.dataRow.programFullCode + ' ' + ($courseServ.dataRow.name[$utilServ.lang] | capitalize)}}</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel-title">
+                <div class="navigation">
+                  <ul>
+                    <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['program', 'table', 'courseYear']) + ' ' + $programServ.dataRow.courseYear}}</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            -->
+          </div>
+          <div class="panel-col col-toolbar text-right" ng-show="$facultyServ.isFaculty">
+            <div class="toolbar">
+              <a enter class="btn" href="javascript:void(0)" ng-if="!acacos.addedit.showForm" ng-click="$utilServ.doBlur($event); acacos.addedit.showForm = !acacos.addedit.showForm; $courseServ.isCourse = true; acacos.addedit.template.action = 'add'; acacos.addedit.template.init(); $courseServ.dataRow = {}" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+              <a enter class="btn" href="javascript:void(0)" ng-if="acacos.addedit.showForm" ng-click="$utilServ.doBlur($event); acacos.table.hide = true; acacos.table.isReload = true; acacos.addedit.showForm = !acacos.addedit.showForm; $courseServ.isCourse = false; acacos.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+            </div>
+          </div>
         </div>
-        <div class="panel-body page-body" ng-show="acacos.showForm && !acacos.addedit.showForm">
-            <uib-tabset active="acacos.tabSelect.activeTabIndex">
-                <uib-tab index="0" heading="{{$appServ.getLabel(['verify', 'verified'])}}" ng-click="acacos.tabSelect.selected('verified')">
-                    <div ng-include="acacos.verified.template.content" ng-controller="academicInfo.course.verifiedCtrl as cosvef" onload="cosvef.init()"></div>
-                </uib-tab>
-                <uib-tab index="1" heading="{{$appServ.getLabel(['verify', 'pendingVerify'])}}" ng-click="acacos.tabSelect.selected('pendingVerify')">
-                    <div ng-include="acacos.pendingVerify.template.content" ng-controller="academicInfo.course.pendingVerifyCtrl as cospvf" onload="cospvf.init()"></div>
-                </uib-tab>
-                <uib-tab index="2" heading="{{$appServ.getLabel(['verify', 'sendingVerify'])}}" ng-click="acacos.tabSelect.selected('sendingVerify')">
-                    <div ng-include="acacos.sendingVerify.template.content" ng-controller="academicInfo.course.sendingVerifyCtrl as cossvf" onload="cossvf.init()"></div>
-                </uib-tab>
-                <uib-tab index="3" heading="{{$appServ.getLabel(['transactionHistory'])}}" ng-click="acacos.tabSelect.selected('transactionHistory')">
-                    <div ng-include="acacos.transactionHistory.template.content" ng-controller="academicInfo.course.transactionHistoryCtrl as costsh" onload="costsh.init()"></div>
-                </uib-tab>
-            </uib-tabset>
-        </div>
-        <div class="panel-body" ng-if="acacos.addedit.template.content" ng-include="acacos.addedit.template.content" onload="acacos.addedit[acacos.addedit.template.action].init()">        
-        </div>
+      </div>
     </div>
+    <div class="panel-body page-body" ng-show="acacos.showForm && !acacos.addedit.showForm">
+      <uib-tabset active="acacos.tabSelect.activeTabIndex">
+        <uib-tab index="0" heading="{{$appServ.getLabel(['verify', 'verified'])}}" ng-click="acacos.tabSelect.selected('verified')">
+          <div ng-include="acacos.verified.template.content" ng-controller="academicInfo.course.verifiedCtrl as cosvef" onload="cosvef.init()"></div>
+        </uib-tab>
+        <uib-tab index="1" heading="{{$appServ.getLabel(['verify', 'pendingVerify'])}}" ng-click="acacos.tabSelect.selected('pendingVerify')">
+          <div ng-include="acacos.pendingVerify.template.content" ng-controller="academicInfo.course.pendingVerifyCtrl as cospvf" onload="cospvf.init()"></div>
+        </uib-tab>
+        <uib-tab index="2" heading="{{$appServ.getLabel(['verify', 'sendingVerify'])}}" ng-click="acacos.tabSelect.selected('sendingVerify')">
+          <div ng-include="acacos.sendingVerify.template.content" ng-controller="academicInfo.course.sendingVerifyCtrl as cossvf" onload="cossvf.init()"></div>
+        </uib-tab>
+        <uib-tab index="3" heading="{{$appServ.getLabel(['transactionHistory'])}}" ng-click="acacos.tabSelect.selected('transactionHistory')">
+          <div ng-include="acacos.transactionHistory.template.content" ng-controller="academicInfo.course.transactionHistoryCtrl as costsh" onload="costsh.init()"></div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+    <div class="panel-body" ng-if="acacos.addedit.template.content" ng-include="acacos.addedit.template.content" onload="acacos.addedit[acacos.addedit.template.action].init()">        
+    </div>
+  </div>
 </div>

@@ -7,52 +7,46 @@ Description : <คอนโทลเลอร์ข้อมูลอาจา�
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 using API.Models;
 
 namespace API.Controllers
 {
-    [RoutePrefix("Instructor")]
-    public class InstructorController : ApiController
+  [RoutePrefix("Instructor")]
+  public class InstructorController : ApiController
+  {
+    private dynamic account = iUtil.AuthenStudentSystem.GetAccount();
+
+    [Route("GetListData")]
+    [HttpGet]
+    public HttpResponseMessage GetListData(
+      string keyword = "", 
+      string facultyId = ""
+    )
     {
-        private dynamic account = iUtil.AuthenStudentSystem.GetAccount();
+      DataTable dt = new DataTable();
+      bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
 
-        [Route("GetListData")]
-        [HttpGet]
-        public HttpResponseMessage GetListData(
-            string keyword = "", 
-            string facultyId = ""
-        )
-        {
-            DataTable dt = new DataTable();
-            bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
+      if (isAuthen)
+        dt = Instructor.GetListData(keyword, facultyId).Tables[1];
 
-            if (isAuthen)
-                dt = Instructor.GetListData(keyword, facultyId).Tables[1];
-
-            return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
-        }
-
-        [Route("GetData")]
-        [HttpGet]
-        public HttpResponseMessage GetData(string instructorId)
-        {
-            DataTable dt = new DataTable();
-            bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
-
-            if (isAuthen)
-                dt = Instructor.GetData(instructorId).Tables[0];
-
-            return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
-        }
+      return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
     }
+
+    [Route("GetData")]
+    [HttpGet]
+    public HttpResponseMessage GetData(string instructorId)
+    {
+      DataTable dt = new DataTable();
+      bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
+
+      if (isAuthen)
+        dt = Instructor.GetData(instructorId).Tables[0];
+
+      return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
+    }
+  }
 }

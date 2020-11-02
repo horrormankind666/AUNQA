@@ -1,81 +1,81 @@
 ﻿<div class="addedit dialogin">
-    <div class="panel noborder gold-bg">
-        <div class="panel-heading block">
-            <div class="panel-title text-left">
-                <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acamaj.addedit.isAdd">{{$appServ.getLabel(['add'])}}</span>
-                <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acamaj.addedit.isEdit">{{$appServ.getLabel(['edit'])}}</span>
-            </div>
-        </div>
-        <div class="panel-body block white-bg">
-            <div class="form">
-                <div class="form-row">
-                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['code'])}}</div>
-                    <div class="form-col input-col">
-                        <input enter smart-textbox textbox-type-letter="english" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" maxlength="10" ng-disabled="acamaj.addedit.isEdit" ng-model="acamaj.addedit.formField.code" />
-                        <div class="alert alert-danger" ng-if="acamaj.addedit.formValidate.showSaveError && !acamaj.addedit.formValidate.isValid.code">
-                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['major', 'save', 'error', 'code'])}}</span>
-                        </div>
-                        <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['englishOnly'])}}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-separate">
-                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['fullName'])}}</div>
-                <div class="form">
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['thai'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acamaj.addedit.formField.name.TH" />
-                            <div class="alert alert-danger" ng-if="acamaj.addedit.formValidate.showSaveError && !acamaj.addedit.formValidate.isValid.name.TH">
-                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['major', 'save', 'error', 'name', 'TH'])}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['english'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acamaj.addedit.formField.name.EN" />
-                            <div class="alert alert-danger" ng-if="acamaj.addedit.formValidate.showSaveError && !acamaj.addedit.formValidate.isValid.name.EN">
-                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['major', 'save', 'error', 'name', 'EN'])}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-separate">
-                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['initials'])}}</div>
-                <div class="form">
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acamaj.addedit.formField.abbrev.TH" />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acamaj.addedit.formField.abbrev.EN" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel noborder">
-            <div class="panel-body block light-bg">
-                <div class="form">
-                    <div class="form-row">
-                        <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                        <div class="form-col input-col text-right nopadding-top nopadding-bottom">
-                            <div class="btn-command nopadding-top">
-                                <span>
-                                    <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !acamaj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acamaj.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
-                                    <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !acamaj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acamaj.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="panel noborder gold-bg">
+    <div class="panel-heading block">
+      <div class="panel-title text-left">
+        <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acamaj.addedit.isAdd">{{$appServ.getLabel(['add'])}}</span>
+        <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acamaj.addedit.isEdit">{{$appServ.getLabel(['edit'])}}</span>
+      </div>
     </div>
+    <div class="panel-body block white-bg">
+      <div class="form">
+        <div class="form-row">
+          <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['code'])}}</div>
+          <div class="form-col input-col">
+            <input enter smart-textbox textbox-type-letter="english" textbox-transformed="uppercase" class="form-control inputbox font-en regular black f10" type="text" value="" maxlength="10" ng-disabled="acamaj.addedit.isEdit" ng-model="acamaj.addedit.formField.code" />
+            <div class="alert alert-danger" ng-if="acamaj.addedit.formValidate.showSaveError && !acamaj.addedit.formValidate.isValid.code">
+              <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['major', 'save', 'error', 'code'])}}</span>
+            </div>
+            <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['englishOnly'])}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-separate">
+        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['fullName'])}}</div>
+        <div class="form">
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['thai'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="nonenglish" class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acamaj.addedit.formField.name.TH" />
+              <div class="alert alert-danger" ng-if="acamaj.addedit.formValidate.showSaveError && !acamaj.addedit.formValidate.isValid.name.TH">
+                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['major', 'save', 'error', 'name', 'TH'])}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['english'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acamaj.addedit.formField.name.EN" />
+              <div class="alert alert-danger" ng-if="acamaj.addedit.formValidate.showSaveError && !acamaj.addedit.formValidate.isValid.name.EN">
+                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['major', 'save', 'error', 'name', 'EN'])}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-separate">
+        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['initials'])}}</div>
+        <div class="form">
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="nonenglish" class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acamaj.addedit.formField.abbrev.TH" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acamaj.addedit.formField.abbrev.EN" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel noborder">
+      <div class="panel-body block light-bg">
+        <div class="form">
+          <div class="form-row">
+            <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+            <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+              <div class="btn-command nopadding-top">
+                <span>
+                  <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !acamaj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acamaj.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
+                  <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !acamaj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acamaj.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,139 +1,139 @@
 ﻿<div class="addedit dialogin">
-    <div class="panel noborder gold-bg">
-        <div class="panel-heading block">
-            <div class="panel-table">
-                <div class="panel-row">
-                    <div class="panel-col text-left">
-                        <div class="panel-title">
-                            <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acacos.addedit.isAdd">{{$appServ.getLabel(['add'])}}</span>
-                        </div>
-                    </div>
-                </div>
+  <div class="panel noborder gold-bg">
+    <div class="panel-heading block">
+      <div class="panel-table">
+        <div class="panel-row">
+          <div class="panel-col text-left">
+            <div class="panel-title">
+              <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acacos.addedit.isAdd">{{$appServ.getLabel(['add'])}}</span>
             </div>
+          </div>
         </div>
-        <div class="panel-body">
-            <div ng-if="acacos.addedit.isAdd">
-                <div class="{{$pageRouteServ.pageObject.TQFInfo.class + ' ' + $pageRouteServ.pageObject.TQF3.class + ' ' + $pageRouteServ.pageObject.TQF3.group1.class}}"
-                     ng-controller="TQFInfo.TQF3.group1Ctrl as tqf3g1"
-                     ng-init="tqf3g1.addedit.showForm = true; tqf3g1.addedit.template.action = 'add'; tqf3g1.addedit.template.init()">
-                    <div ng-if="tqf3g1.addedit.showForm" ng-include="tqf3g1.addedit.template.content" onload="tqf3g1.addedit.add.init()">
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="panel-body">
+      <div ng-if="acacos.addedit.isAdd">
+        <div class="{{$pageRouteServ.pageObject.TQFInfo.class + ' ' + $pageRouteServ.pageObject.TQF3.class + ' ' + $pageRouteServ.pageObject.TQF3.group1.class}}"
+          ng-controller="TQFInfo.TQF3.group1Ctrl as tqf3g1"
+          ng-init="tqf3g1.addedit.showForm = true; tqf3g1.addedit.template.action = 'add'; tqf3g1.addedit.template.init()">
+          <div ng-if="tqf3g1.addedit.showForm" ng-include="tqf3g1.addedit.template.content" onload="tqf3g1.addedit.add.init()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!--
 <div class="addedit dialogin">
-    <div class="panel noborder gold-bg">
-        <div class="panel-heading block">
-            <div class="panel-title text-left">
-                <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acacos.addedit.isAdd">{{$appServ.getLabel(['add'])}}</span>
-                <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acacos.addedit.isEdit">{{$appServ.getLabel(['edit'])}}</span>
-            </div>
-        </div>
-        <div class="panel-body block white-bg">
-            <div>
-                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['code'])}}</div>
-                <div class="form">
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="thainumeric" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" maxlength="10" ng-disabled="acacos.addedit.isEdit" ng-model="acacos.addedit.formField.code.TH" />
-                            <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['alphabetnumericOnly'])}}</div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['english'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="englishnumeric" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" maxlength="10" ng-disabled="acacos.addedit.isEdit" ng-model="acacos.addedit.formField.code.EN" />
-                            <div class="alert alert-danger" ng-if="acacos.addedit.formValidate.showSaveError && !acacos.addedit.formValidate.isValid.code.EN">
-                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['course', 'save', 'error', 'code', 'EN'])}}</span>
-                            </div>
-                            <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['alphabetnumericOnly'])}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-separate">
-                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['fullName'])}}</div>
-                <div class="form">
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acacos.addedit.formField.name.TH" />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['english'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acacos.addedit.formField.name.EN" />
-                            <div class="alert alert-danger" ng-if="acacos.addedit.formValidate.showSaveError && !acacos.addedit.formValidate.isValid.name.EN">
-                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['course', 'save', 'error', 'name', 'EN'])}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-separate">
-                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['initials'])}}</div>
-                <div class="form">
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acacos.addedit.formField.abbrev.TH" />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" stop-cut-copy-paste class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acacos.addedit.formField.abbrev.EN" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-separate">
-                <div class="form">
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required nopadding-bottom">{{$appServ.getLabel(['courseCredit'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="form-control inputbox font-en regular black f10 credit" type="text" value="" maxlength="4" ng-model="acacos.addedit.formField.credit" />
-                            <div class="alert alert-danger" ng-if="acacos.addedit.formValidate.showSaveError && !acacos.addedit.formValidate.isValid.credit">
-                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['course', 'save', 'error', 'courseCredit'])}}</span>
-                            </div>
-                            <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['course', 'table', 'lectureCredit']) + ' - ' + $appServ.getLabel(['course', 'table', 'labCredit']) + ' - ' + $appServ.getLabel(['course', 'table', 'seminarCredit'])}}</div>
-                        <div class="form-col input-col">
-                            <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="inputbox font-en regular black f10 credit" type="text" value="" maxlength="4" ng-model="acacos.addedit.formField.lectureCredit" />
-                            <span class="{{$appServ.labelStyle}} regular black f11"> - </span>
-                            <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="inputbox font-en regular black f10 credit" type="text" value="" maxlength="4" ng-model="acacos.addedit.formField.labCredit" />
-                            <span class="{{$appServ.labelStyle}} regular black f11"> - </span>
-                            <input enter smart-textbox ui-number-mask="1" stop-cut-copy-paste class="inputbox font-en regular black f10 credit" type="text" value="" maxlength="4" ng-model="acacos.addedit.formField.seminarCredit" />
-                            <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel noborder">
-            <div class="panel-body block light-bg">
-                <div class="form-row">
-                    <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                    <div class="form-col input-col text-right nopadding-top nopadding-bottom">
-                        <div class="btn-command nopadding-top">
-                            <span>
-                                <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !acacos.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acacos.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
-                                <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !acacos.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acacos.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="panel noborder gold-bg">
+    <div class="panel-heading block">
+      <div class="panel-title text-left">
+        <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acacos.addedit.isAdd">{{$appServ.getLabel(['add'])}}</span>
+        <span class="{{$appServ.labelStyle}} bold black f10" ng-if="acacos.addedit.isEdit">{{$appServ.getLabel(['edit'])}}</span>
+      </div>
     </div>
+    <div class="panel-body block white-bg">
+      <div>
+        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['code'])}}</div>
+        <div class="form">
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="thainumeric" class="form-control inputbox font-en regular black f10" type="text" value="" maxlength="10" ng-disabled="acacos.addedit.isEdit" ng-model="acacos.addedit.formField.code.TH" />
+              <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['alphabetnumericOnly'])}}</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['english'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="englishnumeric" textbox-transformed="uppercase" class="form-control inputbox font-en regular black f10" type="text" value="" maxlength="10" ng-disabled="acacos.addedit.isEdit" ng-model="acacos.addedit.formField.code.EN" />
+              <div class="alert alert-danger" ng-if="acacos.addedit.formValidate.showSaveError && !acacos.addedit.formValidate.isValid.code.EN">
+                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['course', 'save', 'error', 'code', 'EN'])}}</span>
+              </div>
+              <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['alphabetnumericOnly'])}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-separate">
+        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['fullName'])}}</div>
+        <div class="form">
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="nonenglish" class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acacos.addedit.formField.name.TH" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required">{{$appServ.getLabel(['english'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acacos.addedit.formField.name.EN" />
+              <div class="alert alert-danger" ng-if="acacos.addedit.formValidate.showSaveError && !acacos.addedit.formValidate.isValid.name.EN">
+                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['course', 'save', 'error', 'name', 'EN'])}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-separate">
+        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['initials'])}}</div>
+        <div class="form">
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="nonenglish" class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acacos.addedit.formField.abbrev.TH" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox textbox-type-letter="englishchar" textbox-transformed="uppercase" class="form-control inputbox font-en regular black f10" type="text" value="" ng-model="acacos.addedit.formField.abbrev.EN" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-separate">
+        <div class="form">
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10 required nopadding-bottom">{{$appServ.getLabel(['courseCredit'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox ui-number-mask="1" class="form-control inputbox font-en regular black f10 credit" type="text" value="" maxlength="4" ng-model="acacos.addedit.formField.credit" />
+              <div class="alert alert-danger" ng-if="acacos.addedit.formValidate.showSaveError && !acacos.addedit.formValidate.isValid.credit">
+                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['course', 'save', 'error', 'courseCredit'])}}</span>
+              </div>
+              <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['course', 'table', 'lectureCredit']) + ' - ' + $appServ.getLabel(['course', 'table', 'labCredit']) + ' - ' + $appServ.getLabel(['course', 'table', 'seminarCredit'])}}</div>
+            <div class="form-col input-col">
+              <input enter smart-textbox ui-number-mask="1" class="inputbox font-en regular black f10 credit" type="text" value="" maxlength="4" ng-model="acacos.addedit.formField.lectureCredit" />
+              <span class="{{$appServ.labelStyle}} regular black f11"> - </span>
+              <input enter smart-textbox ui-number-mask="1" class="inputbox font-en regular black f10 credit" type="text" value="" maxlength="4" ng-model="acacos.addedit.formField.labCredit" />
+              <span class="{{$appServ.labelStyle}} regular black f11"> - </span>
+              <input enter smart-textbox ui-number-mask="1" class="inputbox font-en regular black f10 credit" type="text" value="" maxlength="4" ng-model="acacos.addedit.formField.seminarCredit" />
+              <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel noborder">
+      <div class="panel-body block light-bg">
+        <div class="form-row">
+          <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+          <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+            <div class="btn-command nopadding-top">
+              <span>
+                <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !acacos.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acacos.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
+                <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !acacos.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); acacos.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 -->

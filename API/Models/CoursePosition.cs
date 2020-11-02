@@ -7,23 +7,19 @@ Description : <โมเดลข้อมูลตำแหน่งในห�
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace API.Models
 {
-    public class CoursePosition
+  public class CoursePosition
+  {
+    public static DataSet GetListData(string group)
     {
-        public static DataSet GetListData(string group)
-        {
-            DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaPosition",
-                new SqlParameter("@group", @group));
+      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaPosition",
+        new SqlParameter("@group", @group));
 
-            return ds;
-        }
+      return ds;
     }
+  }
 }

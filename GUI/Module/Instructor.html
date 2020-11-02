@@ -1,308 +1,310 @@
 ﻿<div class="{{$pageRouteServ.pageObject.instructor.class}}"
-     ng-controller="instructorCtrl as instru"
-     ng-init="instru.init()">
-    <div class="dialogin" ng-if="instru.showForm">
-        <div class="panel noborder">
-            <div class="panel-body nopadding">
-                <div class="text-center" loading-container="instru.tableList.settings().$loading">
-                    <table class="table table-striped table-hover" ng-table="instru.tableList">
-                        <caption>
-                            <div class="block">
-                                <div class="panel-table">
-                                    <div class="panel-row">
-                                        <div class="panel-col col-toolbar">
-                                            <div class="toolbar">
-                                                <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); instru.search.showForm = !instru.search.showForm" uib-tooltip-html="$appServ.getLabel(['search'])"><i class="fa {{instru.search.showForm ? 'fa-search-minus' : 'fa-search-plus'}} white f9 top5"></i></a>
-                                                <a enter class="btn black f5" href="javascript:void(0)" ng-class="{ 'disabled': instru.table.hide }" ng-click="$utilServ.doBlur($event); instru.table.filter.showForm = !instru.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
-                                                <a enter class="btn black f5" href="javascript:void(0)" ng-class="{ 'disabled': instru.table.hide }" ng-click="
-                                                    $utilServ.doBlur($event);
-                                                    instru.uncheckboxAll();
-                                                    instru.table.reload.isPreloading = false;
-                                                    instru.table.reload.isResetDataSource = true;
-                                                    instru.table.reload.order = [{
-                                                        isFirstPage: true
-                                                    }];
-                                                    instru.table.reload.action()" uib-tooltip-html="$appServ.getLabel(['reload'])">
-                                                    <i class="fa fa fa-refresh white f9"></i>
-                                                </a>
-                                                <a enter class="btn btn-text default-bg" href="javascript:void(0)" ng-class="{ 'disabled': instru.table.hide }" ng-click="$utilServ.doBlur($event); instru.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['confirm'])"><i class="fa fa-check-square-o white f9 nopadding-top"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['confirm'])}}</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="panel-col col-recordcount text-right nopadding-top" ng-if="!instru.table.hide" ng-show="!instru.tableList.settings().$loading">
-                                            <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount(instru.tableList.totalSearch, instru.tableList.total(), $dictServ.dict)}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="search dialogin" ng-if="instru.search.showForm">
-                                <div class="panel noborder">
-                                    <div class="panel-heading block">
-                                        <div class="panel-title text-left">
-                                            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['search'])}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body block">
-                                        <div class="panel-table">
-                                            <div class="panel-row">
-                                                <div class="panel-col">
-                                                    <div class="form vertical">
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['instructor', 'table', 'firstOrlastName'])}}</div>
-                                                            <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-model="instru.search.formField.keyword" /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel-col nopadding-right">
-                                                    <div class="form vertical">
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'faculty'])}}</div>
-                                                            <div class="form-col input-col text-left">
-                                                                <ui-select ng-model="instru.search.formField.facultySelected.selected" theme="select2">
-                                                                    <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'faculty'])}}">
-                                                                        <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.code ? $select.selected.code : '') + ($select.selected.code && $select.selected.name[$utilServ.lang] ? (' : ' + $select.selected.name[$utilServ.lang]) : '')}}</span>
-                                                                        <span clearselect class="clearselect lang font-en regular gray f10" ng-click="instru.search.formField.facultySelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
-                                                                    </ui-select-match>
-                                                                    <ui-select-choices repeat="faculty in ($appServ.table.dataSource.faculty | filter: { selectFilter: $select.search } | orderBy: 'id')">
-                                                                        <span class="{{$appServ.labelStyle}} regular f11">{{(faculty.code ? faculty.code : '') + (faculty.code && faculty.name[$utilServ.lang] ? (' : ' + faculty.name[$utilServ.lang]) : '')}}</span>
-                                                                    </ui-select-choices>
-                                                                </ui-select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left nopadding-bottom"></div>
-                                                            <div class="form-col input-col text-right nopadding-bottom">
-                                                                <div class="btn-command">
-                                                                    <span>
-                                                                        <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !instru.search.isFormChanged }" ng-click="$utilServ.doBlur($event); instru.search.action()" uib-tooltip-html="$appServ.getLabel(['search'])">{{$appServ.getLabel(['search'])}}</a>
-                                                                        <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !instru.search.isFormChanged }" ng-click="$utilServ.doBlur($event); instru.search.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter dialogin" ng-if="instru.table.filter.showForm">
-                                <div class="panel noborder">
-                                    <div class="panel-heading block">
-                                        <div class="panel-title text-left">
-                                            <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body block">
-                                        <div class="panel-table">
-                                            <div class="panel-row">
-                                                <div class="panel-col nopadding-right">
-                                                    <div class="form vertical">
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
-                                                            <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="instru.tableList.totalSearch === 0" ng-model="instru.table.filter.formField.keyword" /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </caption>
-                        <thead class="table-data">
-                            <tr>
-                                <th class="noborder-top noborder-bottom noborder-left col-index">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-selectall">
-                                    <div class="block">
-                                        <div class="icheck-default">
-                                            <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="instru.checkboxChildOnOffByRoot()" ng-model="instru.table.formField.checkboxes.checked" />
-                                            <label for="checkall"></label>
-                                        </div>
-                                    </div>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-position">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'position'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-name">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'fullName'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-faculty">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'faculty'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-department">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'department'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-instructortype">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'instructorType'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-right noborder-bottom col-command">
-                                </th>
-                                <th class="colwrap colwrap1 noborder text-left" colspan="8">
-                                    <div class="block">
-                                        <div class="panel-table">
-                                            <div class="panel-row">
-                                                <div class="panel-col">
-                                                    <div class="radio-row">
-                                                        <ul>
-                                                            <li class="radio-col input-col nopadding-top nopadding-bottom">
-                                                                <div class="icheck-default">
-                                                                    <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="instru.checkboxChildOnOffByRoot()" ng-model="instru.table.formField.checkboxes.checked" />
-                                                                    <label for="checkall"></label>
-                                                                </div>
-                                                            </li>
-                                                            <li class="radio-col label-col nopadding-top nopadding-bottom">
-                                                                <div class="label-tab">
-                                                                    <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['selectAll'])}}</span>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-data" ng-repeat="dr in $data">
-                            <tr ng-if="!instru.table.hide">
-                                <td class="noborder-top noborder-bottom noborder-left col-index">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex(instru.tableList, $index)}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-selectall">
-                                    <div class="block">
-                                        <div class="icheck-default">
-                                            <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="instru.checkboxRootOnOffByChild()" ng-model="instru.table.formField.checkboxes.items[dr.id]" />
-                                            <label for="{{'check' + dr.id}}"></label>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-position text-left">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'position'])">{{dr.position}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-name text-left">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'fullName'])">{{dr.fullName[$utilServ.lang]}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-faculty text-left">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'faculty'])">{{dr.faculty.name[$utilServ.lang]}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-department text-left">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'department'])">{{dr.department.name[$utilServ.lang]}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-instructortype">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'instructorType'])">{{dr.instructorType.name[$utilServ.lang]}}</span>
-                                </td>                        
-                                <td class="noborder-top noborder-right noborder-bottom col-command">
-                                    <div class="block">
-                                        <div class="toolbar">
-                                            <a class="btn nomargin-left paddingTop3 info-bg" href="{{$appServ.pathHRI}}/#/?keyword={{dr.firstName.TH ? (dr.firstName.TH + (dr.middleName.TH ? (' ' + dr.middleName.TH) : '')) : (dr.firstName.EN + (dr.middleName.EN ? (' ' + dr.middleName.EN) : ''))}}, {{dr.lastName.TH ? dr.lastName.TH : dr.lastName.EN}}" target="_blank" ng-click="$utilServ.doBlur($event)" uib-tooltip-html="$appServ.getLabel(['HRi', 'personalInformation'])"><span class="bold white f13">HR</span></a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="colwrap colwrap1 noborder" colspan="8">
-                                    <div class="view block">
-                                        <div class="iform">
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <div class="icheck-default">
-                                                        <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="instru.checkboxRootOnOffByChild()" ng-model="instru.table.formField.checkboxes.items[dr.id]" />
-                                                        <label for="{{'check' + dr.id}}"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="iform-col label-col nopadding-top colhead">
-                                                </div>
-                                                <div class="iform-col input-col nopadding-top">
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex(instru.tableList, $index)}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'position'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.position}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'fullName'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.fullName[$utilServ.lang]}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'faculty'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.faculty.name[$utilServ.lang]}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'department'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.department.name[$utilServ.lang]}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'instructorType'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.instructorType.name[$utilServ.lang]}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="text-right paddingTop3">
-                                            <div class="toolbar">
-                                                <a class="btn nomargin-left paddingTop3 info-bg" href="{{$appServ.pathHRI}}/#/?keyword={{dr.firstName.TH ? (dr.firstName.TH + (dr.middleName.TH ? (' ' + dr.middleName.TH) : '')) : (dr.firstName.EN + (dr.middleName.EN ? (' ' + dr.middleName.EN) : ''))}}, {{dr.lastName.TH ? dr.lastName.TH : dr.lastName.EN}}" target="_blank" ng-click="$utilServ.doBlur($event)" uib-tooltip-html="$appServ.getLabel(['HRi', 'personalInformation'])"><span class="bold white f13">HR</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot ng-show="instru.tableList.totalSearch !== undefined && !instru.tableList.settings().$loading">
-                            <tr ng-if="!instru.table.hide">
-                                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="8">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount(instru.tableList.totalSearch, instru.tableList.total(), $dictServ.dict)}}</span>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+  ng-controller="instructorCtrl as instru"
+  ng-init="instru.init()">
+  <div class="dialogin" ng-if="instru.showForm">
+    <div class="panel noborder">
+      <div class="panel-body nopadding">
+        <div class="text-center" loading-container="instru.tableList.settings().$loading">
+          <table class="table table-striped table-hover" ng-table="instru.tableList">
+            <caption>
+              <div class="block">
+                <div class="panel-table">
+                  <div class="panel-row">
+                    <div class="panel-col col-toolbar">
+                      <div class="toolbar">
+                        <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); instru.search.showForm = !instru.search.showForm" uib-tooltip-html="$appServ.getLabel(['search'])"><i class="fa {{instru.search.showForm ? 'fa-search-minus' : 'fa-search-plus'}} white f9 top5"></i></a>
+                        <a enter class="btn black f5" href="javascript:void(0)" ng-class="{ 'disabled': instru.table.hide }" ng-click="$utilServ.doBlur($event); instru.table.filter.showForm = !instru.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
+                        <a enter class="btn black f5" href="javascript:void(0)" ng-class="{ 'disabled': instru.table.hide }"
+                          ng-click="
+                            $utilServ.doBlur($event);
+                            instru.uncheckboxAll();
+                            instru.table.reload.isPreloading = false;
+                            instru.table.reload.isResetDataSource = true;
+                            instru.table.reload.order = [{
+                              isFirstPage: true
+                            }];
+                            instru.table.reload.action()"
+                          uib-tooltip-html="$appServ.getLabel(['reload'])">
+                          <i class="fa fa fa-refresh white f9"></i>
+                        </a>
+                        <a enter class="btn btn-text default-bg" href="javascript:void(0)" ng-class="{ 'disabled': instru.table.hide }" ng-click="$utilServ.doBlur($event); instru.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['confirm'])"><i class="fa fa-check-square-o white f9 nopadding-top"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['confirm'])}}</span></a>
+                      </div>
+                    </div>
+                    <div class="panel-col col-recordcount text-right nopadding-top" ng-if="!instru.table.hide" ng-show="!instru.tableList.settings().$loading">
+                      <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount(instru.tableList.totalSearch, instru.tableList.total(), $dictServ.dict)}}</span>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
+              <div class="search dialogin" ng-if="instru.search.showForm">
+                <div class="panel noborder">
+                  <div class="panel-heading block">
+                    <div class="panel-title text-left">
+                      <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['search'])}}</span>
+                    </div>
+                  </div>
+                  <div class="panel-body block">
+                    <div class="panel-table">
+                      <div class="panel-row">
+                        <div class="panel-col">
+                          <div class="form vertical">
+                            <div class="form-row">
+                              <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['instructor', 'table', 'firstOrlastName'])}}</div>
+                              <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-model="instru.search.formField.keyword" /></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="panel-col nopadding-right">
+                          <div class="form vertical">
+                            <div class="form-row">
+                              <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'faculty'])}}</div>
+                              <div class="form-col input-col text-left">
+                                <ui-select ng-model="instru.search.formField.facultySelected.selected" theme="select2">
+                                  <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'faculty'])}}">
+                                    <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.code ? $select.selected.code : '') + ($select.selected.code && $select.selected.name[$utilServ.lang] ? (' : ' + $select.selected.name[$utilServ.lang]) : '')}}</span>
+                                    <span clearselect class="clearselect lang font-en regular gray f10" ng-click="instru.search.formField.facultySelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+                                  </ui-select-match>
+                                  <ui-select-choices repeat="faculty in ($appServ.table.dataSource.faculty | filter: { selectFilter: $select.search } | orderBy: 'id')">
+                                    <span class="{{$appServ.labelStyle}} regular f11">{{(faculty.code ? faculty.code : '') + (faculty.code && faculty.name[$utilServ.lang] ? (' : ' + faculty.name[$utilServ.lang]) : '')}}</span>
+                                  </ui-select-choices>
+                                </ui-select>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="form-col label-col text-left nopadding-bottom"></div>
+                              <div class="form-col input-col text-right nopadding-bottom">
+                                <div class="btn-command">
+                                  <span>
+                                    <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !instru.search.isFormChanged }" ng-click="$utilServ.doBlur($event); instru.search.action()" uib-tooltip-html="$appServ.getLabel(['search'])">{{$appServ.getLabel(['search'])}}</a>
+                                    <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !instru.search.isFormChanged }" ng-click="$utilServ.doBlur($event); instru.search.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="filter dialogin" ng-if="instru.table.filter.showForm">
+                <div class="panel noborder">
+                  <div class="panel-heading block">
+                    <div class="panel-title text-left">
+                      <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
+                    </div>
+                  </div>
+                  <div class="panel-body block">
+                    <div class="panel-table">
+                      <div class="panel-row">
+                        <div class="panel-col nopadding-right">
+                          <div class="form vertical">
+                            <div class="form-row">
+                              <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
+                              <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="instru.tableList.totalSearch === 0" ng-model="instru.table.filter.formField.keyword" /></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </caption>
+            <thead class="table-data">
+              <tr>
+                <th class="noborder-top noborder-bottom noborder-left col-index">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-selectall">
+                  <div class="block">
+                    <div class="icheck-default">
+                      <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="instru.checkboxChildOnOffByRoot()" ng-model="instru.table.formField.checkboxes.checked" />
+                      <label for="checkall"></label>
+                    </div>
+                  </div>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-position">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'position'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-name">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'fullName'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-faculty">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'faculty'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-department">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'department'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-instructortype">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['instructor', 'table', 'instructorType'])}}</span>
+                </th>
+                <th class="noborder-top noborder-right noborder-bottom col-command">
+                </th>
+                <th class="colwrap colwrap1 noborder text-left" colspan="8">
+                  <div class="block">
+                    <div class="panel-table">
+                      <div class="panel-row">
+                        <div class="panel-col">
+                          <div class="radio-row">
+                            <ul>
+                              <li class="radio-col input-col nopadding-top nopadding-bottom">
+                                <div class="icheck-default">
+                                  <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="instru.checkboxChildOnOffByRoot()" ng-model="instru.table.formField.checkboxes.checked" />
+                                  <label for="checkall"></label>
+                                </div>
+                              </li>
+                              <li class="radio-col label-col nopadding-top nopadding-bottom">
+                                <div class="label-tab">
+                                  <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['selectAll'])}}</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="table-data" ng-repeat="dr in $data">
+              <tr ng-if="!instru.table.hide">
+                <td class="noborder-top noborder-bottom noborder-left col-index">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex(instru.tableList, $index)}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-selectall">
+                  <div class="block">
+                    <div class="icheck-default">
+                      <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="instru.checkboxRootOnOffByChild()" ng-model="instru.table.formField.checkboxes.items[dr.id]" />
+                      <label for="{{'check' + dr.id}}"></label>
+                    </div>
+                  </div>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-position text-left">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'position'])">{{dr.position}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-name text-left">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'fullName'])">{{dr.fullName[$utilServ.lang]}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-faculty text-left">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'faculty'])">{{dr.faculty.name[$utilServ.lang]}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-department text-left">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'department'])">{{dr.department.name[$utilServ.lang]}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-instructortype">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['instructor', 'table', 'instructorType'])">{{dr.instructorType.name[$utilServ.lang]}}</span>
+                </td>                        
+                <td class="noborder-top noborder-right noborder-bottom col-command">
+                  <div class="block">
+                    <div class="toolbar">
+                      <a class="btn nomargin-left paddingTop3 info-bg" href="{{$appServ.pathHRI}}/#/?keyword={{dr.firstName.TH ? (dr.firstName.TH + (dr.middleName.TH ? (' ' + dr.middleName.TH) : '')) : (dr.firstName.EN + (dr.middleName.EN ? (' ' + dr.middleName.EN) : ''))}}, {{dr.lastName.TH ? dr.lastName.TH : dr.lastName.EN}}" target="_blank" ng-click="$utilServ.doBlur($event)" uib-tooltip-html="$appServ.getLabel(['HRi', 'personalInformation'])"><span class="bold white f13">HR</span></a>
+                    </div>
+                  </div>
+                </td>
+                <td class="colwrap colwrap1 noborder" colspan="8">
+                  <div class="view block">
+                    <div class="iform">
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <div class="icheck-default">
+                            <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="instru.checkboxRootOnOffByChild()" ng-model="instru.table.formField.checkboxes.items[dr.id]" />
+                            <label for="{{'check' + dr.id}}"></label>
+                          </div>
+                        </div>
+                        <div class="iform-col label-col nopadding-top colhead">
+                        </div>
+                        <div class="iform-col input-col nopadding-top">
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex(instru.tableList, $index)}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'position'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.position}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'fullName'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.fullName[$utilServ.lang]}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'faculty'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.faculty.name[$utilServ.lang]}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'department'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.department.name[$utilServ.lang]}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['instructor', 'table', 'instructorType'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.instructorType.name[$utilServ.lang]}}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-right paddingTop3">
+                      <div class="toolbar">
+                        <a class="btn nomargin-left paddingTop3 info-bg" href="{{$appServ.pathHRI}}/#/?keyword={{dr.firstName.TH ? (dr.firstName.TH + (dr.middleName.TH ? (' ' + dr.middleName.TH) : '')) : (dr.firstName.EN + (dr.middleName.EN ? (' ' + dr.middleName.EN) : ''))}}, {{dr.lastName.TH ? dr.lastName.TH : dr.lastName.EN}}" target="_blank" ng-click="$utilServ.doBlur($event)" uib-tooltip-html="$appServ.getLabel(['HRi', 'personalInformation'])"><span class="bold white f13">HR</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot ng-show="instru.tableList.totalSearch !== undefined && !instru.tableList.settings().$loading">
+              <tr ng-if="!instru.table.hide">
+                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="8">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount(instru.tableList.totalSearch, instru.tableList.total(), $dictServ.dict)}}</span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </div>

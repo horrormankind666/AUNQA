@@ -1,42 +1,42 @@
 ﻿<div class="{{$pageRouteServ.pageObject.academicInfo.class + ' ' + $pageRouteServ.pageObject.department.class}}"
-    ng-controller="academicInfo.departmentCtrl as acadep"
-    ng-if="$appServ.isUser"
-    ng-init="acadep.init()">
-    <div class="panel noborder">
-        <div class="panel-heading page-heading">
-            <div class="panel-title">
-                <div class="panel-table">
-                    <div class="panel-row">
-                        <div class="panel-col col-navigation">
-                            <div class="navigation">
-                                <ul>
-                                    <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['department'])}}</span></li>
-                                    <li class="colhide separate" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
-                                    <li class="colshow text-left" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f9">{{$facultyServ.facultyInfo.code + ' - ' + ($facultyServ.facultyInfo.name[$utilServ.lang] | capitalize)}}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="panel-col col-toolbar text-right" ng-if="$facultyServ.isFaculty">
-                            <div class="toolbar">
-                                <a enter class="btn" href="javascript:void(0)" ng-if="!acadep.addedit.showForm" ng-click="$utilServ.doBlur($event); acadep.addedit.showForm = !acadep.addedit.showForm; acadep.addedit.template.action = 'add'; acadep.addedit.template.init()" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
-                                <a enter class="btn" href="javascript:void(0)" ng-if="acadep.addedit.showForm" ng-click="$utilServ.doBlur($event); acadep.table.hide = true; acadep.table.isReload = true; acadep.addedit.showForm = !acadep.addedit.showForm; acadep.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  ng-controller="academicInfo.departmentCtrl as acadep"
+  ng-if="$appServ.isUser"
+  ng-init="acadep.init()">
+  <div class="panel noborder">
+    <div class="panel-heading page-heading">
+      <div class="panel-title">
+        <div class="panel-table">
+          <div class="panel-row">
+            <div class="panel-col col-navigation">
+              <div class="navigation">
+                <ul>
+                  <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['department'])}}</span></li>
+                  <li class="colhide separate" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
+                  <li class="colshow text-left" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f9">{{$facultyServ.facultyInfo.code + ' - ' + ($facultyServ.facultyInfo.name[$utilServ.lang] | capitalize)}}</span></li>
+                </ul>
+              </div>
             </div>
+            <div class="panel-col col-toolbar text-right" ng-if="$facultyServ.isFaculty">
+              <div class="toolbar">
+                <a enter class="btn" href="javascript:void(0)" ng-if="!acadep.addedit.showForm" ng-click="$utilServ.doBlur($event); acadep.addedit.showForm = !acadep.addedit.showForm; acadep.addedit.template.action = 'add'; acadep.addedit.template.init()" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                <a enter class="btn" href="javascript:void(0)" ng-if="acadep.addedit.showForm" ng-click="$utilServ.doBlur($event); acadep.table.hide = true; acadep.table.isReload = true; acadep.addedit.showForm = !acadep.addedit.showForm; acadep.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel-body page-body" ng-show="acadep.showForm && !acadep.addedit.showForm">
-            <uib-tabset active="acadep.tabSelect.activeTabIndex">
-                <uib-tab index="0" heading="{{$appServ.getLabel(['verify', 'verified'])}}" ng-click="acadep.tabSelect.selected('verified')">
-                    <div ng-include="acadep.verified.template.content" ng-controller="academicInfo.department.verifiedCtrl as depvef" onload="depvef.init()"></div>
-                </uib-tab>
-                <uib-tab index="1" heading="{{$appServ.getLabel(['verify', 'pendingVerify'])}}" ng-click="acadep.tabSelect.selected('pendingVerify')">
-                    <div ng-include="acadep.pendingVerify.template.content" ng-controller="academicInfo.department.pendingVerifyCtrl as deppvf" onload="deppvf.init()"></div>
-                </uib-tab>
-            </uib-tabset>
-        </div>
-        <div class="panel-body" ng-if="acadep.addedit.showForm" ng-include="acadep.addedit.template.content" onload="acadep.addedit[acadep.addedit.template.action].init()">
-        </div>
+      </div>
     </div>
+    <div class="panel-body page-body" ng-show="acadep.showForm && !acadep.addedit.showForm">
+      <uib-tabset active="acadep.tabSelect.activeTabIndex">
+        <uib-tab index="0" heading="{{$appServ.getLabel(['verify', 'verified'])}}" ng-click="acadep.tabSelect.selected('verified')">
+          <div ng-include="acadep.verified.template.content" ng-controller="academicInfo.department.verifiedCtrl as depvef" onload="depvef.init()"></div>
+        </uib-tab>
+        <uib-tab index="1" heading="{{$appServ.getLabel(['verify', 'pendingVerify'])}}" ng-click="acadep.tabSelect.selected('pendingVerify')">
+          <div ng-include="acadep.pendingVerify.template.content" ng-controller="academicInfo.department.pendingVerifyCtrl as deppvf" onload="deppvf.init()"></div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+    <div class="panel-body" ng-if="acadep.addedit.showForm" ng-include="acadep.addedit.template.content" onload="acadep.addedit[acadep.addedit.template.action].init()">
+    </div>
+  </div>
 </div>

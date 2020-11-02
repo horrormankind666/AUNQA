@@ -7,30 +7,25 @@ Description : <คอนโทลเลอร์ข้อมูลผู้ใ�
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Web.Http;
 using Newtonsoft.Json;
 
 namespace API.Controllers
 {
-    [RoutePrefix("AuthenStudentSystem")]
-    public class AuthenStudentSystemController : ApiController
+  [RoutePrefix("AuthenStudentSystem")]
+  public class AuthenStudentSystemController : ApiController
+  {
+    [Route("GetAccount")]
+    [HttpGet]
+    public HttpResponseMessage GetAccount()
     {
-        [Route("GetAccount")]
-        [HttpGet]
-        public HttpResponseMessage GetAccount()
-        {
-            dynamic account = iUtil.AuthenStudentSystem.GetAccount();
-            DataTable dt = JsonConvert.DeserializeObject<DataTable>("[" + JsonConvert.SerializeObject(account) + "]");
+      dynamic account = iUtil.AuthenStudentSystem.GetAccount();
+      DataTable dt = JsonConvert.DeserializeObject<DataTable>("[" + JsonConvert.SerializeObject(account) + "]");
 
-            return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt));
-        }
+      return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt));
     }
+  }
 }

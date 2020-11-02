@@ -1,56 +1,55 @@
 ﻿<div class="{{$pageRouteServ.pageObject.main.class}}"
-     ng-controller="mainCtrl as main"
-     ng-init="main.init()">
-    <div class="dialogin" ng-if="main.showForm">
-        <div class="panel noborder">
-            <div class="panel-body page-body">
-                <div class="list">
-                    <ul>
-                        <li class="list-item text-left">
-                            <div class="list-head block">
-                                <span class="{{$appServ.labelStyle}} bold black f8">AUNQA</span>
-                            </div>
-                            <div class="list-body block">
-                                <div class="{{$appServ.labelStyle}} regular black f10">
-                                    มหาวิทยาลัยมหิดลได้เข้าร่วมเป็นสมาชิกเครือข่ายมหาวิทยาลัยอาเซียน ( ASEAN University Network - AUN ) และได้เข้าร่วมกิจกรรมต่าง ๆ ของ AUN มาอย่างต่อเนื่อง
-                                    ซึ่งกิจกรรมหนึ่งภายใต้เครือข่ายมหาวิทยาลัยอาเซียนที่จัดขึ้นเพื่อรองรับการเปิดเสรีภาพด้านการศึกษานั้น คือ การสร้างระบบการประกันคุณภาพการศึกษาในอาเซียน ( AUN Quality Assurance - AUN-QA )
-                                    การประกันคุณภาพการศึกษาถือเป็นกลไกหนึ่งที่นำมาใช้เป็นกลไกในการตรวจสอบและประเมินการดำเนินงานของมหาวิทยาลัยตามที่ได้กำหนดเอาไว้ในระดับอาเซียน
-                                    ซึ่งการประกันคุณภาพการศึกษานั้นได้ดำเนินการใน 2 รูปแบบ คือ เครือข่ายการประกันคุณภาพการศึกษา ASEAN University Network Quality Assurance ( AUN-QA ) และ The ASEAN Quality Assurance Network ( AQAN )
-                                    โดยมีวัตถุประสงค์เพื่อให้ระบบกลไกการประกันคุณภาพการศึกษาและมาตรฐานการอุดมศึกษาของมหาวิทยาลัยสมาชิกเป็นไปในทิศทางเดียวกัน ทั้งนี้ ในการประเมินคุณภาพการศึกษาในระดับอาเซียนนั้นจะเป็นการประเมินเพื่อรองรับหลักสูตรของมหาวิทยาลัยเท่านั้น
-                                    ซึ่งประโยชน์ของการประเมินดังกล่าวจะแสดงให้เห็นถึงความพร้อมของหลักสูตรต่างๆของมหาวิทยาลัยให้มีความทัดเทียมในระดับนานาชาติ และเพื่อรองรับการเปิดประชาคมอาเซียนในปี 2558 ประกอบกับในปี 2558 สำนักงานคณะกรรมการการอุดมศึกษา ( สกอ. )
-                                    จะกำหนดให้มีการดำเนินการการประกันคุณภาพระดับหลักสูตรทั้งหมด ในปีงบประมาณ 2558 ที่ผ่านมา มหาวิทยาลัยมหิดลได้เตรียมความพร้อมในระบบประกันคุณภาพการศึกษาที่ทัดเทียมประเทศอาเซียนตามแนวทางของ AUN-QA และ สกอ.
-
-                                </div>
-                            </div>
-                            <div class="list-footer block text-right">
-                                <span class="{{$appServ.labelStyle}} light gray f11">{{$appServ.getLabel(['credit'])}} : {{$appServ.getLabel(['MUQD'])}} <span class="f13">( http://www.qd.mahidol.ac.th/aun/index.html )</span></span>
-                            </div>
-                        </li>
-                        <li class="list-item text-left noborder-bottom">
-                            <div class="list-head block">
-                                <span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['TQFInfo'])}}</span>
-                            </div>
-                            <div class="list-body block">
-                                <div class="{{$appServ.labelStyle}} regular black f10">
-                                    กรอบมาตรฐานคุณวุฒิระดับอุดมศึกษาแห่งชาติ เป็นกรอบที่แสดงระบบคุณวุฒิการศึกษาระดับอุดมศึกษาของประเทศ ซึ่งประกอบด้วย
-                                    ระดับคุณวุฒิ ความเชื่อมโยงต่อเนื่องจากคุณวุฒิระกับหนึ่งไปสู่ระดับที่สูงขึ้น การแบ่งสายวิชา มาตรฐานผลการเรียนรู้ของแต่ละระดับคุณวุฒิซึ่งเพิ่มสูงขึ้นตามระดับของคุณวุฒิ ปริมาณการเรียนรู้ที่สอดคล้องกับเวลาที่ต้องใช้ ลักษณะของหลักสูตรในแต่ละระดับคุณวุฒิ
-                                    การเปิดโอกาสในเทียบโอนผลการเรียนรู้จากประสบการณ์ ซึ่งเป้นการส่งเสริมการเรียนรู้ตลอดชีวิต รวมทั้งระบบและกลไกที่ให้ความมั่นใจในประสิทธิผลการดำเนินงานตามกรอบมาตรฐานคุณวุฒิระดับอุดมศึกษาแห่งชาติของสถาบันอุดมศึกษาว่าสามารถผลิตบัณฑิตให้บรรลุคุณภาพตามมาตรฐานผลการเรียนรู้<br />
-                                    <span class="bold">{{$appServ.getLabel(['TQF1'])}} </span>{{$appServ.getLabel(['TQF1', 'mean'])}}<br />
-                                    <span class="bold">{{$appServ.getLabel(['TQF2'])}} </span>{{$appServ.getLabel(['TQF2', 'mean'])}}<br />
-                                    <span class="bold">{{$appServ.getLabel(['TQF3'])}} </span>{{$appServ.getLabel(['TQF3', 'mean'])}}<br />
-                                    <span class="bold">{{$appServ.getLabel(['TQF4'])}} </span>{{$appServ.getLabel(['TQF4', 'mean'])}}<br />
-                                    <span class="bold">{{$appServ.getLabel(['TQF5'])}} </span>{{$appServ.getLabel(['TQF5', 'mean'])}}<br />
-                                    <span class="bold">{{$appServ.getLabel(['TQF6'])}} </span>{{$appServ.getLabel(['TQF6', 'mean'])}}<br />
-                                    <span class="bold">{{$appServ.getLabel(['TQF7'])}} </span>{{$appServ.getLabel(['TQF7', 'mean'])}}
-                                </div>
-                            </div>
-                            <div class="list-footer block text-right">
-                                <span class="{{$appServ.labelStyle}} light gray f11">{{$appServ.getLabel(['credit'])}} : http://www.thaiall.com/tqf/</span>
-                            </div>
-                        </li>
-                    </ul>
+  ng-controller="mainCtrl as main"
+  ng-init="main.init()">
+  <div class="dialogin" ng-if="main.showForm">
+    <div class="panel noborder">
+      <div class="panel-body page-body">
+        <div class="list">
+          <ul>
+            <li class="list-item text-left">
+              <div class="list-head block">
+                <span class="{{$appServ.labelStyle}} bold black f8">AUNQA</span>
+              </div>
+              <div class="list-body block">
+                <div class="{{$appServ.labelStyle}} regular black f10">
+                  มหาวิทยาลัยมหิดลได้เข้าร่วมเป็นสมาชิกเครือข่ายมหาวิทยาลัยอาเซียน ( ASEAN University Network - AUN ) และได้เข้าร่วมกิจกรรมต่าง ๆ ของ AUN มาอย่างต่อเนื่อง
+                  ซึ่งกิจกรรมหนึ่งภายใต้เครือข่ายมหาวิทยาลัยอาเซียนที่จัดขึ้นเพื่อรองรับการเปิดเสรีภาพด้านการศึกษานั้น คือ การสร้างระบบการประกันคุณภาพการศึกษาในอาเซียน ( AUN Quality Assurance - AUN-QA )
+                  การประกันคุณภาพการศึกษาถือเป็นกลไกหนึ่งที่นำมาใช้เป็นกลไกในการตรวจสอบและประเมินการดำเนินงานของมหาวิทยาลัยตามที่ได้กำหนดเอาไว้ในระดับอาเซียน
+                  ซึ่งการประกันคุณภาพการศึกษานั้นได้ดำเนินการใน 2 รูปแบบ คือ เครือข่ายการประกันคุณภาพการศึกษา ASEAN University Network Quality Assurance ( AUN-QA ) และ The ASEAN Quality Assurance Network ( AQAN )
+                  โดยมีวัตถุประสงค์เพื่อให้ระบบกลไกการประกันคุณภาพการศึกษาและมาตรฐานการอุดมศึกษาของมหาวิทยาลัยสมาชิกเป็นไปในทิศทางเดียวกัน ทั้งนี้ ในการประเมินคุณภาพการศึกษาในระดับอาเซียนนั้นจะเป็นการประเมินเพื่อรองรับหลักสูตรของมหาวิทยาลัยเท่านั้น
+                  ซึ่งประโยชน์ของการประเมินดังกล่าวจะแสดงให้เห็นถึงความพร้อมของหลักสูตรต่างๆของมหาวิทยาลัยให้มีความทัดเทียมในระดับนานาชาติ และเพื่อรองรับการเปิดประชาคมอาเซียนในปี 2558 ประกอบกับในปี 2558 สำนักงานคณะกรรมการการอุดมศึกษา ( สกอ. )
+                  จะกำหนดให้มีการดำเนินการการประกันคุณภาพระดับหลักสูตรทั้งหมด ในปีงบประมาณ 2558 ที่ผ่านมา มหาวิทยาลัยมหิดลได้เตรียมความพร้อมในระบบประกันคุณภาพการศึกษาที่ทัดเทียมประเทศอาเซียนตามแนวทางของ AUN-QA และ สกอ.
                 </div>
-            </div>
+              </div>
+              <div class="list-footer block text-right">
+                <span class="{{$appServ.labelStyle}} light gray f11">{{$appServ.getLabel(['credit'])}} : {{$appServ.getLabel(['MUQD'])}} <span class="f13">( http://www.qd.mahidol.ac.th/aun/index.html )</span></span>
+              </div>
+            </li>
+            <li class="list-item text-left noborder-bottom">
+              <div class="list-head block">
+                <span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['TQFInfo'])}}</span>
+              </div>
+              <div class="list-body block">
+                <div class="{{$appServ.labelStyle}} regular black f10">
+                  กรอบมาตรฐานคุณวุฒิระดับอุดมศึกษาแห่งชาติ เป็นกรอบที่แสดงระบบคุณวุฒิการศึกษาระดับอุดมศึกษาของประเทศ ซึ่งประกอบด้วย
+                  ระดับคุณวุฒิ ความเชื่อมโยงต่อเนื่องจากคุณวุฒิระกับหนึ่งไปสู่ระดับที่สูงขึ้น การแบ่งสายวิชา มาตรฐานผลการเรียนรู้ของแต่ละระดับคุณวุฒิซึ่งเพิ่มสูงขึ้นตามระดับของคุณวุฒิ ปริมาณการเรียนรู้ที่สอดคล้องกับเวลาที่ต้องใช้ ลักษณะของหลักสูตรในแต่ละระดับคุณวุฒิ
+                  การเปิดโอกาสในเทียบโอนผลการเรียนรู้จากประสบการณ์ ซึ่งเป้นการส่งเสริมการเรียนรู้ตลอดชีวิต รวมทั้งระบบและกลไกที่ให้ความมั่นใจในประสิทธิผลการดำเนินงานตามกรอบมาตรฐานคุณวุฒิระดับอุดมศึกษาแห่งชาติของสถาบันอุดมศึกษาว่าสามารถผลิตบัณฑิตให้บรรลุคุณภาพตามมาตรฐานผลการเรียนรู้<br />
+                  <span class="bold">{{$appServ.getLabel(['TQF1'])}} </span>{{$appServ.getLabel(['TQF1', 'mean'])}}<br />
+                  <span class="bold">{{$appServ.getLabel(['TQF2'])}} </span>{{$appServ.getLabel(['TQF2', 'mean'])}}<br />
+                  <span class="bold">{{$appServ.getLabel(['TQF3'])}} </span>{{$appServ.getLabel(['TQF3', 'mean'])}}<br />
+                  <span class="bold">{{$appServ.getLabel(['TQF4'])}} </span>{{$appServ.getLabel(['TQF4', 'mean'])}}<br />
+                  <span class="bold">{{$appServ.getLabel(['TQF5'])}} </span>{{$appServ.getLabel(['TQF5', 'mean'])}}<br />
+                  <span class="bold">{{$appServ.getLabel(['TQF6'])}} </span>{{$appServ.getLabel(['TQF6', 'mean'])}}<br />
+                  <span class="bold">{{$appServ.getLabel(['TQF7'])}} </span>{{$appServ.getLabel(['TQF7', 'mean'])}}
+                </div>
+              </div>
+              <div class="list-footer block text-right">
+                <span class="{{$appServ.labelStyle}} light gray f11">{{$appServ.getLabel(['credit'])}} : http://www.thaiall.com/tqf/</span>
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
 </div>

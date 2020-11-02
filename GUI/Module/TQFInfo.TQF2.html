@@ -1,107 +1,106 @@
 ﻿<div class="{{$pageRouteServ.pageObject.TQFInfo.class + ' ' + $pageRouteServ.pageObject.TQF2.class}}"
-    ng-controller="TQFInfo.TQF2Ctrl as tqf2"
-    ng-if="$appServ.isUser"
-    ng-init="tqf2.init()">
-    <div class="panel noborder">
-        <div class="panel-heading page-heading">
-            <div class="panel-table">
-                <div class="panel-row">
-                    <div class="panel-col col-navigation">
-                        <div class="panel-title">
-                            <div class="navigation">
-                                <ul>
-                                    <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['TQFInfo'])}}</span></li>
-                                    <li class="colhide separate"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
-                                    <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['TQF2'])}}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="subtitle" ng-if="$programmeServ.isProgram && tqf2.addedit.showForm && (tqf2.addedit.isEdit || tqf2.addedit.isUpdate)">
-                            <div class="panel-title">
-                                <div class="navigation">
-                                    <ul>
-                                        <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$programmeServ.dataRow.programFullCode + ' ' + ($programmeServ.dataRow.name[$utilServ.lang] | capitalize)}}</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="panel-title">
-                                <div class="navigation">
-                                    <ul>
-                                        <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['program', 'table', 'courseYear']) + ' ' + $programmeServ.dataRow.courseYear}}</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-col col-toolbar text-right">
-                        <div class="toolbar">
-                            <a enter class="btn" href="javascript:void(0)" ng-if="!$programmeServ.isProgram && tqf2.showForm && !tqf2.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf2.search.showForm = !tqf2.search.showForm" uib-tooltip-html="$appServ.getLabel(['search'])"><i class="fa {{tqf2.search.showForm ? 'fa-search-minus' : 'fa-search-plus'}} white f9 top5"></i></a>
-                            <a enter class="btn" href="javascript:void(0)" ng-if="$programmeServ.isProgram && !$programmeServ.isEdit && !$programmeServ.isUpdate && tqf2.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf2.table.hide = true; tqf2.table.isReload = true; tqf2.addedit.showForm = !tqf2.addedit.showForm; tqf2.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
-                            <a enter class="btn" href="#/AcademicInfo/Programme/{{$programmeServ.dataRow.facultyId}}" ng-if="$programmeServ.isProgram && ($programmeServ.isEdit || $programmeServ.isUpdate) && tqf2.addedit.showForm" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
-                        </div>
-                    </div>
-                </div>
+  ng-controller="TQFInfo.TQF2Ctrl as tqf2"
+  ng-if="$appServ.isUser"
+  ng-init="tqf2.init()">
+  <div class="panel noborder">
+    <div class="panel-heading page-heading">
+      <div class="panel-table">
+        <div class="panel-row">
+          <div class="panel-col col-navigation">
+            <div class="panel-title">
+              <div class="navigation">
+                <ul>
+                  <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['TQFInfo'])}}</span></li>
+                  <li class="colhide separate"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
+                  <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['TQF2'])}}</span></li>
+                </ul>
+              </div>
             </div>
-        </div>
-        <div class="panel-body search dialogin marginBottom10" ng-if="tqf2.search.showForm">
-            <div class="panel noborder">
-                <div class="panel-heading block">
-                    <div class="panel-title text-left">
-                        <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['search'])}}</span>
-                    </div>
+            <div class="subtitle" ng-if="$programmeServ.isProgram && tqf2.addedit.showForm && (tqf2.addedit.isEdit || tqf2.addedit.isUpdate)">
+              <div class="panel-title">
+                <div class="navigation">
+                  <ul>
+                    <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$programmeServ.dataRow.programFullCode + ' ' + ($programmeServ.dataRow.name[$utilServ.lang] | capitalize)}}</span></li>
+                  </ul>
                 </div>
-                <div class="panel-body block">
-                    <div class="panel-table">
-                        <div class="panel-row">
-                            <div class="panel-col nopadding-right">
-                                <div class="form vertical">
-                                    <div class="form-row">
-                                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'faculty'])}}</div>
-                                        <div class="form-col input-col text-left">
-                                            <ui-select ng-model="tqf2.search.formField.facultySelected.selected" theme="select2">
-                                                <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'faculty'])}}">
-                                                    <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.code ? $select.selected.code : '') + ($select.selected.code && $select.selected.name[$utilServ.lang] ? (' : ' + $select.selected.name[$utilServ.lang]) : '')}}</span>
-                                                    <span clearselect class="clearselect lang font-en regular gray f10" ng-click="tqf2.search.formField.facultySelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
-                                                </ui-select-match>
-                                                <ui-select-choices repeat="faculty in ($appServ.table.dataSource.faculty | filter: { selectFilter: $select.search } | orderBy: 'id')">
-                                                    <span class="{{$appServ.labelStyle}} regular f11">{{(faculty.code ? faculty.code : '') + (faculty.code && faculty.name[$utilServ.lang] ? (' : ' + faculty.name[$utilServ.lang]) : '')}}</span>
-                                                </ui-select-choices>
-                                            </ui-select>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                                        <div class="form-col input-col text-right nopadding-top nopadding-bottom">
-                                            <div class="btn-command">
-                                                <span>
-                                                    <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2.search.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2.search.action()" uib-tooltip-html="$appServ.getLabel(['search'])">{{$appServ.getLabel(['search'])}}</a>
-                                                    <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2.search.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2.search.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div class="panel-title">
+                <div class="navigation">
+                  <ul>
+                    <li class="colshow text-left"><span class="{{$appServ.labelStyle}} bold black f9">{{$appServ.getLabel(['program', 'table', 'courseYear']) + ' ' + $programmeServ.dataRow.courseYear}}</span></li>
+                  </ul>
                 </div>
+              </div>
             </div>
+          </div>
+          <div class="panel-col col-toolbar text-right">
+            <div class="toolbar">
+              <a enter class="btn" href="javascript:void(0)" ng-if="!$programmeServ.isProgram && tqf2.showForm && !tqf2.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf2.search.showForm = !tqf2.search.showForm" uib-tooltip-html="$appServ.getLabel(['search'])"><i class="fa {{tqf2.search.showForm ? 'fa-search-minus' : 'fa-search-plus'}} white f9 top5"></i></a>
+              <a enter class="btn" href="javascript:void(0)" ng-if="$programmeServ.isProgram && !$programmeServ.isEdit && !$programmeServ.isUpdate && tqf2.addedit.showForm" ng-click="$utilServ.doBlur($event); tqf2.table.hide = true; tqf2.table.isReload = true; tqf2.addedit.showForm = !tqf2.addedit.showForm; tqf2.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+              <a enter class="btn" href="#/AcademicInfo/Programme/{{$programmeServ.dataRow.facultyId}}" ng-if="$programmeServ.isProgram && ($programmeServ.isEdit || $programmeServ.isUpdate) && tqf2.addedit.showForm" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+            </div>
+          </div>
         </div>
-        <div class="panel-body page-body" ng-show="tqf2.showForm && !tqf2.addedit.showForm">
-            <uib-tabset active="tqf2.tabSelect.activeTabIndex">
-                <uib-tab index="0" heading="{{$appServ.getLabel(['TQF2', 'verify', 'verified'])}}" ng-click="tqf2.tabSelect.selected('programmeVerified')">
-                    <div ng-include="tqf2.programme.verified.template.content" ng-controller="TQFInfo.TQF2.programme.verifiedCtrl as tqf2pv" onload="tqf2pv.init()"></div>
-                </uib-tab>
-                <uib-tab index="1" heading="{{$appServ.getLabel(['TQF2', 'verify', 'pendingVerify'])}}" ng-click="tqf2.tabSelect.selected('programmePendingVerify')">
-                    <div ng-include="tqf2.programme.pendingVerify.template.content" ng-controller="TQFInfo.TQF2.programme.pendingVerifyCtrl as tqf2pp" onload="tqf2pp.init()"></div>
-                </uib-tab>
-                <uib-tab index="2" heading="{{$appServ.getLabel(['TQF2', 'verify', 'sendingVerify'])}}" ng-click="tqf2.tabSelect.selected('programmeSendingVerify')">
-                    <div ng-include="tqf2.programme.sendingVerify.template.content" ng-controller="TQFInfo.TQF2.programme.sendingVerifyCtrl as tqf2ps" onload="tqf2ps.init()"></div>
-                </uib-tab>
-
-            </uib-tabset>
-        </div>
-        <div class="panel-body" ng-if="tqf2.addedit.showForm && tqf2.addedit.template.content" ng-include="tqf2.addedit.template.content" onload="tqf2.addedit[tqf2.addedit.template.action].init()">
-        </div>
+      </div>
     </div>
+    <div class="panel-body search dialogin marginBottom10" ng-if="tqf2.search.showForm">
+      <div class="panel noborder">
+        <div class="panel-heading block">
+          <div class="panel-title text-left">
+            <span class="{{$appServ.labelStyle}} bold black f10">{{$appServ.getLabel(['search'])}}</span>
+          </div>
+        </div>
+        <div class="panel-body block">
+          <div class="panel-table">
+            <div class="panel-row">
+              <div class="panel-col nopadding-right">
+                <div class="form vertical">
+                  <div class="form-row">
+                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'faculty'])}}</div>
+                    <div class="form-col input-col text-left">
+                      <ui-select ng-model="tqf2.search.formField.facultySelected.selected" theme="select2">
+                        <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'faculty'])}}">
+                          <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.code ? $select.selected.code : '') + ($select.selected.code && $select.selected.name[$utilServ.lang] ? (' : ' + $select.selected.name[$utilServ.lang]) : '')}}</span>
+                          <span clearselect class="clearselect lang font-en regular gray f10" ng-click="tqf2.search.formField.facultySelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="faculty in ($appServ.table.dataSource.faculty | filter: { selectFilter: $select.search } | orderBy: 'id')">
+                          <span class="{{$appServ.labelStyle}} regular f11">{{(faculty.code ? faculty.code : '') + (faculty.code && faculty.name[$utilServ.lang] ? (' : ' + faculty.name[$utilServ.lang]) : '')}}</span>
+                        </ui-select-choices>
+                      </ui-select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                    <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                      <div class="btn-command">
+                        <span>
+                          <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2.search.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2.search.action()" uib-tooltip-html="$appServ.getLabel(['search'])">{{$appServ.getLabel(['search'])}}</a>
+                          <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2.search.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2.search.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body page-body" ng-show="tqf2.showForm && !tqf2.addedit.showForm">
+      <uib-tabset active="tqf2.tabSelect.activeTabIndex">
+        <uib-tab index="0" heading="{{$appServ.getLabel(['TQF2', 'verify', 'verified'])}}" ng-click="tqf2.tabSelect.selected('programmeVerified')">
+          <div ng-include="tqf2.programme.verified.template.content" ng-controller="TQFInfo.TQF2.programme.verifiedCtrl as tqf2pv" onload="tqf2pv.init()"></div>
+        </uib-tab>
+        <uib-tab index="1" heading="{{$appServ.getLabel(['TQF2', 'verify', 'pendingVerify'])}}" ng-click="tqf2.tabSelect.selected('programmePendingVerify')">
+          <div ng-include="tqf2.programme.pendingVerify.template.content" ng-controller="TQFInfo.TQF2.programme.pendingVerifyCtrl as tqf2pp" onload="tqf2pp.init()"></div>
+        </uib-tab>
+        <uib-tab index="2" heading="{{$appServ.getLabel(['TQF2', 'verify', 'sendingVerify'])}}" ng-click="tqf2.tabSelect.selected('programmeSendingVerify')">
+          <div ng-include="tqf2.programme.sendingVerify.template.content" ng-controller="TQFInfo.TQF2.programme.sendingVerifyCtrl as tqf2ps" onload="tqf2ps.init()"></div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+    <div class="panel-body" ng-if="tqf2.addedit.showForm && tqf2.addedit.template.content" ng-include="tqf2.addedit.template.content" onload="tqf2.addedit[tqf2.addedit.template.action].init()">
+    </div>
+  </div>
 </div>

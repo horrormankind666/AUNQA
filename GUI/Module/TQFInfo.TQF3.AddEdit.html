@@ -1,98 +1,98 @@
 ﻿<div class="addedit dialogin">
-    <div class="panel noborder gold-bg">
-        <div class="panel-heading block" ng-if="$courseServ.isCourse">
-            <div class="panel-table">
-                <div class="panel-row">
-                    <div class="panel-col text-left">
-                        <div class="panel-title">
-                            <span class="{{$appServ.labelStyle}} bold black f10" ng-if="tqf3.addedit.isEdit">{{$courseServ.dataRow.status === 'Y' ? $appServ.getLabel(['verify', 'verified']) : ($courseServ.dataRow.status === 'P' ? $appServ.getLabel(['verify', 'pendingVerify']) : $appServ.getLabel(['edit']))}}</span>
-                            <span class="{{$appServ.labelStyle}} bold black f10" ng-if="tqf3.addedit.isUpdate">{{$courseServ.dataRow.status === 'Y' ? $appServ.getLabel(['verify', 'verified']) : ($courseServ.dataRow.status === 'P' ? $appServ.getLabel(['verify', 'pendingVerify']) : $appServ.getLabel(['update']))}}</span>
-                            <div class="{{$appServ.labelStyle}} bold muted f11">{{$appServ.getLabel(['createdBy']).toLowerCase() + ' : ' + $courseServ.dataRow.createdBy}}</div>
-                        </div>
-                    </div>
-                    <div class="panel-col col-toolbar text-right" ng-if="tqf3.addedit.isEdit || tqf3.addedit.isUpdate">
-                        <div class="toolbar">
-                            <a enter class="btn" href="javascript:void(0)" ng-if="!$TQFServ.TQF3.accordionGroup.isOpen" ng-click="$utilServ.doBlur($event); $TQFServ.TQF3.accordionGroup.isOpen = true"><i class="fa fa-list black f11"></i></a>
-                        </div>
-                    </div>
-                </div>
+  <div class="panel noborder gold-bg">
+    <div class="panel-heading block" ng-if="$courseServ.isCourse">
+      <div class="panel-table">
+        <div class="panel-row">
+          <div class="panel-col text-left">
+            <div class="panel-title">
+              <span class="{{$appServ.labelStyle}} bold black f10" ng-if="tqf3.addedit.isEdit">{{$courseServ.dataRow.status === 'Y' ? $appServ.getLabel(['verify', 'verified']) : ($courseServ.dataRow.status === 'P' ? $appServ.getLabel(['verify', 'pendingVerify']) : $appServ.getLabel(['edit']))}}</span>
+              <span class="{{$appServ.labelStyle}} bold black f10" ng-if="tqf3.addedit.isUpdate">{{$courseServ.dataRow.status === 'Y' ? $appServ.getLabel(['verify', 'verified']) : ($courseServ.dataRow.status === 'P' ? $appServ.getLabel(['verify', 'pendingVerify']) : $appServ.getLabel(['update']))}}</span>
+              <div class="{{$appServ.labelStyle}} bold muted f11">{{$appServ.getLabel(['createdBy']).toLowerCase() + ' : ' + $courseServ.dataRow.createdBy}}</div>
             </div>
+          </div>
+          <div class="panel-col col-toolbar text-right" ng-if="tqf3.addedit.isEdit || tqf3.addedit.isUpdate">
+            <div class="toolbar">
+              <a enter class="btn" href="javascript:void(0)" ng-if="!$TQFServ.TQF3.accordionGroup.isOpen" ng-click="$utilServ.doBlur($event); $TQFServ.TQF3.accordionGroup.isOpen = true"><i class="fa fa-list black f11"></i></a>
+            </div>
+          </div>
         </div>
-        <div class="panel-body white-bg tqf-title" ng-if="$TQFServ.TQF3.accordionGroup.isOpen" ng-init="tqf3.addedit.resetValue()">
-            <uib-accordion close-others="false">
-                <ng-include class="accordion-heading" ng-repeat="order in $utilServ.getArrayNumber(tqf3.maxSection)" src="'TQFInfo.TQF3.Group.AddEdit.Section.Heading.Template.html'" ng-if="true"></ng-include>
-            </uib-accordion>
-        </div>
-        <div class="panel-body" ng-if="!$TQFServ.TQF3.accordionGroup.isOpen" ng-init="classObj = $pageRouteServ.pageObject.TQF3; class = (classObj.class + ' ' + $pageRouteServ.pageObject.TQFInfo.class); action = (tqf3.addedit.isEdit ? 'edit' : (tqf3.addedit.isUpdate ? 'update' : ''))">
-            <div ng-if="tqf3.accordionGroup.section1.isOpen">
-                <div class="{{class + ' ' + classObj.group1.class}}"
-                    ng-controller="TQFInfo.TQF3.group1Ctrl as tqf3g1"
-                    ng-init="tqf3g1.addedit.showForm = true; tqf3g1.addedit.template.action = action; tqf3g1.addedit.template.init()">
-                    <div ng-if="tqf3g1.addedit.showForm" ng-include="tqf3g1.addedit.template.content" onload="tqf3g1.addedit[action].init()">
-                    </div>
-                </div>
-            </div>
-            <div ng-if="tqf3.accordionGroup.section2.isOpen">
-                <div class="{{class + ' ' + classObj.group2.class}}"
-                    ng-controller="TQFInfo.TQF3.group2Ctrl as tqf3g2"
-                    ng-init="tqf3g2.addedit.showForm = true; tqf3g2.addedit.template.action = action; tqf3g2.addedit.template.init()">
-                    <div ng-if="tqf3g2.addedit.showForm" ng-include="tqf3g2.addedit.template.content" onload="tqf3g2.addedit[action].init()">
-                    </div>
-                </div>
-            </div>
-            <div ng-if="tqf3.accordionGroup.section3.isOpen">
-                <div class="{{class + ' ' + classObj.group3.class}}"
-                    ng-controller="TQFInfo.TQF3.group3Ctrl as tqf3g3"
-                    ng-init="tqf3g3.addedit.showForm = true; tqf3g3.addedit.template.action = action; tqf3g3.addedit.template.init()">
-                    <div ng-if="tqf3g3.addedit.showForm" ng-include="tqf3g3.addedit.template.content" onload="tqf3g3.addedit[action].init()">
-                    </div>
-                </div>
-            </div>
-            <div ng-if="tqf3.accordionGroup.section4.isOpen">
-                <div class="{{class + ' ' + classObj.group4.class}}"
-                    ng-controller="TQFInfo.TQF3.group4Ctrl as tqf3g4"
-                    ng-init="tqf3g4.addedit.showForm = true; tqf3g4.addedit.template.action = action; tqf3g4.addedit.template.init()">
-                    <div ng-if="tqf3g4.addedit.showForm" ng-include="tqf3g4.addedit.template.content" onload="tqf3g4.addedit[action].init()">
-                    </div>
-                </div>
-            </div>
-            <div ng-if="tqf3.accordionGroup.section5.isOpen">
-                <div class="{{class + ' ' + classObj.group5.class}}"
-                    ng-controller="TQFInfo.TQF3.group5Ctrl as tqf3g5"
-                    ng-init="tqf3g5.addedit.showForm = true; tqf3g5.addedit.template.action = action; tqf3g5.addedit.template.init()">
-                    <div ng-if="tqf3g5.addedit.showForm" ng-include="tqf3g5.addedit.template.content" onload="tqf3g5.addedit[action].init()">
-                    </div>
-                </div>
-            </div>
-            <div ng-if="tqf3.accordionGroup.section6.isOpen">
-                <div class="{{class + ' ' + classObj.group6.class}}"
-                    ng-controller="TQFInfo.TQF3.group6Ctrl as tqf3g6"
-                    ng-init="tqf3g6.addedit.showForm = true; tqf3g6.addedit.template.action = action; tqf3g6.addedit.template.init()">
-                    <div ng-if="tqf3g6.addedit.showForm" ng-include="tqf3g6.addedit.template.content" onload="tqf3g6.addedit[action].init()">
-                    </div>
-                </div>
-            </div>
-            <div ng-if="tqf3.accordionGroup.section7.isOpen">
-                <div class="{{class + ' ' + classObj.group7.class}}"
-                    ng-controller="TQFInfo.TQF3.group7Ctrl as tqf3g7"
-                    ng-init="tqf3g7.addedit.showForm = true; tqf3g7.addedit.template.action = action; tqf3g7.addedit.template.init()">
-                    <div ng-if="tqf3g7.addedit.showForm" ng-include="tqf3g7.addedit.template.content" onload="tqf3g7.addedit[action].init()">
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="panel-body white-bg tqf-title" ng-if="$TQFServ.TQF3.accordionGroup.isOpen" ng-init="tqf3.addedit.resetValue()">
+      <uib-accordion close-others="false">
+        <ng-include class="accordion-heading" ng-repeat="order in $utilServ.getArrayNumber(tqf3.maxSection)" src="'TQFInfo.TQF3.Group.AddEdit.Section.Heading.Template.html'" ng-if="true"></ng-include>
+      </uib-accordion>
+    </div>
+    <div class="panel-body" ng-if="!$TQFServ.TQF3.accordionGroup.isOpen" ng-init="classObj = $pageRouteServ.pageObject.TQF3; class = (classObj.class + ' ' + $pageRouteServ.pageObject.TQFInfo.class); action = (tqf3.addedit.isEdit ? 'edit' : (tqf3.addedit.isUpdate ? 'update' : ''))">
+      <div ng-if="tqf3.accordionGroup.section1.isOpen">
+        <div class="{{class + ' ' + classObj.group1.class}}"
+          ng-controller="TQFInfo.TQF3.group1Ctrl as tqf3g1"
+          ng-init="tqf3g1.addedit.showForm = true; tqf3g1.addedit.template.action = action; tqf3g1.addedit.template.init()">
+          <div ng-if="tqf3g1.addedit.showForm" ng-include="tqf3g1.addedit.template.content" onload="tqf3g1.addedit[action].init()">
+          </div>
+        </div>
+      </div>
+      <div ng-if="tqf3.accordionGroup.section2.isOpen">
+        <div class="{{class + ' ' + classObj.group2.class}}"
+          ng-controller="TQFInfo.TQF3.group2Ctrl as tqf3g2"
+          ng-init="tqf3g2.addedit.showForm = true; tqf3g2.addedit.template.action = action; tqf3g2.addedit.template.init()">
+          <div ng-if="tqf3g2.addedit.showForm" ng-include="tqf3g2.addedit.template.content" onload="tqf3g2.addedit[action].init()">
+          </div>
+        </div>
+      </div>
+      <div ng-if="tqf3.accordionGroup.section3.isOpen">
+        <div class="{{class + ' ' + classObj.group3.class}}"
+          ng-controller="TQFInfo.TQF3.group3Ctrl as tqf3g3"
+          ng-init="tqf3g3.addedit.showForm = true; tqf3g3.addedit.template.action = action; tqf3g3.addedit.template.init()">
+          <div ng-if="tqf3g3.addedit.showForm" ng-include="tqf3g3.addedit.template.content" onload="tqf3g3.addedit[action].init()">
+          </div>
+        </div>
+      </div>
+      <div ng-if="tqf3.accordionGroup.section4.isOpen">
+        <div class="{{class + ' ' + classObj.group4.class}}"
+          ng-controller="TQFInfo.TQF3.group4Ctrl as tqf3g4"
+          ng-init="tqf3g4.addedit.showForm = true; tqf3g4.addedit.template.action = action; tqf3g4.addedit.template.init()">
+          <div ng-if="tqf3g4.addedit.showForm" ng-include="tqf3g4.addedit.template.content" onload="tqf3g4.addedit[action].init()">
+          </div>
+        </div>
+      </div>
+      <div ng-if="tqf3.accordionGroup.section5.isOpen">
+        <div class="{{class + ' ' + classObj.group5.class}}"
+          ng-controller="TQFInfo.TQF3.group5Ctrl as tqf3g5"
+          ng-init="tqf3g5.addedit.showForm = true; tqf3g5.addedit.template.action = action; tqf3g5.addedit.template.init()">
+          <div ng-if="tqf3g5.addedit.showForm" ng-include="tqf3g5.addedit.template.content" onload="tqf3g5.addedit[action].init()">
+          </div>
+        </div>
+      </div>
+      <div ng-if="tqf3.accordionGroup.section6.isOpen">
+        <div class="{{class + ' ' + classObj.group6.class}}"
+          ng-controller="TQFInfo.TQF3.group6Ctrl as tqf3g6"
+          ng-init="tqf3g6.addedit.showForm = true; tqf3g6.addedit.template.action = action; tqf3g6.addedit.template.init()">
+          <div ng-if="tqf3g6.addedit.showForm" ng-include="tqf3g6.addedit.template.content" onload="tqf3g6.addedit[action].init()">
+          </div>
+        </div>
+      </div>
+      <div ng-if="tqf3.accordionGroup.section7.isOpen">
+        <div class="{{class + ' ' + classObj.group7.class}}"
+          ng-controller="TQFInfo.TQF3.group7Ctrl as tqf3g7"
+          ng-init="tqf3g7.addedit.showForm = true; tqf3g7.addedit.template.action = action; tqf3g7.addedit.template.init()">
+          <div ng-if="tqf3g7.addedit.showForm" ng-include="tqf3g7.addedit.template.content" onload="tqf3g7.addedit[action].init()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/ng-template" id="TQFInfo.TQF3.Group.AddEdit.Section.Heading.Template.html">
-    <div class="light-bg" uib-accordion-group is-disabled="true" ng-click="$TQFServ.TQF3.accordionGroup.isOpen = false; tqf3.accordionGroup['section' + order].isOpen = true">
-        <uib-accordion-heading>
-            <div class="navigation">
-                <ul>
-                    <li class="text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10" ng-bind-html="$appServ.getLabel(['TQF3', ('group' + order)])"></span></li>
-                    <li class="separate"></li>
-                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF3', ('group' + order), 'mean'])}}</span></li>
-                </ul>
-            </div>
-        </uib-accordion-heading>
-    </div>
+  <div class="light-bg" uib-accordion-group is-disabled="true" ng-click="$TQFServ.TQF3.accordionGroup.isOpen = false; tqf3.accordionGroup['section' + order].isOpen = true">
+    <uib-accordion-heading>
+      <div class="navigation">
+        <ul>
+          <li class="text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10" ng-bind-html="$appServ.getLabel(['TQF3', ('group' + order)])"></span></li>
+          <li class="separate"></li>
+          <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF3', ('group' + order), 'mean'])}}</span></li>
+        </ul>
+      </div>
+    </uib-accordion-heading>
+  </div>
 </script>

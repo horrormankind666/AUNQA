@@ -70,10 +70,10 @@ namespace API.Controllers
 
 				if (tokenAccess == null)
 				{
-						tokenAccess = RouteTokenAccess("prd2");
+					tokenAccess = RouteTokenAccess("prd2");
 
-						if (tokenAccess == null)
-								tokenAccess = RouteTokenAccess("prd3");
+					if (tokenAccess == null)
+						tokenAccess = RouteTokenAccess("prd3");
 				}
       }
       else
@@ -114,7 +114,7 @@ namespace API.Controllers
 
 				obj = new iUtil.APIResponse
 				{
-						data = JsonConvert.DeserializeObject<dynamic>(result)
+					data = JsonConvert.DeserializeObject<dynamic>(result)
 				};
 
 				return Request.CreateResponse(HttpStatusCode.OK, obj);
@@ -206,7 +206,7 @@ namespace API.Controllers
 
 			public static dynamic Education(string tokenAccess, string personalId)
 			{
-					StringBuilder body = new StringBuilder();
+				StringBuilder body = new StringBuilder();
 
 				body.AppendLine("educations(personalId: \"" + personalId + "\") { ");
 				body.AppendLine("	educationType, ");
@@ -274,15 +274,15 @@ namespace API.Controllers
 
 				foreach (DataRow dr in dt.Rows)
 				{
-						JObject programObj = new JObject();
+					JObject programObj = new JObject();
 
-						foreach (DataColumn col in dt.Columns)
-						{
-								string values = dr[col].ToString();
-								programObj.Add(col.ColumnName, values);
-						}
+					foreach (DataColumn col in dt.Columns)
+					{
+						string values = dr[col].ToString();
+						programObj.Add(col.ColumnName, values);
+					}
 
-						programArray.Add(programObj);
+					programArray.Add(programObj);
 				}
 
 				JObject jsonAdrObj = new JObject(address);
@@ -291,8 +291,8 @@ namespace API.Controllers
 
 				if (infoObj == null)
 				{
-						jsonObj["content"]["personal"] = new JObject();
-						infoObj = jsonObj["content"]["personal"];
+					jsonObj["content"]["personal"] = new JObject();
+					infoObj = jsonObj["content"]["personal"];
 				}
 
 				infoObj.Add("addresses", ((dynamic)jsonAdrObj.SelectToken("content") != null ? (dynamic)jsonAdrObj.SelectToken("content.addresses") : null));

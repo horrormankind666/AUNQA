@@ -7,26 +7,22 @@ Description : <โมเดลข้อมูล Input Type>
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace API.Models
 {
-    public class InputType
+  public class InputType
+  {
+    public static DataSet GetListData(string contentType, string curYear, string xmlData, string dLevel)
     {
-        public static DataSet GetListData(string contentType, string curYear, string xmlData, string dLevel)
-        {
-            DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetListInputType",
-                new SqlParameter("@contentType",    contentType),
-                new SqlParameter("@curYear",        curYear),
-                new SqlParameter("@xmlData",        xmlData),
-                new SqlParameter("@dLevel",         dLevel));
+      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetListInputType",
+        new SqlParameter("@contentType",  contentType),
+        new SqlParameter("@curYear",      curYear),
+        new SqlParameter("@xmlData",      xmlData),
+        new SqlParameter("@dLevel",       dLevel));
 
-            return ds;
-        }
+      return ds;
     }
+  }
 }

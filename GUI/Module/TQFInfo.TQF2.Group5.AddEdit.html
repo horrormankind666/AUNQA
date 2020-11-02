@@ -1,54 +1,54 @@
 ﻿<div class="addedit dialogin">
-    <div class="panel noborder silver-bg">
-        <div class="panel-heading block tqf-group">
-            <div class="panel-table">
-                <div class="panel-row">
-                    <div class="panel-col text-left">
-                        <div class="panel-title">
-                            <div class="navigation">
-                                <ul>
-                                    <li class="text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10" ng-bind-html="$appServ.getLabel(['TQF2', 'group5'])"></span></li>
-                                    <li class="separate"></li>
-                                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group5', 'mean'])}}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>                
-                    <div class="panel-col col-toolbar text-right" ng-if="!$TQFServ.TQF2.accordionGroup.isOpen">
-                    </div>
-                </div>
+  <div class="panel noborder silver-bg">
+    <div class="panel-heading block tqf-group">
+      <div class="panel-table">
+        <div class="panel-row">
+          <div class="panel-col text-left">
+            <div class="panel-title">
+              <div class="navigation">
+                <ul>
+                  <li class="text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10" ng-bind-html="$appServ.getLabel(['TQF2', 'group5'])"></span></li>
+                  <li class="separate"></li>
+                  <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group5', 'mean'])}}</span></li>
+                </ul>
+              </div>
             </div>
+          </div>                
+          <div class="panel-col col-toolbar text-right" ng-if="!$TQFServ.TQF2.accordionGroup.isOpen">
+          </div>
         </div>
-        <div class="panel-body white-bg">
-            <div class="paddingTop10 paddingRight10 paddingBottom10 paddingLeft10">
-                <div class="form vertical">
-                    <div class="form-row" ng-repeat="criterialEvaluate in $appServ.table.dataSource.criterialEvaluate | orderBy: 'id'">
-                        <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{criterialEvaluate.title[$utilServ.lang]}}</div>
-                        <div class="form-col input-col">
-                            <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
-                                <textarea smart-textbox class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g5.addedit.formField.criterialEvaluate[criterialEvaluate.id]"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel noborder">
-                <div class="panel-body block light-bg">
-                    <div class="form">
-                        <div class="form-row">
-                            <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                            <div class="form-col input-col text-right nopadding-top nopadding-bottom">
-                                <div class="btn-command nopadding-top">
-                                    <span>
-                                        <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g5.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g5.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
-                                        <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g5.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g5.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="panel-body white-bg">
+      <div class="paddingTop10 paddingRight10 paddingBottom10 paddingLeft10">
+        <div class="form vertical">
+          <div class="form-row" ng-repeat="criterialEvaluate in $appServ.table.dataSource.criterialEvaluate | orderBy: 'id'">
+            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{criterialEvaluate.title[$utilServ.lang]}}</div>
+            <div class="form-col input-col">
+              <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                <textarea smart-textbox class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g5.addedit.formField.criterialEvaluate[criterialEvaluate.id]"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel noborder">
+        <div class="panel-body block light-bg">
+          <div class="form">
+            <div class="form-row">
+              <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+              <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                <div class="btn-command nopadding-top">
+                  <span>
+                    <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g5.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g5.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
+                    <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g5.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g5.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

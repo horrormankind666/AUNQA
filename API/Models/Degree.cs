@@ -7,31 +7,26 @@ Description : <โมเดลข้อมูลระดับการศึ�
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace API.Models
 {
-    public class Degree
+  public class Degree
+  {
+    public static DataSet GetListData()
     {
-        public static DataSet GetListData()
-        {
-            DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetListDegree", null);
+      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetListDegree", null);
 
-            return ds;
-        }
-
-        public static DataSet GetData(string degreeId)
-        {
-            DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetDegree",
-                new SqlParameter("@id", degreeId));
-
-            return ds;
-        }
-
+      return ds;
     }
+
+    public static DataSet GetData(string degreeId)
+    {
+      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetDegree",
+        new SqlParameter("@id", degreeId));
+
+      return ds;
+    }
+  }
 }

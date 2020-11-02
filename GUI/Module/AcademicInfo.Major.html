@@ -1,42 +1,42 @@
 ﻿<div class="{{$pageRouteServ.pageObject.academicInfo.class + ' ' + $pageRouteServ.pageObject.major.class}}"
-    ng-controller="academicInfo.majorCtrl as acamaj"
-    ng-if="$appServ.isUser"
-    ng-init="acamaj.init()">
-    <div class="panel noborder">
-        <div class="panel-heading page-heading">
-            <div class="panel-title">
-                <div class="panel-table">
-                    <div class="panel-row">
-                        <div class="panel-col col-navigation">
-                            <div class="navigation">
-                                <ul>
-                                    <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['major'])}}</span></li>
-                                    <li class="colhide separate" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
-                                    <li class="colshow text-left" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f9">{{$facultyServ.facultyInfo.code + ' - ' + ($facultyServ.facultyInfo.name[$utilServ.lang] | capitalize)}}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="panel-col col-toolbar text-right" ng-if="$facultyServ.isFaculty">
-                            <div class="toolbar">
-                                <a enter class="btn" href="javascript:void(0)" ng-if="!acamaj.addedit.showForm" ng-click="$utilServ.doBlur($event); acamaj.addedit.showForm = !acamaj.addedit.showForm; acamaj.addedit.template.action = 'add'; acamaj.addedit.template.init()" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
-                                <a enter class="btn" href="javascript:void(0)" ng-if="acamaj.addedit.showForm" ng-click="$utilServ.doBlur($event); acamaj.table.hide = true; acamaj.table.isReload = true; acamaj.addedit.showForm = !acamaj.addedit.showForm; acamaj.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  ng-controller="academicInfo.majorCtrl as acamaj"
+  ng-if="$appServ.isUser"
+  ng-init="acamaj.init()">
+  <div class="panel noborder">
+    <div class="panel-heading page-heading">
+      <div class="panel-title">
+        <div class="panel-table">
+          <div class="panel-row">
+            <div class="panel-col col-navigation">
+              <div class="navigation">
+                <ul>
+                  <li class="colhide text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f8">{{$appServ.getLabel(['major'])}}</span></li>
+                  <li class="colhide separate" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f8">:</span></li>
+                  <li class="colshow text-left" ng-if="$facultyServ.isFaculty"><span class="{{$appServ.labelStyle}} bold black f9">{{$facultyServ.facultyInfo.code + ' - ' + ($facultyServ.facultyInfo.name[$utilServ.lang] | capitalize)}}</span></li>
+                </ul>
+              </div>
             </div>
+            <div class="panel-col col-toolbar text-right" ng-if="$facultyServ.isFaculty">
+              <div class="toolbar">
+                <a enter class="btn" href="javascript:void(0)" ng-if="!acamaj.addedit.showForm" ng-click="$utilServ.doBlur($event); acamaj.addedit.showForm = !acamaj.addedit.showForm; acamaj.addedit.template.action = 'add'; acamaj.addedit.template.init()" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+                <a enter class="btn" href="javascript:void(0)" ng-if="acamaj.addedit.showForm" ng-click="$utilServ.doBlur($event); acamaj.table.hide = true; acamaj.table.isReload = true; acamaj.addedit.showForm = !acamaj.addedit.showForm; acamaj.addedit.template.remove()" uib-tooltip-html="$appServ.getLabel(['back'])"><i class="fa fa-arrow-left white f10 top5"></i></a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel-body page-body" ng-show="acamaj.showForm && !acamaj.addedit.showForm">
-            <uib-tabset active="acamaj.tabSelect.activeTabIndex">
-                <uib-tab index="0" heading="{{$appServ.getLabel(['verify', 'verified'])}}" ng-click="acamaj.tabSelect.selected('verified')">
-                    <div ng-include="acamaj.verified.template.content" ng-controller="academicInfo.major.verifiedCtrl as majvef" onload="majvef.init()"></div>
-                </uib-tab>
-                <uib-tab index="1" heading="{{$appServ.getLabel(['verify', 'pendingVerify'])}}" ng-click="acamaj.tabSelect.selected('pendingVerify')">
-                    <div ng-include="acamaj.pendingVerify.template.content" ng-controller="academicInfo.major.pendingVerifyCtrl as majpvf" onload="majpvf.init()"></div>
-                </uib-tab>
-            </uib-tabset>
-        </div>
-        <div class="panel-body" ng-if="acamaj.addedit.showForm" ng-include="acamaj.addedit.template.content" onload="acamaj.addedit[acamaj.addedit.template.action].init()">
-        </div>
+      </div>
     </div>
+    <div class="panel-body page-body" ng-show="acamaj.showForm && !acamaj.addedit.showForm">
+      <uib-tabset active="acamaj.tabSelect.activeTabIndex">
+        <uib-tab index="0" heading="{{$appServ.getLabel(['verify', 'verified'])}}" ng-click="acamaj.tabSelect.selected('verified')">
+          <div ng-include="acamaj.verified.template.content" ng-controller="academicInfo.major.verifiedCtrl as majvef" onload="majvef.init()"></div>
+        </uib-tab>
+        <uib-tab index="1" heading="{{$appServ.getLabel(['verify', 'pendingVerify'])}}" ng-click="acamaj.tabSelect.selected('pendingVerify')">
+          <div ng-include="acamaj.pendingVerify.template.content" ng-controller="academicInfo.major.pendingVerifyCtrl as majpvf" onload="majpvf.init()"></div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+    <div class="panel-body" ng-if="acamaj.addedit.showForm" ng-include="acamaj.addedit.template.content" onload="acamaj.addedit[acamaj.addedit.template.action].init()">
+    </div>
+  </div>
 </div>

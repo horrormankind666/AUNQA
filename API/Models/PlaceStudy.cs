@@ -7,22 +7,17 @@ Description : <โมเดลข้อมูลสถานที่จัด�
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace API.Models
 {
-    public class PlaceStudy
+  public class PlaceStudy
+  {
+    public static DataSet GetListData()
     {
-        public static DataSet GetListData()
-        {
-            DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetListPlaceStudy", null);
+      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaGetListPlaceStudy", null);
 
-            return ds;
-        }
+      return ds;
     }
+  }
 }

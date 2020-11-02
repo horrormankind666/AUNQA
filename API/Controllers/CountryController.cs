@@ -7,41 +7,35 @@ Description : <คอนโทลเลอร์ข้อมูลประเ�
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 using API.Models;
 
 namespace API.Controllers
 {
-    [RoutePrefix("Country")]
-    public class CountryController : ApiController
+  [RoutePrefix("Country")]
+  public class CountryController : ApiController
+  {
+    private dynamic account = iUtil.AuthenStudentSystem.GetAccount();
+
+    [Route("GetListData")]
+    [HttpGet]
+    public HttpResponseMessage GetListData(
+      string keyword = "",
+      string cancelledStatus = "",
+      string sortOrderBy = "",
+      string sortExpression = ""
+    )
     {
-        private dynamic account = iUtil.AuthenStudentSystem.GetAccount();
+      DataTable dt = new DataTable();
+      bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
 
-        [Route("GetListData")]
-        [HttpGet]
-        public HttpResponseMessage GetListData(
-            string keyword = "",
-            string cancelledStatus = "",
-            string sortOrderBy = "",
-            string sortExpression = ""
-        )
-        {
-            DataTable dt = new DataTable();
-            bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
+      if (isAuthen)
+        dt = Country.GetListData(keyword, cancelledStatus, sortOrderBy, sortExpression).Tables[0];
 
-            if (isAuthen)
-                dt = Country.GetListData(keyword, cancelledStatus, sortOrderBy, sortExpression).Tables[0];
-
-            return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
-        }
+      return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
     }
+  }
 }

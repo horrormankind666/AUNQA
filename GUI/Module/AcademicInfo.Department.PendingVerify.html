@@ -1,272 +1,274 @@
 ﻿<div class="{{$pageRouteServ.pageObject.academicInfo.class + ' ' + $pageRouteServ.pageObject.department.class + ' ' + $pageRouteServ.pageObject.department.pendingVerify.class}}">
-    <div class="dialogin" ng-if="deppvf.showForm">
-        <div class="panel noborder">
-            <div class="panel-body">
-                <div class="text-center" loading-container="$departmentServ.tableList.departmentPendingVerify.settings().$loading">
-                    <table class="table table-striped table-hover" ng-table="$departmentServ.tableList.departmentPendingVerify">
-                        <caption>
-                            <div class="block">
-                                <div class="panel-table">
-                                    <div class="panel-row">
-                                        <div class="panel-col col-toolbar">
-                                            <div class="toolbar">
-                                                <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); deppvf.table.filter.showForm = !deppvf.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
-                                                <a enter class="btn black f5" href="javascript:void(0)" ng-click="
-                                                   $utilServ.doBlur($event);
-                                                    deppvf.uncheckboxAll(); 
-                                                    acadep.table.reload.isPreloading = false;
-                                                    acadep.table.reload.isResetDataSource = true;
-                                                    acadep.table.reload.order = [{ 
-                                                        table: 'departmentPendingVerify',
-                                                        isFirstPage: true
-                                                    }, {
-                                                        table: 'departmentVerified',
-                                                        isFirstPage: true
-                                                    }];
-                                                    acadep.table.reload.action()" uib-tooltip-html="$appServ.getLabel(['reload'])">
-                                                    <i class="fa fa fa-refresh white f9"></i>                                                   
-                                                </a>
-                                                <a enter class="btn btn-text default-bg disabled" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); deppvf.verifyReject.setValue('verify'); acadep.verifyReject.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['verify'])"><i class="fa fa-check-square-o white f8"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['verify'])}}</span></a>
-                                                <a enter class="btn btn-text danger-bg disabled" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); deppvf.verifyReject.setValue('reject'); acadep.verifyReject.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['reject'])"><i class="fa fa-check-square-o white f8"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['reject'])}}</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="panel-col col-recordcount text-right paddingTop4" ng-if="!acadep.table.hide" ng-show="!$departmentServ.tableList.departmentPendingVerify.settings().$loading">
-                                            <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount($departmentServ.tableList.departmentPendingVerify.totalSearch, $departmentServ.tableList.departmentPendingVerify.total(), $dictServ.dict)}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter dialogin" ng-if="deppvf.table.filter.showForm">
-                                <div class="panel noborder">
-                                    <div class="panel-heading block">
-                                        <div class="panel-title text-left">
-                                            <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body block">
-                                        <div class="panel-table">
-                                            <div class="panel-row">
-                                                <div class="panel-col">
-                                                    <div class="form vertical">
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
-                                                            <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="$departmentServ.tableList.departmentPendingVerify.totalSearch === 0" ng-model="deppvf.table.filter.formField.keyword" /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel-col nopadding-right">
-                                                    <div class="form vertical">
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['department', 'table', 'verifyStatus'])}}</div>
-                                                            <div class="form-col input-col text-left">
-                                                                <ui-select class="no-searchbox" search-enabled="false" ng-disabled="$departmentServ.tableList.departmentPendingVerify.totalSearch === 0" ng-model="deppvf.table.filter.formField.verifyStatusSelected.selected" theme="select2">
-                                                                    <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'status'])}}">
-                                                                        <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.name[$utilServ.lang] ? ($select.selected.name[$utilServ.lang] | capitalize) : '')}}</span>
-                                                                        <span clearselect class="clearselect lang font-en regular gray f10" ng-click="deppvf.table.filter.formField.verifyStatusSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
-                                                                    </ui-select-match>
-                                                                    <ui-select-choices repeat="verifyStatus in $dictServ.dict.verifyStatus">
-                                                                        <span class="{{$appServ.labelStyle}} regular f11" ng-show="verifyStatus.id !== 'Y' && verifyStatus.id !== 'S'">{{(verifyStatus.name[$utilServ.lang] | capitalize)}}</span>
-                                                                    </ui-select-choices>
-                                                                </ui-select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </caption>
-                        <thead class="table-data">
-                            <tr>
-                                <th class="noborder-top noborder-bottom noborder-left col-index">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-selectall">
-                                    <div class="block">
-                                        <div class="icheck-default">
-                                            <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="deppvf.checkboxChildOnOffByRoot()" ng-model="deppvf.table.formField.checkboxes.checked" />
-                                            <label for="checkall"></label>
-                                        </div>
-                                    </div>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-code">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['department', 'table', 'code'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-name">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['department', 'table', 'name'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-verifystatus">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['department', 'table', 'verifyStatus'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-right noborder-bottom col-command">
-                                </th>
-                                <th class="colwrap colwrap1 noborder text-left" colspan="6">
-                                    <div class="block">
-                                        <div class="panel-table">
-                                            <div class="panel-row">
-                                                <div class="panel-col">
-                                                    <div class="radio-row">
-                                                        <ul>
-                                                            <li class="radio-col input-col nopadding-top nopadding-bottom">
-                                                                <div class="icheck-default">
-                                                                    <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="deppvf.checkboxChildOnOffByRoot()" ng-model="deppvf.table.formField.checkboxes.checked" />
-                                                                    <label for="checkall"></label>
-                                                                </div>
-                                                            </li>
-                                                            <li class="radio-col label-col nopadding-top nopadding-bottom">
-                                                                <div class="label-tab">
-                                                                    <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['selectAll'])}}</span>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-data" ng-repeat="dr in $data | orderBy: 'id'">
-                            <tr class="{{deppvf.table.formField.toggle[dr.id] ? 'active' : ''}}" ng-if="!acadep.table.hide">
-                                <td class="noborder-top noborder-bottom noborder-left col-index">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex($departmentServ.tableList.departmentPendingVerify, $index)}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-selectall">
-                                    <div class="block">
-                                        <div class="icheck-default" ng-show="dr.status !== 'Y'">
-                                            <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="deppvf.checkboxRootOnOffByChild()" ng-model="deppvf.table.formField.checkboxes.items[dr.id]" />
-                                            <label for="{{'check' + dr.id}}"></label>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-code">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'code'])">{{dr.code}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-name text-left">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'name'])">{{dr.name[$utilServ.lang]}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-verifystatus">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'verifyStatus'])">
-                                        <a class="link" href="javascript:void(0)" ng-click="deppvf.table.formField.toggle[dr.id] = !deppvf.table.formField.toggle[dr.id]" ng-show="dr.verifyStatus === 'N'" ng-model="deppvf.table.formField.toggle[dr.id]">{{$appServ.getLabel(['reject'])}}</a>
-                                    </span>
-                                </td>
-                                <td class="noborder-top noborder-right noborder-bottom col-command">
-                                    <div class="block">
-                                        <div class="toolbar">
-                                            <a class="btn nomargin-left info-bg" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); acadep.addedit.showForm = !acadep.addedit.showForm; acadep.addedit.template.action = 'edit'; acadep.addedit.template.init(); acadep.addedit.formValue.id = dr.id" uib-tooltip-html="$appServ.getLabel(['edit'])"><i class="fa fa-edit white f9"></i></a>
-                                            <a class="btn danger-bg disabled" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); acadep.addedit.delete.dataRow = dr; acadep.addedit.delete.init(); acadep.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="colwrap colwrap1 noborder" colspan="6">
-                                    <div class="view block">
-                                        <div class="iform">
-                                            <div class="iform-row" ng-show="dr.status !== 'Y'">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <div class="icheck-default">
-                                                        <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="deppvf.checkboxRootOnOffByChild()" ng-model="deppvf.table.formField.checkboxes.items[dr.id]" />
-                                                        <label for="{{'check' + dr.id}}"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="iform-col label-col nopadding-top colhead">
-                                                </div>
-                                                <div class="iform-col input-col nopadding-top">
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex($departmentServ.tableList.departmentPendingVerify, $index)}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['department', 'table', 'code'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.code}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['department', 'table', 'name'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.name[$utilServ.lang]}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['department', 'table', 'verifyStatus'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">
-                                                        <a class="link" href="javascript:void(0)" ng-click="deppvf.table.formField.toggle[dr.id] = !deppvf.table.formField.toggle[dr.id]" ng-show="dr.verifyStatus === 'N'" ng-model="deppvf.table.formField.toggle[dr.id]">{{$appServ.getLabel(['reject'])}}</a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="text-right paddingTop3">
-                                            <div class="toolbar">
-                                                <a class="btn nomargin-left info-bg" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); acadep.addedit.showForm = !acadep.addedit.showForm; acadep.addedit.template.action = 'edit'; acadep.addedit.template.init(); acadep.addedit.formValue.id = dr.id" uib-tooltip-html="$appServ.getLabel(['edit'])"><i class="fa fa-edit white f9"></i></a>
-                                                <a class="btn danger-bg disabled" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); acadep.addedit.delete.dataRow = dr; acadep.addedit.delete.init(); acadep.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="orange-bg" ng-if="dr.verifyStatus == 'N' && deppvf.table.formField.toggle[dr.id]">
-                                <td colspan="6">
-                                    <div class="view block border5 border-solid border-darkgray noborder-top noborder-right noborder-left">
-                                        <div class="iform">
-                                            <div class="iform-row">
-                                                <div class="iform-col input-col text-left">
-                                                    <span class="{{$appServ.labelStyle}} regular black f10" ng-bind-html="dr.verifyRemarkBindhtml"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="colwrap colwrap1" colspan="6">
-                                    <div class="view block">
-                                        <div class="iform">
-                                            <div class="iform-row">
-                                                <div class="iform-col input-col text-left">
-                                                    <span class="{{$appServ.labelStyle}} regular black f10" ng-bind-html="dr.verifyRemarkBindhtml"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot ng-show="$departmentServ.tableList.departmentPendingVerify.totalSearch !== undefined && !$departmentServ.tableList.departmentPendingVerify.settings().$loading">
-                            <tr ng-if="!acadep.table.hide">
-                                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="6">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount($departmentServ.tableList.departmentPendingVerify.totalSearch, $departmentServ.tableList.departmentPendingVerify.total(), $dictServ.dict)}}</span>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+  <div class="dialogin" ng-if="deppvf.showForm">
+    <div class="panel noborder">
+      <div class="panel-body">
+        <div class="text-center" loading-container="$departmentServ.tableList.departmentPendingVerify.settings().$loading">
+          <table class="table table-striped table-hover" ng-table="$departmentServ.tableList.departmentPendingVerify">
+            <caption>
+              <div class="block">
+                <div class="panel-table">
+                  <div class="panel-row">
+                    <div class="panel-col col-toolbar">
+                      <div class="toolbar">
+                        <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); deppvf.table.filter.showForm = !deppvf.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
+                        <a enter class="btn black f5" href="javascript:void(0)"
+                          ng-click="
+                            $utilServ.doBlur($event);
+                            deppvf.uncheckboxAll(); 
+                            acadep.table.reload.isPreloading = false;
+                            acadep.table.reload.isResetDataSource = true;
+                            acadep.table.reload.order = [{ 
+                              table: 'departmentPendingVerify',
+                              isFirstPage: true
+                            }, {
+                              table: 'departmentVerified',
+                              isFirstPage: true
+                            }];
+                            acadep.table.reload.action()"
+                          uib-tooltip-html="$appServ.getLabel(['reload'])">
+                          <i class="fa fa fa-refresh white f9"></i>                                                   
+                        </a>
+                        <a enter class="btn btn-text default-bg disabled" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); deppvf.verifyReject.setValue('verify'); acadep.verifyReject.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['verify'])"><i class="fa fa-check-square-o white f8"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['verify'])}}</span></a>
+                        <a enter class="btn btn-text danger-bg disabled" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); deppvf.verifyReject.setValue('reject'); acadep.verifyReject.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['reject'])"><i class="fa fa-check-square-o white f8"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['reject'])}}</span></a>
+                      </div>
+                    </div>
+                    <div class="panel-col col-recordcount text-right paddingTop4" ng-if="!acadep.table.hide" ng-show="!$departmentServ.tableList.departmentPendingVerify.settings().$loading">
+                      <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount($departmentServ.tableList.departmentPendingVerify.totalSearch, $departmentServ.tableList.departmentPendingVerify.total(), $dictServ.dict)}}</span>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
+              <div class="filter dialogin" ng-if="deppvf.table.filter.showForm">
+                <div class="panel noborder">
+                  <div class="panel-heading block">
+                    <div class="panel-title text-left">
+                      <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
+                    </div>
+                  </div>
+                  <div class="panel-body block">
+                    <div class="panel-table">
+                      <div class="panel-row">
+                        <div class="panel-col">
+                          <div class="form vertical">
+                            <div class="form-row">
+                              <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
+                              <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="$departmentServ.tableList.departmentPendingVerify.totalSearch === 0" ng-model="deppvf.table.filter.formField.keyword" /></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="panel-col nopadding-right">
+                          <div class="form vertical">
+                            <div class="form-row">
+                              <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['department', 'table', 'verifyStatus'])}}</div>
+                              <div class="form-col input-col text-left">
+                                <ui-select class="no-searchbox" search-enabled="false" ng-disabled="$departmentServ.tableList.departmentPendingVerify.totalSearch === 0" ng-model="deppvf.table.filter.formField.verifyStatusSelected.selected" theme="select2">
+                                  <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'status'])}}">
+                                    <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.name[$utilServ.lang] ? ($select.selected.name[$utilServ.lang] | capitalize) : '')}}</span>
+                                    <span clearselect class="clearselect lang font-en regular gray f10" ng-click="deppvf.table.filter.formField.verifyStatusSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+                                  </ui-select-match>
+                                  <ui-select-choices repeat="verifyStatus in $dictServ.dict.verifyStatus">
+                                    <span class="{{$appServ.labelStyle}} regular f11" ng-show="verifyStatus.id !== 'Y' && verifyStatus.id !== 'S'">{{(verifyStatus.name[$utilServ.lang] | capitalize)}}</span>
+                                  </ui-select-choices>
+                                </ui-select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </caption>
+            <thead class="table-data">
+              <tr>
+                <th class="noborder-top noborder-bottom noborder-left col-index">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-selectall">
+                  <div class="block">
+                    <div class="icheck-default">
+                      <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="deppvf.checkboxChildOnOffByRoot()" ng-model="deppvf.table.formField.checkboxes.checked" />
+                      <label for="checkall"></label>
+                    </div>
+                  </div>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-code">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['department', 'table', 'code'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-name">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['department', 'table', 'name'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-verifystatus">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['department', 'table', 'verifyStatus'])}}</span>
+                </th>
+                <th class="noborder-top noborder-right noborder-bottom col-command">
+                </th>
+                <th class="colwrap colwrap1 noborder text-left" colspan="6">
+                  <div class="block">
+                    <div class="panel-table">
+                      <div class="panel-row">
+                        <div class="panel-col">
+                          <div class="radio-row">
+                            <ul>
+                              <li class="radio-col input-col nopadding-top nopadding-bottom">
+                                <div class="icheck-default">
+                                  <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="deppvf.checkboxChildOnOffByRoot()" ng-model="deppvf.table.formField.checkboxes.checked" />
+                                  <label for="checkall"></label>
+                                </div>
+                              </li>
+                              <li class="radio-col label-col nopadding-top nopadding-bottom">
+                                <div class="label-tab">
+                                  <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['selectAll'])}}</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="table-data" ng-repeat="dr in $data | orderBy: 'id'">
+              <tr class="{{deppvf.table.formField.toggle[dr.id] ? 'active' : ''}}" ng-if="!acadep.table.hide">
+                <td class="noborder-top noborder-bottom noborder-left col-index">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex($departmentServ.tableList.departmentPendingVerify, $index)}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-selectall">
+                  <div class="block">
+                    <div class="icheck-default" ng-show="dr.status !== 'Y'">
+                      <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="deppvf.checkboxRootOnOffByChild()" ng-model="deppvf.table.formField.checkboxes.items[dr.id]" />
+                      <label for="{{'check' + dr.id}}"></label>
+                    </div>
+                  </div>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-code">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'code'])">{{dr.code}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-name text-left">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'name'])">{{dr.name[$utilServ.lang]}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-verifystatus">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['department', 'table', 'verifyStatus'])">
+                    <a class="link" href="javascript:void(0)" ng-click="deppvf.table.formField.toggle[dr.id] = !deppvf.table.formField.toggle[dr.id]" ng-show="dr.verifyStatus === 'N'" ng-model="deppvf.table.formField.toggle[dr.id]">{{$appServ.getLabel(['reject'])}}</a>
+                  </span>
+                </td>
+                <td class="noborder-top noborder-right noborder-bottom col-command">
+                  <div class="block">
+                    <div class="toolbar">
+                      <a class="btn nomargin-left info-bg" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); acadep.addedit.showForm = !acadep.addedit.showForm; acadep.addedit.template.action = 'edit'; acadep.addedit.template.init(); acadep.addedit.formValue.id = dr.id" uib-tooltip-html="$appServ.getLabel(['edit'])"><i class="fa fa-edit white f9"></i></a>
+                      <a class="btn danger-bg disabled" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); acadep.addedit.delete.dataRow = dr; acadep.addedit.delete.init(); acadep.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                    </div>
+                  </div>
+                </td>
+                <td class="colwrap colwrap1 noborder" colspan="6">
+                  <div class="view block">
+                    <div class="iform">
+                      <div class="iform-row" ng-show="dr.status !== 'Y'">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <div class="icheck-default">
+                            <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="deppvf.checkboxRootOnOffByChild()" ng-model="deppvf.table.formField.checkboxes.items[dr.id]" />
+                            <label for="{{'check' + dr.id}}"></label>
+                          </div>
+                        </div>
+                        <div class="iform-col label-col nopadding-top colhead">
+                        </div>
+                        <div class="iform-col input-col nopadding-top">
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex($departmentServ.tableList.departmentPendingVerify, $index)}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['department', 'table', 'code'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.code}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['department', 'table', 'name'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.name[$utilServ.lang]}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['department', 'table', 'verifyStatus'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">
+                            <a class="link" href="javascript:void(0)" ng-click="deppvf.table.formField.toggle[dr.id] = !deppvf.table.formField.toggle[dr.id]" ng-show="dr.verifyStatus === 'N'" ng-model="deppvf.table.formField.toggle[dr.id]">{{$appServ.getLabel(['reject'])}}</a>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-right paddingTop3">
+                      <div class="toolbar">
+                        <a class="btn nomargin-left info-bg" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); acadep.addedit.showForm = !acadep.addedit.showForm; acadep.addedit.template.action = 'edit'; acadep.addedit.template.init(); acadep.addedit.formValue.id = dr.id" uib-tooltip-html="$appServ.getLabel(['edit'])"><i class="fa fa-edit white f9"></i></a>
+                        <a class="btn danger-bg disabled" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); acadep.addedit.delete.dataRow = dr; acadep.addedit.delete.init(); acadep.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="orange-bg" ng-if="dr.verifyStatus == 'N' && deppvf.table.formField.toggle[dr.id]">
+                <td colspan="6">
+                  <div class="view block border5 border-solid border-darkgray noborder-top noborder-right noborder-left">
+                    <div class="iform">
+                      <div class="iform-row">
+                        <div class="iform-col input-col text-left">
+                          <span class="{{$appServ.labelStyle}} regular black f10" ng-bind-html="dr.verifyRemarkBindhtml"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="colwrap colwrap1" colspan="6">
+                  <div class="view block">
+                    <div class="iform">
+                      <div class="iform-row">
+                        <div class="iform-col input-col text-left">
+                          <span class="{{$appServ.labelStyle}} regular black f10" ng-bind-html="dr.verifyRemarkBindhtml"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot ng-show="$departmentServ.tableList.departmentPendingVerify.totalSearch !== undefined && !$departmentServ.tableList.departmentPendingVerify.settings().$loading">
+              <tr ng-if="!acadep.table.hide">
+                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="6">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount($departmentServ.tableList.departmentPendingVerify.totalSearch, $departmentServ.tableList.departmentPendingVerify.total(), $dictServ.dict)}}</span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </div>

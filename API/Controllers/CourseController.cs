@@ -7,81 +7,75 @@ Description : <คอนโทลเลอร์ข้อมูลรายว�
 =============================================
 */
 
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
-using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using API.Models;
 
 namespace API.Controllers
 {
-    [RoutePrefix("Course")]
-    public class CourseController : ApiController
+  [RoutePrefix("Course")]
+  public class CourseController : ApiController
+  {
+    private dynamic account = iUtil.AuthenStudentSystem.GetAccount();
+
+    public dynamic GetJSONFromRequest()
     {
-        private dynamic account = iUtil.AuthenStudentSystem.GetAccount();
+      string content = Request.Content.ReadAsStringAsync().Result;
+      dynamic json = JsonConvert.DeserializeObject<dynamic>(content);
 
-        public dynamic GetJSONFromRequest()
-        {
-            string content = Request.Content.ReadAsStringAsync().Result;
-            dynamic json = JsonConvert.DeserializeObject<dynamic>(content);
-
-            return json;
-        }
-
-        [Route("GetListData")]
-        [HttpGet]
-        public HttpResponseMessage GetListData(
-            string tableType,
-            string facultyId = ""
-        )
-        {
-            DataTable dt = new DataTable();
-            bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
-            int order = 0;
-
-            switch (tableType)
-            {
-                case "master"   : { order = 0; break; }
-                case "temp"     : { order = 0; break; }
-                default         : { order = 0; break; }
-            }
-
-            if (isAuthen)
-                dt = Course.GetListData(tableType, facultyId).Tables[order];
-
-            return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
-        }
-
-        [Route("GetData")]
-        [HttpGet]
-        public HttpResponseMessage GetData(
-            string tableType = "",
-            string id = "",
-            string courseId = ""
-        )
-        {
-            DataTable dt = new DataTable();
-            bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
-            int order = 0;
-
-            switch (tableType)
-            {
-                case "master"       : { order = 0; break; }
-                case "temp"         : { order = 0; break; }
-                default             : { order = 0; break; }
-            }
-
-            if (isAuthen)
-                dt = Course.GetData(tableType, id, courseId, account.Username.ToString()).Tables[order];
-
-            return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
-        }
+      return json;
     }
+
+    [Route("GetListData")]
+    [HttpGet]
+    public HttpResponseMessage GetListData(
+      string tableType,
+      string facultyId = ""
+    )
+    {
+      DataTable dt = new DataTable();
+      bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
+      int order = 0;
+
+      switch (tableType)
+      {
+        case "master" : { order = 0; break; }
+        case "temp"   : { order = 0; break; }
+        default       : { order = 0; break; }
+      }
+
+      if (isAuthen)
+        dt = Course.GetListData(tableType, facultyId).Tables[order];
+
+      return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
+    }
+
+    [Route("GetData")]
+    [HttpGet]
+    public HttpResponseMessage GetData(
+      string tableType = "",
+      string id = "",
+      string courseId = ""
+    )
+    {
+      DataTable dt = new DataTable();
+      bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
+      int order = 0;
+
+      switch (tableType)
+      {
+          case "master" : { order = 0; break; }
+          case "temp"   : { order = 0; break; }
+          default       : { order = 0; break; }
+      }
+
+      if (isAuthen)
+        dt = Course.GetData(tableType, id, courseId, account.Username.ToString()).Tables[order];
+
+      return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
+    }
+  }
 }

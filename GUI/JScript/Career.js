@@ -8,112 +8,109 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
 */
 
 (function () {
-    "use strict";
+  "use strict";
 
-    angular.module("careerMod", [
-        "appMod"
-    ])
+  angular.module("careerMod", [
+    "appMod"
+  ])
 
-    .service("careerServ", function ($q, appServ) {
-        var self = this;
+  .service("careerServ", function ($q, appServ) {
+    var self = this;
 
-        self.getDataSource = function (param) {
-            param.dataSource    = (param.dataSource === undefined || param.dataSource === "" ? [] : param.dataSource);
-            param.action        = (param.action === undefined ? "" : param.action);
-            param.params        = (param.params === undefined || param.params.length === 0 ? "" : param.params);
+    self.getDataSource = function (param) {
+      param.dataSource  = (param.dataSource === undefined || param.dataSource === "" ? [] : param.dataSource);
+      param.action      = (param.action === undefined ? "" : param.action);
+      param.params      = (param.params === undefined || param.params.length === 0 ? "" : param.params);
 
-            var deferred = $q.defer();
+      var deferred = $q.defer();
 
-            if (param.dataSource.length === 0)
-            { 
-                appServ.getListData({
-                    routePrefix: "Career",
-                    action: param.action,
-                    params: param.params
-                }).then(function (result) {                    
-                    var dt = [];
+      if (param.dataSource.length === 0) { 
+        appServ.getListData({
+          routePrefix: "Career",
+          action: param.action,
+          params: param.params
+        }).then(function (result) {                    
+          var dt = [];
 
-                    angular.forEach(result, function (item) {
-                        if (param.action === "getlist")
-                        {
-                            dt.push({
-                                id: (item.id ? item.id : ""),
-                                name: {
-                                    TH: (item.nameTh ? item.nameTh : ""),
-                                    EN: (item.nameEn ? item.nameEn : "")
-                                },
-                                selectFilter: ((item.id ? item.id : "") +
-                                               (item.nameTh ? item.nameTh : "") +
-                                               (item.nameEn ? item.nameEn : ""))
-                            });
-                        }
-
-                        if (param.action === "get")
-                        {
-                            dt.push({
-                                id: (item.id ? item.id : ""),
-                                name: {
-                                    TH: (item.nameTh ? item.nameTh : ""),
-                                    EN: (item.nameEn ? item.nameEn : "")
-                                }
-                            });
-                        }
-                    });
-
-                    param.dataSource = dt;
-
-                    deferred.resolve({
-                        dataSource: param.dataSource,
-                        autocomplete: self.getAutocomplete(param.dataSource)
-                    });
-                });
+          angular.forEach(result, function (item) {
+            if (param.action === "getlist") {
+              dt.push({
+                id: (item.id ? item.id : ""),
+                name: {
+                  TH: (item.nameTh ? item.nameTh : ""),
+                  EN: (item.nameEn ? item.nameEn : "")
+                },
+                selectFilter: ((item.id ? item.id : "") +
+                               (item.nameTh ? item.nameTh : "") +
+                               (item.nameEn ? item.nameEn : ""))
+              });
             }
-            else
-                deferred.resolve({
-                    dataSource: param.dataSource,
-                    autocomplete: self.getAutocomplete(param.dataSource)
-                });
 
-            return deferred.promise;
-        };
+            if (param.action === "get") {
+              dt.push({
+                id: (item.id ? item.id : ""),
+                name: {
+                  TH: (item.nameTh ? item.nameTh : ""),
+                  EN: (item.nameEn ? item.nameEn : "")
+                }
+              });
+            }
+          });
 
-        self.getAutocomplete = function (dataSource) {
-            var array = {
-                TH: [],
-                EN: []
-            };
-            var dt = {
-                TH: [],
-                EN: []
-            };
+          param.dataSource = dt;
 
-            angular.forEach(dataSource, function (item) {
-                array.TH.push({
-                    label: item.name.TH,
-                    value: item
-                });
+          deferred.resolve({
+            dataSource: param.dataSource,
+            autocomplete: self.getAutocomplete(param.dataSource)
+          });
+        });
+      }
+      else
+        deferred.resolve({
+          dataSource: param.dataSource,
+          autocomplete: self.getAutocomplete(param.dataSource)
+        });
 
-                array.EN.push({
-                    label: item.name.EN,
-                    value: item
-                });
-            });
+      return deferred.promise;
+    };
 
-            var groups = _.groupBy(array.TH, "label");
+    self.getAutocomplete = function (dataSource) {
+      var array = {
+        TH: [],
+        EN: []
+      };
+      var dt = {
+        TH: [],
+        EN: []
+      };
 
-            _.forOwn(groups, function (value, key) {
-                dt.TH.push({
-                    label: key,
-                    value: key
-                });
+      angular.forEach(dataSource, function (item) {
+        array.TH.push({
+          label: item.name.TH,
+          value: item
+        });
 
-                dt.EN.push({
-                    label: key,
-                    value: key
-                });
-            });
+        array.EN.push({
+          label: item.name.EN,
+          value: item
+        });
+      });
 
-            return dt;
-        };
-    });
+      var groups = _.groupBy(array.TH, "label");
+
+      _.forOwn(groups, function (value, key) {
+        dt.TH.push({
+          label: key,
+          value: key
+        });
+
+        dt.EN.push({
+          label: key,
+          value: key
+        });
+      });
+
+      return dt;
+    };
+  });
 })();

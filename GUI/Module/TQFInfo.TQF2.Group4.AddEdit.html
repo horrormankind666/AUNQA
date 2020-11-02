@@ -1,536 +1,536 @@
 ﻿<div class="addedit dialogin">
-    <div class="panel noborder silver-bg">
-        <div class="panel-heading block tqf-group">
-            <div class="panel-table">
-                <div class="panel-row">
-                    <div class="panel-col text-left">
-                        <div class="panel-title">
-                            <div class="navigation">
-                                <ul>
-                                    <li class="text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10" ng-bind-html="$appServ.getLabel(['TQF2', 'group4'])"></span></li>
-                                    <li class="separate"></li>
-                                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group4', 'mean'])}}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>                
-                    <div class="panel-col col-toolbar text-right" ng-if="!$TQFServ.TQF2.accordionGroup.isOpen">
-                    </div>
-                </div>
+  <div class="panel noborder silver-bg">
+    <div class="panel-heading block tqf-group">
+      <div class="panel-table">
+        <div class="panel-row">
+          <div class="panel-col text-left">
+            <div class="panel-title">
+              <div class="navigation">
+                <ul>
+                  <li class="text-left {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10" ng-bind-html="$appServ.getLabel(['TQF2', 'group4'])"></span></li>
+                  <li class="separate"></li>
+                  <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group4', 'mean'])}}</span></li>
+                </ul>
+              </div>
             </div>
+          </div>                
+          <div class="panel-col col-toolbar text-right" ng-if="!$TQFServ.TQF2.accordionGroup.isOpen">
+          </div>
         </div>
-        <div class="panel-body white-bg tqf-title">
-            <uib-accordion close-others="false">
-                <ng-include class="accordion-heading" ng-repeat="order in $utilServ.getArrayNumber(tqf2g4.maxSection)" src="'TQFInfo.TQF2.Group4.AddEdit.Section.Heading.Template.html'" ng-if="true"></ng-include>
-            </uib-accordion>
-            <div class="panel noborder">
-                <div class="panel-body block light-bg">
-                    <div class="form">
-                        <div class="form-row">
-                            <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                            <div class="form-col input-col text-right nopadding-top nopadding-bottom">
-                                <div class="btn-command nopadding-top">
-                                    <span>
-                                        <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g4.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g4.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
-                                        <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g4.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g4.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="panel-body white-bg tqf-title">
+      <uib-accordion close-others="false">
+        <ng-include class="accordion-heading" ng-repeat="order in $utilServ.getArrayNumber(tqf2g4.maxSection)" src="'TQFInfo.TQF2.Group4.AddEdit.Section.Heading.Template.html'" ng-if="true"></ng-include>
+      </uib-accordion>
+      <div class="panel noborder">
+        <div class="panel-body block light-bg">
+          <div class="form">
+            <div class="form-row">
+              <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+              <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+                <div class="btn-command nopadding-top">
+                  <span>
+                    <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g4.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g4.addedit.saveChange.action()" uib-tooltip-html="$appServ.getLabel(['save'])">{{$appServ.getLabel(['save'])}}</a>
+                    <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-primary" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g4.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g4.addedit.resetValue()" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/ng-template" id="TQFInfo.TQF2.Group4.AddEdit.Section.Heading.Template.html">
-    <div class="light-bg" uib-accordion-group is-open="tqf2g4.accordionGroup['section' + order].isOpen">
-        <uib-accordion-heading>
-            <div class="navigation" id="{{'section' + order}}">
-                <ul>
-                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10"><i class="fa" ng-class="$utilServ.getClassIconAccordionHeading(tqf2g4.accordionGroup['section' + order].isOpen)"></i></span></li>
-                    <li class="text-right {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10">{{order}}.</span></li>
-                    <li class="separate"></li>
-                    <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group4', 'section', order])}}</span></li>
-                </ul>
-            </div>
-        </uib-accordion-heading>
-        <ng-include src="'TQFInfo.TQF2.Group4.AddEdit.Section' + order + '.Content.Template.html'"></ng-include>
-    </div>
+  <div class="light-bg" uib-accordion-group is-open="tqf2g4.accordionGroup['section' + order].isOpen">
+    <uib-accordion-heading>
+      <div class="navigation" id="{{'section' + order}}">
+        <ul>
+          <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10"><i class="fa" ng-class="$utilServ.getClassIconAccordionHeading(tqf2g4.accordionGroup['section' + order].isOpen)"></i></span></li>
+          <li class="text-right {{$utilServ.lang}}"><span class="{{$appServ.labelStyle}} bold black f10">{{order}}.</span></li>
+          <li class="separate"></li>
+          <li class="text-left"><span class="{{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['TQF2', 'group4', 'section', order])}}</span></li>
+        </ul>
+      </div>
+    </uib-accordion-heading>
+    <ng-include src="'TQFInfo.TQF2.Group4.AddEdit.Section' + order + '.Content.Template.html'"></ng-include>
+  </div>
 </script>
 <script type="text/ng-template" id="TQFInfo.TQF2.Group4.AddEdit.Section1.Content.Template.html">
-    <div class="section1 paddingBottom10">
-        <div class="form-specialcharacter" ng-init="ownerSpecialCharacter = tqf2g4.addedit.section1.owner; tqf2g4.specialCharacter.new(ownerSpecialCharacter); specialCharacterObj = tqf2g4.specialCharacter.owner[ownerSpecialCharacter]">
-            <div class="toolbar text-left">
-                <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); specialCharacterObj.addedit.showForm = !specialCharacterObj.addedit.showForm; (specialCharacterObj.addedit.showForm ? specialCharacterObj.addedit.init(ownerSpecialCharacter) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+  <div class="section1 paddingBottom10">
+    <div class="form-specialcharacter" ng-init="ownerSpecialCharacter = tqf2g4.addedit.section1.owner; tqf2g4.specialCharacter.new(ownerSpecialCharacter); specialCharacterObj = tqf2g4.specialCharacter.owner[ownerSpecialCharacter]">
+      <div class="toolbar text-left">
+        <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); specialCharacterObj.addedit.showForm = !specialCharacterObj.addedit.showForm; (specialCharacterObj.addedit.showForm ? specialCharacterObj.addedit.init(ownerSpecialCharacter) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+      </div>
+      <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="specialCharacterObj.addedit.showForm">
+        <div class="panel noborder">
+          <div class="panel-body block lightgreen-bg">
+            <div class="paddingBottom10" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.unique">
+              <div class="alert alert-danger">
+                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
+              </div>
             </div>
-            <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="specialCharacterObj.addedit.showForm">
-                <div class="panel noborder">
-                    <div class="panel-body block lightgreen-bg">
-                        <div class="paddingBottom10" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.unique">
-                            <div class="alert alert-danger">
-                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['specialCharacter', 'table', 'characteristics'])}}</div>
-                            <div class="form">
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
-                                    <div class="form-col input-col">
-                                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
-                                            <textarea smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="specialCharacterObj.addedit.formField.characteristics.TH"></textarea>
-                                        </div>
-                                        <div class="alert alert-danger" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.characteristics.TH">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['specialCharacter', 'save', 'error', 'characteristics', 'TH'])}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
-                                    <div class="form-col input-col">
-                                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
-                                            <textarea smart-textbox textbox-type-letter="englishchar" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="specialCharacterObj.addedit.formField.characteristics.EN"></textarea>
-                                        </div>
-                                        <div class="alert alert-danger" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.characteristics.EN">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['specialCharacter', 'save', 'error', 'characteristics', 'EN'])}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-separate">
-                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['specialCharacter', 'table', 'strategies'])}}</div>
-                            <div class="form">
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
-                                    <div class="form-col input-col">
-                                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
-                                            <textarea smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="specialCharacterObj.addedit.formField.strategies.TH"></textarea>
-                                        </div>
-                                        <div class="alert alert-danger" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.strategies.TH">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['specialCharacter', 'save', 'error', 'strategies', 'TH'])}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
-                                    <div class="form-col input-col">
-                                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
-                                            <textarea smart-textbox textbox-type-letter="englishchar" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="specialCharacterObj.addedit.formField.strategies.EN"></textarea>
-                                        </div>
-                                        <div class="alert alert-danger" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.strategies.EN">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['specialCharacter', 'save', 'error', 'strategies', 'EN'])}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                                    <div class="form-col input-col text-left nopadding-top nopadding-bottom">
-                                        <div class="btn-command">
-                                            <span>
-                                                <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !specialCharacterObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); specialCharacterObj.addedit.saveChange.action(ownerSpecialCharacter)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
-                                                <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !specialCharacterObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); specialCharacterObj.addedit.resetValue(ownerSpecialCharacter)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div>
+              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['specialCharacter', 'table', 'characteristics'])}}</div>
+              <div class="form">
+                <div class="form-row">
+                  <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                  <div class="form-col input-col">
+                    <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                      <textarea smart-textbox textbox-type-letter="nonenglish" class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="specialCharacterObj.addedit.formField.characteristics.TH"></textarea>
                     </div>
+                    <div class="alert alert-danger" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.characteristics.TH">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['specialCharacter', 'save', 'error', 'characteristics', 'TH'])}}</span>
+                    </div>
+                  </div>
                 </div>
+                <div class="form-row">
+                  <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                  <div class="form-col input-col">
+                    <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                      <textarea smart-textbox textbox-type-letter="englishchar" class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="specialCharacterObj.addedit.formField.characteristics.EN"></textarea>
+                    </div>
+                    <div class="alert alert-danger" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.characteristics.EN">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['specialCharacter', 'save', 'error', 'characteristics', 'EN'])}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="paddingTop10">
-                <table class="table table-in-form table-striped">
-                    <thead class="table-data">
-                        <tr>
-                            <th class="col-index">
-                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
-                            </th>
-                            <th class="col-characteristics">
-                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['specialCharacter', 'table', 'characteristics'])}}</span>
-                            </th>
-                            <th class="col-strategies">
-                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['specialCharacter', 'table', 'strategies'])}}</span>
-                            </th>
-                            <th class="col-command">
-                            </th>
-                            <th class="colwrap colwrap1 hidden" colspan="4">
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-data" ng-repeat="specialCharacter in specialCharacterObj.table.data">
-                        <tr>
-                            <td class="col-index text-left">
-                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
-                            </td>
-                            <td class="col-abbreviation text-left">
-                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['specialCharacter', 'table', 'characteristics'])" ng-bind-html="specialCharacter.characteristics[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
-                            </td>
-                            <td class="col-abbreviation text-left">
-                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['specialCharacter', 'table', 'strategies'])" ng-bind-html="specialCharacter.strategies[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
-                            </td>
-                            <td class="col-command">
-                                <div class="block">
-                                    <div class="toolbar">
-                                        <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(specialCharacterObj.table.data, specialCharacter)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="colwrap colwrap1 noborder" colspan="4">
-                                <div class="view block">
-                                    <div class="iform">
-                                        <div class="iform-row">
-                                            <div class="iform-col label-col text-left nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
-                                            </div>
-                                            <div class="iform-col label-col text-center nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                            </div>
-                                            <div class="iform-col input-col text-left nopadding-top">
-                                                <span class="{{$appServ.labelStyle}} regular black f11">{{$index + 1}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="iform-row">
-                                            <div class="iform-col label-col text-left nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['specialCharacter', 'table', 'characteristics'])}}</span>
-                                            </div>
-                                            <div class="iform-col label-col text-center nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                            </div>
-                                            <div class="iform-col input-col text-left nopadding-top">
-                                                <span class="{{$appServ.labelStyle}} regular black f11" ng-bind-html="specialCharacter.characteristics[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
-                                            </div>
-                                        </div>
-                                        <div class="iform-row">
-                                            <div class="iform-col label-col text-left nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['specialCharacter', 'table', 'strategies'])}}</span>
-                                            </div>
-                                            <div class="iform-col label-col text-center nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                            </div>
-                                            <div class="iform-col input-col text-left nopadding-top">
-                                                <span class="{{$appServ.labelStyle}} regular black f11" ng-bind-html="specialCharacter.strategies[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-right paddingTop3">
-                                        <div class="toolbar">
-                                            <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(specialCharacterObj.table.data, specialCharacter)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="form">
-            <div class="form-row">
-                <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+            <div class="form-separate">
+              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['specialCharacter', 'table', 'strategies'])}}</div>
+              <div class="form">
+                <div class="form-row">
+                  <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                  <div class="form-col input-col">
+                    <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                      <textarea smart-textbox textbox-type-letter="nonenglish" class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="specialCharacterObj.addedit.formField.strategies.TH"></textarea>
+                    </div>
+                    <div class="alert alert-danger" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.strategies.TH">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['specialCharacter', 'save', 'error', 'strategies', 'TH'])}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                  <div class="form-col input-col">
+                    <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                      <textarea smart-textbox textbox-type-letter="englishchar" class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="specialCharacterObj.addedit.formField.strategies.EN"></textarea>
+                    </div>
+                    <div class="alert alert-danger" ng-if="specialCharacterObj.addedit.formValidate.showSaveError && !specialCharacterObj.addedit.formValidate.isValid.strategies.EN">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['specialCharacter', 'save', 'error', 'strategies', 'EN'])}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                  <div class="form-col input-col text-left nopadding-top nopadding-bottom">
                     <div class="btn-command">
-                        <span>
-                            <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-secondary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g4.addedit.section1.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g4.addedit.section1.resetValue(); $utilServ.gotoElement({ anchorName: '#section1', top: 84 })" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                        </span>
+                      <span>
+                        <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !specialCharacterObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); specialCharacterObj.addedit.saveChange.action(ownerSpecialCharacter)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
+                        <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !specialCharacterObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); specialCharacterObj.addedit.resetValue(ownerSpecialCharacter)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                      </span>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+      <div class="paddingTop10">
+        <table class="table table-in-form table-striped">
+          <thead class="table-data">
+            <tr>
+              <th class="col-index">
+                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['order'])}}</span>
+              </th>
+              <th class="col-characteristics">
+                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['specialCharacter', 'table', 'characteristics'])}}</span>
+              </th>
+              <th class="col-strategies">
+                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['specialCharacter', 'table', 'strategies'])}}</span>
+              </th>
+              <th class="col-command">
+              </th>
+              <th class="colwrap colwrap1 hidden" colspan="4">
+              </th>
+            </tr>
+          </thead>
+          <tbody class="table-data" ng-repeat="specialCharacter in specialCharacterObj.table.data">
+            <tr>
+              <td class="col-index text-left">
+                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$index + 1}}</span>
+              </td>
+              <td class="col-abbreviation text-left">
+                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['specialCharacter', 'table', 'characteristics'])" ng-bind-html="specialCharacter.characteristics[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+              </td>
+              <td class="col-abbreviation text-left">
+                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['specialCharacter', 'table', 'strategies'])" ng-bind-html="specialCharacter.strategies[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+              </td>
+              <td class="col-command">
+                <div class="block">
+                  <div class="toolbar">
+                    <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(specialCharacterObj.table.data, specialCharacter)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                  </div>
+                </div>
+              </td>
+              <td class="colwrap colwrap1 noborder" colspan="4">
+                <div class="view block">
+                  <div class="iform">
+                    <div class="iform-row">
+                      <div class="iform-col label-col text-left nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                      </div>
+                      <div class="iform-col label-col text-center nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                      </div>
+                      <div class="iform-col input-col text-left nopadding-top">
+                        <span class="{{$appServ.labelStyle}} regular black f11">{{$index + 1}}</span>
+                      </div>
+                    </div>
+                    <div class="iform-row">
+                      <div class="iform-col label-col text-left nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['specialCharacter', 'table', 'characteristics'])}}</span>
+                      </div>
+                      <div class="iform-col label-col text-center nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                      </div>
+                      <div class="iform-col input-col text-left nopadding-top">
+                        <span class="{{$appServ.labelStyle}} regular black f11" ng-bind-html="specialCharacter.characteristics[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+                      </div>
+                    </div>
+                    <div class="iform-row">
+                      <div class="iform-col label-col text-left nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['specialCharacter', 'table', 'strategies'])}}</span>
+                      </div>
+                      <div class="iform-col label-col text-center nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                      </div>
+                      <div class="iform-col input-col text-left nopadding-top">
+                        <span class="{{$appServ.labelStyle}} regular black f11" ng-bind-html="specialCharacter.strategies[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-right paddingTop3">
+                    <div class="toolbar">
+                      <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(specialCharacterObj.table.data, specialCharacter)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+    <div class="form">
+      <div class="form-row">
+        <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+        <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+          <div class="btn-command">
+            <span>
+              <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-secondary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g4.addedit.section1.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g4.addedit.section1.resetValue(); $utilServ.gotoElement({ anchorName: '#section1', top: 84 })" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </script>
 <script type="text/ng-template" id="TQFInfo.TQF2.Group4.AddEdit.Section2.Content.Template.html">
-    <div class="section2 paddingBottom10">
-        <div class="form-plos" ng-init="ownerPLOsResult = tqf2g4.addedit.section2.owner; tqf2g4.plosResult.new(ownerPLOsResult); plosResultObj = tqf2g4.plosResult.owner[ownerPLOsResult]">
-            <div class="toolbar text-left">
-                <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); plosResultObj.addedit.showForm = !plosResultObj.addedit.showForm; (plosResultObj.addedit.showForm ? plosResultObj.addedit.init(ownerPLOsResult) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+  <div class="section2 paddingBottom10">
+    <div class="form-plos" ng-init="ownerPLOsResult = tqf2g4.addedit.section2.owner; tqf2g4.plosResult.new(ownerPLOsResult); plosResultObj = tqf2g4.plosResult.owner[ownerPLOsResult]">
+      <div class="toolbar text-left">
+        <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); plosResultObj.addedit.showForm = !plosResultObj.addedit.showForm; (plosResultObj.addedit.showForm ? plosResultObj.addedit.init(ownerPLOsResult) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
+      </div>
+      <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="plosResultObj.addedit.showForm">
+        <div class="panel noborder">
+          <div class="panel-body block lightgreen-bg">
+            <div class="paddingBottom10" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.unique">
+              <div class="alert alert-danger">
+                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
+              </div>
             </div>
-            <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="plosResultObj.addedit.showForm">
-                <div class="panel noborder">
-                    <div class="panel-body block lightgreen-bg">
-                        <div class="paddingBottom10" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.unique">
-                            <div class="alert alert-danger">
-                                <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>
-                            </div>
-                        </div>
-                        <div class="form">
-                            <div class="form-row">
-                                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['plos', 'table', 'name'])}}</div>
-                                <div class="form-col input-col">
-                                    <ui-select ng-model="plosResultObj.addedit.formField.plosSelected.selected" theme="select2" ng-disabled="tqf2.addedit.disabled">
-                                        <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'plos'])}}">
-                                            <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{$select.selected.code}}</span>
-                                            <span clearselect class="clearselect lang font-en regular gray f10" ng-click="plosResultObj.addedit.formField.iscedSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
-                                        </ui-select-match>
-                                        <ui-select-choices repeat="plos in (tqf2g4.addedit.table.dataSource.plos | filter: { selectFilter: $select.search } | orderBy: 'id' | limitTo: $utilServ.uiSelectLimit.show)">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{plos.code}}</span>
-                                            <div ng-if="$utilServ.getSelectShowLoadMoreTemplate($index, $select.items, $select.search, tqf2g4.addedit.table.dataSource.plos)">
-                                                <a class="{{$appServ.labelStyle}} regular white f12 btn loadmore" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); $utilServ.getSelectFetchData($select, $event)">{{$appServ.getLabel(['msgPreloading', 'loadMore'])}}</a>
-                                            </div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                    <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.plos">
-                                        <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'plos'])}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-separate">
-                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['plos', 'table', 'detail'])}}</div>
-                            <div class="form">
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
-                                    <div class="form-col input-col">
-                                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
-                                            <textarea smart-textbox textbox-type-letter="nonenglish" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="plosResultObj.addedit.formField.detail.TH"></textarea>
-                                        </div>
-                                        <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.detail.TH">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'detail', 'TH'])}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
-                                    <div class="form-col input-col">
-                                        <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
-                                            <textarea smart-textbox textbox-type-letter="englishchar" stop-cut-copy-paste class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="plosResultObj.addedit.formField.detail.EN"></textarea>
-                                        </div>
-                                        <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.detail.EN">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'detail', 'EN'])}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-separate">
-                            <div class="form">
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['plos', 'table', 'strategies', 'teaching'])}}</div>
-                                    <div class="form-col input-col">
-                                        <div ng-repeat="strategiesTeaching in $appServ.table.dataSource.strategiesTeaching | orderBy: 'id'">
-                                            <div class="{{strategiesTeaching.input + '-row'}}">
-                                                <ul>
-                                                    <li class="{{strategiesTeaching.input + '-col'}} input-col nopadding-bottom">
-                                                        <div class="icheck-default">
-                                                            <input class="{{'input' + strategiesTeaching.input}}" type="{{strategiesTeaching.input}}" id="{{'check' + strategiesTeaching.id}}" name="admissiontype" value="{{strategiesTeaching}}"
-                                                                ng-disabled="tqf2.addedit.disabled"
-                                                                ng-init="plosResultObj.addedit.isCheckedStrategiesTeaching[strategiesTeaching.id] = false"
-                                                                ng-model="plosResultObj.addedit.formField.strategies.teachingSelected[strategiesTeaching.id]"
-                                                                ng-click="$TQFServ.inputTypeRemark.setSelected(strategiesTeaching, 'teaching', plosResultObj.addedit.formField.strategies, plosResultObj.addedit.isCheckedStrategiesTeaching)" />
-                                                            <label for="{{'check' + strategiesTeaching.id}}"></label>
-                                                        </div>
-                                                    </li>
-                                                    <li class="{{strategiesTeaching.input + '-col'}} label-col nopadding-bottom">
-                                                        <div class="label-tab">
-                                                            <span class="{{$appServ.labelStyle}} regular black f10">{{strategiesTeaching.title[$utilServ.lang]}}</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <input enter smart-textbox class="form-control inputbox font-en regular black f10 marginTop3" type="text" value="" ng-if="strategiesTeaching.isRemark === 'Y'" ng-disabled="tqf2.addedit.disabled || !plosResultObj.addedit.isCheckedStrategiesTeaching[strategiesTeaching.id]" ng-model="plosResultObj.addedit.formField.strategies.teachingRemark[strategiesTeaching.id]" />
-                                        </div>
-                                        <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.strategies.teaching">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'strategies', 'teaching'])}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-separate">
-                            <div class="form">
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['plos', 'table', 'strategies', 'evaluation'])}}</div>
-                                    <div class="form-col input-col">
-                                        <div ng-repeat="strategiesEvaluation in $appServ.table.dataSource.strategiesEvaluation | orderBy: 'id'">
-                                            <div class="{{strategiesEvaluation.input + '-row'}}">
-                                                <ul>
-                                                    <li class="{{strategiesEvaluation.input + '-col'}} input-col nopadding-bottom">
-                                                        <div class="icheck-default">
-                                                            <input class="{{'input' + strategiesEvaluation.input}}" type="{{strategiesEvaluation.input}}" id="{{'check' + strategiesEvaluation.id}}" name="admissiontype" value="{{strategiesEvaluation}}"
-                                                                ng-disabled="tqf2.addedit.disabled"
-                                                                ng-init="plosResultObj.addedit.isCheckedStrategiesEvaluation[strategiesEvaluation.id] = false"
-                                                                ng-model="plosResultObj.addedit.formField.strategies.evaluationSelected[strategiesEvaluation.id]"
-                                                                ng-click="$TQFServ.inputTypeRemark.setSelected(strategiesEvaluation, 'evaluation', plosResultObj.addedit.formField.strategies, plosResultObj.addedit.isCheckedStrategiesEvaluation)" />
-                                                            <label for="{{'check' + strategiesEvaluation.id}}"></label>
-                                                        </div>
-                                                    </li>
-                                                    <li class="{{strategiesTeaching.input + '-col'}} label-col nopadding-bottom">
-                                                        <div class="label-tab">
-                                                            <span class="{{$appServ.labelStyle}} regular black f10">{{strategiesEvaluation.title[$utilServ.lang]}}</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <input enter smart-textbox class="form-control inputbox font-en regular black f10 marginTop3" type="text" value="" ng-if="strategiesEvaluation.isRemark === 'Y'" ng-disabled="tqf2.addedit.disabled || !plosResultObj.addedit.isCheckedStrategiesEvaluation[strategiesEvaluation.id]" ng-model="plosResultObj.addedit.formField.strategies.evaluationRemark[strategiesEvaluation.id]" />
-                                        </div>
-                                        <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.strategies.evaluation">
-                                            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'strategies', 'evaluation'])}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                                    <div class="form-col input-col text-left nopadding-top nopadding-bottom">
-                                        <div class="btn-command">
-                                            <span>
-                                                <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !plosResultObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); plosResultObj.addedit.saveChange.action(ownerPLOsResult)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
-                                                <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !plosResultObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); plosResultObj.addedit.resetValue(ownerPLOsResult)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="form">
+              <div class="form-row">
+                <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['plos', 'table', 'name'])}}</div>
+                <div class="form-col input-col">
+                  <ui-select ng-model="plosResultObj.addedit.formField.plosSelected.selected" theme="select2" ng-disabled="tqf2.addedit.disabled">
+                    <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'plos'])}}">
+                      <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{$select.selected.code}}</span>
+                      <span clearselect class="clearselect lang font-en regular gray f10" ng-click="plosResultObj.addedit.formField.iscedSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+                    </ui-select-match>
+                    <ui-select-choices repeat="plos in (tqf2g4.addedit.table.dataSource.plos | filter: { selectFilter: $select.search } | orderBy: 'id' | limitTo: $utilServ.uiSelectLimit.show)">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{plos.code}}</span>
+                      <div ng-if="$utilServ.getSelectShowLoadMoreTemplate($index, $select.items, $select.search, tqf2g4.addedit.table.dataSource.plos)">
+                        <a class="{{$appServ.labelStyle}} regular white f12 btn loadmore" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); $utilServ.getSelectFetchData($select, $event)">{{$appServ.getLabel(['msgPreloading', 'loadMore'])}}</a>
+                      </div>
+                    </ui-select-choices>
+                  </ui-select>
+                  <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.plos">
+                    <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'plos'])}}</span>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="paddingTop10">
-                <table class="table table-in-form table-striped">
-                    <thead class="table-data">
-                        <tr>
-                            <th class="col-plos">
-                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['plos', 'table', 'expectedOutcome'])}}</span>
-                            </th>
-                            <th class="col-detail">
-                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['plos', 'table', 'detail'])}}</span>
-                            </th>
-                            <th class="col-teachingstrategies">
-                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['plos', 'table', 'strategies', 'teaching'])}}</span>
-                            </th>
-                            <th class="col-evaluationstrategies">
-                                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['plos', 'table', 'strategies', 'evaluation'])}}</span>
-                            </th>
-                            <th class="col-command">
-                            </th>
-                            <th class="colwrap colwrap1 hidden" colspan="5">
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-data" ng-repeat="plosResult in plosResultObj.table.data">
-                        <tr>
-                            <td class="col-plos text-left">
-                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['plos', 'table', 'expectedOutcome'])">{{plosResult.title[$utilServ.lang]}}</span>
-                            </td>
-                            <td class="col-detail text-left">
-                                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['plos', 'table', 'detail'])" ng-bind-html="plosResult.detail[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
-                            </td>
-                            <td class="col-teachingstrategies text-left">
-                                <div class="block" uib-tooltip-html="$appServ.getLabel(['plos', 'table', 'strategies', 'teaching'])">
-                                    <div class="error-list">
-                                        <ul>
-                                            <li class="text-left" ng-repeat="strategiesTeaching in plosResult.strategies.teaching.json | orderBy: 'id'" ng-if="!strategiesTeaching.isRemark || (strategiesTeaching.isRemark === 'Y' && strategiesTeaching.remark)">
-                                                <span class="{{$appServ.labelStyle}} regular black f11" ng-if="!strategiesTeaching.isRemark">{{strategiesTeaching.title[$utilServ.lang]}}</span>
-                                                <span class="{{$appServ.labelStyle}} regular black f11" ng-if="strategiesTeaching.isRemark === 'Y' && strategiesTeaching.remark">{{strategiesTeaching.remark}}</span>                                               
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="col-evaluationstrategies text-left">
-                                <div class="block" uib-tooltip-html="$appServ.getLabel(['plos', 'table', 'strategies', 'evaluation'])">
-                                    <div class="error-list">
-                                        <ul>
-                                            <li class="text-left" ng-repeat="strategiesEvaluation in plosResult.strategies.evaluation.json | orderBy: 'id'" ng-if="!strategiesEvaluation.isRemark || (strategiesEvaluation.isRemark === 'Y' && strategiesEvaluation.remark)">
-                                                <span class="{{$appServ.labelStyle}} regular black f11" ng-if="!strategiesEvaluation.isRemark">{{strategiesEvaluation.title[$utilServ.lang]}}</span>
-                                                <span class="{{$appServ.labelStyle}} regular black f11" ng-if="strategiesEvaluation.isRemark === 'Y' && strategiesEvaluation.remark">{{strategiesEvaluation.remark}}</span>                                               
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="col-command">
-                                <div class="block">
-                                    <div class="toolbar">
-                                        <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(plosResultObj.table.data, plosResult)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="colwrap colwrap1 noborder" colspan="5">
-                                <div class="view block">
-                                    <div class="iform">
-                                        <div class="iform-row">
-                                            <div class="iform-col label-col text-left nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['plos', 'table', 'expectedOutcome'])}}</span>
-                                            </div>
-                                            <div class="iform-col label-col text-center nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                            </div>
-                                            <div class="iform-col input-col text-left nopadding-top">
-                                                <span class="{{$appServ.labelStyle}} regular black f11">{{plosResult.title[$utilServ.lang]}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="iform-row">
-                                            <div class="iform-col label-col text-left nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['plos', 'table', 'detail'])}}</span>
-                                            </div>
-                                            <div class="iform-col label-col text-center nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                            </div>
-                                            <div class="iform-col input-col text-left nopadding-top">
-                                                <span class="{{$appServ.labelStyle}} regular black f11" ng-bind-html="plosResult.detail[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
-                                            </div>
-                                        </div>
-                                        <div class="iform-row">
-                                            <div class="iform-col label-col text-left nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['plos', 'table', 'strategies', 'teaching'])}}</span>
-                                            </div>
-                                            <div class="iform-col label-col text-center nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                            </div>
-                                            <div class="iform-col input-col text-left nopadding-top">
-                                                <div class="error-list">
-                                                    <ul>
-                                                        <li class="text-left" ng-repeat="strategiesTeaching in plosResult.strategies.teaching.json | orderBy: 'id'" ng-if="!strategiesTeaching.isRemark || (strategiesTeaching.isRemark === 'Y' && strategiesTeaching.remark)">
-                                                            <span class="{{$appServ.labelStyle}} regular black f11" ng-if="!strategiesTeaching.isRemark">{{strategiesTeaching.title[$utilServ.lang]}}</span>
-                                                            <span class="{{$appServ.labelStyle}} regular black f11" ng-if="strategiesTeaching.isRemark === 'Y' && strategiesTeaching.remark">{{strategiesTeaching.remark}}</span>                                               
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="iform-row">
-                                            <div class="iform-col label-col text-left nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['plos', 'table', 'strategies', 'evaluation'])}}</span>
-                                            </div>
-                                            <div class="iform-col label-col text-center nopadding-top colhead">
-                                                <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                            </div>
-                                            <div class="iform-col input-col text-left nopadding-top">
-                                                <div class="error-list">
-                                                    <ul>
-                                                        <li class="text-left" ng-repeat="strategiesEvaluation in plosResult.strategies.evaluation.json | orderBy: 'id'" ng-if="!strategiesEvaluation.isRemark || (strategiesEvaluation.isRemark === 'Y' && strategiesEvaluation.remark)">
-                                                            <span class="{{$appServ.labelStyle}} regular black f11" ng-if="!strategiesEvaluation.isRemark">{{strategiesEvaluation.title[$utilServ.lang]}}</span>
-                                                            <span class="{{$appServ.labelStyle}} regular black f11" ng-if="strategiesEvaluation.isRemark === 'Y' && strategiesEvaluation.remark">{{strategiesEvaluation.remark}}</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-right paddingTop3">
-                                        <div class="toolbar">
-                                            <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(plosResultObj.table.data, plosResult)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="form-separate">
+              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['plos', 'table', 'detail'])}}</div>
+              <div class="form">
+                <div class="form-row">
+                  <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
+                  <div class="form-col input-col">
+                    <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                      <textarea smart-textbox textbox-type-letter="nonenglish" class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="plosResultObj.addedit.formField.detail.TH"></textarea>
+                    </div>
+                    <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.detail.TH">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'detail', 'TH'])}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['english'])}}</div>
+                  <div class="form-col input-col">
+                    <div class="textareabox" ng-class="{ 'disabled': tqf2.addedit.disabled }">
+                      <textarea smart-textbox textbox-type-letter="englishchar" class="form-control font-en regular black f10" ng-disabled="tqf2.addedit.disabled" ng-model="plosResultObj.addedit.formField.detail.EN"></textarea>
+                    </div>
+                    <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.detail.EN">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'detail', 'EN'])}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="form">
-            <div class="form-row">
-                <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
-                <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+            <div class="form-separate">
+              <div class="form">
+                <div class="form-row">
+                  <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['plos', 'table', 'strategies', 'teaching'])}}</div>
+                  <div class="form-col input-col">
+                    <div ng-repeat="strategiesTeaching in $appServ.table.dataSource.strategiesTeaching | orderBy: 'id'">
+                      <div class="{{strategiesTeaching.input + '-row'}}">
+                        <ul>
+                          <li class="{{strategiesTeaching.input + '-col'}} input-col nopadding-bottom">
+                            <div class="icheck-default">
+                              <input class="{{'input' + strategiesTeaching.input}}" type="{{strategiesTeaching.input}}" id="{{'check' + strategiesTeaching.id}}" name="admissiontype" value="{{strategiesTeaching}}"
+                                ng-disabled="tqf2.addedit.disabled"
+                                ng-init="plosResultObj.addedit.isCheckedStrategiesTeaching[strategiesTeaching.id] = false"
+                                ng-model="plosResultObj.addedit.formField.strategies.teachingSelected[strategiesTeaching.id]"
+                                ng-click="$TQFServ.inputTypeRemark.setSelected(strategiesTeaching, 'teaching', plosResultObj.addedit.formField.strategies, plosResultObj.addedit.isCheckedStrategiesTeaching)" />
+                              <label for="{{'check' + strategiesTeaching.id}}"></label>
+                            </div>
+                          </li>
+                          <li class="{{strategiesTeaching.input + '-col'}} label-col nopadding-bottom">
+                            <div class="label-tab">
+                              <span class="{{$appServ.labelStyle}} regular black f10">{{strategiesTeaching.title[$utilServ.lang]}}</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <input enter smart-textbox class="form-control inputbox font-en regular black f10 marginTop3" type="text" value="" ng-if="strategiesTeaching.isRemark === 'Y'" ng-disabled="tqf2.addedit.disabled || !plosResultObj.addedit.isCheckedStrategiesTeaching[strategiesTeaching.id]" ng-model="plosResultObj.addedit.formField.strategies.teachingRemark[strategiesTeaching.id]" />
+                    </div>
+                    <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.strategies.teaching">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'strategies', 'teaching'])}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-separate">
+              <div class="form">
+                <div class="form-row">
+                  <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['plos', 'table', 'strategies', 'evaluation'])}}</div>
+                  <div class="form-col input-col">
+                    <div ng-repeat="strategiesEvaluation in $appServ.table.dataSource.strategiesEvaluation | orderBy: 'id'">
+                      <div class="{{strategiesEvaluation.input + '-row'}}">
+                        <ul>
+                          <li class="{{strategiesEvaluation.input + '-col'}} input-col nopadding-bottom">
+                            <div class="icheck-default">
+                              <input class="{{'input' + strategiesEvaluation.input}}" type="{{strategiesEvaluation.input}}" id="{{'check' + strategiesEvaluation.id}}" name="admissiontype" value="{{strategiesEvaluation}}"
+                                ng-disabled="tqf2.addedit.disabled"
+                                ng-init="plosResultObj.addedit.isCheckedStrategiesEvaluation[strategiesEvaluation.id] = false"
+                                ng-model="plosResultObj.addedit.formField.strategies.evaluationSelected[strategiesEvaluation.id]"
+                                ng-click="$TQFServ.inputTypeRemark.setSelected(strategiesEvaluation, 'evaluation', plosResultObj.addedit.formField.strategies, plosResultObj.addedit.isCheckedStrategiesEvaluation)" />
+                              <label for="{{'check' + strategiesEvaluation.id}}"></label>
+                            </div>
+                          </li>
+                          <li class="{{strategiesTeaching.input + '-col'}} label-col nopadding-bottom">
+                            <div class="label-tab">
+                              <span class="{{$appServ.labelStyle}} regular black f10">{{strategiesEvaluation.title[$utilServ.lang]}}</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <input enter smart-textbox class="form-control inputbox font-en regular black f10 marginTop3" type="text" value="" ng-if="strategiesEvaluation.isRemark === 'Y'" ng-disabled="tqf2.addedit.disabled || !plosResultObj.addedit.isCheckedStrategiesEvaluation[strategiesEvaluation.id]" ng-model="plosResultObj.addedit.formField.strategies.evaluationRemark[strategiesEvaluation.id]" />
+                    </div>
+                    <div class="alert alert-danger" ng-if="plosResultObj.addedit.formValidate.showSaveError && !plosResultObj.addedit.formValidate.isValid.strategies.evaluation">
+                      <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['plos', 'save', 'error', 'strategies', 'evaluation'])}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+                  <div class="form-col input-col text-left nopadding-top nopadding-bottom">
                     <div class="btn-command">
-                        <span>
-                            <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-secondary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g4.addedit.section2.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g4.addedit.section2.resetValue(); $utilServ.gotoElement({ anchorName: '#section2', top: 84 })" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
-                        </span>
+                      <span>
+                        <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !plosResultObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); plosResultObj.addedit.saveChange.action(ownerPLOsResult)" uib-tooltip-html="$appServ.getLabel(['confirm'])">{{$appServ.getLabel(['confirm'])}}</a>
+                        <a enter class="{{$appServ.labelStyle}} regular black f10 btn btn-transparent" href="javascript:void(0)" ng-class="{ 'disabled': !plosResultObj.addedit.isFormChanged }" ng-click="$utilServ.doBlur($event); plosResultObj.addedit.resetValue(ownerPLOsResult)" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+                      </span>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+      <div class="paddingTop10">
+        <table class="table table-in-form table-striped">
+          <thead class="table-data">
+            <tr>
+              <th class="col-plos">
+                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['plos', 'table', 'expectedOutcome'])}}</span>
+              </th>
+              <th class="col-detail">
+                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['plos', 'table', 'detail'])}}</span>
+              </th>
+              <th class="col-teachingstrategies">
+                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['plos', 'table', 'strategies', 'teaching'])}}</span>
+              </th>
+              <th class="col-evaluationstrategies">
+                <span class="{{$appServ.labelStyle}} regular black f10 block">{{$appServ.getLabel(['plos', 'table', 'strategies', 'evaluation'])}}</span>
+              </th>
+              <th class="col-command">
+              </th>
+              <th class="colwrap colwrap1 hidden" colspan="5">
+              </th>
+            </tr>
+          </thead>
+          <tbody class="table-data" ng-repeat="plosResult in plosResultObj.table.data">
+            <tr>
+              <td class="col-plos text-left">
+                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['plos', 'table', 'expectedOutcome'])">{{plosResult.title[$utilServ.lang]}}</span>
+              </td>
+              <td class="col-detail text-left">
+                <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['plos', 'table', 'detail'])" ng-bind-html="plosResult.detail[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+              </td>
+              <td class="col-teachingstrategies text-left">
+                <div class="block" uib-tooltip-html="$appServ.getLabel(['plos', 'table', 'strategies', 'teaching'])">
+                  <div class="error-list">
+                    <ul>
+                      <li class="text-left" ng-repeat="strategiesTeaching in plosResult.strategies.teaching.json | orderBy: 'id'" ng-if="!strategiesTeaching.isRemark || (strategiesTeaching.isRemark === 'Y' && strategiesTeaching.remark)">
+                        <span class="{{$appServ.labelStyle}} regular black f11" ng-if="!strategiesTeaching.isRemark">{{strategiesTeaching.title[$utilServ.lang]}}</span>
+                        <span class="{{$appServ.labelStyle}} regular black f11" ng-if="strategiesTeaching.isRemark === 'Y' && strategiesTeaching.remark">{{strategiesTeaching.remark}}</span>                                               
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+              <td class="col-evaluationstrategies text-left">
+                <div class="block" uib-tooltip-html="$appServ.getLabel(['plos', 'table', 'strategies', 'evaluation'])">
+                  <div class="error-list">
+                    <ul>
+                      <li class="text-left" ng-repeat="strategiesEvaluation in plosResult.strategies.evaluation.json | orderBy: 'id'" ng-if="!strategiesEvaluation.isRemark || (strategiesEvaluation.isRemark === 'Y' && strategiesEvaluation.remark)">
+                        <span class="{{$appServ.labelStyle}} regular black f11" ng-if="!strategiesEvaluation.isRemark">{{strategiesEvaluation.title[$utilServ.lang]}}</span>
+                        <span class="{{$appServ.labelStyle}} regular black f11" ng-if="strategiesEvaluation.isRemark === 'Y' && strategiesEvaluation.remark">{{strategiesEvaluation.remark}}</span>                                               
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+              <td class="col-command">
+                <div class="block">
+                  <div class="toolbar">
+                    <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(plosResultObj.table.data, plosResult)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                  </div>
+                </div>
+              </td>
+              <td class="colwrap colwrap1 noborder" colspan="5">
+                <div class="view block">
+                  <div class="iform">
+                    <div class="iform-row">
+                      <div class="iform-col label-col text-left nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['plos', 'table', 'expectedOutcome'])}}</span>
+                      </div>
+                      <div class="iform-col label-col text-center nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                      </div>
+                      <div class="iform-col input-col text-left nopadding-top">
+                        <span class="{{$appServ.labelStyle}} regular black f11">{{plosResult.title[$utilServ.lang]}}</span>
+                      </div>
+                    </div>
+                    <div class="iform-row">
+                      <div class="iform-col label-col text-left nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['plos', 'table', 'detail'])}}</span>
+                      </div>
+                      <div class="iform-col label-col text-center nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                      </div>
+                      <div class="iform-col input-col text-left nopadding-top">
+                        <span class="{{$appServ.labelStyle}} regular black f11" ng-bind-html="plosResult.detail[$utilServ.lang] | replace: '\r?\n': '<br/>'"></span>
+                      </div>
+                    </div>
+                    <div class="iform-row">
+                      <div class="iform-col label-col text-left nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['plos', 'table', 'strategies', 'teaching'])}}</span>
+                      </div>
+                      <div class="iform-col label-col text-center nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                      </div>
+                      <div class="iform-col input-col text-left nopadding-top">
+                        <div class="error-list">
+                          <ul>
+                            <li class="text-left" ng-repeat="strategiesTeaching in plosResult.strategies.teaching.json | orderBy: 'id'" ng-if="!strategiesTeaching.isRemark || (strategiesTeaching.isRemark === 'Y' && strategiesTeaching.remark)">
+                              <span class="{{$appServ.labelStyle}} regular black f11" ng-if="!strategiesTeaching.isRemark">{{strategiesTeaching.title[$utilServ.lang]}}</span>
+                              <span class="{{$appServ.labelStyle}} regular black f11" ng-if="strategiesTeaching.isRemark === 'Y' && strategiesTeaching.remark">{{strategiesTeaching.remark}}</span>                                               
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="iform-row">
+                      <div class="iform-col label-col text-left nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['plos', 'table', 'strategies', 'evaluation'])}}</span>
+                      </div>
+                      <div class="iform-col label-col text-center nopadding-top colhead">
+                        <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                      </div>
+                      <div class="iform-col input-col text-left nopadding-top">
+                        <div class="error-list">
+                          <ul>
+                            <li class="text-left" ng-repeat="strategiesEvaluation in plosResult.strategies.evaluation.json | orderBy: 'id'" ng-if="!strategiesEvaluation.isRemark || (strategiesEvaluation.isRemark === 'Y' && strategiesEvaluation.remark)">
+                              <span class="{{$appServ.labelStyle}} regular black f11" ng-if="!strategiesEvaluation.isRemark">{{strategiesEvaluation.title[$utilServ.lang]}}</span>
+                              <span class="{{$appServ.labelStyle}} regular black f11" ng-if="strategiesEvaluation.isRemark === 'Y' && strategiesEvaluation.remark">{{strategiesEvaluation.remark}}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-right paddingTop3">
+                    <div class="toolbar">
+                      <a class="btn nomargin-left danger-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); $utilServ.removeItemFromArray(plosResultObj.table.data, plosResult)" uib-tooltip-html="$appServ.getLabel(['remove'])"><i class="fa fa-trash white f10"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+    <div class="form">
+      <div class="form-row">
+        <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
+        <div class="form-col input-col text-right nopadding-top nopadding-bottom">
+          <div class="btn-command">
+            <span>
+              <a enter class="{{$appServ.labelStyle}} regular white f10 btn btn-secondary nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': !tqf2g4.addedit.section2.isFormChanged }" ng-click="$utilServ.doBlur($event); tqf2g4.addedit.section2.resetValue(); $utilServ.gotoElement({ anchorName: '#section2', top: 84 })" uib-tooltip-html="$appServ.getLabel(['discard'])">{{$appServ.getLabel(['discard'])}}</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </script>

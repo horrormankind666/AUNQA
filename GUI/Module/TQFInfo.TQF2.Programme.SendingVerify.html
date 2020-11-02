@@ -1,324 +1,327 @@
 ﻿<div class="{{$pageRouteServ.pageObject.TQFInfo.class + ' ' + $pageRouteServ.pageObject.TQF2.class + ' ' + $pageRouteServ.pageObject.programme.class + ' ' + $pageRouteServ.pageObject.programme.sendingVerify.class}}">
-    <div class="dialogin" ng-if="tqf2ps.showForm">
-        <div class="panel noborder">
-            <div class="panel-body">
-                <div class="text-center" loading-container="$programmeServ.tableList.programmeSendingVerify.settings().$loading">
-                    <table class="table table-striped table-hover" ng-table="$programmeServ.tableList.programmeSendingVerify">
-                        <caption>
-                            <div class="block">
-                                <div class="panel-table">
-                                    <div class="panel-row">
-                                        <div class="panel-col col-toolbar">
-                                            <div class="toolbar">
-                                                <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.table.hide }" ng-click="$utilServ.doBlur($event); tqf2ps.table.filter.showForm = !tqf2ps.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
-                                                <a enter class="btn black f5" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.table.hide }" ng-click="
-                                                    $utilServ.doBlur($event);
-                                                    tqf2.table.reload.isPreloading = false;
-                                                    tqf2.table.reload.isResetDataSource = true;
-                                                    tqf2.table.reload.tableType = 'temp';
-                                                    tqf2.table.reload.order = [{
-                                                        table: 'programmeSendingVerify',
-                                                        isFirstPage: true
-                                                    }, {
-                                                        table: 'programmePendingVerify',
-                                                        isFirstPage: true
-                                                    }];
-                                                    tqf2.table.reload.action()" uib-tooltip-html="$appServ.getLabel(['reload'])">
-                                                    <i class="fa fa fa-refresh white f9"></i>
-                                                </a>
-                                                <a enter class="btn btn-text default-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.table.hide }" ng-click="$utilServ.doBlur($event); tqf2ps.sendVerify.setValue('sendVerify'); tqf2.sendVerifyReject.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['sendVerify'])"><i class="fa fa-check-square-o white f8"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['sendVerify'])}}</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="panel-col col-recordcount text-right" ng-if="!tqf2.table.hide" ng-show="!$programmeServ.tableList.programmeSendingVerify.settings().$loading">
-                                            <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount($programmeServ.tableList.programmeSendingVerify.totalSearch, $programmeServ.tableList.programmeSendingVerify.total(), $dictServ.dict)}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter dialogin" ng-if="tqf2ps.table.filter.showForm">
-                                <div class="panel noborder">
-                                    <div class="panel-heading block">
-                                        <div class="panel-title text-left">
-                                            <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body block">
-                                        <div class="panel-table">
-                                            <div class="panel-row">
-                                                <div class="panel-col">
-                                                    <div class="form vertical">
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
-                                                            <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="$programmeServ.tableList.programmeSendingVerify.totalSearch === 0" ng-model="tqf2ps.table.filter.formField.keyword" /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel-col nopadding-right">
-                                                    <div class="form vertical">
-                                                        <div class="form-row">
-                                                            <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['program', 'table', 'mode'])}}</div>
-                                                            <div class="form-col input-col text-left">
-                                                                <ui-select class="no-searchbox" search-enabled="false" ng-disabled="$programmeServ.tableList.programmeSendingVerify.totalSearch === 0" ng-model="tqf2ps.table.filter.formField.modeSelected.selected" theme="select2">
-                                                                    <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'mode'])}}">
-                                                                        <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.name[$utilServ.lang] ? ($select.selected.name[$utilServ.lang] | capitalize) : '')}}</span>
-                                                                        <span clearselect class="clearselect lang font-en regular gray f10" ng-click="tqf2ps.table.filter.formField.modeSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
-                                                                    </ui-select-match>
-                                                                    <ui-select-choices repeat="mode in $dictServ.dict.mode">
-                                                                        <span class="{{$appServ.labelStyle}} regular f11">{{(mode.name[$utilServ.lang] | capitalize)}}</span>
-                                                                    </ui-select-choices>
-                                                                </ui-select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </caption>
-                        <thead class="table-data">
-                            <tr>
-                                <th class="noborder-top noborder-bottom noborder-left col-index">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-selectall">
-                                    <div class="block">
-                                        <div class="icheck-default">
-                                            <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="tqf2ps.checkboxChildOnOffByRoot()" ng-model="tqf2ps.table.formField.checkboxes.checked" />
-                                            <label for="checkall"></label>
-                                        </div>
-                                    </div>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-facultycode">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['faculty', 'table', 'code'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-code">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['program', 'table', 'code'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-name">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['program', 'table', 'name'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-courseyear">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['program', 'table', 'courseYear'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-bottom noborder-left col-mode">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['program', 'table', 'mode'])}}</span>
-                                </th>
-                                <th class="noborder-top noborder-right noborder-bottom col-who">
-                                    <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['who'])}}</span>
-                                </th>
-                                <th class="colwrap colwrap1 noborder text-left" colspan="8">
-                                    <div class="block">
-                                        <div class="panel-table">
-                                            <div class="panel-row">
-                                                <div class="panel-col">
-                                                    <div class="radio-row">
-                                                        <ul>
-                                                            <li class="radio-col input-col nopadding-top nopadding-bottom">
-                                                                <div class="icheck-default">
-                                                                    <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="tqf2ps.checkboxChildOnOffByRoot()" ng-model="tqf2ps.table.formField.checkboxes.checked" />
-                                                                    <label for="checkall"></label>
-                                                                </div>
-                                                            </li>
-                                                            <li class="radio-col label-col nopadding-top nopadding-bottom">
-                                                                <div class="label-tab">
-                                                                    <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['selectAll'])}}</span>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-data" ng-repeat="dr in $data | orderBy: 'id'">
-                            <tr ng-if="!tqf2.table.hide">
-                                <td class="noborder-top noborder-bottom noborder-left col-index">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex($programmeServ.tableList.programmeSendingVerify, $index)}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-selectall">
-                                    <div class="block">
-                                        <div class="icheck-default" ng-show="dr.status === 'S'">
-                                            <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="tqf2ps.checkboxRootOnOffByChild()" ng-model="tqf2ps.table.formField.checkboxes.items[dr.id]" />
-                                            <label for="{{'check' + dr.id}}"></label>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-facultycode">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['faculty', 'table', 'code'])">{{tqf2.search.formField.facultySelected.selected.code}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-code">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'code'])">{{dr.programFullCode}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-name text-left">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'name'])">{{dr.name[$utilServ.lang]}}</span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-courseyear">
-                                    <span class="block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'courseYear'])">
-                                        <a class="link {{$appServ.labelStyle}} regular black f11" href="javascript:void(0)"
-                                           ng-click="tqf2.search.showForm = false;
-                                                     tqf2.addedit.showForm = !tqf2.addedit.showForm;
-                                                     $facultyServ.isFaculty = true;
-                                                     $programmeServ.isProgram = true;
-                                                     $programmeServ.dataRow = dr;
-                                                     $programmeServ.dataRow.courseYear = dr.courseYear;
-                                                     tqf2.addedit.template.action = (dr.mode === 'add' ? 'edit' : dr.mode);
-                                                     tqf2.addedit.template.init()">{{dr.courseYear}}</a>
-                                    </span>
-                                </td>
-                                <td class="noborder-top noborder-bottom noborder-left col-mode">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'mode'])">{{dr.mode}}</span>
-                                </td>
-                                <td class="noborder-top noborder-right noborder-bottom col-who text-left">
-                                    <div class="view block" uib-tooltip-html="$appServ.getLabel(['who'])">
-                                        <div class="iform">
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['create'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <div class="{{$appServ.labelStyle}} regular black f11">{{dr.createdBy}}</div>
-                                                    <div class="{{$appServ.labelStyle}} regular black f11" ng-show="dr.createdDate">{{dr.createdDate | date: 'dd-MM-yyyy HH:mm:ss'}}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="colwrap colwrap1 noborder" colspan="8">
-                                    <div class="view block">
-                                        <div class="iform">
-                                            <div class="iform-row" ng-show="dr.status === 'S'">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <div class="icheck-default">
-                                                        <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="tqf2ps.checkboxRootOnOffByChild()" ng-model="tqf2ps.table.formField.checkboxes.items[dr.id]" />
-                                                        <label for="{{'check' + dr.id}}"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="iform-col label-col nopadding-top colhead">
-                                                </div>
-                                                <div class="iform-col input-col nopadding-top">
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex($programmeServ.tableList.programmeSendingVerify, $index)}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['faculty', 'table', 'code'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{tqf2.search.formField.facultySelected.selected.code}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['program', 'table', 'code'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.programFullCode}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['program', 'table', 'name'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.name[$utilServ.lang]}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row col-courseyear">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['program', 'table', 'courseYear'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="input-col text-left nopadding-top">
-                                                    <span>
-                                                        <a class="link {{$appServ.labelStyle}} regular black f11" href="javascript:void(0)"
-                                                           ng-click="tqf2.search.showForm = false;
-                                                                     tqf2.addedit.showForm = !tqf2.addedit.showForm;
-                                                                     $facultyServ.isFaculty = true;
-                                                                     $programmeServ.isProgram = true;
-                                                                     $programmeServ.dataRow = dr;
-                                                                     $programmeServ.dataRow.courseYear = dr.courseYear;
-                                                                     tqf2.addedit.template.action = (dr.mode === 'add' ? 'edit' : dr.mode);
-                                                                     tqf2.addedit.template.init();">{{dr.courseYear}}</a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['program', 'table', 'mode'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.mode}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['createdBy'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.createdBy}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="iform-row">
-                                                <div class="iform-col label-col text-left nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['createdDate'])}}</span>
-                                                </div>
-                                                <div class="iform-col label-col text-center nopadding-top colhead">
-                                                    <span class="{{$appServ.labelStyle}} bold black f11">:</span>
-                                                </div>
-                                                <div class="iform-col input-col text-left nopadding-top">
-                                                    <span class="{{$appServ.labelStyle}} regular black f11">{{dr.createdDate | date: 'dd-MM-yyyy HH:mm:ss'}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot ng-show="$programmeServ.tableList.programmeSendingVerify.totalSearch != undefined && !$programmeServ.tableList.programmeSendingVerify.settings().$loading">
-                            <tr ng-if="!tqf2.table.hide">
-                                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="8">
-                                    <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount($programmeServ.tableList.programmeSendingVerify.totalSearch, $programmeServ.tableList.programmeSendingVerify.total(), $dictServ.dict)}}</span>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+  <div class="dialogin" ng-if="tqf2ps.showForm">
+    <div class="panel noborder">
+      <div class="panel-body">
+        <div class="text-center" loading-container="$programmeServ.tableList.programmeSendingVerify.settings().$loading">
+          <table class="table table-striped table-hover" ng-table="$programmeServ.tableList.programmeSendingVerify">
+            <caption>
+              <div class="block">
+                <div class="panel-table">
+                  <div class="panel-row">
+                    <div class="panel-col col-toolbar">
+                      <div class="toolbar">
+                        <a enter class="btn black f5 nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.table.hide }" ng-click="$utilServ.doBlur($event); tqf2ps.table.filter.showForm = !tqf2ps.table.filter.showForm" uib-tooltip-html="$appServ.getLabel(['filter'])"><i class="fa fa-filter white f9"></i></a>
+                        <a enter class="btn black f5" href="javascript:void(0)"
+                          ng-class="{ 'disabled': tqf2.table.hide }"
+                          ng-click="
+                            $utilServ.doBlur($event);
+                            tqf2.table.reload.isPreloading = false;
+                            tqf2.table.reload.isResetDataSource = true;
+                            tqf2.table.reload.tableType = 'temp';
+                            tqf2.table.reload.order = [{
+                              table: 'programmeSendingVerify',
+                              isFirstPage: true
+                            }, {
+                              table: 'programmePendingVerify',
+                              isFirstPage: true
+                            }];
+                            tqf2.table.reload.action()"
+                          uib-tooltip-html="$appServ.getLabel(['reload'])">
+                          <i class="fa fa fa-refresh white f9"></i>
+                        </a>
+                        <a enter class="btn btn-text default-bg" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.table.hide }" ng-click="$utilServ.doBlur($event); tqf2ps.sendVerify.setValue('sendVerify'); tqf2.sendVerifyReject.getDialogForm.action()" uib-tooltip-html="$appServ.getLabel(['sendVerify'])"><i class="fa fa-check-square-o white f8"></i><span class="{{$appServ.labelStyle}} regular white f10-5 text-left">{{$appServ.getLabel(['sendVerify'])}}</span></a>
+                      </div>
+                    </div>
+                    <div class="panel-col col-recordcount text-right" ng-if="!tqf2.table.hide" ng-show="!$programmeServ.tableList.programmeSendingVerify.settings().$loading">
+                      <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getRecordCount($programmeServ.tableList.programmeSendingVerify.totalSearch, $programmeServ.tableList.programmeSendingVerify.total(), $dictServ.dict)}}</span>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
+              <div class="filter dialogin" ng-if="tqf2ps.table.filter.showForm">
+                <div class="panel noborder">
+                  <div class="panel-heading block">
+                    <div class="panel-title text-left">
+                      <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['filter'])}}</span>
+                    </div>
+                  </div>
+                  <div class="panel-body block">
+                    <div class="panel-table">
+                      <div class="panel-row">
+                        <div class="panel-col">
+                          <div class="form vertical">
+                            <div class="form-row">
+                              <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['keyword'])}}</div>
+                              <div class="form-col input-col text-left"><input enter smart-textbox class="form-control inputbox font-en regular black f10" type="text" ng-disabled="$programmeServ.tableList.programmeSendingVerify.totalSearch === 0" ng-model="tqf2ps.table.filter.formField.keyword" /></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="panel-col nopadding-right">
+                          <div class="form vertical">
+                            <div class="form-row">
+                              <div class="form-col label-col text-left {{$appServ.labelStyle}} regular white f10">{{$appServ.getLabel(['program', 'table', 'mode'])}}</div>
+                              <div class="form-col input-col text-left">
+                                <ui-select class="no-searchbox" search-enabled="false" ng-disabled="$programmeServ.tableList.programmeSendingVerify.totalSearch === 0" ng-model="tqf2ps.table.filter.formField.modeSelected.selected" theme="select2">
+                                  <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'mode'])}}">
+                                    <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{($select.selected.name[$utilServ.lang] ? ($select.selected.name[$utilServ.lang] | capitalize) : '')}}</span>
+                                    <span clearselect class="clearselect lang font-en regular gray f10" ng-click="tqf2ps.table.filter.formField.modeSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+                                  </ui-select-match>
+                                  <ui-select-choices repeat="mode in $dictServ.dict.mode">
+                                    <span class="{{$appServ.labelStyle}} regular f11">{{(mode.name[$utilServ.lang] | capitalize)}}</span>
+                                  </ui-select-choices>
+                                </ui-select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </caption>
+            <thead class="table-data">
+              <tr>
+                <th class="noborder-top noborder-bottom noborder-left col-index">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['order'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-selectall">
+                  <div class="block">
+                    <div class="icheck-default">
+                      <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="tqf2ps.checkboxChildOnOffByRoot()" ng-model="tqf2ps.table.formField.checkboxes.checked" />
+                      <label for="checkall"></label>
+                    </div>
+                  </div>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-facultycode">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['faculty', 'table', 'code'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-code">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['program', 'table', 'code'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-name">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['program', 'table', 'name'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-courseyear">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['program', 'table', 'courseYear'])}}</span>
+                </th>
+                <th class="noborder-top noborder-bottom noborder-left col-mode">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['program', 'table', 'mode'])}}</span>
+                </th>
+                <th class="noborder-top noborder-right noborder-bottom col-who">
+                  <span class="{{$appServ.labelStyle}} bold white f10 block">{{$appServ.getLabel(['who'])}}</span>
+                </th>
+                <th class="colwrap colwrap1 noborder text-left" colspan="8">
+                  <div class="block">
+                    <div class="panel-table">
+                      <div class="panel-row">
+                        <div class="panel-col">
+                          <div class="radio-row">
+                            <ul>
+                              <li class="radio-col input-col nopadding-top nopadding-bottom">
+                                <div class="icheck-default">
+                                  <input class="inputcheckbox" type="checkbox" id="checkall" ng-change="tqf2ps.checkboxChildOnOffByRoot()" ng-model="tqf2ps.table.formField.checkboxes.checked" />
+                                  <label for="checkall"></label>
+                                </div>
+                              </li>
+                              <li class="radio-col label-col nopadding-top nopadding-bottom">
+                                <div class="label-tab">
+                                  <span class="{{$appServ.labelStyle}} bold white f10">{{$appServ.getLabel(['selectAll'])}}</span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="table-data" ng-repeat="dr in $data | orderBy: 'id'">
+              <tr ng-if="!tqf2.table.hide">
+                <td class="noborder-top noborder-bottom noborder-left col-index">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['order'])">{{$utilServ.getOrderIndex($programmeServ.tableList.programmeSendingVerify, $index)}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-selectall">
+                  <div class="block">
+                    <div class="icheck-default" ng-show="dr.status === 'S'">
+                      <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="tqf2ps.checkboxRootOnOffByChild()" ng-model="tqf2ps.table.formField.checkboxes.items[dr.id]" />
+                      <label for="{{'check' + dr.id}}"></label>
+                    </div>
+                  </div>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-facultycode">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['faculty', 'table', 'code'])">{{tqf2.search.formField.facultySelected.selected.code}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-code">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'code'])">{{dr.programFullCode}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-name text-left">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'name'])">{{dr.name[$utilServ.lang]}}</span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-courseyear">
+                  <span class="block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'courseYear'])">
+                    <a class="link {{$appServ.labelStyle}} regular black f11" href="javascript:void(0)"
+                      ng-click="tqf2.search.showForm = false;
+                                tqf2.addedit.showForm = !tqf2.addedit.showForm;
+                                $facultyServ.isFaculty = true;
+                                $programmeServ.isProgram = true;
+                                $programmeServ.dataRow = dr;
+                                $programmeServ.dataRow.courseYear = dr.courseYear;
+                                tqf2.addedit.template.action = (dr.mode === 'add' ? 'edit' : dr.mode);
+                                tqf2.addedit.template.init()">{{dr.courseYear}}</a>
+                  </span>
+                </td>
+                <td class="noborder-top noborder-bottom noborder-left col-mode">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'mode'])">{{dr.mode}}</span>
+                </td>
+                <td class="noborder-top noborder-right noborder-bottom col-who text-left">
+                  <div class="view block" uib-tooltip-html="$appServ.getLabel(['who'])">
+                    <div class="iform">
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['create'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <div class="{{$appServ.labelStyle}} regular black f11">{{dr.createdBy}}</div>
+                          <div class="{{$appServ.labelStyle}} regular black f11" ng-show="dr.createdDate">{{dr.createdDate | date: 'dd-MM-yyyy HH:mm:ss'}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="colwrap colwrap1 noborder" colspan="8">
+                  <div class="view block">
+                    <div class="iform">
+                      <div class="iform-row" ng-show="dr.status === 'S'">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <div class="icheck-default">
+                            <input class="inputcheckbox" type="checkbox" id="{{'check' + dr.id}}" ng-change="tqf2ps.checkboxRootOnOffByChild()" ng-model="tqf2ps.table.formField.checkboxes.items[dr.id]" />
+                            <label for="{{'check' + dr.id}}"></label>
+                          </div>
+                        </div>
+                        <div class="iform-col label-col nopadding-top colhead">
+                        </div>
+                        <div class="iform-col input-col nopadding-top">
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['order'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{$utilServ.getOrderIndex($programmeServ.tableList.programmeSendingVerify, $index)}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['faculty', 'table', 'code'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{tqf2.search.formField.facultySelected.selected.code}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['program', 'table', 'code'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.programFullCode}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['program', 'table', 'name'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.name[$utilServ.lang]}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row col-courseyear">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['program', 'table', 'courseYear'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="input-col text-left nopadding-top">
+                          <span>
+                            <a class="link {{$appServ.labelStyle}} regular black f11" href="javascript:void(0)"
+                              ng-click="tqf2.search.showForm = false;
+                                        tqf2.addedit.showForm = !tqf2.addedit.showForm;
+                                        $facultyServ.isFaculty = true;
+                                        $programmeServ.isProgram = true;
+                                        $programmeServ.dataRow = dr;
+                                        $programmeServ.dataRow.courseYear = dr.courseYear;
+                                        tqf2.addedit.template.action = (dr.mode === 'add' ? 'edit' : dr.mode);
+                                        tqf2.addedit.template.init();">{{dr.courseYear}}</a>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['program', 'table', 'mode'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.mode}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['createdBy'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.createdBy}}</span>
+                        </div>
+                      </div>
+                      <div class="iform-row">
+                        <div class="iform-col label-col text-left nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">{{$appServ.getLabel(['createdDate'])}}</span>
+                        </div>
+                        <div class="iform-col label-col text-center nopadding-top colhead">
+                          <span class="{{$appServ.labelStyle}} bold black f11">:</span>
+                        </div>
+                        <div class="iform-col input-col text-left nopadding-top">
+                          <span class="{{$appServ.labelStyle}} regular black f11">{{dr.createdDate | date: 'dd-MM-yyyy HH:mm:ss'}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot ng-show="$programmeServ.tableList.programmeSendingVerify.totalSearch != undefined && !$programmeServ.tableList.programmeSendingVerify.settings().$loading">
+              <tr ng-if="!tqf2.table.hide">
+                <td class="noborder-top noborder-right noborder-bottom noborder-left" colspan="8">
+                  <span class="{{$appServ.labelStyle}} regular black f11 block">{{$utilServ.getRecordCount($programmeServ.tableList.programmeSendingVerify.totalSearch, $programmeServ.tableList.programmeSendingVerify.total(), $dictServ.dict)}}</span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </div>
