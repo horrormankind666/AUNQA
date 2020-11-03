@@ -296,7 +296,10 @@
                             </div>
                           </div>
                           <div>
-                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{costBudgetType.table.name[$utilServ.lang]}}</div>
+                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                              {{costBudgetType.table.name[$utilServ.lang]}}
+                              <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+                            </div>
                             <div class="form">
                               <div class="form-row">
                                 <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -516,7 +519,7 @@
         <div class="form-row">
           <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'curriculum', 'totalCredits'])}}</div>
           <div class="form-col input-col">
-            <input enter smart-textbox ui-number-mask="1" class="form-control inputbox font-en regular black f10" type="text" maxlength="5" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.total" />
+            <input enter smart-textbox ui-number-mask="0" class="form-control inputbox font-en regular black f10" type="text" maxlength="3" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.total" />
             <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
           </div>
         </div>
@@ -535,21 +538,21 @@
                   <div class="form-row">
                     <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCategory', 'generalCourses'])}}</div>
                     <div class="form-col input-col">
-                      <input enter smart-textbox ui-number-mask="1" class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.generalCourses" />
+                      <input enter smart-textbox ui-number-mask="0" class="form-control inputbox font-en regular black f10" type="text" maxlength="3" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.generalCourses" />
                       <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCategory', 'specificCourses'])}}</div>
                     <div class="form-col input-col">
-                      <input enter smart-textbox ui-number-mask="1" class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.specificCourses" />
+                      <input enter smart-textbox ui-number-mask="0" class="form-control inputbox font-en regular black f10" type="text" maxlength="3" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.specificCourses" />
                       <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCategory', 'electiveCourses'])}}</div>
                     <div class="form-col input-col">
-                      <input enter smart-textbox ui-number-mask="1" class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.electiveCourses" />
+                      <input enter smart-textbox ui-number-mask="0" class="form-control inputbox font-en regular black f10" type="text" maxlength="3" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g3.addedit.section3.formField.courseCredit.electiveCourses" />
                       <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
                     </div>
                   </div>
@@ -594,7 +597,10 @@
                         </div>
                       </div>
                       <div class="form-separate">
-                        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'table', 'name'])}}</div>
+                        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                          {{$appServ.getLabel(['courseCategory', 'subjectGroup', 'table', 'name'])}}
+                          <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+                        </div>
                         <div class="form">
                           <div class="form-row">
                             <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -621,7 +627,7 @@
                           <div class="form-row">
                             <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCredit'])}}</div>
                             <div class="form-col input-col">
-                              <input enter smart-textbox ui-number-mask="1" class="form-control inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="subjectGroupObj.addedit.formField.courseCredit" />
+                              <input enter smart-textbox ui-number-mask="0" class="form-control inputbox font-en regular black f10" type="text" maxlength="3" ng-disabled="tqf2.addedit.disabled" ng-model="subjectGroupObj.addedit.formField.courseCredit" />
                               <div class="alert alert-danger" ng-if="subjectGroupObj.addedit.formValidate.showSaveError && !subjectGroupObj.addedit.formValidate.isValid.courseCredit">
                                 <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['courseCategory', 'subjectGroup', 'save', 'error', 'courseCredit'])}}</span>
                               </div>
@@ -766,7 +772,10 @@
                               </div>
                             </div>
                             <div>
-                              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['abbreviation'])}}</div>
+                              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                                {{$appServ.getLabel(['abbreviation'])}}
+                                <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+                              </div>
                               <div class="form">
                                 <div class="form-row">
                                   <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -788,7 +797,10 @@
                                 </div>
                               </div>
                               <div class="form-separate">
-                                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['meaning'])}}</div>
+                                <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                                  {{$appServ.getLabel(['meaning'])}}
+                                  <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+                                </div>
                                 <div class="form">
                                   <div class="form-row">
                                     <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -957,7 +969,10 @@
                             </div>
                           </div>
                           <div>
-                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['abbreviation'])}}</div>
+                            <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                              {{$appServ.getLabel(['abbreviation'])}}
+                              <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+                            </div>
                             <div class="form">
                               <div class="form-row">
                                 <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -979,7 +994,10 @@
                               </div>
                             </div>
                             <div class="form-separate">
-                              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['meaning'])}}</div>
+                              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                                {{$appServ.getLabel(['meaning'])}}
+                                <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+                              </div>
                               <div class="form">
                                 <div class="form-row">
                                   <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>

@@ -40,7 +40,10 @@
             <div class="addedit dialogin addedit-in-form paddingTop10" ng-if="kpiObj.addedit.showForm">
               <div class="panel noborder">
                 <div class="panel-body block lightgreen-bg">
-                  <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['kpi', 'table', 'name'])}}</div>
+                  <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                    {{$appServ.getLabel(['kpi', 'table', 'name'])}}
+                    <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+                  </div>
                   <div class="paddingBottom10" ng-if="kpiObj.addedit.formValidate.showSaveError && !kpiObj.addedit.formValidate.isValid.unique">
                     <div class="alert alert-danger">
                       <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['save', 'error', 'unique'])}}</span>

@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๑๒/๑๐/๒๕๖๑>
-Modify date : <๐๙/๑๐/๒๕๖๒>
+Modify date : <๐๓/๑๑/๒๕๖๒>
 Description : <รวมรวบฟังก์ชั่นใช้งานสำหรับข้อมูลมคอ.ในส่วนของมคอ. 2>
 =============================================
 */
@@ -1316,7 +1316,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
             if (self.addedit.isAdd)     action = "add";
             if (self.addedit.isEdit)    action = "edit";
             if (self.addedit.isUpdate)  action = "update";
-            if (self.addedit.isDelete)  action = "remove";
+            if (self.addedit.isDelete) action = "remove";
 
             programmeServ.saveChange.action({
               action: action,
@@ -1458,8 +1458,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
 
             if (self.addedit.isAdd || self.addedit.isEdit) {
               if (this.value.programCode.length !== 5) { self.addedit.section1.formValidate.isValid.code = false; i++; }
+              if (!this.value.nameTh && !this.value.nameEn) {
+                self.addedit.section1.formValidate.isValid.name.TH = false; i++;
+                self.addedit.section1.formValidate.isValid.name.EN = false; i++;
+              }
+              /*
               if (!this.value.nameTh) { self.addedit.section1.formValidate.isValid.name.TH = false; i++; }
               if (!this.value.nameEn) { self.addedit.section1.formValidate.isValid.name.EN = false; i++; }
+              */
             }
 
             self.addedit.section1.formValidate.showSaveError = (i > 0 ? true : false);
@@ -1587,10 +1593,20 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
             var i = 0;
 
             if (self.addedit.isAdd || self.addedit.isEdit) {
+              if (!this.value.degreeNameTh && !this.value.degreeNameEn) {
+                self.addedit.section2.formValidate.isValid.degreeName.TH = false; i++;
+                self.addedit.section2.formValidate.isValid.degreeName.EN = false; i++;
+              }
+              if (!this.value.degreeAbbrevTh && !this.value.degreeAbbrevEn) {
+                self.addedit.section2.formValidate.isValid.degreeAbbrev.TH = false; i++;
+                self.addedit.section2.formValidate.isValid.degreeAbbrev.EN = false; i++;
+              }
+              /*
               if (!this.value.degreeNameTh) { self.addedit.section2.formValidate.isValid.degreeName.TH = false; i++; }
               if (!this.value.degreeNameEn) { self.addedit.section2.formValidate.isValid.degreeName.EN = false; i++; }
               if (!this.value.degreeAbbrevTh) { self.addedit.section2.formValidate.isValid.degreeAbbrev.TH = false; i++; }
               if (!this.value.degreeAbbrevEn) { self.addedit.section2.formValidate.isValid.degreeAbbrev.EN = false; i++; }
+              */
             }
 
             self.addedit.section2.formValidate.showSaveError = (i > 0 ? true : false);
@@ -3732,8 +3748,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 (obj.addedit.formField.departmentSelected.selected ? (obj.addedit.formField.departmentSelected.selected.name.TH + obj.addedit.formField.departmentSelected.selected.name.EN) : obj.addedit.formField.demartmentOtherRemark)
               );
 
+              if (!obj.addedit.formField.name.TH && !obj.addedit.formField.name.EN) {
+                obj.addedit.formValidate.isValid.name.TH = false; i++;
+                obj.addedit.formValidate.isValid.name.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
-              //if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              */
               if (!obj.addedit.formField.departmentSelected.selected && !obj.addedit.formField.demartmentOtherSelected && !obj.addedit.formField.demartmentOtherRemark) { obj.addedit.formValidate.isValid.department = false; i++; }
               if (!obj.addedit.formField.departmentSelected.selected && obj.addedit.formField.demartmentOtherSelected && !obj.addedit.formField.demartmentOtherRemark) { obj.addedit.formValidate.isValid.demartmentOtherRemark = false; i++; }
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
@@ -3754,8 +3776,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                     (obj.addedit.formField.departmentSelected.selected ? (obj.addedit.formField.departmentSelected.selected.name.TH + obj.addedit.formField.departmentSelected.selected.name.EN) : obj.addedit.formField.demartmentOtherRemark)
                   ),
                   name: {
-                    TH: obj.addedit.formField.name.TH,
-                    EN: obj.addedit.formField.name.EN
+                    TH: (obj.addedit.formField.name.TH ? obj.addedit.formField.name.TH : obj.addedit.formField.name.EN),
+                    EN: (obj.addedit.formField.name.EN ? obj.addedit.formField.name.EN : obj.addedit.formField.name.TH)
                   },
                   faculty: {
                     id: (obj.addedit.formField.departmentSelected.selected ? obj.addedit.formField.departmentSelected.selected.id : ""),
@@ -4356,8 +4378,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 obj.addedit.formField.name.EN
               );
 
+              if (!obj.addedit.formField.name.TH && !obj.addedit.formField.name.EN) {
+                obj.addedit.formValidate.isValid.name.TH = false; i++;
+                obj.addedit.formValidate.isValid.name.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
-              //if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              */
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
               obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -4375,8 +4403,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                   ),
                   code: "",
                   name: {
-                    TH: obj.addedit.formField.name.TH,
-                    EN: obj.addedit.formField.name.EN
+                    TH: (obj.addedit.formField.name.TH ? obj.addedit.formField.name.TH : obj.addedit.formField.name.EN),
+                    EN: (obj.addedit.formField.name.EN ? obj.addedit.formField.name.EN : obj.addedit.formField.name.TH)
                   }
                 });
               }
@@ -4536,8 +4564,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 obj.addedit.formField.name.EN
               );
 
+              if (!obj.addedit.formField.name.TH && !obj.addedit.formField.name.EN) {
+                obj.addedit.formValidate.isValid.name.TH = false; i++;              
+                obj.addedit.formValidate.isValid.name.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
-              //if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              */
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
               obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -4554,8 +4588,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                   id: ("PLOs" + obj.addedit.formField.maxId),
                   code: ("PLOs" + obj.addedit.formField.maxId),
                   name: {
-                    TH: obj.addedit.formField.name.TH,
-                    EN: obj.addedit.formField.name.EN
+                    TH: (obj.addedit.formField.name.TH ? obj.addedit.formField.name.TH : obj.addedit.formField.name.EN),
+                    EN: (obj.addedit.formField.name.EN ? obj.addedit.formField.name.EN : obj.addedit.formField.name.TH)
                   }
                 });
               }
@@ -4703,8 +4737,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 obj.addedit.formField.name.EN
               );
 
+              if (!obj.addedit.formField.name.TH && !obj.addedit.formField.name.EN) {
+                obj.addedit.formValidate.isValid.name.TH = false; i++;
+                obj.addedit.formValidate.isValid.name.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
-              //if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              */
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
               obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -4721,8 +4761,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                     obj.addedit.formField.name.EN
                   ),
                   name: {
-                    TH: obj.addedit.formField.name.TH,
-                    EN: obj.addedit.formField.name.EN
+                    TH: (obj.addedit.formField.name.TH ? obj.addedit.formField.name.TH : obj.addedit.formField.name.EN),
+                    EN: (obj.addedit.formField.name.EN ? obj.addedit.formField.name.EN : obj.addedit.formField.name.TH)
                   }
                 });
               }
@@ -4922,12 +4962,26 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                   obj.addedit.formField.evidences.EN
               );
 
+              if (!obj.addedit.formField.plan.TH && !obj.addedit.formField.plan.EN) {
+                obj.addedit.formValidate.isValid.plan.TH = false; i++;
+                obj.addedit.formValidate.isValid.plan.EN = false; i++;
+              }
+              if (!obj.addedit.formField.strategies.TH && !obj.addedit.formField.strategies.EN) {
+                obj.addedit.formValidate.isValid.strategies.TH = false; i++;
+                obj.addedit.formValidate.isValid.strategies.EN = false; i++;
+              }
+              if (!obj.addedit.formField.evidences.TH && !obj.addedit.formField.evidences.EN) {
+                obj.addedit.formValidate.isValid.evidences.TH = false; i++;
+                obj.addedit.formValidate.isValid.evidences.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.plan.TH) { obj.addedit.formValidate.isValid.plan.TH = false; i++; }
-              //if (!obj.addedit.formField.plan.EN) { obj.addedit.formValidate.isValid.plan.EN = false; i++; }
+              if (!obj.addedit.formField.plan.EN) { obj.addedit.formValidate.isValid.plan.EN = false; i++; }
               if (!obj.addedit.formField.strategies.TH) { obj.addedit.formValidate.isValid.strategies.TH = false; i++; }
-              //if (!obj.addedit.formField.strategies.EN) { obj.addedit.formValidate.isValid.strategies.EN = false; i++; }
+              if (!obj.addedit.formField.strategies.EN) { obj.addedit.formValidate.isValid.strategies.EN = false; i++; }
               if (!obj.addedit.formField.evidences.TH) { obj.addedit.formValidate.isValid.evidences.TH = false; i++; }
-              //if (!obj.addedit.formField.evidences.EN) { obj.addedit.formValidate.isValid.evidences.EN = false; i++; }
+              if (!obj.addedit.formField.evidences.EN) { obj.addedit.formValidate.isValid.evidences.EN = false; i++; }
+              */
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
               obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -4948,16 +5002,16 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                     obj.addedit.formField.evidences.EN
                   ),
                   plan: {
-                    TH: obj.addedit.formField.plan.TH,
-                    EN: obj.addedit.formField.plan.EN
+                    TH: (obj.addedit.formField.plan.TH ? obj.addedit.formField.plan.TH : obj.addedit.formField.plan.EN),
+                    EN: (obj.addedit.formField.plan.EN ? obj.addedit.formField.plan.EN : obj.addedit.formField.plan.TH)
                   },
                   strategies: {
-                    TH: obj.addedit.formField.strategies.TH,
-                    EN: obj.addedit.formField.strategies.EN
+                    TH: (obj.addedit.formField.strategies.TH ? obj.addedit.formField.strategies.TH : obj.addedit.formField.strategies.EN),
+                    EN: (obj.addedit.formField.strategies.EN ? obj.addedit.formField.strategies.EN : obj.addedit.formField.strategies.TH)
                   },
                   evidences: {
-                    TH: obj.addedit.formField.evidences.TH,
-                    EN: obj.addedit.formField.evidences.EN
+                    TH: (obj.addedit.formField.evidences.TH ? obj.addedit.formField.evidences.TH : obj.addedit.formField.evidences.EN),
+                    EN: (obj.addedit.formField.evidences.EN ? obj.addedit.formField.evidences.EN : obj.addedit.formField.evidences.TH)
                   }
                 });
               }
@@ -6187,8 +6241,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 obj.addedit.formField.name.EN
               );
 
+              if (!obj.addedit.formField.name.TH && !obj.addedit.formField.name.EN) {
+                obj.addedit.formValidate.isValid.name.TH = false; i++;
+                obj.addedit.formValidate.isValid.name.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
               if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              */
               if (!obj.addedit.formField.amount) { obj.addedit.formValidate.isValid.amount = false; i++; }
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
@@ -6206,8 +6266,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                     obj.addedit.formField.name.EN
                   ),
                   name: {
-                    TH: obj.addedit.formField.name.TH,
-                    EN: obj.addedit.formField.name.EN
+                    TH: (obj.addedit.formField.name.TH ? obj.addedit.formField.name.TH : obj.addedit.formField.name.EN),
+                    EN: (obj.addedit.formField.name.EN ? obj.addedit.formField.name.EN : obj.addedit.formField.name.TH)
                   },
                   amount: obj.addedit.formField.amount,
                   unit: {
@@ -6382,8 +6442,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
               );
 
               if (!obj.addedit.formField.courseSelected.selected) { obj.addedit.formValidate.isValid.course = false; i++; }
+              if (!obj.addedit.formField.name.TH && !obj.addedit.formField.name.EN) {
+                obj.addedit.formValidate.isValid.name.TH = false; i++;
+                obj.addedit.formValidate.isValid.name.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
               if (!obj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              */
               if (!obj.addedit.formField.courseCredit) { obj.addedit.formValidate.isValid.courseCredit = false; i++; }
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
@@ -6402,8 +6468,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                   ),
                   course: obj.addedit.formField.courseSelected.selected.id,
                   name: {
-                    TH: obj.addedit.formField.name.TH,
-                    EN: obj.addedit.formField.name.EN
+                    TH: (obj.addedit.formField.name.TH ? obj.addedit.formField.name.TH : obj.addedit.formField.name.EN),
+                    EN: (obj.addedit.formField.name.EN ? obj.addedit.formField.name.EN : obj.addedit.formField.name.TH)
                   },
                   courseCredit: obj.addedit.formField.courseCredit
                 });
@@ -6581,10 +6647,20 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 obj.addedit.formField.abbreviation.EN
               );
 
+              if (!obj.addedit.formField.abbreviation.TH && !obj.addedit.formField.abbreviation.EN) {
+                obj.addedit.formValidate.isValid.abbreviation.TH = false; i++;
+                obj.addedit.formValidate.isValid.abbreviation.EN = false; i++;
+              }
+              if (!obj.addedit.formField.meaning.TH && !obj.addedit.formField.meaning.EN) {
+                obj.addedit.formValidate.isValid.meaning.TH = false; i++;
+                obj.addedit.formValidate.isValid.meaning.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.abbreviation.TH) { obj.addedit.formValidate.isValid.abbreviation.TH = false; i++; }
               if (!obj.addedit.formField.abbreviation.EN) { obj.addedit.formValidate.isValid.abbreviation.EN = false; i++; }
               if (!obj.addedit.formField.meaning.TH) { obj.addedit.formValidate.isValid.meaning.TH = false; i++; }
               if (!obj.addedit.formField.meaning.EN) { obj.addedit.formValidate.isValid.meaning.EN = false; i++; }
+              */
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
               obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -6605,8 +6681,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                     EN: obj.addedit.formField.abbreviation.EN
                   },
                   meaning: {
-                    TH: obj.addedit.formField.meaning.TH,
-                    EN: obj.addedit.formField.meaning.EN
+                    TH: (obj.addedit.formField.meaning.TH ? obj.addedit.formField.meaning.TH : obj.addedit.formField.meaning.EN),
+                    EN: (obj.addedit.formField.meaning.EN ? obj.addedit.formField.meaning.EN : obj.addedit.formField.meaning.TH)
                   }
                 });
               }
@@ -7213,10 +7289,20 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 obj.addedit.formField.strategies.EN
               );
 
+              if (!obj.addedit.formField.characteristics.TH && !obj.addedit.formField.characteristics.EN) {
+                obj.addedit.formValidate.isValid.characteristics.TH = false; i++;
+                obj.addedit.formValidate.isValid.characteristics.EN = false; i++;
+              }
+              if (!obj.addedit.formField.strategies.TH && !obj.addedit.formField.strategies.EN) {
+                obj.addedit.formValidate.isValid.strategies.TH = false; i++;
+                obj.addedit.formValidate.isValid.strategies.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.characteristics.TH) { obj.addedit.formValidate.isValid.characteristics.TH = false; i++; }
               if (!obj.addedit.formField.characteristics.EN) { obj.addedit.formValidate.isValid.characteristics.EN = false; i++; }
               if (!obj.addedit.formField.strategies.TH) { obj.addedit.formValidate.isValid.strategies.TH = false; i++; }
               if (!obj.addedit.formField.strategies.EN) { obj.addedit.formValidate.isValid.strategies.EN = false; i++; }
+              */
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
               obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -7235,12 +7321,12 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                     obj.addedit.formField.strategies.EN
                   ),
                   characteristics: {
-                    TH: obj.addedit.formField.characteristics.TH,
-                    EN: obj.addedit.formField.characteristics.EN
+                    TH: (obj.addedit.formField.characteristics.TH ? obj.addedit.formField.characteristics.TH : obj.addedit.formField.characteristics.EN),
+                    EN: (obj.addedit.formField.characteristics.EN ? obj.addedit.formField.characteristics.EN : obj.addedit.formField.characteristics.TH)
                   },
                   strategies: {
-                    TH: obj.addedit.formField.strategies.TH,
-                    EN: obj.addedit.formField.strategies.EN
+                    TH: (obj.addedit.formField.strategies.TH ? obj.addedit.formField.strategies.TH : obj.addedit.formField.strategies.EN),
+                    EN: (obj.addedit.formField.strategies.EN ? obj.addedit.formField.strategies.EN : obj.addedit.formField.strategies.TH)
                   }
                 });
               }
@@ -7448,8 +7534,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
               var id = "";
 
               if (!obj.addedit.formField.plosSelected.selected) { obj.addedit.formValidate.isValid.plos = false; i++; }
+              if (!obj.addedit.formField.detail.TH && !obj.addedit.formField.detail.EN) {
+                obj.addedit.formValidate.isValid.detail.TH = false; i++;
+                obj.addedit.formValidate.isValid.detail.EN = false; i++;
+              }
+              /*
               if (!obj.addedit.formField.detail.TH) { obj.addedit.formValidate.isValid.detail.TH = false; i++; }
               if (!obj.addedit.formField.detail.EN) { obj.addedit.formValidate.isValid.detail.EN = false; i++; }
+              */
               if (obj.addedit.formField.strategies.teaching.length === 0) { obj.addedit.formValidate.isValid.strategies.teaching = false; i++; }
               if (obj.addedit.formField.strategies.evaluation.length === 0) { obj.addedit.formValidate.isValid.strategies.evaluation = false; i++; }
               if (utilServ.getObjectByValue(obj.table.data, "id", id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
@@ -7491,8 +7583,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                     EN: obj.addedit.formField.plosSelected.selected.title.EN
                   },
                   detail: {
-                    TH: obj.addedit.formField.detail.TH,
-                    EN: obj.addedit.formField.detail.EN
+                    TH: (obj.addedit.formField.detail.TH ? obj.addedit.formField.detail.TH : obj.addedit.formField.detail.EN),
+                    EN: (obj.addedit.formField.detail.EN ? obj.addedit.formField.detail.EN : obj.addedit.formField.detail.TH)
                   },
                   strategies: {
                     teaching: {
@@ -8487,8 +8579,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
               var kpiServObj = kpiServ.form.owner[owner];
               var i = 0;
 
+              if (!kpiServObj.addedit.formField.name.TH && !kpiServObj.addedit.formField.name.EN) {
+                obj.addedit.formValidate.isValid.name.TH = false; i++;
+                obj.addedit.formValidate.isValid.name.EN = false; i++;
+              }
+              /*
               if (!kpiServObj.addedit.formField.name.TH) { obj.addedit.formValidate.isValid.name.TH = false; i++; }
               if (!kpiServObj.addedit.formField.name.EN) { obj.addedit.formValidate.isValid.name.EN = false; i++; }
+              */
               if (utilServ.getObjectByValue(obj.table.data, "id", kpiServObj.addedit.formField.id).length > 0) { obj.addedit.formValidate.isValid.unique = false; i++; }
 
               obj.addedit.formValidate.showSaveError = (i > 0 ? true : false);
@@ -8503,8 +8601,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 obj.table.data.push({
                   id: kpiServObj.addedit.formField.id,
                   title: {
-                    TH: kpiServObj.addedit.formField.name.TH,
-                    EN: kpiServObj.addedit.formField.name.EN
+                    TH: (kpiServObj.addedit.formField.name.TH ? kpiServObj.addedit.formField.name.TH : kpiServObj.addedit.formField.name.EN),
+                    EN: (kpiServObj.addedit.formField.name.EN ? kpiServObj.addedit.formField.name.EN : kpiServObj.addedit.formField.name.TH)
                   },
                   year: {}
                 });

@@ -72,7 +72,10 @@
     </div>
     <div class="form-separate marginTop15">
       <div class="form-programobjectives" ng-init="ownerProgramObjectives = tqf2g2.addedit.section1.owner; tqf2g2.programObjectives.new(ownerProgramObjectives); programObjectivesObj = tqf2g2.programObjectives.owner[ownerProgramObjectives]">
-        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'programObjectives'])}}</div>
+        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+          {{$appServ.getLabel(['program', 'table', 'programObjectives'])}}
+          <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+        </div>
         <div class="toolbar text-left">
           <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); programObjectivesObj.addedit.showForm = !programObjectivesObj.addedit.showForm; (programObjectivesObj.addedit.showForm ? programObjectivesObj.addedit.init(ownerProgramObjectives) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
         </div>
@@ -194,7 +197,10 @@
     </div>
     <div class="form-separate marginTop15">
       <div class="form-plos" ng-init="ownerPLOs = tqf2g2.addedit.section1.owner; tqf2g2.plos.new(ownerPLOs); plosObj = tqf2g2.plos.owner[ownerPLOs]">
-        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'plos'])}}</div>
+        <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+          {{$appServ.getLabel(['program', 'table', 'plos'])}}
+          <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+        </div>
         <div class="toolbar text-left">
           <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); plosObj.addedit.showForm = !plosObj.addedit.showForm; (plosObj.addedit.showForm ? plosObj.addedit.init(ownerPLOs) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
         </div>
@@ -351,7 +357,10 @@
                 <td class="colnowrap" colspan="5">
                   <div class="paddingTop10 paddingBottom10 paddingLeft10 border5 border-solid border-darkgray noborder-top noborder-right noborder-left">
                     <div class="form-subplos" ng-init="ownerSubPLOs = (tqf2g2.addedit.section1.owner + plos.code); tqf2g2.subplos.new(ownerSubPLOs); subplosObj = tqf2g2.subplos.owner[ownerSubPLOs]; subplosObj.table.reload.getData(ownerSubPLOs, plos.xmlSubPLOs)">
-                      <div class="{{$appServ.labelStyle}} regular black f10 text-left form-separate-title">{{$appServ.getLabel(['subPLOs'])}}</div>
+                      <div class="{{$appServ.labelStyle}} regular black f10 text-left form-separate-title">
+                        {{$appServ.getLabel(['subPLOs'])}}
+                        <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+                      </div>
                       <div class="toolbar in-form text-left">
                         <a enter class="btn nomargin-left" href="javascript:void(0)" ng-class="{ 'disabled': tqf2.addedit.disabled }" ng-click="$utilServ.doBlur($event); subplosObj.addedit.showForm = !subplosObj.addedit.showForm; (subplosObj.addedit.showForm ? subplosObj.addedit.init(ownerSubPLOs) : '')" uib-tooltip-html="$appServ.getLabel(['add'])"><i class="fa fa-plus white f9 top6"></i></a>
                       </div>
@@ -507,7 +516,10 @@
               </div>
             </div>
             <div>
-              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['developPlan', 'table', 'plan'])}}</div>
+              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                {{$appServ.getLabel(['developPlan', 'table', 'plan'])}}
+                <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+              </div>
               <div class="form">
                 <div class="form-row">
                   <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -534,7 +546,10 @@
               </div>
             </div>
             <div class="form-separate">
-              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['developPlan', 'table', 'strategies'])}}</div>
+              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                {{$appServ.getLabel(['developPlan', 'table', 'strategies'])}}
+                <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+              </div>
               <div class="form">
                 <div class="form-row">
                   <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -561,7 +576,10 @@
               </div>
             </div>
             <div class="form-separate">
-              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['developPlan', 'table', 'evidences'])}}</div>
+              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                {{$appServ.getLabel(['developPlan', 'table', 'evidences'])}}
+                <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+              </div>
               <div class="form">
                 <div class="form-row">
                   <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>

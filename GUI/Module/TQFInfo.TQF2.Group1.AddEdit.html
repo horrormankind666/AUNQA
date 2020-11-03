@@ -76,7 +76,10 @@
       </div>
     </div>
     <div class="form-separate">
-      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['name'])}}</div>
+      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+        {{$appServ.getLabel(['name'])}}
+        <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+      </div>
       <div class="form">
         <div class="form-row">
           <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -115,7 +118,10 @@
 <script type="text/ng-template" id="TQFInfo.TQF2.Group1.AddEdit.Section2.Content.Template.html">
   <div class="section2 paddingBottom10">
     <div>
-      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['fullName'])}}</div>
+      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+        {{$appServ.getLabel(['fullName'])}}
+        <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+      </div>
       <div class="form">
         <div class="form-row">
           <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -138,7 +144,10 @@
       </div>
     </div>
     <div class="form-separate">
-      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['initials'])}}</div>
+      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+        {{$appServ.getLabel(['initials'])}}
+        <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+      </div>
       <div class="form">
         <div class="form-row">
           <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -499,7 +508,7 @@
       <div class="form-row">
         <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['courseCredit'])}}</div>
         <div class="form-col input-col">
-          <input enter smart-textbox ui-number-mask="1" class="form-control inputbox font-en regular black f10" type="text" maxlength="5" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g1.addedit.section4.formField.courseCredit" />
+          <input enter smart-textbox ui-number-mask="0" class="form-control inputbox font-en regular black f10" type="text" maxlength="3" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g1.addedit.section4.formField.courseCredit" />
           <div class="description {{$appServ.labelStyle}} regular gray f12">{{$appServ.getLabel(['unit']) + ' : ' + $appServ.getLabel(['unit', 'credits'])}}</div>
         </div>
       </div>
@@ -521,7 +530,10 @@
 <script type="text/ng-template" id="TQFInfo.TQF2.Group1.AddEdit.Section5.Content.Template.html">
   <div class="section5 paddingBottom10">
     <div>
-      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'programModel'])}}</div>
+      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+        {{$appServ.getLabel(['program', 'table', 'programModel'])}}
+        <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+      </div>
       <div class="form">
         <div class="form-row">
           <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -538,7 +550,10 @@
       </div>
     </div>
     <div class="form-separate">
-      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['program', 'table', 'programType'])}}</div>
+      <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+        {{$appServ.getLabel(['program', 'table', 'programType'])}}
+        <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+      </div>
       <div class="form">
         <div class="form-row">
           <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
@@ -598,7 +613,7 @@
                       <input class="{{'input' + admissionType.input}}" type="{{admissionType.input}}" id="{{'check' + admissionType.id}}" name="admissiontype" value="{{admissionType.id}}"
                         ng-disabled="tqf2.addedit.disabled"
                         ng-init="tqf2g1.addedit.section5.isCheckedAdmissionType[admissionType.id] = false"
-                        ng-model="tqf2g1.addedit.section5.formField.admissionTypeSelected"
+                        ng-model="tqf2g1.addedit.section5.formField.admissionTypeSelected[admissionType.id]"
                         ng-click="$TQFServ.inputTypeRemark.setSelected(admissionType, 'admissionType', tqf2g1.addedit.section5.formField, tqf2g1.addedit.section5.isCheckedAdmissionType)" />
                       <label for="{{'check' + admissionType.id}}"></label>
                     </div>
@@ -986,7 +1001,7 @@
           <div class="form-row meetingtime" ng-if="approvedStatus.isOrdinal === 'Y'">
             <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'approvedStatus', 'meetingTime'])}}</div>
             <div class="form-col input-col">
-              <input enter smart-textbox ui-number-mask="0" class="semester-courseyear inputbox font-en regular black f10" type="text" maxlength="3" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g1.addedit.section6.formField.approvedOrdinal.time[approvedStatus.id]" />
+              <input enter smart-textbox textbox-type-letter="ordinalnumeric" class="semester-courseyear inputbox font-en regular black f10" type="text" maxlength="5" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g1.addedit.section6.formField.approvedOrdinal.time[approvedStatus.id]" />
               <span class="{{$appServ.labelStyle}} regular black f10"> / </span>
               <input enter smart-textbox ui-number-mask="0" ui-hide-group-sep class="semester-courseyear inputbox font-en regular black f10" type="text" maxlength="4" ng-disabled="tqf2.addedit.disabled" ng-model="tqf2g1.addedit.section6.formField.approvedOrdinal.year[approvedStatus.id]" />
             </div>
@@ -1425,7 +1440,10 @@
               </div>
             </div>
             <div>
-              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">{{$appServ.getLabel(['placeStudy', 'table', 'name'])}}</div>
+              <div class="{{$appServ.labelStyle}} bold black f10 text-left form-separate-title">
+                {{$appServ.getLabel(['placeStudy', 'table', 'name'])}}
+                <div class="description {{$appServ.labelStyle}} regular gray f11">{{$appServ.getLabel(['anyLang'])}}</div>
+              </div>
               <div class="form">
                 <div class="form-row">
                   <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['thai'])}}</div>
