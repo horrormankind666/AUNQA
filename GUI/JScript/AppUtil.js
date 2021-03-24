@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๒๖/๐๓/๒๕๖๑>
-Modify date : <๒๑/๑๐/๒๕๖๒>
+Modify date : <๐๕/๑๑/๒๕๖๒>
 Description : <รวมรวบฟังก์ชั่นใช้งานทั่วไปของระบบ>
 =============================================
 */
@@ -543,6 +543,16 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
             route   = "SendVerifyData";
             break;
           }
+          case "setCancelStatus": {
+            method  = "PUT";
+            route   = "SetCancelStatus";
+            break;
+          }
+          case "setAsDefault": {
+            method = "PUT";
+            route = "SetAsDefault";
+            break;
+          }
         }
 
         url += (route + "?ver=" + utilServ.dateTimeOnURL);
@@ -570,7 +580,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
               angular.extend(res, {
                 status: status
               });
-
+              
               if (result.data.status) {
                 if (method === "POST" || method === "PUT" || method === "DELETE") {
                   if (method === "POST" || method === "PUT") {
@@ -627,7 +637,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
             deferred.resolve(res);
           }
         });                
-                
+        
         return deferred.promise;
       }         
     };

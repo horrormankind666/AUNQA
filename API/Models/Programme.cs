@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๐๔/๐๔/๒๕๖๑>
-Modify date : <๐๘/๑๐/๒๕๖๒>
+Modify date : <๐๕/๑๑/๒๕๖๒>
 Description : <โมเดลข้อมูลหลักสูตร TQF2>
 =============================================
 */
@@ -177,14 +177,25 @@ namespace API.Models
       StringBuilder xmlData = new StringBuilder();
       StringBuilder xmlUser = new StringBuilder();
       string mode = String.Empty;
+      string proc = "sp_acaTQFSetProgrammeTemp";
       string groupType = "academic";
       string xmlSeparators = "[\t]";
 
-      if (method.Equals("POST"))        mode = "add";
-      if (method.Equals("PUT"))         mode = "edit";
-      if (method.Equals("UPDATE"))      mode = "update";
-      if (method.Equals("SENDVERIFY"))  mode = "sendverify";
-      if (method.Equals("VERIFY"))      mode = "verify";
+      if (method.Equals("POST"))            mode = "add";
+      if (method.Equals("PUT"))             mode = "edit";
+      if (method.Equals("UPDATE"))          mode = "update";
+      if (method.Equals("SENDVERIFY"))      mode = "sendverify";
+      if (method.Equals("VERIFY"))          mode = "verify";
+      if (method.Equals("SETCANCELSTATUS"))
+      {
+        mode = "setcancelstatus";
+        proc = "sp_acaTQFSetProgramme";
+      }
+      if (method.Equals("SETASDEFAULT"))
+      {
+        mode = "setasdefault";
+        proc = "sp_acaTQFSetProgramme";
+      }
 
       foreach (var d in data)
       {
@@ -306,8 +317,8 @@ namespace API.Models
       "</row>",
       account.Username,
       iUtilService.GetIP());
-            
-      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, "sp_acaTQFSetProgrammeTemp",
+
+      DataSet ds = iUtil.ExecuteCommandStoredProcedure(iUtil.infinityConnectionString, proc,
         new SqlParameter("@xmlData",    xmlData.ToString()),
         new SqlParameter("@xmlUser",    xmlUser.ToString()),
         new SqlParameter("@mode",       mode),

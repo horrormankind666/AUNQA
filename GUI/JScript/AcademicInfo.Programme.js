@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๐๓/๑๐/๒๕๖๑>
-Modify date : <๐๘/๑๐/๒๕๖๒>
+Modify date : <๐๕/๑๑/๒๕๖๓>
 Description : <รวมรวบฟังก์ชั่นใช้งานสำหรับข้อมูลการศึกษาในส่วนของข้อมูลหลักสูตร>
 =============================================
 */
@@ -469,7 +469,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
             
       self.table.filter.setValue();
       self.table.getData();
-
+      
       $timeout(function () {
         deferred.resolve();
       }, 0);
@@ -527,6 +527,47 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
         utilServ.setSectionLayout();
         utilServ.gotoTopPage();
       }
+    };
+
+    self.setCancel = function (programId, courseYear) {
+      programmeServ.setCancel(programId, courseYear).then(function (result) {
+        if (result.status) {
+          var obj = programmeServ.table.reload;
+
+          obj.isPreloading = false;
+          obj.isResetDataSource = true;
+          obj.tableType = "master";
+          obj.order = [{
+            table: "programmeVerified",
+            isFirstPage: false
+          }];
+          obj.action();
+        }
+      });
+    };
+
+    self.setAsDefault = function (programId, courseYear) {           
+      programmeServ.setAsDefault(programId, courseYear).then(function (result) {
+        if (result.status) {
+          programmeServ.tableList.programmeVerified.data.filter(function (item) {
+            return item.programId === programId
+          }).map(function (item) {
+            item.courseYearPresent = ""
+
+            return item;
+          });
+
+          programmeServ.tableList.programmeVerified.data.filter(function (item) {
+            var courseYearList = item.courseYear.split(',')
+
+            return (item.programId === programId && courseYearList.indexOf(courseYear) >= 0)
+          }).map(function (item) {
+            item.courseYearPresent = courseYear
+
+            return item;
+          });
+        }
+      })
     };
   })
 

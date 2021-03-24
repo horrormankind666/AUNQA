@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๒๖/๐๓/๒๕๖๑>
-Modify date : <๒๒/๑๐/๒๕๖๒>
+Modify date : <๐๔/๑๑/๒๕๖๒>
 Description : <Style Sheet จัดรูปการแสดงผล>
 =============================================
 */
@@ -413,6 +413,10 @@ a.unlink {
 }
 .bootstrap-dialog.modal {
   top: 80px;
+}
+a:focus.i-info,
+a:visited.i-info {
+  color: #46B8DA;
 }
 /* ========================================== */
 .inputbox,
@@ -1046,7 +1050,10 @@ uib-accordion .panel-group .panel .panel-heading .panel-title a[aria-expanded=tr
 }
 /* ========================================== */
 main {
-  min-width: 215px;
+  min-width: 320px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  cursor: default;
 }
 main header nav.navbar .hbg {
   background: #1D4F91;
@@ -1896,6 +1903,13 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   width: 112px;
   min-width: 112px;
 }
+.academicinfo.programme.verified .table thead th:not(.colwrap).col-courseyear,
+.academicinfo.programme.verified .table tbody td:not(.colwrap).col-courseyear,
+.tqfinfo.tqf2.programme.verified .table thead th:not(.colwrap).col-courseyear,
+.tqfinfo.tqf2.programme.verified .table tbody td:not(.colwrap).col-courseyear {
+  width: 196px;
+  min-width: 196px;
+}
 .academicinfo.programme .table .col-mode,
 .tqfinfo.tqf2.programme .table .col-mode {
   width: 70px;
@@ -1932,13 +1946,18 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 .tqfinfo.tqf2.programme .table .col-who .iform .iform-col.colhead {
   width: 47px;
 }
+.academicinfo.programme .table tbody .col-courseyear .dropdown .link,
+.tqfinfo.tqf2.programme .table tbody .col-courseyear .dropdown .link {
+  display: inline-block;
+  width: 35px;
+}
 .academicinfo.programme .table tbody .col-courseyear .dropdown i.fa-caret-right,
 .academicinfo.programme .table tbody .col-command .dropdown i.fa-caret-right,
 .tqfinfo.tqf2.programme .table tbody .col-courseyear .dropdown i.fa-caret-right,
 .tqfinfo.tqf2.programme .table tbody .col-command .dropdown i.fa-caret-right {
   top: 3px;
   right: 50%;
-  left: 0px;
+  left: -10px;
 }
 .academicinfo.programme .table tbody .col-command .dropdown i.fa-caret-right,
 .tqfinfo.tqf2.programme .table tbody .col-command .dropdown i.fa-caret-right {
@@ -1963,7 +1982,7 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   width: 126px !important;
   min-width: 126px !important;
   top: -90%;
-  left: -116%;
+  left: -77%;
 }
 .academicinfo.programme .table tbody .col-command .dropdown-menu,
 .tqfinfo.tqf2.programme .table tbody .col-command .dropdown-menu {
@@ -1973,7 +1992,7 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 .academicinfo.programme .table tbody td.colwrap .col-courseyear .dropdown-menu,
 .tqfinfo.tqf2.programme .table tbody td.colwrap .col-courseyear .dropdown-menu {
   top: -90%;
-  left: 44px;
+  left: 43px;
 }
 .academicinfo.programme .table tbody td.colwrap .toolbar .dropdown-menu,
 .tqfinfo.tqf2.programme .table tbody td.colwrap .toolbar .dropdown-menu {
@@ -2005,6 +2024,9 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 @media screen and (max-width: 1064px) and (min-width: $screen-min-width) {
   @include table-responsive-step1(true, ".academicinfo.programme.sendingverify");
 }
+@media screen and (max-width: 957px) and (min-width: $screen-min-width) {
+  @include table-responsive-step1(true, ".academicinfo.programme.verified");
+}
 @media screen and (max-width: 951px) and (min-width: $screen-min-width) {
   @include nav-tabs-responsive(true, ".academicinfo.programme .page-body"); 
 }
@@ -2021,9 +2043,6 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 @media screen and (max-width: 895px) {
   @include table-responsive-step1(false, ".academicinfo.programme.transactionhistory");
 }
-@media screen and (max-width: 874px) and (min-width: $screen-min-width) {
-  @include table-responsive-step1(true, ".academicinfo.programme.verified"); 
-}
 @media screen and (max-width: 814px) and (min-width: $screen-min-width) {
   @include table-responsive-step1(false, ".academicinfo.programme.sendingverify");
 }
@@ -2033,7 +2052,7 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 @media screen and (max-width: 701px) {
   @include nav-tabs-responsive(false, ".academicinfo.programme .page-body"); 
 }
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 707px) {
   @include table-responsive-step1(false, ".academicinfo.programme.verified");    
 }
 /* ========================================== */
@@ -2159,14 +2178,14 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 @media screen and (max-width: 1183px) and (min-width: $screen-min-width) {
   @include table-responsive-step1(true, ".tqfinfo.tqf2.programme.sendingverify");
 }
+@media screen and (max-width: 1077px) and (min-width: $screen-min-width) {
+  @include table-responsive-step1(true, ".tqfinfo.tqf2.programme.verified");
+}
 @media screen and (max-width: 1015px) and (min-width: $screen-min-width) {
   @include table-responsive-step1(false, ".tqfinfo.tqf2.programme.pendingverify");
 }
 @media screen and (max-width: 1015px) {
   @include table-responsive-step1(false, ".tqfinfo.tqf2.programme.pendingverify");
-}
-@media screen and (max-width: 994px) and (min-width: $screen-min-width) {
-  @include table-responsive-step1(true, ".tqfinfo.tqf2.programme.verified");
 }
 @media screen and (max-width: 934px) and (min-width: $screen-min-width) {
   @include table-responsive-step1(false, ".tqfinfo.tqf2.programme.sendingverify");
@@ -2174,10 +2193,10 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 @media screen and (max-width: 934px) {
   @include table-responsive-step1(false, ".tqfinfo.tqf2.programme.sendingverify");
 }
-@media screen and (max-width: 744px) and (min-width: $screen-min-width) {
+@media screen and (max-width: 827px) and (min-width: $screen-min-width) {
   @include table-responsive-step1(false, ".tqfinfo.tqf2.programme.verified");
 }
-@media screen and (max-width: 744px) {
+@media screen and (max-width: 827px) {
   @include table-responsive-step1(false, ".tqfinfo.tqf2.programme.verified");
 }
 @media screen and (max-width: 817px) and (min-width: $screen-min-width) {

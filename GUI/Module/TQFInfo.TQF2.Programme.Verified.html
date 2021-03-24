@@ -95,26 +95,26 @@
                 <td class="noborder-top noborder-bottom noborder-left col-name text-left">
                   <span class="{{$appServ.labelStyle}} regular black f11 block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'name'])">{{dr.name[$utilServ.lang]}}</span>
                 </td>
-                <td class="noborder-top noborder-bottom noborder-left col-courseyear">
+                <td class="noborder-top noborder-bottom noborder-left col-courseyear text-left">
                   <div class="block" uib-tooltip-html="$appServ.getLabel(['program', 'table', 'courseYear'])">
                     <div class="dropdown" ng-repeat="courseYear in dr.courseYear.split(',')">
-                      <a class="link {{$appServ.labelStyle}} regular black f11" href="javascript:void(0)" data-toggle="dropdown">{{dr.createdBy + ' ' + courseYear}}<br /></a>
+                      <a class="link {{$appServ.labelStyle}} regular black f11" href="javascript:void(0)" data-toggle="dropdown">{{courseYear}}</a>
                       <i class="fa fa-caret-right" aria-hidden="true"></i>
                       <ul class="dropdown-menu">
                         <li>
                           <a class="{{$appServ.labelStyle}} regular white f11" href="javascript:void(0)"
-                            ng-click="tqf2.search.showForm = false;
+                             ng-click="tqf2.search.showForm = false;
                                       tqf2.addedit.showForm = !tqf2.addedit.showForm;
                                       $facultyServ.isFaculty = true;
                                       $programmeServ.isProgram = true;
-                                      $programmeServ.dataRow = dr;                                                                 
+                                      $programmeServ.dataRow = dr;
                                       $programmeServ.dataRow.courseYear = courseYear;
                                       tqf2.addedit.template.action = 'edit';
                                       tqf2.addedit.template.init()">{{$appServ.getLabel(['program', 'edit'])}}</a>
                         </li>
                         <li>
                           <a class="{{$appServ.labelStyle}} regular white f11" href="javascript:void(0)"
-                            ng-click="tqf2.search.showForm = false;
+                             ng-click="tqf2.search.showForm = false;
                                       tqf2.addedit.showForm = !tqf2.addedit.showForm;
                                       $facultyServ.isFaculty = true;
                                       $programmeServ.isProgram = true;
@@ -122,8 +122,12 @@
                                       $programmeServ.dataRow.courseYear = courseYear;
                                       tqf2.addedit.template.action = 'update';
                                       tqf2.addedit.template.init()">{{$appServ.getLabel(['program', 'update'])}}</a>
-                      </li>
+                        </li>
                       </ul>
+                      <a class="{{$appServ.labelStyle}} regular i-info f12" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); $programmeServ.setCancel(dr.programId, courseYear)">{{$appServ.getLabel(['cancel']) | lowercase}}</a>
+                      <span class="{{$appServ.labelStyle}} regular i-info f12"> | </span>
+                      <span class="{{$appServ.labelStyle}} regular muted f12" ng-if="dr.courseYear && dr.courseYearPresent && courseYear === dr.courseYearPresent">{{$appServ.getLabel(['default', 'asDefault']) | lowercase}}</span>
+                      <a class="{{$appServ.labelStyle}} regular i-info f12" href="javascript:void(0)" ng-if="courseYear !== dr.courseYearPresent" ng-click="$utilServ.doBlur($event); $programmeServ.setAsDefault(dr.programId, courseYear)">{{$appServ.getLabel(['default', 'setAs']) | lowercase}}</a>
                     </div>
                   </div>
                 </td>
@@ -224,7 +228,7 @@
                             <ul class="dropdown-menu">
                               <li>
                                 <a class="{{$appServ.labelStyle}} regular white f11" href="javascript:void(0)"
-                                  ng-click="tqf2.search.showForm = false;
+                                   ng-click="tqf2.search.showForm = false;
                                             tqf2.addedit.showForm = !tqf2.addedit.showForm;
                                             $facultyServ.isFaculty = true;
                                             $programmeServ.isProgram = true;
@@ -235,7 +239,7 @@
                               </li>
                               <li>
                                 <a class="{{$appServ.labelStyle}} regular white f11" href="javascript:void(0)"
-                                  ng-click="tqf2.search.showForm = false;
+                                   ng-click="tqf2.search.showForm = false;
                                             tqf2.addedit.showForm = !tqf2.addedit.showForm;
                                             $facultyServ.isFaculty = true;
                                             $programmeServ.isProgram = true;
@@ -245,6 +249,10 @@
                                             tqf2.addedit.template.init()">{{$appServ.getLabel(['program', 'update'])}}</a>
                               </li>
                             </ul>
+                            <a class="{{$appServ.labelStyle}} regular i-info f12" href="javascript:void(0)" ng-click="$utilServ.doBlur($event); $programmeServ.setCancel(dr.programId, courseYear)">{{$appServ.getLabel(['cancel']) | lowercase}}</a>
+                            <span class="{{$appServ.labelStyle}} regular i-info f12"> | </span>
+                            <span class="{{$appServ.labelStyle}} regular muted f12" ng-if="dr.courseYear && dr.courseYearPresent && courseYear === dr.courseYearPresent">{{$appServ.getLabel(['default', 'asDefault']) | lowercase}}</span>
+                            <a class="{{$appServ.labelStyle}} regular i-info f12" href="javascript:void(0)" ng-if="courseYear !== dr.courseYearPresent" ng-click="$utilServ.doBlur($event); $programmeServ.setAsDefault(dr.programId, courseYear)">{{$appServ.getLabel(['default', 'setAs']) | lowercase}}</a>
                           </div>
                         </div>
                       </div>

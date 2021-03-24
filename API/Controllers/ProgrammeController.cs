@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๐๔/๐๔/๒๕๖๑>
-Modify date : <๐๘/๑๐/๒๕๖๒>
+Modify date : <๐๕/๑๑/๒๕๖๒>
 Description : <คอนโทลเลอร์ข้อมูลหลักสูตร TQF2>
 =============================================
 */
@@ -175,6 +175,48 @@ namespace API.Controllers
         {
           List<Programme> list = GetJSONFromRequest().data.ToObject<List<Programme>>();
           dt = Programme.SetData("VERIFY", list, account).Tables[0];
+        }
+      }
+
+      return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
+    }
+
+    [Route("SetCancelStatus")]
+    [HttpPut]
+    public HttpResponseMessage SetCancelStatus()
+    {
+      DataTable dt = new DataTable();
+      bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
+      
+      if (isAuthen)
+      {
+        isAuthen = (account.FacultyId.ToString().Equals("MU-01") && account.Userlevel.ToString().Equals(new UtilService.iUtil().GetUserLevelAdmin()) ? true : false);
+
+        if (isAuthen)
+        {
+          List<Programme> list = GetJSONFromRequest().data.ToObject<List<Programme>>();
+          dt = Programme.SetData("SETCANCELSTATUS", list, account).Tables[0];
+        }
+      }
+      
+      return Request.CreateResponse(HttpStatusCode.OK, iUtil.APIResponse.GetData(dt, isAuthen));
+    }
+
+    [Route("SetAsDefault")]
+    [HttpPut]
+    public HttpResponseMessage SetAsDefault()
+    {
+      DataTable dt = new DataTable();
+      bool isAuthen = iUtil.AuthenStudentSystem.validAccount(account);
+
+      if (isAuthen)
+      {
+        isAuthen = (account.FacultyId.ToString().Equals("MU-01") && account.Userlevel.ToString().Equals(new UtilService.iUtil().GetUserLevelAdmin()) ? true : false);
+
+        if (isAuthen)
+        {
+          List<Programme> list = GetJSONFromRequest().data.ToObject<List<Programme>>();
+          dt = Programme.SetData("SETASDEFAULT", list, account).Tables[0];
         }
       }
 

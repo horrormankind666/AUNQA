@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๑๗/๐๔/๒๕๖๑>
-Modify date : <๒๑/๑๐/๒๕๖๒>
+Modify date : <๐๖/๑๑/๒๕๖๒>
 Description : <รวมรวบฟังก์ชั่นใช้งานสำหรับข้อมูลหลักสูตร>
 =============================================
 */
@@ -882,6 +882,70 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 
         return deferred.promise;
       }            
+    };
+
+    self.setCancel = function (programId, courseYear) {
+      utilServ.dialogConfirmWithDict(["program", "cancel", "confirm"], function (result) {
+        if (result) {
+          var data = {
+            programId: (programId ? programId : ""),
+            courseYear: (courseYear ? courseYear : ""),
+            cancelStatus: "Y"
+          };
+
+          appServ.save.action({
+            routePrefix: "Programme",
+            action: "setCancelStatus",
+            data: [data]
+          }).then(function (result) {
+            if (result.status) {
+              var obj = self.table.reload;
+
+              obj.isPreloading = false;
+              obj.isResetDataSource = true;
+              obj.tableType = "master";
+              obj.order = [{
+                table: "programmeVerified",
+                isFirstPage: false
+              }];
+              obj.action();
+            }
+          });
+        }
+      });
+    };
+
+    self.setAsDefault = function (programId, courseYear) {      
+      var data = {
+        programId: (programId ? programId : ""),
+        courseYear: (courseYear ? courseYear : "")
+      };
+
+      appServ.save.action({
+        routePrefix: "Programme",
+        action: "setAsDefault",
+        data: [data]
+      }).then(function (result) {
+        if (result.status) {
+          self.tableList.programmeVerified.data.filter(function (item) {
+            return item.programId === programId
+          }).map(function (item) {
+            item.courseYearPresent = ""
+
+            return item;
+          });
+
+          self.tableList.programmeVerified.data.filter(function (item) {
+            var courseYearList = item.courseYear.split(',')
+
+            return (item.programId === programId && courseYearList.indexOf(courseYear) >= 0)
+          }).map(function (item) {
+            item.courseYearPresent = courseYear
+
+            return item;
+          });
+        }
+      });
     };
   });
 })();

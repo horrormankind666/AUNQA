@@ -3,7 +3,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๒๖/๐๓/๒๕๖๑>
-Modify date : <๑๐/๑๐/๒๕๖๒>
+Modify date : <๐๔/๑๑/๒๕๖๒>
 Description : <Style Sheet จัดรูปการแสดงผล>
 =============================================
 */
@@ -123,6 +123,10 @@ a.unlink {
 .bootstrap-dialog.modal {
   top: 80px; }
 
+a:focus.i-info,
+a:visited.i-info {
+  color: #46B8DA; }
+
 /* ========================================== */
 .inputbox,
 .inputcalendar,
@@ -174,6 +178,15 @@ form .required:after,
   font-family: "Pridi";
   font-size: 16px;
   font-weight: 300; }
+
+.form .form-col.input-col .credits {
+  width: 164px; }
+
+.form .form-col.input-col .credit {
+  width: 45px; }
+
+.form .form-col.input-col .date {
+  width: 137px; }
 
 .form-separate {
   padding-top: 10px;
@@ -717,7 +730,10 @@ uib-accordion .panel-group .panel .panel-heading .panel-title a[aria-expanded=tr
 
 /* ========================================== */
 main {
-  min-width: 215px; }
+  min-width: 320px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  cursor: default; }
 
 main header nav.navbar .hbg {
   background: #1D4F91; }
@@ -967,10 +983,9 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu {
 
 /*
 main section .panel-col.col-menu .slidemenu .nav .submenu .panel-col.col-iconright,
-main section .panel-col.col-menu .slidemenu .nav .subsubmenu .panel-col.col-iconright
-{
-    width: 45px;
-    line-height: 1.6;
+main section .panel-col.col-menu .slidemenu .nav .subsubmenu .panel-col.col-iconright {
+  width: 45px;
+  line-height: 1.6;
 }
 */
 main section .panel-col.col-menu .slidemenu .nav .submenu .menuactiveaction span,
@@ -1895,6 +1910,13 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   width: 112px;
   min-width: 112px; }
 
+.academicinfo.programme.verified .table thead th:not(.colwrap).col-courseyear,
+.academicinfo.programme.verified .table tbody td:not(.colwrap).col-courseyear,
+.tqfinfo.tqf2.programme.verified .table thead th:not(.colwrap).col-courseyear,
+.tqfinfo.tqf2.programme.verified .table tbody td:not(.colwrap).col-courseyear {
+  width: 196px;
+  min-width: 196px; }
+
 .academicinfo.programme .table .col-mode,
 .tqfinfo.tqf2.programme .table .col-mode {
   width: 70px;
@@ -1931,13 +1953,18 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 .tqfinfo.tqf2.programme .table .col-who .iform .iform-col.colhead {
   width: 47px; }
 
+.academicinfo.programme .table tbody .col-courseyear .dropdown .link,
+.tqfinfo.tqf2.programme .table tbody .col-courseyear .dropdown .link {
+  display: inline-block;
+  width: 35px; }
+
 .academicinfo.programme .table tbody .col-courseyear .dropdown i.fa-caret-right,
 .academicinfo.programme .table tbody .col-command .dropdown i.fa-caret-right,
 .tqfinfo.tqf2.programme .table tbody .col-courseyear .dropdown i.fa-caret-right,
 .tqfinfo.tqf2.programme .table tbody .col-command .dropdown i.fa-caret-right {
   top: 3px;
   right: 50%;
-  left: 0px; }
+  left: -10px; }
 
 .academicinfo.programme .table tbody .col-command .dropdown i.fa-caret-right,
 .tqfinfo.tqf2.programme .table tbody .col-command .dropdown i.fa-caret-right {
@@ -1962,7 +1989,7 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   width: 126px !important;
   min-width: 126px !important;
   top: -90%;
-  left: -116%; }
+  left: -77%; }
 
 .academicinfo.programme .table tbody .col-command .dropdown-menu,
 .tqfinfo.tqf2.programme .table tbody .col-command .dropdown-menu {
@@ -1972,7 +1999,7 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 .academicinfo.programme .table tbody td.colwrap .col-courseyear .dropdown-menu,
 .tqfinfo.tqf2.programme .table tbody td.colwrap .col-courseyear .dropdown-menu {
   top: -90%;
-  left: 44px; }
+  left: 43px; }
 
 .academicinfo.programme .table tbody td.colwrap .toolbar .dropdown-menu,
 .tqfinfo.tqf2.programme .table tbody td.colwrap .toolbar .dropdown-menu {
@@ -2017,6 +2044,14 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   .slideleftactive .academicinfo.programme.sendingverify .table .table-data td.colnowrap .table thead.table-data {
     display: none !important; }
   .slideleftactive .academicinfo.programme.sendingverify .table .table-data .colwrap.colwrap1 {
+    display: table-cell; } }
+
+@media screen and (max-width: 957px) and (min-width: 721px) {
+  .slideleftactive .academicinfo.programme.verified .table .table-data th:not(.colwrap),
+  .slideleftactive .academicinfo.programme.verified .table .table-data td:not(.colwrap):not(.colnowrap),
+  .slideleftactive .academicinfo.programme.verified .table .table-data td.colnowrap .table thead.table-data {
+    display: none !important; }
+  .slideleftactive .academicinfo.programme.verified .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
 @media screen and (max-width: 951px) and (min-width: 721px) {
@@ -2080,14 +2115,6 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   .academicinfo.programme.transactionhistory .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
-@media screen and (max-width: 874px) and (min-width: 721px) {
-  .slideleftactive .academicinfo.programme.verified .table .table-data th:not(.colwrap),
-  .slideleftactive .academicinfo.programme.verified .table .table-data td:not(.colwrap):not(.colnowrap),
-  .slideleftactive .academicinfo.programme.verified .table .table-data td.colnowrap .table thead.table-data {
-    display: none !important; }
-  .slideleftactive .academicinfo.programme.verified .table .table-data .colwrap.colwrap1 {
-    display: table-cell; } }
-
 @media screen and (max-width: 814px) and (min-width: 721px) {
   .academicinfo.programme.sendingverify .table .table-data th:not(.colwrap),
   .academicinfo.programme.sendingverify .table .table-data td:not(.colwrap):not(.colnowrap),
@@ -2127,7 +2154,7 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
     padding-top: 10px;
     padding-bottom: 10px; } }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 707px) {
   .academicinfo.programme.verified .table .table-data th:not(.colwrap),
   .academicinfo.programme.verified .table .table-data td:not(.colwrap):not(.colnowrap),
   .academicinfo.programme.verified .table .table-data td.colnowrap .table thead.table-data {
@@ -2324,6 +2351,14 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   .slideleftactive .tqfinfo.tqf2.programme.sendingverify .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
+@media screen and (max-width: 1077px) and (min-width: 721px) {
+  .slideleftactive .tqfinfo.tqf2.programme.verified .table .table-data th:not(.colwrap),
+  .slideleftactive .tqfinfo.tqf2.programme.verified .table .table-data td:not(.colwrap):not(.colnowrap),
+  .slideleftactive .tqfinfo.tqf2.programme.verified .table .table-data td.colnowrap .table thead.table-data {
+    display: none !important; }
+  .slideleftactive .tqfinfo.tqf2.programme.verified .table .table-data .colwrap.colwrap1 {
+    display: table-cell; } }
+
 @media screen and (max-width: 1015px) and (min-width: 721px) {
   .tqfinfo.tqf2.programme.pendingverify .table .table-data th:not(.colwrap),
   .tqfinfo.tqf2.programme.pendingverify .table .table-data td:not(.colwrap):not(.colnowrap),
@@ -2338,14 +2373,6 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   .tqfinfo.tqf2.programme.pendingverify .table .table-data td.colnowrap .table thead.table-data {
     display: none !important; }
   .tqfinfo.tqf2.programme.pendingverify .table .table-data .colwrap.colwrap1 {
-    display: table-cell; } }
-
-@media screen and (max-width: 994px) and (min-width: 721px) {
-  .slideleftactive .tqfinfo.tqf2.programme.verified .table .table-data th:not(.colwrap),
-  .slideleftactive .tqfinfo.tqf2.programme.verified .table .table-data td:not(.colwrap):not(.colnowrap),
-  .slideleftactive .tqfinfo.tqf2.programme.verified .table .table-data td.colnowrap .table thead.table-data {
-    display: none !important; }
-  .slideleftactive .tqfinfo.tqf2.programme.verified .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
 @media screen and (max-width: 934px) and (min-width: 721px) {
@@ -2364,7 +2391,7 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   .tqfinfo.tqf2.programme.sendingverify .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
-@media screen and (max-width: 744px) and (min-width: 721px) {
+@media screen and (max-width: 827px) and (min-width: 721px) {
   .tqfinfo.tqf2.programme.verified .table .table-data th:not(.colwrap),
   .tqfinfo.tqf2.programme.verified .table .table-data td:not(.colwrap):not(.colnowrap),
   .tqfinfo.tqf2.programme.verified .table .table-data td.colnowrap .table thead.table-data {
@@ -2372,7 +2399,7 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   .tqfinfo.tqf2.programme.verified .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
-@media screen and (max-width: 744px) {
+@media screen and (max-width: 827px) {
   .tqfinfo.tqf2.programme.verified .table .table-data th:not(.colwrap),
   .tqfinfo.tqf2.programme.verified .table .table-data td:not(.colwrap):not(.colnowrap),
   .tqfinfo.tqf2.programme.verified .table .table-data td.colnowrap .table thead.table-data {
@@ -3388,71 +3415,54 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 
 /* ========================================== */
 /* tqf info tqf3 */
-/*
-.tqfinfo.tqf2 .panel .panel-heading .panel-title .navigation .colhide:first-child.TH
-{
-    width: 90px;
-}
-.tqfinfo.tqf2 .panel .panel-heading .panel-title .navigation .colhide:first-child.EN
-{
-    width: 81px;
-}
-*/
+.tqfinfo.tqf3 .panel .panel-heading .panel-title .navigation .colhide:first-child.TH {
+  width: 90px; }
+
+.tqfinfo.tqf3 .panel .panel-heading .panel-title .navigation .colhide:first-child.EN {
+  width: 81px; }
+
 .tqfinfo.tqf3 .addedit.dialogin .form:not(.vertical) .form-col.label-col {
   width: 349px; }
 
+.tqfinfo.tqf3 .addedit.dialogin .addedit.dialogin.addedit-in-form .form:not(.vertical) .form-col.label-col {
+  width: 339px; }
+
 /*
-.tqfinfo.tqf2 .addedit.dialogin .addedit.dialogin.addedit-in-form .form:not(.vertical) .form-col.label-col
-{
-    width: 339px;
+.tqfinfo.tqf2 .addedit.dialogin .table.table-in-form .addedit.dialogin.addedit-in-form .form:not(.vertical) .form-col.label-col {
+  width: 328px;
 }
-.tqfinfo.tqf2 .addedit.dialogin .table.table-in-form .addedit.dialogin.addedit-in-form .form:not(.vertical) .form-col.label-col
-{
-    width: 328px;
+.tqfinfo.tqf2 .addedit.dialogin .form-bracket .form:not(.vertical) .form-col.label-col {
+  width: 329px;
 }
-.tqfinfo.tqf2 .addedit.dialogin .form-bracket .form:not(.vertical) .form-col.label-col
-{
-    width: 329px;
+.tqfinfo.tqf2 .addedit.dialogin .form-bracket .addedit.dialogin.addedit-in-form .form:not(.vertical) .form-col.label-col {
+  width: 319px;
 }
-.tqfinfo.tqf2 .addedit.dialogin .form-bracket .addedit.dialogin.addedit-in-form .form:not(.vertical) .form-col.label-col
-{
-    width: 319px;
+@media screen and (max-width: 1265px) and (min-width: $screen-min-width) {
+  @include table-responsive-step1(true, ".tqfinfo.tqf2.program.pendingverify");
 }
-@media screen and (max-width: 1265px) and (min-width: $screen-min-width)
-{
-    @include table-responsive-step1(true, ".tqfinfo.tqf2.program.pendingverify");
+@media screen and (max-width: 1183px) and (min-width: $screen-min-width) {    
+  @include table-responsive-step1(true, ".tqfinfo.tqf2.program.sendingverify");
 }
-@media screen and (max-width: 1183px) and (min-width: $screen-min-width)
-{    
-    @include table-responsive-step1(true, ".tqfinfo.tqf2.program.sendingverify");
+@media screen and (max-width: 1015px) and (min-width: $screen-min-width) {
+  @include table-responsive-step1(false, ".tqfinfo.tqf2.program.pendingverify");
 }
-@media screen and (max-width: 1015px) and (min-width: $screen-min-width)
-{
-    @include table-responsive-step1(false, ".tqfinfo.tqf2.program.pendingverify");
+@media screen and (max-width: 1015px) {
+  @include table-responsive-step1(false, ".tqfinfo.tqf2.program.pendingverify");
 }
-@media screen and (max-width: 1015px)
-{
-    @include table-responsive-step1(false, ".tqfinfo.tqf2.program.pendingverify");
+@media screen and (max-width: 994px) and (min-width: $screen-min-width) { 
+  @include table-responsive-step1(true, ".tqfinfo.tqf2.program.verified");
 }
-@media screen and (max-width: 994px) and (min-width: $screen-min-width)
-{ 
-    @include table-responsive-step1(true, ".tqfinfo.tqf2.program.verified");
+@media screen and (max-width: 934px) and (min-width: $screen-min-width) {
+  @include table-responsive-step1(false, ".tqfinfo.tqf2.program.sendingverify");
 }
-@media screen and (max-width: 934px) and (min-width: $screen-min-width)
-{
-    @include table-responsive-step1(false, ".tqfinfo.tqf2.program.sendingverify");
+@media screen and (max-width: 934px) {
+  @include table-responsive-step1(false, ".tqfinfo.tqf2.program.sendingverify");
 }
-@media screen and (max-width: 934px)
-{
-    @include table-responsive-step1(false, ".tqfinfo.tqf2.program.sendingverify");
+@media screen and (max-width: 744px) and (min-width: $screen-min-width) {
+  @include table-responsive-step1(false, ".tqfinfo.tqf2.program.verified");
 }
-@media screen and (max-width: 744px) and (min-width: $screen-min-width)
-{
-    @include table-responsive-step1(false, ".tqfinfo.tqf2.program.verified");
-}
-@media screen and (max-width: 744px)
-{
-    @include table-responsive-step1(false, ".tqfinfo.tqf2.program.verified");
+@media screen and (max-width: 744px) {
+  @include table-responsive-step1(false, ".tqfinfo.tqf2.program.verified");
 }
 */
 @media screen and (max-width: 817px) and (min-width: 721px) {
@@ -3473,21 +3483,122 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   .slideleftactive .tqfinfo.tqf3.group01 .addedit.dialogin .form-separate {
     margin-top: 15px;
     padding-top: 10px; }
+  .slideleftactive .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .slideleftactive .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .slideleftactive .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .slideleftactive .tqfinfo.tqf3.group02 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .slideleftactive .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .slideleftactive .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .slideleftactive .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .slideleftactive .tqfinfo.tqf3.group04 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .slideleftactive .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .slideleftactive .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .slideleftactive .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .slideleftactive .tqfinfo.tqf3.group05 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .slideleftactive .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .slideleftactive .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .slideleftactive .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .slideleftactive .tqfinfo.tqf3.group06 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .slideleftactive .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .slideleftactive .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .slideleftactive .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .slideleftactive .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .slideleftactive .tqfinfo.tqf3.group07 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .slideleftactive .tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form-col.input-col .credits,
   .slideleftactive .tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form-col.input-col .credit {
     width: 100% !important; }
   .slideleftactive .tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form:last-child .form-col.input-col .inputbox:not(:first-child) {
     margin-top: 5px; }
   .slideleftactive .tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form:last-child .form-col.input-col span {
     display: none; }
-  /*
-    @include form-addedit-responsive(true, ".tqfinfo.tqf2.group02");
-    @include form-addedit-responsive(true, ".tqfinfo.tqf2.group03");
-    @include form-addedit-responsive(true, ".tqfinfo.tqf2.group04");
-    @include form-addedit-responsive(true, ".tqfinfo.tqf2.group05");
-    @include form-addedit-responsive(true, ".tqfinfo.tqf2.group06");
-    @include form-addedit-responsive(true, ".tqfinfo.tqf2.group07");
-    @include form-addedit-responsive(true, ".tqfinfo.tqf2.group08");
-    */ }
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form-coursecredit .form-col.input-col .credits,
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form-coursecredit .form-col.input-col .credit {
+    width: 100% !important; }
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form-coursecredit .form:last-child .form-col.input-col .inputbox:not(:first-child) {
+    margin-top: 5px; }
+  .slideleftactive .tqfinfo.tqf3.group03 .addedit.dialogin .form-coursecredit .form:last-child .form-col.input-col span {
+    display: none; } }
 
 @media screen and (max-width: 567px) {
   .tqfinfo.tqf3.group01 .addedit.dialogin .form:not(.nowrap) .form-col,
@@ -3507,30 +3618,129 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
   .tqfinfo.tqf3.group01 .addedit.dialogin .form-separate {
     margin-top: 15px;
     padding-top: 10px; }
+  .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .tqfinfo.tqf3.group02 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .tqfinfo.tqf3.group02 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .tqfinfo.tqf3.group04 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .tqfinfo.tqf3.group04 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .tqfinfo.tqf3.group05 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .tqfinfo.tqf3.group05 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .tqfinfo.tqf3.group06 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .tqfinfo.tqf3.group06 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-col,
+  .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-col.input-col .btn-command .btn {
+    display: block;
+    width: 100%; }
+  .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-col.label-col {
+    padding-bottom: 0px;
+    text-align: left !important;
+    white-space: normal;
+    width: 100%; }
+  .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-col.input-col {
+    padding: 3px 0px 0px 0px; }
+  .tqfinfo.tqf3.group07 .addedit.dialogin .form:not(.nowrap) .form-row:last-child .form-col.input-col .btn-command .btn {
+    margin-top: 7px;
+    margin-left: 0px; }
+  .tqfinfo.tqf3.group07 .addedit.dialogin .form-separate {
+    margin-top: 15px;
+    padding-top: 10px; }
+  .tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form-col.input-col .credits,
   .tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form-col.input-col .credit {
     width: 100% !important; }
   .tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form:last-child .form-col.input-col .inputbox:not(:first-child) {
     margin-top: 5px; }
   .tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form:last-child .form-col.input-col span {
     display: none; }
-  /*
-    @include form-addedit-responsive(false, ".tqfinfo.tqf2.group02");
-    @include form-addedit-responsive(false, ".tqfinfo.tqf2.group03");
-    @include form-addedit-responsive(false, ".tqfinfo.tqf2.group04");
-    @include form-addedit-responsive(false, ".tqfinfo.tqf2.group05");
-    @include form-addedit-responsive(false, ".tqfinfo.tqf2.group06");
-    @include form-addedit-responsive(false, ".tqfinfo.tqf2.group07");
-    @include form-addedit-responsive(false, ".tqfinfo.tqf2.group08");
-    */ }
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form-coursecredit .form-col.input-col .credits,
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form-coursecredit .form-col.input-col .credit {
+    width: 100% !important; }
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form-coursecredit .form:last-child .form-col.input-col .inputbox:not(:first-child) {
+    margin-top: 5px; }
+  .tqfinfo.tqf3.group03 .addedit.dialogin .form-coursecredit .form:last-child .form-col.input-col span {
+    display: none; } }
 
 /*
-@media screen and (max-width: 882px) and (min-width: $screen-min-width)
-{
-    @include nav-tabs-responsive(true, ".tqfinfo.tqf2");
+@media screen and (max-width: 882px) and (min-width: $screen-min-width) {
+  @include nav-tabs-responsive(true, ".tqfinfo.tqf2");
 }
-@media screen and (max-width: 632px)
-{
-    @include nav-tabs-responsive(false, ".tqfinfo.tqf2");
+@media screen and (max-width: 632px) {
+  @include nav-tabs-responsive(false, ".tqfinfo.tqf2");
 }
 */
 /* ========================================== */
@@ -3538,79 +3748,98 @@ main section .panel-col.col-menu .slidemenu .nav .subsubmenu .menuactiveaction s
 .tqfinfo.tqf3.group01 .addedit.dialogin .form-col.input-col .inputbox.semester-courseyear {
   width: 60px; }
 
-.tqfinfo.tqf3.group01 .addedit.dialogin .form-col.input-col .credit {
-  width: 45px; }
-
-.tqfinfo.tqf3.group01 .addedit.dialogin .form-col.input-col .date {
-  width: 137px; }
-
-.tqfinfo.tqf3.group01 .addedit.dialogin .form-coursecredit .form:first-child .form-col.input-col .credit {
-  width: 164px; }
-
-.tqfinfo.tqf3.group01 .addedit.dialogin .section4 .form-instructor .table.table-in-form .col-command,
-.tqfinfo.tqf3.group01 .addedit.dialogin .section6 .form-subject .table.table-in-form .col-command,
-.tqfinfo.tqf3.group01 .addedit.dialogin .section7 .form-subject .table.table-in-form .col-command {
+.tqfinfo.tqf3.group01 .addedit.dialogin .section5 .form-instructor .table.table-in-form .col-command,
+.tqfinfo.tqf3.group01 .addedit.dialogin .section7 .form-subject .table.table-in-form .col-command,
+.tqfinfo.tqf3.group01 .addedit.dialogin .section8 .form-subject .table.table-in-form .col-command {
   width: 47px;
   min-width: 47px; }
 
-.tqfinfo.tqf3.group01 .addedit.dialogin .section4 .form-instructor .table.table-in-form .colwrap .iform .iform-col.colhead {
+.tqfinfo.tqf3.group01 .addedit.dialogin .section5 .form-instructor .table.table-in-form .colwrap .iform .iform-col.colhead {
   width: 125px; }
 
-.tqfinfo.tqf3.group01 .addedit.dialogin .section6 .form-subject .table.table-in-form .col-code,
-.tqfinfo.tqf3.group01 .addedit.dialogin .section7 .form-subject .table.table-in-form .col-code {
+.tqfinfo.tqf3.group01 .addedit.dialogin .section7 .form-subject .table.table-in-form .col-code,
+.tqfinfo.tqf3.group01 .addedit.dialogin .section8 .form-subject .table.table-in-form .col-code {
   width: 117px;
   min-width: 117px; }
 
-.tqfinfo.tqf3.group01 .addedit.dialogin .section6 .form-subject .table.table-in-form .col-coursecredit,
-.tqfinfo.tqf3.group01 .addedit.dialogin .section7 .form-subject .table.table-in-form .col-coursecredit {
+.tqfinfo.tqf3.group01 .addedit.dialogin .section7 .form-subject .table.table-in-form .col-coursecredit,
+.tqfinfo.tqf3.group01 .addedit.dialogin .section8 .form-subject .table.table-in-form .col-coursecredit {
   width: 117px;
   min-width: 117px; }
 
-.tqfinfo.tqf3.group01 .addedit.dialogin .section6 .form-subject .table.table-in-form .colwrap .iform .iform-col.colhead,
-.tqfinfo.tqf3.group01 .addedit.dialogin .section7 .form-subject .table.table-in-form .colwrap .iform .iform-col.colhead {
+.tqfinfo.tqf3.group01 .addedit.dialogin .section7 .form-subject .table.table-in-form .colwrap .iform .iform-col.colhead,
+.tqfinfo.tqf3.group01 .addedit.dialogin .section8 .form-subject .table.table-in-form .colwrap .iform .iform-col.colhead {
   width: 87px; }
 
 @media screen and (max-width: 1058px) and (min-width: 721px) {
-  .slideleftactive .tqfinfo.tqf3.group01 .section4 .form-instructor .table .table-data th:not(.colwrap),
-  .slideleftactive .tqfinfo.tqf3.group01 .section4 .form-instructor .table .table-data td:not(.colwrap):not(.colnowrap),
-  .slideleftactive .tqfinfo.tqf3.group01 .section4 .form-instructor .table .table-data td.colnowrap .table thead.table-data {
+  .slideleftactive .tqfinfo.tqf3.group01 .section5 .form-instructor .table .table-data th:not(.colwrap),
+  .slideleftactive .tqfinfo.tqf3.group01 .section5 .form-instructor .table .table-data td:not(.colwrap):not(.colnowrap),
+  .slideleftactive .tqfinfo.tqf3.group01 .section5 .form-instructor .table .table-data td.colnowrap .table thead.table-data {
     display: none !important; }
-  .slideleftactive .tqfinfo.tqf3.group01 .section4 .form-instructor .table .table-data .colwrap.colwrap1 {
+  .slideleftactive .tqfinfo.tqf3.group01 .section5 .form-instructor .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
 @media screen and (max-width: 808px) {
-  .tqfinfo.tqf3.group01 .section4 .form-instructor .table .table-data th:not(.colwrap),
-  .tqfinfo.tqf3.group01 .section4 .form-instructor .table .table-data td:not(.colwrap):not(.colnowrap),
-  .tqfinfo.tqf3.group01 .section4 .form-instructor .table .table-data td.colnowrap .table thead.table-data {
+  .tqfinfo.tqf3.group01 .section5 .form-instructor .table .table-data th:not(.colwrap),
+  .tqfinfo.tqf3.group01 .section5 .form-instructor .table .table-data td:not(.colwrap):not(.colnowrap),
+  .tqfinfo.tqf3.group01 .section5 .form-instructor .table .table-data td.colnowrap .table thead.table-data {
     display: none !important; }
-  .tqfinfo.tqf3.group01 .section4 .form-instructor .table .table-data .colwrap.colwrap1 {
+  .tqfinfo.tqf3.group01 .section5 .form-instructor .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
 @media screen and (max-width: 761px) and (min-width: 721px) {
-  .slideleftactive .tqfinfo.tqf3.group01 .section6 .form-subject .table .table-data th:not(.colwrap),
-  .slideleftactive .tqfinfo.tqf3.group01 .section6 .form-subject .table .table-data td:not(.colwrap):not(.colnowrap),
-  .slideleftactive .tqfinfo.tqf3.group01 .section6 .form-subject .table .table-data td.colnowrap .table thead.table-data {
-    display: none !important; }
-  .slideleftactive .tqfinfo.tqf3.group01 .section6 .form-subject .table .table-data .colwrap.colwrap1 {
-    display: table-cell; }
   .slideleftactive .tqfinfo.tqf3.group01 .section7 .form-subject .table .table-data th:not(.colwrap),
   .slideleftactive .tqfinfo.tqf3.group01 .section7 .form-subject .table .table-data td:not(.colwrap):not(.colnowrap),
   .slideleftactive .tqfinfo.tqf3.group01 .section7 .form-subject .table .table-data td.colnowrap .table thead.table-data {
     display: none !important; }
   .slideleftactive .tqfinfo.tqf3.group01 .section7 .form-subject .table .table-data .colwrap.colwrap1 {
+    display: table-cell; }
+  .slideleftactive .tqfinfo.tqf3.group01 .section8 .form-subject .table .table-data th:not(.colwrap),
+  .slideleftactive .tqfinfo.tqf3.group01 .section8 .form-subject .table .table-data td:not(.colwrap):not(.colnowrap),
+  .slideleftactive .tqfinfo.tqf3.group01 .section8 .form-subject .table .table-data td.colnowrap .table thead.table-data {
+    display: none !important; }
+  .slideleftactive .tqfinfo.tqf3.group01 .section8 .form-subject .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
 @media screen and (max-width: 511px) {
-  .tqfinfo.tqf3.group01 .section6 .form-subject .table .table-data th:not(.colwrap),
-  .tqfinfo.tqf3.group01 .section6 .form-subject .table .table-data td:not(.colwrap):not(.colnowrap),
-  .tqfinfo.tqf3.group01 .section6 .form-subject .table .table-data td.colnowrap .table thead.table-data {
-    display: none !important; }
-  .tqfinfo.tqf3.group01 .section6 .form-subject .table .table-data .colwrap.colwrap1 {
-    display: table-cell; }
   .tqfinfo.tqf3.group01 .section7 .form-subject .table .table-data th:not(.colwrap),
   .tqfinfo.tqf3.group01 .section7 .form-subject .table .table-data td:not(.colwrap):not(.colnowrap),
   .tqfinfo.tqf3.group01 .section7 .form-subject .table .table-data td.colnowrap .table thead.table-data {
     display: none !important; }
   .tqfinfo.tqf3.group01 .section7 .form-subject .table .table-data .colwrap.colwrap1 {
+    display: table-cell; }
+  .tqfinfo.tqf3.group01 .section8 .form-subject .table .table-data th:not(.colwrap),
+  .tqfinfo.tqf3.group01 .section8 .form-subject .table .table-data td:not(.colwrap):not(.colnowrap),
+  .tqfinfo.tqf3.group01 .section8 .form-subject .table .table-data td.colnowrap .table thead.table-data {
+    display: none !important; }
+  .tqfinfo.tqf3.group01 .section8 .form-subject .table .table-data .colwrap.colwrap1 {
     display: table-cell; } }
 
+/* ========================================== */
+/* tqf info tqf3 group03 */
+.tqfinfo.tqf3.group03 .addedit.dialogin .form-col.input-col .inputbox.semester-courseyear {
+  width: 60px; }
+
+.tqfinfo.tqf3.group03 .addedit.dialogin .form-counselingstudents .table.table-in-form .col-timeallocated {
+  width: 136px;
+  min-width: 136px; }
+
+.tqfinfo.tqf3.group03 .addedit.dialogin .form-counselingstudents .table.table-in-form .col-command {
+  width: 47px;
+  min-width: 47px; }
+
+@media screen and (max-width: 864px) and (min-width: 721px) {
+  .slideleftactive .tqfinfo.tqf3.group03 .form-counselingstudents .table .table-data th:not(.colwrap),
+  .slideleftactive .tqfinfo.tqf3.group03 .form-counselingstudents .table .table-data td:not(.colwrap):not(.colnowrap),
+  .slideleftactive .tqfinfo.tqf3.group03 .form-counselingstudents .table .table-data td.colnowrap .table thead.table-data {
+    display: none !important; }
+  .slideleftactive .tqfinfo.tqf3.group03 .form-counselingstudents .table .table-data .colwrap.colwrap1 {
+    display: table-cell; } }
+
+@media screen and (max-width: 614px) {
+  .tqfinfo.tqf3.group03 .form-counselingstudents .table .table-data th:not(.colwrap),
+  .tqfinfo.tqf3.group03 .form-counselingstudents .table .table-data td:not(.colwrap):not(.colnowrap),
+  .tqfinfo.tqf3.group03 .form-counselingstudents .table .table-data td.colnowrap .table thead.table-data {
+    display: none !important; }
+  .tqfinfo.tqf3.group03 .form-counselingstudents .table .table-data .colwrap.colwrap1 {
+    display: table-cell; } }
