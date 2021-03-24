@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๑๗/๐๔/๒๕๖๑>
-Modify date : <๐๖/๑๑/๒๕๖๒>
+Modify date : <๒๔/๐๓/๒๕๖๔>
 Description : <รวมรวบฟังก์ชั่นใช้งานสำหรับข้อมูลหลักสูตร>
 =============================================
 */
@@ -214,6 +214,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                   xmlGraduateType: TQFServ.inputTypeRemark.getDataTableFromJSON((item.xmlGraduateType ? ($.xml2json("<root>" + item.xmlGraduateType + "</root>")) : ""), "xmlGraduateType"),
                   xmlCourseManagement: TQFServ.inputTypeRemark.getDataTableFromJSON((item.xmlCourseManagement ? ($.xml2json("<root>" + item.xmlCourseManagement + "</root>")) : ""), "xmlCourseManagement"),
                   xmlApprovedCourses: self.getDataTableFromJSON.approvedCourses((item.xmlApprovedCourses ? ($.xml2json("<root>" + item.xmlApprovedCourses + "</root>")) : ""), "xmlApprovedCourses"),
+                  publishYear: (item.publishYear ? item.publishYear : ""),
                   xmlCareer: self.getDataTableFromJSON.career((item.xmlCareer ? ($.xml2json("<root>" + item.xmlCareer + "</root>")) : ""), "xmlCareer"),
                   xmlInstructorResponsible: self.getDataTableFromJSON.instructorResponsible((item.xmlInstructorResponsible ? ($.xml2json("<root>" + item.xmlInstructorResponsible + "</root>")) : ""), "xmlInstructorResponsible"),
                   xmlPlaceStudy: self.getDataTableFromJSON.placeStudy((item.xmlPlaceStudy ? ($.xml2json("<root>" + item.xmlPlaceStudy + "</root>")) : ""), "xmlPlaceStudy"),
@@ -862,7 +863,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
           action = "edit";
         else
           data = [data];
-                
+
         utilServ.dialogConfirmWithDict([action, "confirm"], function (result) {
           if (result) {
             if (action === "remove")
@@ -879,7 +880,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
           else
             deferred.resolve(result);                        
         });  
-                
+
         return deferred.promise;
       }            
     };

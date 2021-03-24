@@ -101,6 +101,27 @@
         </div>
       </div>
     </div>
+    <div class="form-separate">
+      <div class="form">
+        <div class="form-row">
+          <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'courseYear'])}}</div>
+          <div class="form-col input-col">
+            <ui-select ng-model="tqf2g1.addedit.section1.formField.courseYearSelected.selected" theme="select2" ng-disabled="tqf2.addedit.disabled || (tqf2g1.addedit.isEdit && $programmeServ.dataRow.mode !== 'add')">
+              <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'year'])}}">
+                <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{$select.selected.TH}}</span>
+                <span clearselect class="clearselect lang font-en regular gray f10" ng-click="tqf2g1.addedit.section1.formField.courseYearSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+              </ui-select-match>
+              <ui-select-choices repeat="year in $appServ.yearList | filter: $select.search">
+                <span class="{{$appServ.labelStyle}} regular f11">{{year.TH}}</span>
+              </ui-select-choices>
+            </ui-select>
+            <div class="alert alert-danger" ng-if="tqf2g1.addedit.section1.formValidate.showSaveError && !tqf2g1.addedit.section1.formValidate.isValid.courseYear">
+              <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['TQF2', 'group1', 'section', '1', 'save', 'error', 'courseYear'])}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="form">
       <div class="form-row">
         <div class="form-col label-col text-left nopadding-top nopadding-bottom"></div>
@@ -1040,18 +1061,15 @@
       <div class="form-row">
         <div class="form-col label-col text-left {{$appServ.labelStyle}} regular black f10">{{$appServ.getLabel(['program', 'table', 'courseYear'])}}</div>
         <div class="form-col input-col">
-          <ui-select ng-model="tqf2g1.addedit.section7.formField.courseYearSelected.selected" theme="select2" ng-disabled="tqf2.addedit.disabled || (tqf2g1.addedit.isEdit && $programmeServ.dataRow.mode !== 'add')">
+          <ui-select ng-model="tqf2g1.addedit.section7.formField.publishYearSelected.selected" theme="select2" ng-disabled="tqf2.addedit.disabled">
             <ui-select-match placeholder="{{$appServ.getLabel(['placeholder', 'year'])}}">
               <span class="form-control inputbox {{$appServ.labelStyle}} regular black f10">{{$select.selected.TH}}</span>
-              <span clearselect class="clearselect lang font-en regular gray f10" ng-click="tqf2g1.addedit.section7.formField.courseYearSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
+              <span clearselect class="clearselect lang font-en regular gray f10" ng-click="tqf2g1.addedit.section7.formField.publishYearSelected.selected = undefined"><i class="fa fa-times-circle"></i></span>
             </ui-select-match>
             <ui-select-choices repeat="year in $appServ.yearList | filter: $select.search">
               <span class="{{$appServ.labelStyle}} regular f11">{{year.TH}}</span>
             </ui-select-choices>
           </ui-select>
-          <div class="alert alert-danger" ng-if="tqf2g1.addedit.section7.formValidate.showSaveError && !tqf2g1.addedit.section7.formValidate.isValid.courseYear">
-            <span class="{{$appServ.labelStyle}} regular f11">{{$appServ.getLabel(['TQF2', 'group1', 'section', '7', 'save', 'error', 'courseYear'])}}</span>
-          </div>
         </div>
       </div>
     </div>

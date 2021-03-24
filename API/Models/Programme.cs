@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๐๔/๐๔/๒๕๖๑>
-Modify date : <๐๕/๑๑/๒๕๖๒>
+Modify date : <๒๔/๐๓/๒๕๖๔>
 Description : <โมเดลข้อมูลหลักสูตร TQF2>
 =============================================
 */
@@ -77,6 +77,7 @@ namespace API.Models
     public string xmlGraduateType { get; set; }
     public string xmlCourseManagement { get; set; }
     public string xmlApprovedCourses { get; set; }
+    public string publishYear { get; set; }
     public string xmlCareer { get; set; }
     public string xmlPlaceStudy { get; set; }
     public string xmlExternalSituation { get; set; }
@@ -261,6 +262,7 @@ namespace API.Models
         (d.xmlGraduateType != null ? ("<xmlGraduateType>" + Regex.Replace(iUtilService.XMLReplaceSpecialCharacter(d.xmlGraduateType), xmlSeparators, "") + "</xmlGraduateType>") : String.Empty) +
         (d.xmlCourseManagement != null ? ("<xmlCourseManagement>" + Regex.Replace(iUtilService.XMLReplaceSpecialCharacter(d.xmlCourseManagement), xmlSeparators, "") + "</xmlCourseManagement>") : String.Empty) +
         (d.xmlApprovedCourses != null ? ("<xmlApprovedCourses>" + Regex.Replace(iUtilService.XMLReplaceSpecialCharacter(d.xmlApprovedCourses), xmlSeparators, "") + "</xmlApprovedCourses>") : String.Empty) +
+        (d.publishYear != null ? ("<publishYear>" + d.publishYear + "</publishYear>") : String.Empty) +
         (d.xmlCareer != null ? ("<xmlCareer>" + Regex.Replace(iUtilService.XMLReplaceSpecialCharacter(d.xmlCareer), xmlSeparators, "") + "</xmlCareer>") : String.Empty) +
         (d.xmlPlaceStudy != null ? ("<xmlPlaceStudy>" + Regex.Replace(iUtilService.XMLReplaceSpecialCharacter(d.xmlPlaceStudy), xmlSeparators, "") + "</xmlPlaceStudy>") : String.Empty) +
         (d.xmlExternalSituation != null ? ("<xmlExternalSituation>" + Regex.Replace(iUtilService.XMLReplaceSpecialCharacter(d.xmlExternalSituation), xmlSeparators, "") + "</xmlExternalSituation>") : String.Empty) +

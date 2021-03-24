@@ -7,16 +7,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>D:\Programming\AUNQA\Project\API\Publish</_PublishTargetUrl>
+    <History>True|2021-03-24T06:21:36.0210135Z;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/API.dll">
-      <publishTime>01/19/2021 20:50:12</publishTime>
+      <publishTime>03/24/2021 12:49:56</publishTime>
     </File>
     <File Include="bin/API.pdb">
-      <publishTime>01/19/2021 20:50:12</publishTime>
+      <publishTime>03/24/2021 12:49:56</publishTime>
     </File>
     <File Include="bin/API.XmlSerializers.dll">
-      <publishTime>01/19/2021 20:50:51</publishTime>
+      <publishTime>03/24/2021 12:49:59</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/25/2019 15:58:11</publishTime>
@@ -127,7 +128,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/25/2019 15:57:57</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/25/2019 15:57:58</publishTime>
+      <publishTime>03/24/2021 13:21:27</publishTime>
     </File>
   </ItemGroup>
 </Project>

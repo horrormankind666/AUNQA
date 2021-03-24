@@ -2,7 +2,7 @@
 =============================================
 Author      : <ยุทธภูมิ ตวันนา>
 Create date : <๑๒/๑๐/๒๕๖๑>
-Modify date : <๐๖/๑๑/๒๕๖๓>
+Modify date : <๒๔/๐๓/๒๕๖๔>
 Description : <รวมรวบฟังก์ชั่นใช้งานสำหรับข้อมูลมคอ.ในส่วนของมคอ. 2>
 =============================================
 */
@@ -1298,7 +1298,6 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
           if (self.addedit.isAdd || self.addedit.isEdit || self.addedit.isUpdate) {
             if (!self.addedit.section1.saveChange.validate()) { self.accordionGroup.section1.isOpen = true; i++; }
             if (!self.addedit.section2.saveChange.validate()) { self.accordionGroup.section2.isOpen = true; i++; }
-            if (!self.addedit.section7.saveChange.validate()) { self.accordionGroup.section7.isOpen = true; i++; }
           }
 
           return (i > 0 ? false : true);
@@ -1316,7 +1315,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
             if (self.addedit.isAdd)     action = "add";
             if (self.addedit.isEdit)    action = "edit";
             if (self.addedit.isUpdate)  action = "update";
-            if (self.addedit.isDelete) action = "remove";
+            if (self.addedit.isDelete)  action = "remove";
 
             programmeServ.saveChange.action({
               action: action,
@@ -1376,14 +1375,16 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
           name: {
             TH: "",
             EN: ""
-          }
+          },
+          courseYearSelected: {}
         },
         formValue: {
           code: "",
           name: {
             TH: "",
             EN: ""
-          }
+          },
+          courseYearSelected: {}
         },
         formValidate: {
           setValue: function () {
@@ -1396,7 +1397,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
               name: {
                 TH: true,
                 EN: true
-              }
+              },
+              courseYear: true
             };
           }
         },
@@ -1408,6 +1410,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
               watch.push(self.addedit.section1.formField.code);
               watch.push(self.addedit.section1.formField.name.TH);
               watch.push(self.addedit.section1.formField.name.EN);
+              watch.push(self.addedit.section1.formField.courseYearSelected.selected);
 
               return watch;
             }, function () {
@@ -1416,7 +1419,8 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
               if (!exit) {
                 if ((self.addedit.section1.formField.code !== self.addedit.section1.formValue.code) ||
                     (self.addedit.section1.formField.name.TH !== self.addedit.section1.formValue.name.TH) ||
-                    (self.addedit.section1.formField.name.EN !== self.addedit.section1.formValue.name.EN))
+                    (self.addedit.section1.formField.name.EN !== self.addedit.section1.formValue.name.EN) ||
+                    (self.addedit.section1.formField.courseYearSelected.selected !== self.addedit.section1.formValue.courseYearSelected.selected))
                   exit = true;
               }
 
@@ -1440,13 +1444,17 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
           this.formValue.name.EN = (programmeServ.dataRow.name ? programmeServ.dataRow.name.EN : "");
           this.formField.name.EN = this.formValue.name.EN;
 
+          this.formValue.courseYearSelected.selected = (programmeServ.dataRow.courseYear ? utilServ.getObjectByValue(appServ.yearList, "TH", programmeServ.dataRow.courseYear)[0] : undefined);
+          this.formField.courseYearSelected.selected = this.formValue.courseYearSelected.selected;
+
           this.formValidate.resetValue();
         },
         getValue: function () {
           var result = {
             programCode: (this.formField.code ? this.formField.code : ""),
             nameTh: (this.formField.name.TH ? this.formField.name.TH : ""),
-            nameEn: (this.formField.name.EN ? this.formField.name.EN : "")
+            nameEn: (this.formField.name.EN ? this.formField.name.EN : ""),
+            courseYear: (this.formField.courseYearSelected.selected ? this.formField.courseYearSelected.selected.TH : "")
           };
 
           return result;
@@ -1462,6 +1470,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
                 self.addedit.section1.formValidate.isValid.name.TH = false; i++;
                 self.addedit.section1.formValidate.isValid.name.EN = false; i++;
               }
+              if (!this.value.courseYear) { self.addedit.section1.formValidate.isValid.courseYear = false; i++; }
               /*
               if (!this.value.nameTh) { self.addedit.section1.formValidate.isValid.name.TH = false; i++; }
               if (!this.value.nameEn) { self.addedit.section1.formValidate.isValid.name.EN = false; i++; }
@@ -2287,10 +2296,10 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
       section7: {
         owner: (self.owner + "s7"),
         formField: {
-          courseYearSelected: {}
+          publishYearSelected: {}
         },
         formValue: {
-          courseYearSelected: {}
+          publishYearSelected: {}
         },
         formValidate: {
           setValue: function () {
@@ -2298,9 +2307,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
           },
           resetValue: function () {
             this.showSaveError = false;
-            this.isValid = {
-              courseYear: true
-            };
+            this.isValid = {};
           }
         },
         watchFormChange: function () { 
@@ -2308,14 +2315,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
             $scope.$watch(function () {
               var watch = [];
 
-              watch.push(self.addedit.section7.formField.courseYearSelected.selected);
+              watch.push(self.addedit.section7.formField.publishYearSelected.selected);
 
               return watch;
             }, function () {
               var exit = false;
 
               if (!exit) {
-                if (self.addedit.section7.formField.courseYearSelected.selected !== self.addedit.section7.formValue.courseYearSelected.selected)
+                if (self.addedit.section7.formField.publishYearSelected.selected !== self.addedit.section7.formValue.publishYearSelected.selected)
                   exit = true;
               }
 
@@ -2330,14 +2337,14 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
           this.formValidate.setValue();
         },
         resetValue: function () {
-          this.formValue.courseYearSelected.selected = (programmeServ.dataRow.courseYear ? utilServ.getObjectByValue(appServ.yearList, "TH", programmeServ.dataRow.courseYear)[0] : undefined);
-          this.formField.courseYearSelected.selected = this.formValue.courseYearSelected.selected;
+          this.formValue.publishYearSelected.selected = (programmeServ.dataRow.publishYear ? utilServ.getObjectByValue(appServ.yearList, "TH", programmeServ.dataRow.publishYear)[0] : undefined);
+          this.formField.publishYearSelected.selected = this.formValue.publishYearSelected.selected;
 
           this.formValidate.resetValue();
         },
         getValue: function () {
           var result = {
-            courseYear: (this.formField.courseYearSelected.selected ? this.formField.courseYearSelected.selected.TH : "")
+            publishYear: (this.formField.publishYearSelected.selected ? this.formField.publishYearSelected.selected.TH : "")
           };
 
           return result;
@@ -2346,12 +2353,6 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
           value: {},
           validate: function () {
             var i = 0;
-
-            if (self.addedit.isAdd || self.addedit.isEdit) {
-              if (!this.value.courseYear) { self.addedit.section7.formValidate.isValid.courseYear = false; i++; }
-            }
-
-            self.addedit.section7.formValidate.showSaveError = (i > 0 ? true : false);
 
             return (i > 0 ? false : true);
           },

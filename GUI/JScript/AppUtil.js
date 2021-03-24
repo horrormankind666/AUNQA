@@ -558,7 +558,7 @@ Description : <รวมรวบฟังก์ชั่นใช้งาน�
         url += (route + "?ver=" + utilServ.dateTimeOnURL);
 
         utilServ.getDialogPreloadingWithDict(["msgPreloading", "saving"]);
-                
+
         self.isActionValidateAuthen().then(function (result) {                    
           if (result && requireSignIn) {
             utilServ.http({
